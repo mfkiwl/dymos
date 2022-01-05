@@ -42,7 +42,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -484,7 +484,7 @@
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -540,12 +540,73 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
         </div>
     </div>
 </div>
-    <div id="main-content" class="row">
+    <!-- Table of contents that is only displayed when printing the page -->
+    <div id="jb-print-docs-body" class="onlyprint">
+        <h1>How do connect the outputs of Dymos to a downstream analysis?</h1>
+        <!-- Table of contents -->
+        <div id="print-main-content" class="row">
+            <div class="col-12 col-md-12 pl-md-5 pr-md-5">
+            <div id="jb-print-toc">
+                
+            </div>
+            
+              <div>
+                
+  <div class="cell tag_active-ipynb tag_remove-input tag_remove-output docutils container">
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="how-do-connect-the-outputs-of-dymos-to-a-downstream-analysis">
+<h1>How do connect the outputs of Dymos to a downstream analysis?<a class="headerlink" href="#how-do-connect-the-outputs-of-dymos-to-a-downstream-analysis" title="Permalink to this headline">¶</a></h1>
+<p>One of the design goals of Dymos is to allow the trajectory to be a part of a larger multidisciplinary optimization problem.
+Sometimes, you may want to take the results from the Dymos trajectory and feed them to some downstream analysis.</p>
+<p>In the case of only being concerned with the final value of some parameter, this can be accomplished by connecting the relevant output from
+the timeseries with <code class="docutils literal notranslate"><span class="pre">src_indices=[-1]</span></code>.</p>
+<p>For example, something like the following might be used to connect the final value of the state <code class="docutils literal notranslate"><span class="pre">range</span></code> to some downstream component.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">problem</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;trajectory.phase0.timeseries.states:range&#39;</span><span class="p">,</span>
+                      <span class="s1">&#39;postprocess.final_range&#39;</span><span class="p">,</span>
+                      <span class="n">src_indices</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We <em>highly</em> recommend you use the phase timeseries outputs to retrieve outputs from Dymos, since it is transcription-indepdendent.</p>
+</div>
+<p>When the downstream analysis requires the entire trajectory, things get slightly more complicated.
+We need to know the number of nodes in a phase when we’re building the problem, so the downstream component knows how many values of a variable to expect.
+To do this, we can initialize the transcription object and obtain the total number of nodes in the phase using the transcriptions <code class="docutils literal notranslate"><span class="pre">grid_data.num_nodes</span></code> attribute.
+The <a class="reference internal" href="../examples/length_constrained_brachistochrone/length_constrained_brachistochrone.html"><span class="doc std std-doc">length-constrained brachistochrone example</span></a> demonstrates how to do this.</p>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./faq"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </div>
+        </div>
+    </div>
+    <div id="main-content" class="row noprint">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
         
               <div>
@@ -618,15 +679,13 @@ The <a class="reference internal" href="../examples/length_constrained_brachisto
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By The Dymos Development Team<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By The Dymos Development Team<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

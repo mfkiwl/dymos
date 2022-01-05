@@ -42,7 +42,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -484,7 +484,7 @@
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -540,12 +540,75 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
         </div>
     </div>
 </div>
-    <div id="main-content" class="row">
+    <!-- Table of contents that is only displayed when printing the page -->
+    <div id="jb-print-docs-body" class="onlyprint">
+        <h1>The Dymos run_problem function</h1>
+        <!-- Table of contents -->
+        <div id="print-main-content" class="row">
+            <div class="col-12 col-md-12 pl-md-5 pr-md-5">
+            <div id="jb-print-toc">
+                
+            </div>
+            
+              <div>
+                
+  <div class="cell tag_active-ipynb tag_remove-input tag_remove-output docutils container">
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="the-dymos-run-problem-function">
+<h1>The Dymos run_problem function<a class="headerlink" href="#the-dymos-run-problem-function" title="Permalink to this headline">¶</a></h1>
+<p>In the Brachistochrone example we used two methods on the OpenMDAO Problem class to execute the model.</p>
+<p><strong>run_model</strong> Takes the current model design variables and runs a single execution of the Problem’s model.<br />
+Any iterative systems are converged, but no optimization is performed.
+When using Dymos with an optimizer-driven implicit transcription, <code class="docutils literal notranslate"><span class="pre">run_model</span></code> will <strong>not</strong> produce a physically valid trajectory on output.
+If using a solver-driven transcription, the collocation defects will be satisfied (if possible) and the resulting outputs will provide a physically valid trajectory (to the extent possible given the collocation grid).</p>
+<p><strong>run_driver</strong> Runs a driver wrapped around the model (typically done for optimization) and repeatedly executes <code class="docutils literal notranslate"><span class="pre">run_model</span></code> until the associated optimization problem is satisfied.
+This approach will provide a physically valid trajectory, to the extent that the grid is sufficient to accurately model the dynamics.
+But what happens if the grid is not dense enough to accurately capture the physics of the problem.
+This is the purpose of <em>grid refinement</em>.
+There have been numerous methods of grid refinment posed for implcit optimal control techniques.
+In general, they follow the following procedure:</p>
+<ol class="simple">
+<li><p>Optimize the trajectory</p></li>
+<li><p>Assess errors in the solution</p></li>
+<li><p>Propose a new grid to reduce these errors to an acceptable level.</p></li>
+<li><p>Repeat until the errors are within some acceptable tolerance.</p></li>
+</ol>
+<p>This requires another layer of iteration outside of the OpenMDAO <code class="docutils literal notranslate"><span class="pre">run_driver</span></code> method.
+This is the original motivation for Dymos’ <code class="docutils literal notranslate"><span class="pre">run_problem</span></code> function.</p>
+<p>dymos.run_problem.run_problem</p>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./api"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </div>
+        </div>
+    </div>
+    <div id="main-content" class="row noprint">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
         
               <div>
@@ -620,15 +683,13 @@ This is the original motivation for Dymos’ <code class="docutils literal notra
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By The Dymos Development Team<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By The Dymos Development Team<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

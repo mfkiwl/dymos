@@ -42,7 +42,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -484,7 +484,7 @@
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -540,12 +540,66 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
         </div>
     </div>
 </div>
-    <div id="main-content" class="row">
+    <!-- Table of contents that is only displayed when printing the page -->
+    <div id="jb-print-docs-body" class="onlyprint">
+        <h1>Plotting Timeseries</h1>
+        <!-- Table of contents -->
+        <div id="print-main-content" class="row">
+            <div class="col-12 col-md-12 pl-md-5 pr-md-5">
+            <div id="jb-print-toc">
+                
+            </div>
+            
+              <div>
+                
+  <div class="cell tag_active-ipynb tag_remove-input tag_remove-output docutils container">
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="plotting-timeseries">
+<h1>Plotting Timeseries<a class="headerlink" href="#plotting-timeseries" title="Permalink to this headline">¶</a></h1>
+<p>Dymos provides a simple function to plot timeseries,</p>
+<p><code class="docutils literal notranslate"><span class="pre">timeseries_plots(solution_recorder_filename,</span> <span class="pre">simulation_record_file=None,</span> <span class="pre">plot_dir=&quot;plots&quot;)</span></code></p>
+<p>A separate plot file will be created for each timeseries variable. The plots will be saved and not
+displayed. The user has to manually open the plot files for them to be displayed.</p>
+<p>The only required argument, <code class="docutils literal notranslate"><span class="pre">solution_recorder_filename</span></code>, is the file path to the case recorder file
+containing the solution results.</p>
+<p>If the optional argument, <code class="docutils literal notranslate"><span class="pre">simulation_record_file</span></code>, is given, then that will be used to get data for
+plotting the timeseries of the simulation.</p>
+<p>Finally, the optional argument, <code class="docutils literal notranslate"><span class="pre">plot_dir</span></code>, can be set to indicate to what directory the plot files will be saved.</p>
+<p>Here is an example of the kind of plot that is created.</p>
+<p><img alt="Timeseries Plot" src="../_images/timeseries_plot.png" /></p>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./features"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </div>
+        </div>
+    </div>
+    <div id="main-content" class="row noprint">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
         
               <div>
@@ -611,15 +665,13 @@ plotting the timeseries of the simulation.</p>
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By The Dymos Development Team<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By The Dymos Development Team<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 
