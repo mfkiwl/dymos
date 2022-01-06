@@ -169,7 +169,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../../examples/brachistochrone/brachistochrone_upstream_init_duration_states.html">
-     The Brachistochrone with Externally-Sourced initial state values
+     The Brachistochrone with externally-sourced initial state values
     </a>
    </li>
    <li class="toctree-l2">
@@ -545,14 +545,17 @@
         </div>
     </div>
 </div>
-    <!-- Table of contents that is only displayed when printing the page -->
-    <div id="jb-print-docs-body" class="onlyprint">
-        <h1>Segments</h1>
-        <!-- Table of contents -->
-        <div id="print-main-content" class="row">
-            <div class="col-12 col-md-12 pl-md-5 pr-md-5">
-            <div id="jb-print-toc">
-                
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Segments</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
             </div>
             
               <div>
@@ -596,55 +599,8 @@ The default <em>compressed</em> transcription yields an optimization problem wit
 
               </div>
               
-            </div>
-        </div>
-    </div>
-    <div id="main-content" class="row noprint">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
-              <div>
-                
-  <div class="cell tag_active-ipynb tag_remove-input tag_remove-output docutils container">
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="segments">
-<h1>Segments<a class="headerlink" href="#segments" title="Permalink to this headline">¶</a></h1>
-<p>All phases in Dymos are decomposed into one or more <em>segments</em> in time.  These segments
-serve the following purposes:</p>
-<ul class="simple">
-<li><p>Gauss-Lobatto collocation and the Radau Pseudospectral method model each state variable as a polynomial segment in nondimensional time within each segment.</p></li>
-<li><p>Each control is modeled as a polynomial in nondimensional time within each segment.</p></li>
-</ul>
-<p>The order of the <em>state</em> polynomial segment is given by the phase argument <code class="docutils literal notranslate"><span class="pre">transcription_order</span></code>.
-In Dymos the minimum supported transcription order is 3.</p>
-<p>State-time histories within a segment are modelled as a Lagrange polynomial.
-Continuity in state value may be enforced via linear constraints at the segment boundaries (the default behavior) or by specifying a <em>compressed</em> transcription whereby the state value at a segment boundary is provided as a single value.
-The default <em>compressed</em> transcription yields an optimization problem with fewer variables, but in some situations using uncompressed transcription can result in more robust convergence.</p>
-</div>
-
-    <script type="text/x-thebe-config">
-    {
-        requestKernel: true,
-        binderOptions: {
-            repo: "binder-examples/jupyter-stacks-datascience",
-            ref: "master",
-        },
-        codeMirrorConfig: {
-            theme: "abcdef",
-            mode: "python"
-        },
-        kernelOptions: {
-            kernelName: "python3",
-            path: "./features/phases"
-        },
-        predefinedOutput: true
-    }
-    </script>
-    <script>kernelName = 'python3'</script>
-
-              </div>
-              
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="phases.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -661,7 +617,7 @@ The default <em>compressed</em> transcription yields an optimization problem wit
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">

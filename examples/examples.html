@@ -169,7 +169,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="brachistochrone/brachistochrone_upstream_init_duration_states.html">
-     The Brachistochrone with Externally-Sourced initial state values
+     The Brachistochrone with externally-sourced initial state values
     </a>
    </li>
    <li class="toctree-l2">
@@ -536,19 +536,20 @@
         </div>
     </div>
 </div>
-    <!-- Table of contents that is only displayed when printing the page -->
-    <div id="jb-print-docs-body" class="onlyprint">
-        <h1>Dymos by Example</h1>
-        <!-- Table of contents -->
-        <div id="print-main-content" class="row">
-            <div class="col-12 col-md-12 pl-md-5 pr-md-5">
-            <div id="jb-print-toc">
-                
-                <div>
-                    <h2> Contents </h2>
-                </div>
-                <nav aria-label="Page">
-                    <ul class="visible nav section-nav flex-column">
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Dymos by Example</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#prerequisites">
    Prerequisites
@@ -556,7 +557,9 @@
  </li>
 </ul>
 
-                </nav>
+                        </nav>
+                    </div>
+                </div>
             </div>
             
               <div>
@@ -609,64 +612,8 @@
 
               </div>
               
-            </div>
-        </div>
-    </div>
-    <div id="main-content" class="row noprint">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
-              <div>
-                
-  <div class="tex2jax_ignore mathjax_ignore section" id="dymos-by-example">
-<h1>Dymos by Example<a class="headerlink" href="#dymos-by-example" title="Permalink to this headline">¶</a></h1>
-<p>The goal of these examples is to walk users through the process of formulating an optimal control problem and solving it using Dymos.</p>
-<p>In working through these examples, we’ll try to emphasize the following process:</p>
-<ol class="simple">
-<li><p>Formulate the optimal control problem</p></li>
-<li><p>Identify state and control variables, and the ordinary differential equations (ODE) which govern the dynamics.</p></li>
-<li><p>Build the ODE as an OpenMDAO system.</p></li>
-<li><p>Test the evaluation of the ODE.</p></li>
-<li><p>Define the partial derivatives for the ODE.</p></li>
-<li><p>Test the partial derivatives of the ODE against finite-difference or (preferably) complex-step approximations.</p></li>
-</ol>
-<div class="section" id="prerequisites">
-<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
-<p>These examples assume that the user has a working knowledge of the following:</p>
-<ul class="simple">
-<li><p>Python</p></li>
-<li><p>The numpy package for numerical computing with Python</p></li>
-<li><p>The matplotlib package for plotting results</p></li>
-</ul>
-<p>Some examples may require additional optional packages that are noted in those notebooks.</p>
-</div>
-<div class="toctree-wrapper compound">
-</div>
-</div>
-
-    <script type="text/x-thebe-config">
-    {
-        requestKernel: true,
-        binderOptions: {
-            repo: "binder-examples/jupyter-stacks-datascience",
-            ref: "master",
-        },
-        codeMirrorConfig: {
-            theme: "abcdef",
-            mode: "python"
-        },
-        kernelOptions: {
-            kernelName: "python3",
-            path: "./examples"
-        },
-        predefinedOutput: true
-    }
-    </script>
-    <script>kernelName = 'python3'</script>
-
-              </div>
-              
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="../getting_started/intro_to_dymos/intro_segments.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -683,7 +630,7 @@
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
