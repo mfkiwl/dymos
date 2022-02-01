@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
@@ -34,19 +34,19 @@
     
   <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/togglebutton.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
+    <script >
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -54,7 +54,7 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="The Bryson-Denham Problem" href="../bryson_denham/bryson_denham.html" />
+    <link rel="next" title="Balanced Field Length using OpenMDAO’s Function Wrapping Components." href="balanced_field_funccomp.html" />
     <link rel="prev" title="The Van der Pol Oscillator" href="../vanderpol/vanderpol.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -99,7 +99,7 @@
   </a>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
+<p class="caption">
  <span class="caption-text">
   Installation
  </span>
@@ -111,7 +111,7 @@
   </a>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
+<p class="caption">
  <span class="caption-text">
   Getting Started
  </span>
@@ -148,7 +148,7 @@
   </a>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
+<p class="caption">
  <span class="caption-text">
   Examples and Tutorials
  </span>
@@ -182,6 +182,11 @@
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      Aircraft Balanced Field Length Calculation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="balanced_field_funccomp.html">
+     Balanced Field Length using OpenMDAO’s Function Wrapping Components.
     </a>
    </li>
    <li class="toctree-l2">
@@ -272,7 +277,7 @@
   </ul>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
+<p class="caption">
  <span class="caption-text">
   Feature Reference
  </span>
@@ -336,7 +341,7 @@
   </a>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
+<p class="caption">
  <span class="caption-text">
   Frequently Asked Questions
  </span>
@@ -390,7 +395,7 @@
   </ul>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
+<p class="caption">
  <span class="caption-text">
   Dymos API Reference
  </span>
@@ -429,7 +434,7 @@
   </ul>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
+<p class="caption">
  <span class="caption-text">
   Contributing
  </span>
@@ -761,7 +766,7 @@
   <div class="cell tag_active-ipynb tag_remove-input tag_remove-output docutils container">
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="aircraft-balanced-field-length-calculation">
-<h1>Aircraft Balanced Field Length Calculation<a class="headerlink" href="#aircraft-balanced-field-length-calculation" title="Permalink to this headline">¶</a></h1>
+<span id="examples-balanced-field"></span><h1>Aircraft Balanced Field Length Calculation<a class="headerlink" href="#aircraft-balanced-field-length-calculation" title="Permalink to this headline">¶</a></h1>
 <div class="admonition-things-you-ll-learn-through-this-example admonition">
 <p class="admonition-title">Things you’ll learn through this example</p>
 <ul class="simple">
@@ -817,7 +822,7 @@ the same fixed value.</p>
 at the end of the RTO phase is equal to <code class="docutils literal notranslate"><span class="pre">range</span></code> at the end of the climb phase.</p>
 <p>More information on calculating the balanced field length is available
 in section 17.8 of <em>Aircraft Design: A Conceptual Approach</em> by
-Daniel Raymer <span id="id1">[<a class="reference internal" href="#id49">Ray12</a>]</span>.</p>
+Daniel Raymer <span id="id1">[<a class="reference internal" href="#id49" title="Daniel Raymer. Aircraft design: a conceptual approach. American Institute of Aeronautics and Astronautics, Inc., 2012.">Ray12</a>]</span>.</p>
 <div class="section" id="the-ode-system">
 <h2>The ODE System<a class="headerlink" href="#the-ode-system" title="Permalink to this headline">¶</a></h2>
 <p>In this problem two sets of ordinary differential equations are used:
@@ -828,13 +833,13 @@ Also, since the duration of the trajectory is small, we’re going to assume tha
 <h3>The Aerodynamic Model<a class="headerlink" href="#the-aerodynamic-model" title="Permalink to this headline">¶</a></h3>
 <p>Both sets of equations of motion have common aerodynamic models.</p>
 <p>First, the lift coefficient is computed using a model which assumes linearity in lift wrt the angle of attack.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1fd85877-04c7-4eaa-9405-5aa616c42034">
-<span class="eqno">(21)<a class="headerlink" href="#equation-1fd85877-04c7-4eaa-9405-5aa616c42034" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-4a3ca320-f7c4-469e-bcae-b0711c365dc5">
+<span class="eqno">(21)<a class="headerlink" href="#equation-4a3ca320-f7c4-469e-bcae-b0711c365dc5" title="Permalink to this equation">¶</a></span>\[\begin{align}
     C_L &amp;= C_{L0} + \frac{\alpha}{\alpha_{max}} \left(C_{L-max} - C_{L0}\right)
 \end{align}\]</div>
 <p>Next, the drag-due-to-lift factor is computed (Equations 12.48 and 12.61 in Raymer[&#64;raymer2012aircraft]).</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0d9732de-4033-4c8f-b08b-e783599a445e">
-<span class="eqno">(22)<a class="headerlink" href="#equation-0d9732de-4033-4c8f-b08b-e783599a445e" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-26e880bf-6770-4912-8e5f-beda04f6d419">
+<span class="eqno">(22)<a class="headerlink" href="#equation-26e880bf-6770-4912-8e5f-beda04f6d419" title="Permalink to this equation">¶</a></span>\[\begin{align}
     K_{nom} &amp;= \frac{1}{ \pi  AR  e} \\
     b &amp;= \frac{span}{2} \\
     K &amp;= 33 K_{nom} \frac{ \left(\frac{h + h_w}{b} \right) ^{\frac{3}{2}}}{1.0 + 33 \left( \frac{h + h_w}{b}\right) ^{\frac{3}{2}}}
@@ -843,8 +848,8 @@ Also, since the duration of the trajectory is small, we’re going to assume tha
 This causes this problem to be difficult to solve using a shooting method.
 If the optimizer proposes a combination of initial states and a control history that results in altitude dropping significantly below zero, the propagation will fail.</p>
 <p>Finally, the lift and drag are computed after computing the dynamic pressure.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ca537b62-e576-4a00-9f69-65c25484b342">
-<span class="eqno">(23)<a class="headerlink" href="#equation-ca537b62-e576-4a00-9f69-65c25484b342" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d671f540-d70f-4aaa-81ac-303c9167e0a9">
+<span class="eqno">(23)<a class="headerlink" href="#equation-d671f540-d70f-4aaa-81ac-303c9167e0a9" title="Permalink to this equation">¶</a></span>\[\begin{align}
     q &amp;= 0.5 \rho v^2 \\
     L &amp;= q  S  C_L \\
     D &amp;= q S \left( C_{D0} + K C_{L}^2 \right)
@@ -855,8 +860,8 @@ If the optimizer proposes a combination of initial states and a control history 
 <p>This model relies on the ratio of the current true airspeed to stall speed (<span class="math notranslate nohighlight">\(\frac{v}{v_{stall}}\)</span>).
 This constraint is used to trigger the beginning of rotation and is used as a boundary constraint at the end of the initial climb.
 Stall speed is given by Equation 5.6 in Raymer[&#64;raymer2012aircraft].</p>
-<div class="amsmath math notranslate nohighlight" id="equation-67cc5882-9bfb-4c02-9cd0-936659817d1f">
-<span class="eqno">(24)<a class="headerlink" href="#equation-67cc5882-9bfb-4c02-9cd0-936659817d1f" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-2b263905-081c-4159-bd5b-b69c282f6fe3">
+<span class="eqno">(24)<a class="headerlink" href="#equation-2b263905-081c-4159-bd5b-b69c282f6fe3" title="Permalink to this equation">¶</a></span>\[\begin{align}
     W &amp;= m g \\
     v_{stall} &amp;= \sqrt{\frac{2 * W}{\rho S C_{L-max}}}
 \end{align}\]</div>
@@ -864,8 +869,8 @@ Stall speed is given by Equation 5.6 in Raymer[&#64;raymer2012aircraft].</p>
 <div class="section" id="runway-equations-of-motion">
 <h3>Runway Equations of Motion<a class="headerlink" href="#runway-equations-of-motion" title="Permalink to this headline">¶</a></h3>
 <p>The runway equations of motion are used to integrate range and speed as the vehicle rolls along the runway.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3d8b8670-91cf-4fa7-b888-f03de22f541c">
-<span class="eqno">(25)<a class="headerlink" href="#equation-3d8b8670-91cf-4fa7-b888-f03de22f541c" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-19a84b76-8466-41c5-9610-84ad86cbe070">
+<span class="eqno">(25)<a class="headerlink" href="#equation-19a84b76-8466-41c5-9610-84ad86cbe070" title="Permalink to this equation">¶</a></span>\[\begin{align}
   F_r &amp;= mg - L \cos \alpha - T \sin \alpha \\
   \dot{v} &amp;= \frac{T \cos \alpha - D - F_r \mu_r}{m} \\
   \dot{r} &amp;= v
@@ -892,8 +897,8 @@ Stall speed is given by Equation 5.6 in Raymer[&#64;raymer2012aircraft].</p>
 <div class="section" id="flight-equations-of-motion">
 <h3>Flight Equations of Motion<a class="headerlink" href="#flight-equations-of-motion" title="Permalink to this headline">¶</a></h3>
 <p>The flight equations of motion include two additional state variables: the flight-path angle (<span class="math notranslate nohighlight">\(\gamma\)</span>) and altitude (<span class="math notranslate nohighlight">\(h\)</span>).</p>
-<div class="amsmath math notranslate nohighlight" id="equation-69df7354-9097-4234-864a-4b5d1b5992d7">
-<span class="eqno">(26)<a class="headerlink" href="#equation-69df7354-9097-4234-864a-4b5d1b5992d7" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-c2be46df-3100-4d9f-9b32-88723807831f">
+<span class="eqno">(26)<a class="headerlink" href="#equation-c2be46df-3100-4d9f-9b32-88723807831f" title="Permalink to this equation">¶</a></span>\[\begin{align}
   \dot{v} &amp;= \frac{T}{m} \cos \alpha - \frac{D}{m} - g \sin \gamma \\
   \dot{\gamma} &amp;= \frac{T}{m v} \sin \alpha + \frac{L}{m v} - \frac{g \cos \gamma}{v} \\
   \dot{h} &amp;= v \sin \gamma \\
@@ -994,7 +999,7 @@ Stall speed is given by Equation 5.6 in Raymer[&#64;raymer2012aircraft].</p>
 <tr class="row-odd"><td><p>e</p></td>
 <td><p>Oswald’s wing efficiency</p></td>
 <td><p>-</p></td>
-<td><p>801</p></td>
+<td><p>0.801</p></td>
 </tr>
 <tr class="row-even"><td><p>span</p></td>
 <td><p>wingspan</p></td>
@@ -1347,7 +1352,15 @@ First we define the problem and specify the optimizer settings.</p>
 <span class="n">p</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s1">&#39;print_results&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="k">if</span> <span class="n">optimizer</span> <span class="o">==</span> <span class="s1">&#39;IPOPT&#39;</span><span class="p">:</span>
     <span class="n">p</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">opt_settings</span><span class="p">[</span><span class="s1">&#39;print_level&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
-    <span class="n">p</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">opt_settings</span><span class="p">[</span><span class="s1">&#39;derivative_test&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;first-order&#39;</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">opt_settings</span><span class="p">[</span><span class="s1">&#39;mu_strategy&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;adaptive&#39;</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">opt_settings</span><span class="p">[</span><span class="s1">&#39;bound_mult_init_method&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;mu-based&#39;</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">opt_settings</span><span class="p">[</span><span class="s1">&#39;mu_init&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.01</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">opt_settings</span><span class="p">[</span><span class="s1">&#39;nlp_scaling_method&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;gradient-based&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.8/site-packages/openmdao/utils/options_dictionary.py:332: OMDeprecationWarning:&#39;gradient method&#39; is not a valid python name and will become an invalid option name in a future release. You can prevent this warning (and future exceptions) by declaring this option using a valid python name.
 </pre></div>
 </div>
 </div>
@@ -1414,20 +1427,24 @@ First we define the problem and specify the optimizer settings.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;dymos.phase.phase.Phase at 0x7f0f39a0bb80&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;dymos.phase.phase.Phase at 0x7ff834ff2a60&gt;
 </pre></div>
 </div>
 </div>
 </div>
 <p>In the next part of our script we define the trajectory-level parameters.  We assign these to their corresponding targets in the various phases of the trajectory.</p>
+<p>We’re omitting a lot of the scalar inputs to the ODE and letting them assume their default values for the sake of brevity.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add parameters common to multiple phases to the trajectory</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_phases</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;br_to_v1&#39;</span><span class="p">,</span> <span class="s1">&#39;v1_to_vr&#39;</span><span class="p">,</span> <span class="s1">&#39;rto&#39;</span><span class="p">,</span> <span class="s1">&#39;rotate&#39;</span><span class="p">,</span> <span class="s1">&#39;climb&#39;</span><span class="p">]</span>
+<span class="n">groundroll_phases</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;br_to_v1&#39;</span><span class="p">,</span> <span class="s1">&#39;v1_to_vr&#39;</span><span class="p">,</span> <span class="s1">&#39;rto&#39;</span><span class="p">,</span> <span class="s1">&#39;rotate&#39;</span><span class="p">]</span>
+
+<span class="c1"># Add parameters common to multiple phases to the trajectory</span>
 <span class="n">traj</span><span class="o">.</span><span class="n">add_parameter</span><span class="p">(</span><span class="s1">&#39;m&#39;</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="mf">174200.</span><span class="p">,</span> <span class="n">opt</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s1">&#39;lbm&#39;</span><span class="p">,</span>
                    <span class="n">desc</span><span class="o">=</span><span class="s1">&#39;aircraft mass&#39;</span><span class="p">,</span>
-                   <span class="n">targets</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;br_to_v1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;m&#39;</span><span class="p">],</span> <span class="s1">&#39;v1_to_vr&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;m&#39;</span><span class="p">],</span> <span class="s1">&#39;rto&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;m&#39;</span><span class="p">],</span>
-                            <span class="s1">&#39;rotate&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;m&#39;</span><span class="p">],</span> <span class="s1">&#39;climb&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;m&#39;</span><span class="p">]})</span>
+                   <span class="n">targets</span><span class="o">=</span><span class="p">{</span><span class="n">phase</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;m&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">phase</span> <span class="ow">in</span> <span class="n">all_phases</span><span class="p">})</span>
 
+<span class="c1"># Handle parameters which change from phase to phase.</span>
 <span class="n">traj</span><span class="o">.</span><span class="n">add_parameter</span><span class="p">(</span><span class="s1">&#39;T_nominal&#39;</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="mi">27000</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span> <span class="n">opt</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s1">&#39;lbf&#39;</span><span class="p">,</span> <span class="n">static_target</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                    <span class="n">desc</span><span class="o">=</span><span class="s1">&#39;nominal aircraft thrust&#39;</span><span class="p">,</span>
                    <span class="n">targets</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;br_to_v1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">]})</span>
@@ -1450,58 +1467,7 @@ First we define the problem and specify the optimizer settings.</p>
 
 <span class="n">traj</span><span class="o">.</span><span class="n">add_parameter</span><span class="p">(</span><span class="s1">&#39;h_runway&#39;</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span> <span class="n">opt</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s1">&#39;ft&#39;</span><span class="p">,</span>
                    <span class="n">desc</span><span class="o">=</span><span class="s1">&#39;runway altitude&#39;</span><span class="p">,</span>
-                   <span class="n">targets</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;br_to_v1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;h&#39;</span><span class="p">],</span> <span class="s1">&#39;v1_to_vr&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;h&#39;</span><span class="p">],</span> <span class="s1">&#39;rto&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;h&#39;</span><span class="p">],</span>
-                            <span class="s1">&#39;rotate&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;h&#39;</span><span class="p">]})</span>
-
-<span class="n">traj</span><span class="o">.</span><span class="n">add_parameter</span><span class="p">(</span><span class="s1">&#39;rho&#39;</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="mf">1.225</span><span class="p">,</span> <span class="n">opt</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s1">&#39;kg/m**3&#39;</span><span class="p">,</span> <span class="n">static_target</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                   <span class="n">desc</span><span class="o">=</span><span class="s1">&#39;atmospheric density&#39;</span><span class="p">,</span>
-                   <span class="n">targets</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;br_to_v1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;rho&#39;</span><span class="p">],</span> <span class="s1">&#39;v1_to_vr&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;rho&#39;</span><span class="p">],</span> <span class="s1">&#39;rto&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;rho&#39;</span><span class="p">],</span>
-                            <span class="s1">&#39;rotate&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;rho&#39;</span><span class="p">]})</span>
-
-<span class="n">traj</span><span class="o">.</span><span class="n">add_parameter</span><span class="p">(</span><span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="mf">124.7</span><span class="p">,</span> <span class="n">opt</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s1">&#39;m**2&#39;</span><span class="p">,</span> <span class="n">static_target</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                   <span class="n">desc</span><span class="o">=</span><span class="s1">&#39;aerodynamic reference area&#39;</span><span class="p">,</span>
-                   <span class="n">targets</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;br_to_v1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;S&#39;</span><span class="p">],</span> <span class="s1">&#39;v1_to_vr&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;S&#39;</span><span class="p">],</span> <span class="s1">&#39;rto&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;S&#39;</span><span class="p">],</span>
-                            <span class="s1">&#39;rotate&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;S&#39;</span><span class="p">],</span> <span class="s1">&#39;climb&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;S&#39;</span><span class="p">]})</span>
-
-<span class="n">traj</span><span class="o">.</span><span class="n">add_parameter</span><span class="p">(</span><span class="s1">&#39;CD0&#39;</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="mf">0.03</span><span class="p">,</span> <span class="n">opt</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">static_target</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                   <span class="n">desc</span><span class="o">=</span><span class="s1">&#39;zero-lift drag coefficient&#39;</span><span class="p">,</span>
-                   <span class="n">targets</span><span class="o">=</span><span class="p">{</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">phase</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;CD0&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">phase</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;br_to_v1&#39;</span><span class="p">,</span> <span class="s1">&#39;v1_to_vr&#39;</span><span class="p">,</span>
-                                                              <span class="s1">&#39;rto&#39;</span><span class="p">,</span> <span class="s1">&#39;rotate&#39;</span> <span class="s1">&#39;climb&#39;</span><span class="p">]})</span>
-
-<span class="n">traj</span><span class="o">.</span><span class="n">add_parameter</span><span class="p">(</span><span class="s1">&#39;AR&#39;</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="mf">9.45</span><span class="p">,</span> <span class="n">opt</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">static_target</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                   <span class="n">desc</span><span class="o">=</span><span class="s1">&#39;wing aspect ratio&#39;</span><span class="p">,</span>
-                   <span class="n">targets</span><span class="o">=</span><span class="p">{</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">phase</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;AR&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">phase</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;br_to_v1&#39;</span><span class="p">,</span> <span class="s1">&#39;v1_to_vr&#39;</span><span class="p">,</span>
-                                                             <span class="s1">&#39;rto&#39;</span><span class="p">,</span> <span class="s1">&#39;rotate&#39;</span> <span class="s1">&#39;climb&#39;</span><span class="p">]})</span>
-
-<span class="n">traj</span><span class="o">.</span><span class="n">add_parameter</span><span class="p">(</span><span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="mi">801</span><span class="p">,</span> <span class="n">opt</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">static_target</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                   <span class="n">desc</span><span class="o">=</span><span class="s1">&#39;Oswald span efficiency factor&#39;</span><span class="p">,</span>
-                   <span class="n">targets</span><span class="o">=</span><span class="p">{</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">phase</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;e&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">phase</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;br_to_v1&#39;</span><span class="p">,</span> <span class="s1">&#39;v1_to_vr&#39;</span><span class="p">,</span>
-                                                            <span class="s1">&#39;rto&#39;</span><span class="p">,</span> <span class="s1">&#39;rotate&#39;</span> <span class="s1">&#39;climb&#39;</span><span class="p">]})</span>
-
-<span class="n">traj</span><span class="o">.</span><span class="n">add_parameter</span><span class="p">(</span><span class="s1">&#39;span&#39;</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="mf">35.7</span><span class="p">,</span> <span class="n">opt</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s1">&#39;m&#39;</span><span class="p">,</span> <span class="n">static_target</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                   <span class="n">desc</span><span class="o">=</span><span class="s1">&#39;wingspan&#39;</span><span class="p">,</span>
-                   <span class="n">targets</span><span class="o">=</span><span class="p">{</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">phase</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;span&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">phase</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;br_to_v1&#39;</span><span class="p">,</span> <span class="s1">&#39;v1_to_vr&#39;</span><span class="p">,</span>
-                                                               <span class="s1">&#39;rto&#39;</span><span class="p">,</span> <span class="s1">&#39;rotate&#39;</span> <span class="s1">&#39;climb&#39;</span><span class="p">]})</span>
-
-<span class="n">traj</span><span class="o">.</span><span class="n">add_parameter</span><span class="p">(</span><span class="s1">&#39;h_w&#39;</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">opt</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s1">&#39;m&#39;</span><span class="p">,</span> <span class="n">static_target</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                   <span class="n">desc</span><span class="o">=</span><span class="s1">&#39;height of wing above CG&#39;</span><span class="p">,</span>
-                   <span class="n">targets</span><span class="o">=</span><span class="p">{</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">phase</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;h_w&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">phase</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;br_to_v1&#39;</span><span class="p">,</span> <span class="s1">&#39;v1_to_vr&#39;</span><span class="p">,</span>
-                                                              <span class="s1">&#39;rto&#39;</span><span class="p">,</span> <span class="s1">&#39;rotate&#39;</span> <span class="s1">&#39;climb&#39;</span><span class="p">]})</span>
-
-<span class="n">traj</span><span class="o">.</span><span class="n">add_parameter</span><span class="p">(</span><span class="s1">&#39;CL0&#39;</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">opt</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">static_target</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                   <span class="n">desc</span><span class="o">=</span><span class="s1">&#39;zero-alpha lift coefficient&#39;</span><span class="p">,</span>
-                   <span class="n">targets</span><span class="o">=</span><span class="p">{</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">phase</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;CL0&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">phase</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;br_to_v1&#39;</span><span class="p">,</span> <span class="s1">&#39;v1_to_vr&#39;</span><span class="p">,</span>
-                                                              <span class="s1">&#39;rto&#39;</span><span class="p">,</span> <span class="s1">&#39;rotate&#39;</span> <span class="s1">&#39;climb&#39;</span><span class="p">]})</span>
-
-<span class="n">traj</span><span class="o">.</span><span class="n">add_parameter</span><span class="p">(</span><span class="s1">&#39;CL_max&#39;</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">opt</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">static_target</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                   <span class="n">desc</span><span class="o">=</span><span class="s1">&#39;maximum lift coefficient for linear fit&#39;</span><span class="p">,</span>
-                   <span class="n">targets</span><span class="o">=</span><span class="p">{</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">phase</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;CL_max&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">phase</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;br_to_v1&#39;</span><span class="p">,</span> <span class="s1">&#39;v1_to_vr&#39;</span><span class="p">,</span>
-                                                                 <span class="s1">&#39;rto&#39;</span><span class="p">,</span> <span class="s1">&#39;rotate&#39;</span> <span class="s1">&#39;climb&#39;</span><span class="p">]})</span>
-
-<span class="n">traj</span><span class="o">.</span><span class="n">add_parameter</span><span class="p">(</span><span class="s1">&#39;alpha_max&#39;</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">opt</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s1">&#39;deg&#39;</span><span class="p">,</span> <span class="n">static_target</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                   <span class="n">desc</span><span class="o">=</span><span class="s1">&#39;angle of attack at maximum lift&#39;</span><span class="p">,</span>
-                   <span class="n">targets</span><span class="o">=</span><span class="p">{</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">phase</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;alpha_max&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">phase</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;br_to_v1&#39;</span><span class="p">,</span> <span class="s1">&#39;v1_to_vr&#39;</span><span class="p">,</span>
-                                                                    <span class="s1">&#39;rto&#39;</span><span class="p">,</span> <span class="s1">&#39;rotate&#39;</span> <span class="s1">&#39;climb&#39;</span><span class="p">]})</span>
+                   <span class="n">targets</span><span class="o">=</span><span class="p">{</span><span class="n">phase</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;h&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">phase</span> <span class="ow">in</span> <span class="n">groundroll_phases</span><span class="p">})</span>
 </pre></div>
 </div>
 </div>
@@ -1687,59 +1653,59 @@ INFO: checking out_of_order
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking auto_ivc_warnings
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Approx coloring for &#39;traj.phases.br_to_v1.rhs_all&#39; (class BalancedFieldODEComp)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Coloring for &#39;traj.phases.br_to_v1.rhs_all&#39; (class BalancedFieldODEComp)
 
 Jacobian shape: (132, 60)  ( 9.79% nonzero)
 FWD solves: 16   REV solves: 0
 Total colors vs. total size: 16 vs 60  (73.3% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.038965 sec.
-Time to compute coloring: 0.021963 sec.
+Time to compute sparsity: 0.028684 sec.
+Time to compute coloring: 0.018467 sec.
 
-Approx coloring for &#39;traj.phases.rto.rhs_all&#39; (class BalancedFieldODEComp)
+Coloring for &#39;traj.phases.rto.rhs_all&#39; (class BalancedFieldODEComp)
 
-Jacobian shape: (132, 60)  ( 9.77% nonzero)
+Jacobian shape: (132, 60)  ( 9.79% nonzero)
 FWD solves: 16   REV solves: 0
 Total colors vs. total size: 16 vs 60  (73.3% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.036679 sec.
-Time to compute coloring: 0.020386 sec.
+Time to compute sparsity: 0.027887 sec.
+Time to compute coloring: 0.016959 sec.
 
-Approx coloring for &#39;traj.phases.v1_to_vr.rhs_all&#39; (class BalancedFieldODEComp)
+Coloring for &#39;traj.phases.v1_to_vr.rhs_all&#39; (class BalancedFieldODEComp)
 
 Jacobian shape: (132, 60)  (10.15% nonzero)
 FWD solves: 16   REV solves: 0
 Total colors vs. total size: 16 vs 60  (73.3% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.036568 sec.
-Time to compute coloring: 0.021320 sec.
+Time to compute sparsity: 0.028133 sec.
+Time to compute coloring: 0.017542 sec.
+
+Coloring for &#39;traj.phases.rotate.rhs_all&#39; (class BalancedFieldODEComp)
+
+Jacobian shape: (132, 60)  (10.15% nonzero)
+FWD solves: 16   REV solves: 0
+Total colors vs. total size: 16 vs 60  (73.3% improvement)
+
+Sparsity computed using tolerance: 1e-25
+Time to compute sparsity: 0.028853 sec.
+Time to compute coloring: 0.017147 sec.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Approx coloring for &#39;traj.phases.rotate.rhs_all&#39; (class BalancedFieldODEComp)
-
-Jacobian shape: (132, 60)  (10.15% nonzero)
-FWD solves: 16   REV solves: 0
-Total colors vs. total size: 16 vs 60  (73.3% improvement)
-
-Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.036725 sec.
-Time to compute coloring: 0.023438 sec.
-
-Approx coloring for &#39;traj.phases.climb.rhs_all&#39; (class BalancedFieldODEComp)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Coloring for &#39;traj.phases.climb.rhs_all&#39; (class BalancedFieldODEComp)
 
 Jacobian shape: (260, 111)  ( 5.54% nonzero)
 FWD solves: 16   REV solves: 0
 Total colors vs. total size: 16 vs 111  (85.6% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.076532 sec.
-Time to compute coloring: 0.041620 sec.
+Time to compute sparsity: 0.061568 sec.
+Time to compute coloring: 0.032697 sec.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 2.191935 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 1.850418 seconds.
 Total jacobian shape: (179, 166) 
 
 
@@ -1748,11 +1714,8 @@ FWD solves: 12   REV solves: 0
 Total colors vs. total size: 12 vs 166  (92.8% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 2.191935 sec.
-Time to compute coloring: 0.163915 sec.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.8/site-packages/openmdao/core/total_jac.py:1539: DerivativesWarning:Constraints or objectives [(&#39;traj.phases.climb.path_constraints.path:gam&#39;, inds=[(0, 0)])] cannot be impacted by the design variables of the problem.
+Time to compute sparsity: 1.850418 sec.
+Time to compute coloring: 0.119777 sec.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Using option file &quot;IPOPT_options.opt&quot;.
@@ -1767,11 +1730,6 @@ This program contains Ipopt, a library for large-scale nonlinear optimization.
 This is Ipopt version 3.13.5, running with linear solver mumps.
 NOTE: Other linear solvers might be more efficient (see Ipopt documentation).
 
-Starting derivative checker for first derivatives.
-
-
-No errors detected by derivative checker.
-
 Number of nonzeros in equality constraint Jacobian...:     1011
 Number of nonzeros in inequality constraint Jacobian.:       21
 Number of nonzeros in Lagrangian Hessian.............:        0
@@ -1779,7 +1737,13 @@ Number of nonzeros in Lagrangian Hessian.............:        0
 Total number of variables............................:      166
                      variables with only lower bounds:       85
                 variables with lower and upper bounds:       77
-                     variables with only upper bounds:        0
+                     variables with only uppe
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.8/site-packages/openmdao/core/total_jac.py:1539: DerivativesWarning:Constraints or objectives [(&#39;traj.phases.climb.path_constraints.path:gam&#39;, inds=[(0, 0)])] cannot be impacted by the design variables of the problem.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>r bounds:        0
 Total number of equality constraints.................:      159
 Total number of inequality constraints...............:       22
         inequality constraints with only lower bounds:        2
@@ -1787,123 +1751,99 @@ Total number of inequality constraints...............:       22
         inequality constraints with only upper bounds:        0
 
 iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
-   0  5.0000000e+00 1.45e+03 1.23e+00  -1.0 0.00e+00    -  0.00e+00 0.00e+00   0
+   0  5.0000000e+00 1.45e+03 1.34e-01   0.0 0.00e+00    -  0.00e+00 0.00e+00   0
+   1  4.7292571e+00 6.78e+02 5.02e+01   0.0 2.23e+01    -  3.03e-02 5.32e-01f  1
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   1  4.7153502e+00 1.07e+03 1.75e+01  -1.0 2.27e+01    -  4.62e-02 2.64e-01h  1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   2  4.7451746e+00 5.28e+02 3.73e+01  -0.2 8.45e+00    -  7.82e-01 2.21e-01f  1
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   2  4.5270610e+00 5.92e+02 1.90e+01  -1.0 1.38e+01    -  5.02e-02 4.45e-01h  1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   3  4.8749479e+00 1.41e+02 4.23e+01   0.2 7.80e+00    -  8.13e-01 7.34e-01f  1
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   3  4.4468399e+00 3.10e+02 1.61e+01  -1.0 6.73e+00    -  4.39e-01 4.77e-01h  1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   4  4.9905354e+00 1.40e+00 6.13e+01  -0.1 1.67e+00    -  9.20e-01 9.90e-01h  1
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   4  4.4410128e+00 3.52e+00 1.66e+01  -1.0 3.66e+00    -  6.39e-01 9.89e-01h  1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   5  5.0353788e+00 1.26e-02 5.64e+02  -0.2 3.23e-01    -  1.00e+00 9.91e-01h  1
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   5  4.4782725e+00 1.90e+00 1.62e+03  -1.0 8.52e-01    -  6.92e-02 4.61e-01h  1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   6  5.0304440e+00 4.71e-06 1.56e+00  -1.9 3.47e-02    -  1.00e+00 1.00e+00h  1
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   6  4.4978888e+00 6.32e-02 2.10e+03  -1.0 5.98e-01    -  7.18e-01 9.91e-01h  1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   7  5.0237532e+00 1.28e-05 4.07e-02  -3.6 4.07e-02    -  1.00e+00 1.00e+00f  1
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   7  4.5300571e+00 1.05e-02 2.78e+04  -1.0 1.87e-01    -  9.64e-01 1.00e+00h  1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   8  4.4683333e+00 5.48e-02 1.31e+05  -1.9 1.66e+02    -  1.23e-01 2.43e-02f  1
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   8  4.5486051e+00 2.41e-03 9.26e+04  -1.0 1.59e-01    -  9.90e-01 1.00e+00h  1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   9  4.8035111e+00 1.34e-02 9.26e+02  -1.0 1.68e+00    -  9.90e-01 1.00e+00f  1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
-  10  4.5845038e+00 1.02e-02 2.52e+05  -1.7 1.54e+00    -  9.68e-01 1.00e+00h  1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  11  1.5961681e+00 1.58e+00 9.68e+03  -1.7 2.78e+01    -  9.93e-01 7.72e-01f  1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  12  2.6841574e+00 1.30e-01 2.64e-02  -1.7 6.37e+00    -  1.00e+00 1.00e+00h  1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  13  2.1504964e+00 1.62e-01 1.09e+05  -2.5 7.67e+00    -  7.25e-01 6.62e-01h  1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  14  2.2087333e+00 3.45e-04 1.80e-02  -2.5 2.07e-01    -  1.00e+00 1.00e+00h  1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  15  2.1979165e+00 1.55e-02 3.32e+04  -5.7 3.59e-01    -  7.25e-01 8.42e-01h  1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  16  2.1902359e+00 2.86e-02 1.10e+04  -5.7 8.98e-01    -  6.29e-01 6.00e-01h  1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  17  2.1876552e+00 1.87e-02 9.91e+03  -5.7 3.40e-01    -  6.56e-01 1.00e+00h  1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  18  2.1886308e+00 1.68e-03 6.94e+02  -5.7 1.84e-01    -  9.30e-01 1.00e+00h  1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  19  2.1886302e+00 1.20e-03 7.04e-04  -5.7 8.17e-02    -  1.00e+00 1.00e+00h  1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   9  3.2048484e+00 3.59e-01 1.06e+06  -1.9 5.70e+01    -  1.00e+00 1.71e-01f  1
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
-  20  2.1886005e+00 3.85e-04 1.06e-03  -5.7 1.01e-01    -  1.00e+00 7.62e-01h  1
+  10  2.0239841e+00 8.29e-01 4.41e+05  -1.6 1.38e+01    -  1.00e+00 7.85e-01f  1
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  21  2.1884903e+00 3.31e-05 5.31e-03  -5.7 4.22e-01    -  1.00e+00 1.00e+00f  1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  11  2.2691373e+00 2.60e-02 6.80e-02  -2.2 1.13e+00    -  1.00e+00 1.00e+00h  1
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  22  2.1882476e+00 1.41e-04 1.43e-02  -5.7 2.84e+01    -  5.23e-02 2.69e-02h  1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  12  2.2128772e+00 9.07e-03 2.20e+05  -3.1 7.11e-01    -  9.97e-01 6.47e-01h  1
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  23  2.1882671e+00 1.07e-04 1.48e+00  -5.7 3.00e-01    -  1.00e+00 2.50e-01f  3
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  13  2.2032585e+00 6.20e-02 1.09e-02  -3.2 5.36e-01    -  1.00e+00 1.00e+00h  1
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  24  2.1882309e+00 7.17e-05 3.99e-03  -5.7 6.78e-02    -  1.00e+00 1.00e+00h  1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  14  2.1967487e+00 6.30e-02 4.40e+02  -3.6 9.89e-01    -  9.86e-01 1.00e+00h  1
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  25  2.1882448e+00 8.39e-08 6.82e-05  -5.7 8.94e-04    -  1.00e+00 1.00e+00h  1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  15  2.1978657e+00 5.56e-04 5.69e-03  -3.7 3.28e-01    -  1.00e+00 1.00e+00h  1
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  26  2.1882448e+00 7.92e-11 6.00e-07  -5.7 2.28e-05    -  1.00e+00 1.00e+00h  1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  16  2.1982705e+00 7.19e-05 5.95e+01  -4.5 1.38e-01    -  9.96e-01 1.00e+00H  1
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  27  2.1882351e+00 4.37e-06 4.75e+01  -7.0 8.46e-03    -  1.00e+00 7.29e-01h  1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  17  2.1977119e+00 1.66e-03 8.93e-04  -5.4 9.07e-02    -  1.00e+00 1.00e+00h  1
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  28  2.1882331e+00 2.33e-06 7.93e-05  -7.0 3.64e-03    -  9.66e-01 1.00e+00f  1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  18  2.1977458e+00 1.99e-04 1.55e-02  -5.6 3.78e-02    -  1.00e+00 1.00e+00h  1
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  29  2.1882330e+00 2.10e-08 1.75e-05  -7.0 1.44e-03    -  1.00e+00 1.00e+00h  1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  19  2.1977175e+00 2.47e-04 1.32e+02  -5.3 1.22e-01    -  1.00e+00 3.48e-01h  1
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
-  30  2.1882331e+00 6.88e-09 1.87e-06  -7.0 4.01e-04    -  1.00e+00 1.00e+00h  1
+  20  2.1977185e+00 4.42e-06 4.72e-05  -6.0 7.94e-03    -  1.00e+00 1.00e+00h  1
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  31  2.1882331e+00 4.59e-11 6.12e-07  -7.0 7.66e-05    -  1.00e+00 1.00e+00h  1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  21  2.1977143e+00 3.87e-06 2.35e-05  -7.0 4.31e-03    -  1.00e+00 1.00e+00h  1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  22  2.1977138e+00 3.28e-07 1.51e-05  -7.5 2.38e-03    -  1.00e+00 1.00e+00h  1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  23  2.1977136e+00 6.03e-08 1.04e-02  -9.5 9.60e-04    -  1.00e+00 9.97e-01h  1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  24  2.1977136e+00 4.02e-11 3.40e-07  -9.8 4.02e-05    -  1.00e+00 1.00e+00h  1
 
-Number of Iterations....: 31
+Number of Iterations....: 24
 
                                    (scaled)                 (unscaled)
-Objective...............:   2.1882330777710841e+00    2.1882330777710841e+00
-Dual infeasibility......:   6.1187374040285760e-07    6.1187374040285760e-07
-Constraint violation....:   4.5932398398472952e-11    4.5932398398472952e-11
-Complementarity.........:   9.0911463691914306e-08    9.0911463691914306e-08
-Overall NLP error.......:   6.1187374040285760e-07    6.1187374040285760e-07
+Objective...............:   2.1977135643802392e+00    2.1977135643802392e+00
+Dual infeasibility......:   3.4026077468457563e-07    3.4026077468457563e-07
+Constraint violation....:   4.0236275155946677e-11    4.0236275155946677e-11
+Complementarity.........:   1.8256904568790031e-10    1.8256904568790031e-10
+Overall NLP error.......:   3.4026077468457563e-07    3.4026077468457563e-07
 
 
-Number of objective function evaluations             = 34
-Number of objective gradient evaluations             = 32
-Number of equality constraint evaluations            = 34
-Number of inequality constraint evaluations          = 34
-Number of equality constraint Jacobian evaluations   = 32
-Number of inequality constraint Jacobian evaluations = 32
+Number of objective function evaluations             = 26
+Number of objective gradient evaluations             = 25
+Number of equality constraint evaluations            = 26
+Number of inequality constraint evaluations          = 26
+Number of equality constraint Jacobian evaluations   = 25
+Number of inequality constraint Jacobian evaluations = 25
 Number of Lagrangian Hessian evaluations             = 0
-Total CPU secs in IPOPT (w/o function evaluations)   =      1.693
-Total CPU secs in NLP function evaluations           =      6.294
+Total CPU secs in IPOPT (w/o function evaluations)   =      0.245
+Total CPU secs in NLP function evaluations           =      4.130
 
 EXIT: Optimal Solution Found.
 </pre></div>
@@ -2015,10 +1955,10 @@ This is the shortest possible field that accommodates both a rejected takeoff an
             <p class="prev-next-title">The Van der Pol Oscillator</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../bryson_denham/bryson_denham.html" title="next page">
+    <a class='right-next' id="next-link" href="balanced_field_funccomp.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">The Bryson-Denham Problem</p>
+        <p class="prev-next-title">Balanced Field Length using OpenMDAO’s Function Wrapping Components.</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

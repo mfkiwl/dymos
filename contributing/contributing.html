@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -34,17 +34,17 @@
     
   <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
+    <script >
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -96,7 +96,7 @@
   </a>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
+<p class="caption">
  <span class="caption-text">
   Installation
  </span>
@@ -108,7 +108,7 @@
   </a>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
+<p class="caption">
  <span class="caption-text">
   Getting Started
  </span>
@@ -145,7 +145,7 @@
   </a>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
+<p class="caption">
  <span class="caption-text">
   Examples and Tutorials
  </span>
@@ -179,6 +179,11 @@
    <li class="toctree-l2">
     <a class="reference internal" href="../examples/balanced_field/balanced_field.html">
      Aircraft Balanced Field Length Calculation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../examples/balanced_field/balanced_field_funccomp.html">
+     Balanced Field Length using OpenMDAO’s Function Wrapping Components.
     </a>
    </li>
    <li class="toctree-l2">
@@ -269,7 +274,7 @@
   </ul>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
+<p class="caption">
  <span class="caption-text">
   Feature Reference
  </span>
@@ -333,7 +338,7 @@
   </a>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
+<p class="caption">
  <span class="caption-text">
   Frequently Asked Questions
  </span>
@@ -387,7 +392,7 @@
   </ul>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
+<p class="caption">
  <span class="caption-text">
   Dymos API Reference
  </span>
@@ -426,7 +431,7 @@
   </ul>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
+<p class="caption">
  <span class="caption-text">
   Contributing
  </span>
@@ -881,21 +886,21 @@ Component: BrachistochroneODE &#39;ode&#39;
 &#39;&lt;output&gt;&#39; wrt &#39;&lt;variable&gt;&#39; | calc mag.  | check mag. | a(cal-chk) | r(cal-chk)
 -------------------------------------------------------------------------------
 
-&#39;check&#39;    wrt &#39;theta&#39;      | 8.6997e+01 | 8.6997e+01 | 7.3275e-15 | 8.4227e-17
-&#39;check&#39;    wrt &#39;v&#39;          | 8.0380e+00 | 8.0380e+00 | 6.2804e-16 | 7.8133e-17
-&#39;vdot&#39;     wrt &#39;theta&#39;      | 1.1754e+01 | 1.1754e+01 | 1.8310e-15 | 1.5578e-16
+&#39;check&#39;    wrt &#39;theta&#39;      | 1.4070e+01 | 1.4070e+01 | 1.9133e-15 | 1.3599e-16
+&#39;check&#39;    wrt &#39;v&#39;          | 5.2879e+00 | 5.2879e+00 | 8.8818e-16 | 1.6797e-16
+&#39;vdot&#39;     wrt &#39;theta&#39;      | 1.7260e+01 | 1.7260e+01 | 4.4409e-16 | 2.5730e-17
 &#39;vdot&#39;     wrt &#39;v&#39;          | 0.0000e+00 | 0.0000e+00 | 0.0000e+00 | nan
-&#39;xdot&#39;     wrt &#39;theta&#39;      | 9.6809e+00 | 9.6809e+00 | 1.7764e-15 | 1.8349e-16
-&#39;xdot&#39;     wrt &#39;v&#39;          | 1.1985e+00 | 1.1985e+00 | 1.1102e-16 | 9.2632e-17
-&#39;ydot&#39;     wrt &#39;theta&#39;      | 5.4936e+00 | 5.4936e+00 | 6.2865e-16 | 1.1443e-16
-&#39;ydot&#39;     wrt &#39;v&#39;          | 1.8877e+00 | 1.8877e+00 | 1.2413e-16 | 6.5755e-17
+&#39;xdot&#39;     wrt &#39;theta&#39;      | 1.8544e+00 | 1.8544e+00 | 4.5781e-16 | 2.4687e-16
+&#39;xdot&#39;     wrt &#39;v&#39;          | 1.7600e+00 | 1.7600e+00 | 1.2413e-16 | 7.0526e-17
+&#39;ydot&#39;     wrt &#39;theta&#39;      | 6.3954e+00 | 6.3954e+00 | 8.8861e-16 | 1.3895e-16
+&#39;ydot&#39;     wrt &#39;v&#39;          | 1.3793e+00 | 1.3793e+00 | 1.3597e-16 | 9.8584e-17
 
 ##################################################################
 Sub Jacobian with Largest Relative Error: BrachistochroneODE &#39;ode&#39;
 ##################################################################
 &#39;&lt;output&gt;&#39; wrt &#39;&lt;variable&gt;&#39; | calc mag.  | check mag. | a(cal-chk) | r(cal-chk)
 -------------------------------------------------------------------------------
-&#39;xdot&#39;     wrt &#39;theta&#39;      | 9.6809e+00 | 9.6809e+00 | 1.7764e-15 | 1.8349e-16
+&#39;xdot&#39;     wrt &#39;theta&#39;      | 1.8544e+00 | 1.8544e+00 | 4.5781e-16 | 2.4687e-16
 </pre></div>
 </div>
 </div>
@@ -1102,7 +1107,7 @@ If you want to cite a journal, article, book, etc, simply add <code class="docut
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Grey <span id="id1">[<a class="reference internal" href="#id5">GMN10</a>]</span></p>
+<p>Grey <span id="id1">[<a class="reference internal" href="#id5" title="Justin Gray, Kenneth Moore, and Bret Naylor. Openmdao: an open source framework for multidisciplinary analysis and optimization. In 13th AIAA/ISSMO Multidisciplinary Analysis Optimization Conference, 9101. 2010.">GMN10</a>]</span></p>
 <div class="section" id="references">
 <h3>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h3>
 <p id="id2"><dl class="citation">
