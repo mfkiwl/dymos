@@ -677,7 +677,7 @@ be included in the timeseries outputs.</p>
 <blockquote>
 <div><dl class="py method">
 <dt>
-<code class="sig-prename descclassname"><span class="pre">Phase.</span></code><code class="sig-name descname"><span class="pre">add_timeseries_output</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeseries</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'timeseries'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/dymos/phase/phase.html#Phase.add_timeseries_output"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<code class="sig-prename descclassname"><span class="pre">Phase.</span></code><code class="sig-name descname"><span class="pre">add_timeseries_output</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">unspecified</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">unspecified</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeseries</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'timeseries'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/dymos/phase/phase.html#Phase.add_timeseries_output"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
 <dd><p>Add a variable to the timeseries outputs of the phase.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -690,12 +690,12 @@ in the phase, or the path to an output variable in the ODE.</p>
 default this is the last element in <cite>name</cite> when split by dots.  The user may
 override the constraint name if splitting the path causes name collisions.</p>
 </dd>
-<dt><strong>units</strong><span class="classifier">str or None</span></dt><dd><p>The units to express the timeseries output.  If None, use the
+<dt><strong>units</strong><span class="classifier">str or None or _unspecified</span></dt><dd><p>The units to express the timeseries output.  If None, use the
 units associated with the target.  If provided, must be compatible with
 the target units.
 If a list of names is provided, units can be a matching list or dictionary.</p>
 </dd>
-<dt><strong>shape</strong><span class="classifier">tuple</span></dt><dd><p>The shape of the timeseries output variable.  This must be provided (if not scalar)
+<dt><strong>shape</strong><span class="classifier">tuple or _unspecified</span></dt><dd><p>The shape of the timeseries output variable.  This must be provided (if not scalar)
 since Dymos doesn’t necessarily know the shape of ODE outputs until setup time.</p>
 </dd>
 <dt><strong>timeseries</strong><span class="classifier">str or None</span></dt><dd><p>The name of the timeseries to which the output is being added.</p>

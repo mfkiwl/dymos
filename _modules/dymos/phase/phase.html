@@ -538,7 +538,7 @@
 
 <span class="kn">from</span> <span class="nn">..transcriptions.transcription_base</span> <span class="kn">import</span> <span class="n">TranscriptionBase</span>
 <span class="kn">from</span> <span class="nn">..utils.introspection</span> <span class="kn">import</span> <span class="n">configure_time_introspection</span><span class="p">,</span> <span class="n">configure_controls_introspection</span><span class="p">,</span> \
-    <span class="n">configure_parameters_introspection</span><span class="p">,</span> <span class="n">configure_states_introspection</span><span class="p">,</span> <span class="n">classify_var</span>
+    <span class="n">configure_parameters_introspection</span><span class="p">,</span> <span class="n">configure_states_introspection</span><span class="p">,</span> <span class="n">classify_var</span><span class="p">,</span> <span class="n">get_promoted_vars</span>
 <span class="kn">from</span> <span class="nn">..utils.misc</span> <span class="kn">import</span> <span class="n">_unspecified</span>
 <span class="kn">from</span> <span class="nn">..utils.lgl</span> <span class="kn">import</span> <span class="n">lgl</span>
 
@@ -1625,7 +1625,7 @@
         <span class="k">if</span> <span class="n">var_type</span> <span class="o">==</span> <span class="s1">&#39;ode&#39;</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">add_timeseries_output</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">output_name</span><span class="o">=</span><span class="n">constraint_name</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="n">units</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Phase.add_timeseries_output"><a class="viewcode-back" href="../../../features/phases/timeseries.html#dymos.Phase.add_timeseries_output">[docs]</a>    <span class="k">def</span> <span class="nf">add_timeseries_output</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">output_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<div class="viewcode-block" id="Phase.add_timeseries_output"><a class="viewcode-back" href="../../../features/phases/timeseries.html#dymos.Phase.add_timeseries_output">[docs]</a>    <span class="k">def</span> <span class="nf">add_timeseries_output</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">output_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span>
                               <span class="n">timeseries</span><span class="o">=</span><span class="s1">&#39;timeseries&#39;</span><span class="p">):</span>
         <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Add a variable to the timeseries outputs of the phase.</span>
@@ -1640,12 +1640,12 @@
 <span class="sd">            The name of the variable as listed in the phase timeseries outputs.  By</span>
 <span class="sd">            default this is the last element in `name` when split by dots.  The user may</span>
 <span class="sd">            override the constraint name if splitting the path causes name collisions.</span>
-<span class="sd">        units : str or None</span>
+<span class="sd">        units : str or None or _unspecified</span>
 <span class="sd">            The units to express the timeseries output.  If None, use the</span>
 <span class="sd">            units associated with the target.  If provided, must be compatible with</span>
 <span class="sd">            the target units.</span>
 <span class="sd">            If a list of names is provided, units can be a matching list or dictionary.</span>
-<span class="sd">        shape : tuple</span>
+<span class="sd">        shape : tuple or _unspecified</span>
 <span class="sd">            The shape of the timeseries output variable.  This must be provided (if not scalar)</span>
 <span class="sd">            since Dymos doesn&#39;t necessarily know the shape of ODE outputs until setup time.</span>
 <span class="sd">        timeseries : str or None</span>
@@ -1675,7 +1675,7 @@
                                         <span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">,</span>
                                         <span class="n">timeseries</span><span class="o">=</span><span class="n">timeseries</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">_add_timeseries_output</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">output_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="k">def</span> <span class="nf">_add_timeseries_output</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">output_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span>
                                <span class="n">timeseries</span><span class="o">=</span><span class="s1">&#39;timeseries&#39;</span><span class="p">):</span>
         <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Add a single variable to the timeseries outputs of the phase.</span>
@@ -1706,7 +1706,7 @@
             <span class="n">output_name</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 
         <span class="k">if</span> <span class="n">timeseries</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeseries</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Timeseries </span><span class="si">{0}</span><span class="s1"> does not exist in phase </span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">timeseries</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pathname</span><span class="p">))</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Timeseries </span><span class="si">{</span><span class="n">timeseries</span><span class="si">}</span><span class="s1"> does not exist in phase </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">pathname</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeseries</span><span class="p">[</span><span class="n">timeseries</span><span class="p">][</span><span class="s1">&#39;outputs&#39;</span><span class="p">]:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_timeseries</span><span class="p">[</span><span class="n">timeseries</span><span class="p">][</span><span class="s1">&#39;outputs&#39;</span><span class="p">][</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
@@ -2014,36 +2014,44 @@
         <span class="n">ode</span> <span class="o">=</span> <span class="n">transcription</span><span class="o">.</span><span class="n">_get_ode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
         <span class="n">configure_time_introspection</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">time_options</span><span class="p">,</span> <span class="n">ode</span><span class="p">)</span>
-        <span class="n">transcription</span><span class="o">.</span><span class="n">configure_time</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
         <span class="c1"># The control interpolation comp to which we&#39;ll connect controls</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">control_options</span><span class="p">:</span>
             <span class="n">configure_controls_introspection</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">control_options</span><span class="p">,</span> <span class="n">ode</span><span class="p">,</span>
                                              <span class="n">time_units</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">time_options</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">])</span>
-            <span class="n">transcription</span><span class="o">.</span><span class="n">configure_controls</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">polynomial_control_options</span><span class="p">:</span>
             <span class="n">configure_controls_introspection</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">polynomial_control_options</span><span class="p">,</span> <span class="n">ode</span><span class="p">,</span>
                                              <span class="n">time_units</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">time_options</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">])</span>
-            <span class="n">transcription</span><span class="o">.</span><span class="n">configure_polynomial_controls</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameter_options</span><span class="p">:</span>
             <span class="n">configure_parameters_introspection</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parameter_options</span><span class="p">,</span> <span class="n">ode</span><span class="p">)</span>
-            <span class="n">transcription</span><span class="o">.</span><span class="n">configure_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">configure_state_discovery</span><span class="p">()</span>
         <span class="n">configure_states_introspection</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state_options</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">time_options</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">control_options</span><span class="p">,</span>
                                        <span class="bp">self</span><span class="o">.</span><span class="n">parameter_options</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">polynomial_control_options</span><span class="p">,</span>
                                        <span class="n">ode</span><span class="p">)</span>
+
+        <span class="n">transcription</span><span class="o">.</span><span class="n">configure_time</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">transcription</span><span class="o">.</span><span class="n">configure_controls</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">transcription</span><span class="o">.</span><span class="n">configure_polynomial_controls</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">transcription</span><span class="o">.</span><span class="n">configure_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="n">transcription</span><span class="o">.</span><span class="n">configure_states</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
         <span class="n">transcription</span><span class="o">.</span><span class="n">configure_ode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
         <span class="n">transcription</span><span class="o">.</span><span class="n">configure_defects</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
         <span class="n">transcription</span><span class="o">.</span><span class="n">configure_boundary_constraints</span><span class="p">(</span><span class="s1">&#39;initial&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+
         <span class="n">transcription</span><span class="o">.</span><span class="n">configure_boundary_constraints</span><span class="p">(</span><span class="s1">&#39;final&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+
         <span class="n">transcription</span><span class="o">.</span><span class="n">configure_path_constraints</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
         <span class="n">transcription</span><span class="o">.</span><span class="n">configure_objective</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
         <span class="n">transcription</span><span class="o">.</span><span class="n">configure_timeseries_outputs</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
         <span class="n">transcription</span><span class="o">.</span><span class="n">configure_solvers</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">configure_state_discovery</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -2052,9 +2060,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">transcription</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s1">&#39;transcription&#39;</span><span class="p">]</span>
         <span class="n">state_options</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_options</span>
-        <span class="n">ode</span> <span class="o">=</span> <span class="n">transcription</span><span class="o">.</span><span class="n">_get_ode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-        <span class="n">out_meta</span> <span class="o">=</span> <span class="n">ode</span><span class="o">.</span><span class="n">get_io_metadata</span><span class="p">(</span><span class="n">iotypes</span><span class="o">=</span><span class="s1">&#39;output&#39;</span><span class="p">,</span> <span class="n">metadata_keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;tags&#39;</span><span class="p">],</span>
-                                       <span class="n">get_remote</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">out_meta</span> <span class="o">=</span> <span class="n">get_promoted_vars</span><span class="p">(</span><span class="n">transcription</span><span class="o">.</span><span class="n">_get_ode</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span> <span class="s1">&#39;output&#39;</span><span class="p">)</span>
 
         <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">meta</span> <span class="ow">in</span> <span class="n">out_meta</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="n">tags</span> <span class="o">=</span> <span class="n">meta</span><span class="p">[</span><span class="s1">&#39;tags&#39;</span><span class="p">]</span>
