@@ -38,20 +38,22 @@
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/togglebutton.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
+    <script >let toggleHintShow = 'Click to show';</script>
+    <script >let toggleHintHide = 'Click to hide';</script>
+    <script >let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script >const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Aircraft Balanced Field Length Calculation" href="../balanced_field/balanced_field.html" />
@@ -687,17 +689,17 @@
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="the-van-der-pol-oscillator">
 <h1>The Van der Pol Oscillator<a class="headerlink" href="#the-van-der-pol-oscillator" title="Permalink to this headline">¶</a></h1>
-<p>In dynamics, the Van Der Pol oscillator <span id="id1">[<a class="reference internal" href="#id23" title="Wikipedia contributors. Van der pol oscillator — Wikipedia, the free encyclopedia. 2020. [Online; accessed 12-June-2020]. URL: https://en.wikipedia.org/w/index.php?title=Van_der_Pol_oscillator&amp;oldid=953857769.">Wikipediacontributors20</a>]</span> is a non-conservative oscillator with non-linear damping. It evolves in time according to the second-order differential equation:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9a4179f7-6bde-45d8-bc1b-1718002f3ecf">
-<span class="eqno">(16)<a class="headerlink" href="#equation-9a4179f7-6bde-45d8-bc1b-1718002f3ecf" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<p>In dynamics, the Van Der Pol oscillator <span id="id1">[<a class="reference internal" href="#id23">Wikipediacontributors20</a>]</span> is a non-conservative oscillator with non-linear damping. It evolves in time according to the second-order differential equation:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-aeb19611-90cc-497d-b6a1-30b90bc39c7b">
+<span class="eqno">(16)<a class="headerlink" href="#equation-aeb19611-90cc-497d-b6a1-30b90bc39c7b" title="Permalink to this equation">¶</a></span>\[\begin{align}
     \frac{d^2x}{dt^2} - u (1 - x^2) \frac{dx}{dt} + x &amp;= 0
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(x\)</span> is the position coordinate (a function of the time <span class="math notranslate nohighlight">\(t\)</span>), and <span class="math notranslate nohighlight">\(u\)</span> is a scalar parameter
 indicating the nonlinearity and the strength of the damping.</p>
 <p>To make this an optimal control problem, we want to find the smallest control that will dampen the oscillation
 (drive the state variables to zero). We can express this as an objective function <span class="math notranslate nohighlight">\(J\)</span> to minimize:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-67c220af-60ef-4bfb-aebc-c12c1bbd5f4f">
-<span class="eqno">(17)<a class="headerlink" href="#equation-67c220af-60ef-4bfb-aebc-c12c1bbd5f4f" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-e3d6f861-0210-48b5-80b4-53ec0820678c">
+<span class="eqno">(17)<a class="headerlink" href="#equation-e3d6f861-0210-48b5-80b4-53ec0820678c" title="Permalink to this equation">¶</a></span>\[\begin{align}
     J &amp;= \int x^2_0 + x^2_1 + u^2
 \end{align}\]</div>
 <p>In other words, we want to find the optimal (smallest) trajectory of the control <span class="math notranslate nohighlight">\(u\)</span> such that the oscillation
@@ -716,8 +718,8 @@ and the oscillation’s rate of change are driven to zero.</p>
 <div class="section" id="system-dynamics">
 <h2>System Dynamics<a class="headerlink" href="#system-dynamics" title="Permalink to this headline">¶</a></h2>
 <p>The evolution of the state variables is given by the following ordinary differential equations (ODE):</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f8e3dfcf-5182-4443-9d04-3a775005d26d">
-<span class="eqno">(18)<a class="headerlink" href="#equation-f8e3dfcf-5182-4443-9d04-3a775005d26d" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d0fb0e14-bf98-4dc5-8200-933c5a0827af">
+<span class="eqno">(18)<a class="headerlink" href="#equation-d0fb0e14-bf98-4dc5-8200-933c5a0827af" title="Permalink to this equation">¶</a></span>\[\begin{align}
     \frac{dx_0}{dt} &amp;= (1 - x^2_1) x_0 - x_1 + u \\
     \frac{dx_1}{dt} &amp;= x_0 \\
     \frac{dJ}{dt} &amp;= x^2_0 + x^2_1 + u^2
@@ -734,16 +736,16 @@ and the oscillation’s rate of change are driven to zero.</p>
 <div class="section" id="the-initial-and-final-conditions">
 <h2>The initial and final conditions<a class="headerlink" href="#the-initial-and-final-conditions" title="Permalink to this headline">¶</a></h2>
 <p>The initial conditions are:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-968ad066-6c7f-4dd7-b5b3-f63786d24fb2">
-<span class="eqno">(19)<a class="headerlink" href="#equation-968ad066-6c7f-4dd7-b5b3-f63786d24fb2" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-7018f884-9a64-4983-b109-0367eccee8ca">
+<span class="eqno">(19)<a class="headerlink" href="#equation-7018f884-9a64-4983-b109-0367eccee8ca" title="Permalink to this equation">¶</a></span>\[\begin{align}
     t_i &amp;= 0 \\
     x_{0i} &amp;= 1 \\
     x_{1i} &amp;= 1 \\
       u_i &amp;= -0.75
 \end{align}\]</div>
 <p>The final conditions are:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-fd46b537-226c-41b4-8379-7438349ace1b">
-<span class="eqno">(20)<a class="headerlink" href="#equation-fd46b537-226c-41b4-8379-7438349ace1b" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-0ad7bcbc-45ff-4d4c-8ea1-8f4c2c3f611e">
+<span class="eqno">(20)<a class="headerlink" href="#equation-0ad7bcbc-45ff-4d4c-8ea1-8f4c2c3f611e" title="Permalink to this equation">¶</a></span>\[\begin{align}
     t_f &amp;= 10 \\
     x_{0f} &amp;= 0 \\
     x_{1f} &amp;= 0 \\
@@ -1193,7 +1195,7 @@ INFO: checking out_of_order
 /usr/share/miniconda/envs/test/lib/python3.8/site-packages/openmdao/recorders/sqlite_recorder.py:223: UserWarning:The existing case recorder file, dymos_solution.db, is being overwritten.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.268399 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.287513 seconds.
 Total jacobian shape: (60, 130) 
 
 
@@ -1202,8 +1204,8 @@ FWD solves: 0   REV solves: 5
 Total colors vs. total size: 5 vs 60  (91.7% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.268399 sec.
-Time to compute coloring: 0.063079 sec.
+Time to compute sparsity: 0.287513 sec.
+Time to compute coloring: 0.072839 sec.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Using option file &quot;IPOPT_options.opt&quot;.
@@ -1243,8 +1245,8 @@ Number of inequality constraint evaluations          = 0
 Number of equality constraint Jacobian evaluations   = 30
 Number of inequality constraint Jacobian evaluations = 0
 Number of Lagrangian Hessian evaluations             = 0
-Total CPU secs in IPOPT (w/o function evaluations)   =      0.107
-Total CPU secs in NLP function evaluations           =      0.466
+Total CPU secs in IPOPT (w/o function evaluations)   =      0.116
+Total CPU secs in NLP function evaluations           =      0.552
 
 EXIT: Optimal Solution Found.
 </pre></div>
@@ -1356,7 +1358,7 @@ INFO: checking out_of_order
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.8/site-packages/openmdao/recorders/sqlite_recorder.py:223: UserWarning:The existing case recorder file, dymos_solution.db, is being overwritten.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.266887 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.284519 seconds.
 Total jacobian shape: (60, 74) 
 
 
@@ -1365,8 +1367,8 @@ FWD solves: 9   REV solves: 0
 Total colors vs. total size: 9 vs 74  (87.8% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.266887 sec.
-Time to compute coloring: 0.049335 sec.
+Time to compute sparsity: 0.284519 sec.
+Time to compute coloring: 0.056364 sec.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization terminated successfully.    (Exit mode 0)
@@ -1379,7 +1381,7 @@ Optimization Complete
 
 
 ==================================================
-          Grid Refinement - Iteration 0           
+          Grid Refinement - Iteration 1           
 --------------------------------------------------
     Phase: traj.phases.phase0
         Refinement Options:
@@ -1408,7 +1410,7 @@ Model viewer data has already has already been recorded for Driver.
 Model viewer data has already has already been recorded for Driver.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.517227 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.547036 seconds.
 Total jacobian shape: (105, 149) 
 
 
@@ -1417,8 +1419,8 @@ FWD solves: 14   REV solves: 0
 Total colors vs. total size: 14 vs 149  (90.6% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.517227 sec.
-Time to compute coloring: 0.091219 sec.
+Time to compute sparsity: 0.547036 sec.
+Time to compute coloring: 0.113575 sec.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization terminated successfully.    (Exit mode 0)
@@ -1431,7 +1433,7 @@ Optimization Complete
 
 
 ==================================================
-          Grid Refinement - Iteration 1           
+          Grid Refinement - Iteration 2           
 --------------------------------------------------
     Phase: traj.phases.phase0
         Refinement Options:
@@ -1461,7 +1463,7 @@ Optimization Complete
 Model viewer data has already has already been recorded for Driver.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.754370 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.807435 seconds.
 Total jacobian shape: (147, 209) 
 
 
@@ -1470,8 +1472,8 @@ FWD solves: 14   REV solves: 0
 Total colors vs. total size: 14 vs 209  (93.3% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.754370 sec.
-Time to compute coloring: 0.126029 sec.
+Time to compute sparsity: 0.807435 sec.
+Time to compute coloring: 0.159736 sec.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization terminated successfully.    (Exit mode 0)
@@ -1484,7 +1486,7 @@ Optimization Complete
 
 
 ==================================================
-          Grid Refinement - Iteration 2           
+          Grid Refinement - Iteration 3           
 --------------------------------------------------
     Phase: traj.phases.phase0
         Refinement Options:
@@ -1519,7 +1521,7 @@ Model viewer data has already has already been recorded for Driver.
 Model viewer data has already has already been recorded for Driver.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 1.226749 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 1.393362 seconds.
 Total jacobian shape: (215, 314) 
 </pre></div>
 </div>
@@ -1528,8 +1530,8 @@ FWD solves: 0   REV solves: 33
 Total colors vs. total size: 33 vs 215  (84.7% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 1.226749 sec.
-Time to compute coloring: 0.227675 sec.
+Time to compute sparsity: 1.393362 sec.
+Time to compute coloring: 0.260811 sec.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization terminated successfully.    (Exit mode 0)
@@ -1542,7 +1544,7 @@ Optimization Complete
 
 
 ==================================================
-          Grid Refinement - Iteration 3           
+          Grid Refinement - Iteration 4           
 --------------------------------------------------
     Phase: traj.phases.phase0
         Refinement Options:
@@ -1555,7 +1557,9 @@ Optimization Complete
             Segment Ends = [-1.0, -0.9667, -0.9333, -0.8667, -0.8, -0.7667, -0.7333, -0.7, -0.6667, -0.6333, -0.6, -0.5333, -0.4667, -0.4, -0.3333, -0.2667, -0.2, -0.1333, -0.0667, 0.0667, 0.2, 0.3333, 0.4667, 0.6, 0.7333, 0.8667, 1.0]
             Segment Order = [5, 5, 13, 9, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 11, 9, 5, 5, 5, 5, 5, 5]
             Error = [9.881e-07, 5.651e-07, 2.643e-07, 2.474e-06, 1.029e-06, 3.243e-08, 1.71e-06,  1.8e-06, 2.133e-07, 2.365e-07, 3.385e-07, 7.385e-07, 1.061e-07, 1.627e-07, 1.072e-06, 1.285e-06, 1.692e-07, 1.029e-06, 7.225e-07, 2.977e-07, 5.927e-07, 2.915e-07, 8.94e-08, 4.391e-08, 1.129e-07, 1.193e-07]
-    Phase: traj.phases.phase0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Phase: traj.phases.phase0
         New Grid:
             Number of Segments = 27
             Segment Ends = [-1.0, -0.9667, -0.9333, -0.8667, -0.8333, -0.8, -0.7667, -0.7333, -0.7, -0.6667, -0.6333, -0.6, -0.5333, -0.4667, -0.4, -0.3333, -0.2667, -0.2, -0.1333, -0.0667, 0.0667, 0.2, 0.3333, 0.4667, 0.6, 0.7333, 0.8667, 1.0]
@@ -1571,7 +1575,7 @@ Model viewer data has already has already been recorded for Driver.
 Model viewer data has already has already been recorded for Driver.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 1.599320 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 1.648881 seconds.
 Total jacobian shape: (258, 384) 
 </pre></div>
 </div>
@@ -1580,8 +1584,8 @@ FWD solves: 0   REV solves: 33
 Total colors vs. total size: 33 vs 258  (87.2% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 1.599320 sec.
-Time to compute coloring: 0.303702 sec.
+Time to compute sparsity: 1.648881 sec.
+Time to compute coloring: 0.328609 sec.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization terminated successfully.    (Exit mode 0)
@@ -1594,7 +1598,7 @@ Optimization Complete
 
 
 ==================================================
-          Grid Refinement - Iteration 4           
+          Grid Refinement - Iteration 5           
 --------------------------------------------------
     Phase: traj.phases.phase0
         Refinement Options:
@@ -1615,18 +1619,17 @@ Optimization Complete
             Segment Ends = [-1.0, -0.9667, -0.9333, -0.8667, -0.8333, -0.8, -0.7667, -0.7333, -0.7, -0.6667, -0.6333, -0.6, -0.5333, -0.4667, -0.4, -0.3333, -0.2667, -0.2, -0.1333, -0.0667, 0.0667, 0.2, 0.3333, 0.4667, 0.6, 0.7333, 0.8667, 1.0]
             Segment Order = [7, 5, 13, 9, 9, 7, 5, 9, 9, 5, 5, 5, 5, 5, 5, 7, 11, 5, 7, 11, 9, 5, 5, 5, 5, 5, 5]
         Refined: True
-
-
---- Constraint Report [traj] ---
-    --- phase0 ---
-        None
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model viewer data has already has already been recorded for Driver.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Constraint Report [traj] ---
+    --- phase0 ---
+        None
+
+Model viewer data has already has already been recorded for Driver.
 Model viewer data has already has already been recorded for Driver.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 1.624512 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 1.717365 seconds.
 Total jacobian shape: (261, 389) 
 </pre></div>
 </div>
@@ -1635,8 +1638,8 @@ FWD solves: 0   REV solves: 33
 Total colors vs. total size: 33 vs 261  (87.4% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 1.624512 sec.
-Time to compute coloring: 0.264618 sec.
+Time to compute sparsity: 1.717365 sec.
+Time to compute coloring: 0.368435 sec.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization terminated successfully.    (Exit mode 0)
@@ -1646,7 +1649,7 @@ Time to compute coloring: 0.264618 sec.
             Gradient evaluations: 2
 Optimization Complete
 -----------------------------------
-Iteration limit exceeded. Unable to satisfy specified tolerance
+Successfully completed grid refinement.
 ==================================================
 </pre></div>
 </div>

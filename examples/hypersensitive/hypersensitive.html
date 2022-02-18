@@ -38,20 +38,22 @@
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/togglebutton.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
+    <script >let toggleHintShow = 'Click to show';</script>
+    <script >let toggleHintHide = 'Click to hide';</script>
+    <script >let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script >const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Two-Burn Orbit Raise" href="../finite_burn_orbit_raise/finite_burn_orbit_raise.html" />
@@ -618,21 +620,21 @@
 <div class="tex2jax_ignore mathjax_ignore section" id="hyper-sensitive-problem">
 <h1>Hyper-Sensitive Problem<a class="headerlink" href="#hyper-sensitive-problem" title="Permalink to this headline">¶</a></h1>
 <p>This example is based on the Hyper-Sensitive problem given in
-Patterson <span id="id1">[<a class="reference internal" href="#id22" title="Michael A Patterson, William W Hager, and Anil V Rao. A ph mesh refinement method for optimal control. Optimal Control Applications and Methods, 36(4):398–421, 2015.">PHR15</a>]</span>. In this problem we seek to minimize both
+Patterson <span id="id1">[<a class="reference internal" href="#id22">PHR15</a>]</span>. In this problem we seek to minimize both
 the distance traveled when moving between fixed boundary conditions and
 also to minimize the control <span class="math notranslate nohighlight">\(u\)</span> used. The cost function to be minimized is:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-41262b0a-1832-49f5-9be9-c8b816796c26">
-<span class="eqno">(48)<a class="headerlink" href="#equation-41262b0a-1832-49f5-9be9-c8b816796c26" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-96c44331-aa9c-49b5-8221-9b5dae833d48">
+<span class="eqno">(48)<a class="headerlink" href="#equation-96c44331-aa9c-49b5-8221-9b5dae833d48" title="Permalink to this equation">¶</a></span>\[\begin{align}
     J &amp;= \frac{1}{2} \int_{0}^{t_f} (x^2 + u^2) dt
 \end{align}\]</div>
 <p>The system is subject to the dynamic constraints:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5cc365eb-066a-4d33-9e32-fd1680557a6b">
-<span class="eqno">(49)<a class="headerlink" href="#equation-5cc365eb-066a-4d33-9e32-fd1680557a6b" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-0eebde05-54f6-46f5-879b-cac470422682">
+<span class="eqno">(49)<a class="headerlink" href="#equation-0eebde05-54f6-46f5-879b-cac470422682" title="Permalink to this equation">¶</a></span>\[\begin{align}
     \frac{dx}{dt} &amp;= -x + u
 \end{align}\]</div>
 <p>The boundary conditions are:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-210fb979-68a4-4159-bcf9-23bac9d9b634">
-<span class="eqno">(50)<a class="headerlink" href="#equation-210fb979-68a4-4159-bcf9-23bac9d9b634" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d9fe773b-afe4-4e71-aa7f-6133db3d31c7">
+<span class="eqno">(50)<a class="headerlink" href="#equation-d9fe773b-afe4-4e71-aa7f-6133db3d31c7" title="Permalink to this equation">¶</a></span>\[\begin{align}
     x(t_0) &amp;= 1.5 \\
     x(t_f) &amp;= 1
 \end{align}\]</div>
@@ -642,14 +644,14 @@ the problem exhibits a <em>dive</em>, <em>cruise</em>, and <em>resurface</em> ty
 structure, where the all interesting behavior occurs at the beginning and
 end while remaining relatively constant in the middle.</p>
 <p>This problem has a known analytic optimal solution:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e95c9ae7-24bc-471e-8bda-bb2917ccba5c">
-<span class="eqno">(51)<a class="headerlink" href="#equation-e95c9ae7-24bc-471e-8bda-bb2917ccba5c" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-6ab9cf8e-3661-4f40-9395-8e5d185208bd">
+<span class="eqno">(51)<a class="headerlink" href="#equation-6ab9cf8e-3661-4f40-9395-8e5d185208bd" title="Permalink to this equation">¶</a></span>\[\begin{align}
     x^*(t) &amp;= c_1 e^{\sqrt{2} t} + c_2 e^{-\sqrt{2} t} \\
       u^*(t) &amp;= \dot{x}^*(t) + x^*(t)
 \end{align}\]</div>
 <p>where:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2f8e58fe-e3bf-4c10-887d-856e10cafe43">
-<span class="eqno">(52)<a class="headerlink" href="#equation-2f8e58fe-e3bf-4c10-887d-856e10cafe43" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-96656627-2cda-422a-a5b7-b3dcc30de5ed">
+<span class="eqno">(52)<a class="headerlink" href="#equation-96656627-2cda-422a-a5b7-b3dcc30de5ed" title="Permalink to this equation">¶</a></span>\[\begin{align}
     c_1 &amp;= \frac{1.5 e^{-\sqrt{2} t_f} - 1}{e^{-\sqrt{2} t_f} - e^{\sqrt{2} t_f}} \\
     c_2 &amp;= \frac{1 - 1.5 e^{\sqrt{2} t_f}}{e^{-\sqrt{2} t_f} - e^{\sqrt{2} t_f}}
 \end{align}\]</div>
@@ -825,7 +827,7 @@ INFO: checking out_of_order
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.8/site-packages/openmdao/utils/options_dictionary.py:332: OMDeprecationWarning:&#39;gradient method&#39; is not a valid python name and will become an invalid option name in a future release. You can prevent this warning (and future exceptions) by declaring this option using a valid python name.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.272320 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.339916 seconds.
 Total jacobian shape: (79, 108) 
 
 
@@ -834,8 +836,8 @@ FWD solves: 0   REV solves: 9
 Total colors vs. total size: 9 vs 79  (88.6% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.272320 sec.
-Time to compute coloring: 0.064779 sec.
+Time to compute sparsity: 0.339916 sec.
+Time to compute coloring: 0.107316 sec.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization Problem -- Optimization using pyOpt_sparse
@@ -844,11 +846,11 @@ Time to compute coloring: 0.064779 sec.
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                    0.3122
-       User Objective Time :       0.0268
-       User Sensitivity Time :     0.1715
-       Interface Time :            0.0622
-       Opt Solver Time:            0.0516
+    Total Time:                    0.4073
+       User Objective Time :       0.0397
+       User Sensitivity Time :     0.2154
+       Interface Time :            0.0833
+       Opt Solver Time:            0.0689
     Calls to Objective Function :      16
     Calls to Sens Function :           14
 
@@ -1072,7 +1074,7 @@ Time to compute coloring: 0.064779 sec.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==================================================
-          Grid Refinement - Iteration 0           
+          Grid Refinement - Iteration 1           
 --------------------------------------------------
     Phase: traj.phases.phase0
         Refinement Options:
@@ -1098,10 +1100,12 @@ Time to compute coloring: 0.064779 sec.
         [final]   1.0000e+00 == x [None]
 
 Model viewer data has already has already been recorded for Driver.
-Model viewer data has already has already been recorded for Driver.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.538598 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model viewer data has already has already been recorded for Driver.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.601347 seconds.
 Total jacobian shape: (139, 198) 
 
 
@@ -1110,8 +1114,8 @@ FWD solves: 0   REV solves: 15
 Total colors vs. total size: 15 vs 139  (89.2% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.538598 sec.
-Time to compute coloring: 0.127155 sec.
+Time to compute sparsity: 0.601347 sec.
+Time to compute coloring: 0.150502 sec.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization Problem -- Optimization using pyOpt_sparse
@@ -1120,11 +1124,11 @@ Time to compute coloring: 0.127155 sec.
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                    0.3981
-       User Objective Time :       0.0160
-       User Sensitivity Time :     0.1582
-       Interface Time :            0.0527
-       Opt Solver Time:            0.1712
+    Total Time:                    0.5205
+       User Objective Time :       0.0215
+       User Sensitivity Time :     0.1947
+       Interface Time :            0.0658
+       Opt Solver Time:            0.2384
     Calls to Objective Function :       9
     Calls to Sens Function :            8
 
@@ -1498,7 +1502,7 @@ Time to compute coloring: 0.127155 sec.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==================================================
-          Grid Refinement - Iteration 1           
+          Grid Refinement - Iteration 2           
 --------------------------------------------------
     Phase: traj.phases.phase0
         Refinement Options:
@@ -1517,9 +1521,9 @@ Time to compute coloring: 0.127155 sec.
             Segment Ends = [-1.0, -0.9, -0.8, -0.7, -0.6, -0.4, -0.2, 0.0, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
             Segment Order = [6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6]
         Refined: True
-
-
---- Constraint Report [traj] ---
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Constraint Report [traj] ---
     --- phase0 ---
         [final]   1.0000e+00 == x [None]
 </pre></div>
@@ -1528,17 +1532,17 @@ Time to compute coloring: 0.127155 sec.
 Model viewer data has already has already been recorded for Driver.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.939535 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 1.052810 seconds.
 Total jacobian shape: (223, 318) 
-
-
-Jacobian shape: (223, 318)  ( 2.69% nonzero)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jacobian shape: (223, 318)  ( 2.69% nonzero)
 FWD solves: 0   REV solves: 15
 Total colors vs. total size: 15 vs 223  (93.3% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.939535 sec.
-Time to compute coloring: 0.193310 sec.
+Time to compute sparsity: 1.052810 sec.
+Time to compute coloring: 0.275773 sec.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization Problem -- Optimization using pyOpt_sparse
@@ -1547,11 +1551,11 @@ Time to compute coloring: 0.193310 sec.
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                    1.1220
-       User Objective Time :       0.0202
-       User Sensitivity Time :     0.1969
-       Interface Time :            0.0938
-       Opt Solver Time:            0.8111
+    Total Time:                    1.6759
+       User Objective Time :       0.0234
+       User Sensitivity Time :     0.2491
+       Interface Time :            0.1220
+       Opt Solver Time:            1.2813
     Calls to Objective Function :       9
     Calls to Sens Function :            9
 
@@ -2141,7 +2145,7 @@ Time to compute coloring: 0.193310 sec.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==================================================
-          Grid Refinement - Iteration 2           
+          Grid Refinement - Iteration 3           
 --------------------------------------------------
     Phase: traj.phases.phase0
         Refinement Options:
@@ -2154,7 +2158,9 @@ Time to compute coloring: 0.193310 sec.
             Segment Ends = [-1.0, -0.9, -0.8, -0.7, -0.6, -0.4, -0.2, 0.0, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
             Segment Order = [6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6]
             Error = [5.653e-06, 4.416e-07, 2.576e-08, 4.471e-09, 4.179e-08, 3.975e-09, 5.604e-09, 2.305e-08, 3.724e-09, 3.883e-09, 9.311e-09, 2.286e-08, 7.666e-08, 1.383e-07, 6.392e-08, 1.171e-06]
-    Phase: traj.phases.phase0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Phase: traj.phases.phase0
         New Grid:
             Number of Segments = 19
             Segment Ends = [-1.0, -0.9667, -0.9333, -0.9, -0.8, -0.7, -0.6, -0.4, -0.2, 0.0, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 0.95, 1.0]
@@ -2165,12 +2171,13 @@ Time to compute coloring: 0.193310 sec.
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Constraint Report [traj] ---
     --- phase0 ---
         [final]   1.0000e+00 == x [None]
-
-Model viewer data has already has already been recorded for Driver.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model viewer data has already has already been recorded for Driver.
 Model viewer data has already has already been recorded for Driver.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 1.337978 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 1.496746 seconds.
 Total jacobian shape: (283, 405) 
 </pre></div>
 </div>
@@ -2179,8 +2186,8 @@ FWD solves: 0   REV solves: 27
 Total colors vs. total size: 27 vs 283  (90.5% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 1.337978 sec.
-Time to compute coloring: 0.266473 sec.
+Time to compute sparsity: 1.496746 sec.
+Time to compute coloring: 0.356478 sec.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization Problem -- Optimization using pyOpt_sparse
@@ -2189,11 +2196,11 @@ Time to compute coloring: 0.266473 sec.
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                    1.8209
-       User Objective Time :       0.0127
-       User Sensitivity Time :     0.2481
-       Interface Time :            0.0815
-       Opt Solver Time:            1.4786
+    Total Time:                    2.2424
+       User Objective Time :       0.0158
+       User Sensitivity Time :     0.2820
+       Interface Time :            0.1049
+       Opt Solver Time:            1.8396
     Calls to Objective Function :       6
     Calls to Sens Function :            6
 
@@ -2936,7 +2943,7 @@ Time to compute coloring: 0.266473 sec.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==================================================
-          Grid Refinement - Iteration 3           
+          Grid Refinement - Iteration 4           
 --------------------------------------------------
     Phase: traj.phases.phase0
         Refinement Options:
@@ -2968,14 +2975,13 @@ Time to compute coloring: 0.266473 sec.
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Constraint Report [traj] ---
     --- phase0 ---
         [final]   1.0000e+00 == x [None]
-
-Model viewer data has already has already been recorded for Driver.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model viewer data has already has already been recorded for Driver.
+Model viewer data has already has already been recorded for Driver.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 1.548829 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 1.713401 seconds.
 Total jacobian shape: (331, 474) 
 </pre></div>
 </div>
@@ -2984,8 +2990,8 @@ FWD solves: 0   REV solves: 27
 Total colors vs. total size: 27 vs 331  (91.8% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 1.548829 sec.
-Time to compute coloring: 0.361984 sec.
+Time to compute sparsity: 1.713401 sec.
+Time to compute coloring: 0.484996 sec.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization Problem -- Optimization using pyOpt_sparse
@@ -2994,11 +3000,11 @@ Time to compute coloring: 0.361984 sec.
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                    0.9685
-       User Objective Time :       0.0073
-       User Sensitivity Time :     0.0859
-       Interface Time :            0.0351
-       Opt Solver Time:            0.8403
+    Total Time:                    1.1957
+       User Objective Time :       0.0071
+       User Sensitivity Time :     0.0927
+       Interface Time :            0.0389
+       Opt Solver Time:            1.0569
     Calls to Objective Function :       3
     Calls to Sens Function :            2
 
@@ -3864,7 +3870,7 @@ Time to compute coloring: 0.361984 sec.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==================================================
-          Grid Refinement - Iteration 4           
+          Grid Refinement - Iteration 5           
 --------------------------------------------------
     Phase: traj.phases.phase0
         Refinement Options:
@@ -3895,7 +3901,7 @@ Model viewer data has already has already been recorded for Driver.
 Model viewer data has already has already been recorded for Driver.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 2.047196 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 2.386578 seconds.
 Total jacobian shape: (405, 581) 
 </pre></div>
 </div>
@@ -3904,8 +3910,8 @@ FWD solves: 0   REV solves: 27
 Total colors vs. total size: 27 vs 405  (93.3% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 2.047196 sec.
-Time to compute coloring: 0.380876 sec.
+Time to compute sparsity: 2.386578 sec.
+Time to compute coloring: 0.471278 sec.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization Problem -- Optimization using pyOpt_sparse
@@ -3914,11 +3920,11 @@ Time to compute coloring: 0.380876 sec.
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                    1.0278
-       User Objective Time :       0.0044
-       User Sensitivity Time :     0.0446
-       Interface Time :            0.0225
-       Opt Solver Time:            0.9564
+    Total Time:                    1.3443
+       User Objective Time :       0.0052
+       User Sensitivity Time :     0.0568
+       Interface Time :            0.0281
+       Opt Solver Time:            1.2542
     Calls to Objective Function :       2
     Calls to Sens Function :            1
 
@@ -4973,7 +4979,7 @@ Time to compute coloring: 0.380876 sec.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==================================================
-          Grid Refinement - Iteration 5           
+          Grid Refinement - Iteration 6           
 --------------------------------------------------
     Phase: traj.phases.phase0
         Refinement Options:

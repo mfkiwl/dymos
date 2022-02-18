@@ -38,20 +38,22 @@
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/togglebutton.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
+    <script >let toggleHintShow = 'Click to show';</script>
+    <script >let toggleHintHide = 'Click to hide';</script>
+    <script >let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script >const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="SSTO Lunar Ascent with Polynomial Controls" href="../ssto_moon_polynomial_controls/ssto_moon_polynomial_controls.html" />
@@ -624,7 +626,7 @@ the optimization.</p>
 <p>Instead of optimizing the thrust angle at any point in time as a dynamic
 control, we use our knowledge that the form of the solution is a
 <em>linear tangent</em>.
-See section 4.6 of Longuski, Guzmán, and Prussing <span id="id1">[<a class="reference internal" href="#id26" title="James M Longuski, José J Guzmán, and John E Prussing. Optimal control with aerospace applications. Springer, 1 edition, 2014. ISBN 978-1-4939-4917-5. doi:https://doi.org/10.1007/978-1-4614-8945-0.">ALGuzmanP14</a>]</span> for more explanation.
+See section 4.6 of Longuski, Guzmán, and Prussing <span id="id1">[<a class="reference internal" href="#id26">ALGuzmanP14</a>]</span> for more explanation.
 In short, we’ve simplified the problem by finding the optimal value of <span class="math notranslate nohighlight">\(\theta\)</span> at many points into optimizing the value of just two scalar parameters, <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[\theta = \arctan{\left(a * t + b\right)}\]</div>
@@ -903,6 +905,9 @@ only significant change is that we have a new component,
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.8/site-packages/openmdao/utils/options_dictionary.py:332: OMDeprecationWarning:&#39;gradient method&#39; is not a valid python name and will become an invalid option name in a future release. You can prevent this warning (and future exceptions) by declaring this option using a valid python name.
+</pre></div>
+</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Constraint Report [traj] ---
     --- phase0 ---
         [final]   1.8500e+05 == y [m]
@@ -913,9 +918,6 @@ INFO: checking out_of_order
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking system
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.8/site-packages/openmdao/utils/options_dictionary.py:332: OMDeprecationWarning:&#39;gradient method&#39; is not a valid python name and will become an invalid option name in a future release. You can prevent this warning (and future exceptions) by declaring this option using a valid python name.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking solvers
@@ -967,7 +969,7 @@ INFO: checking out_of_order
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking auto_ivc_warnings
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.090404 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.107095 seconds.
 Total jacobian shape: (101, 103) 
 </pre></div>
 </div>
@@ -976,8 +978,8 @@ FWD solves: 19   REV solves: 0
 Total colors vs. total size: 19 vs 103  (81.6% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.090404 sec.
-Time to compute coloring: 0.111918 sec.
+Time to compute sparsity: 0.107095 sec.
+Time to compute coloring: 0.146083 sec.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization Problem -- Optimization using pyOpt_sparse
@@ -986,11 +988,11 @@ Time to compute coloring: 0.111918 sec.
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                    0.1094
-       User Objective Time :       0.0134
-       User Sensitivity Time :     0.0553
-       Interface Time :            0.0233
-       Opt Solver Time:            0.0174
+    Total Time:                    0.1385
+       User Objective Time :       0.0177
+       User Sensitivity Time :     0.0685
+       Interface Time :            0.0318
+       Opt Solver Time:            0.0206
     Calls to Objective Function :       6
     Calls to Sens Function :            5
 
