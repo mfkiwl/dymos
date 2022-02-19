@@ -742,8 +742,8 @@ In order to enforce continuity among certain variables across phases, the user m
 There are two methods in dymos which provide this functionality.
 The <code class="docutils literal notranslate"><span class="pre">add_linkage_constraint</span></code> method provides a very general way of coupling two phases together.
 It does so by generating a constraint of the following form:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f658a9fa-5896-4ff7-8758-bd5df330f267">
-<span class="eqno">(84)<a class="headerlink" href="#equation-f658a9fa-5896-4ff7-8758-bd5df330f267" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-59eb300c-0a45-45ac-bd57-35275912ebcb">
+<span class="eqno">(84)<a class="headerlink" href="#equation-59eb300c-0a45-45ac-bd57-35275912ebcb" title="Permalink to this equation">¶</a></span>\[\begin{align}
     c = \mathrm{sign}_a \mathrm{var}_a + \mathrm{sign}_b \mathrm{var}_b
 \end{align}\]</div>
 <p>Method <code class="docutils literal notranslate"><span class="pre">add_linkage_constraint</span></code> lets the user specify the variables and phases to be compared for this constraint, as well as the location of the variable in each phase (either ‘initial’ or ‘final’)

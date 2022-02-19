@@ -835,13 +835,13 @@ Also, since the duration of the trajectory is small, we’re going to assume tha
 <h3>The Aerodynamic Model<a class="headerlink" href="#the-aerodynamic-model" title="Permalink to this headline">¶</a></h3>
 <p>Both sets of equations of motion have common aerodynamic models.</p>
 <p>First, the lift coefficient is computed using a model which assumes linearity in lift wrt the angle of attack.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-fbacb5f3-069d-43a7-9b90-7d6d4613914d">
-<span class="eqno">(21)<a class="headerlink" href="#equation-fbacb5f3-069d-43a7-9b90-7d6d4613914d" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-bba87a57-68dc-48a3-88b7-e62b759f6186">
+<span class="eqno">(21)<a class="headerlink" href="#equation-bba87a57-68dc-48a3-88b7-e62b759f6186" title="Permalink to this equation">¶</a></span>\[\begin{align}
     C_L &amp;= C_{L0} + \frac{\alpha}{\alpha_{max}} \left(C_{L-max} - C_{L0}\right)
 \end{align}\]</div>
 <p>Next, the drag-due-to-lift factor is computed (Equations 12.48 and 12.61 in Raymer[&#64;raymer2012aircraft]).</p>
-<div class="amsmath math notranslate nohighlight" id="equation-66a7395e-d993-44da-880c-5b07521d8e1d">
-<span class="eqno">(22)<a class="headerlink" href="#equation-66a7395e-d993-44da-880c-5b07521d8e1d" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d013bca4-bef6-4bfe-8964-ba1d6f196f93">
+<span class="eqno">(22)<a class="headerlink" href="#equation-d013bca4-bef6-4bfe-8964-ba1d6f196f93" title="Permalink to this equation">¶</a></span>\[\begin{align}
     K_{nom} &amp;= \frac{1}{ \pi  AR  e} \\
     b &amp;= \frac{span}{2} \\
     K &amp;= 33 K_{nom} \frac{ \left(\frac{h + h_w}{b} \right) ^{\frac{3}{2}}}{1.0 + 33 \left( \frac{h + h_w}{b}\right) ^{\frac{3}{2}}}
@@ -850,8 +850,8 @@ Also, since the duration of the trajectory is small, we’re going to assume tha
 This causes this problem to be difficult to solve using a shooting method.
 If the optimizer proposes a combination of initial states and a control history that results in altitude dropping significantly below zero, the propagation will fail.</p>
 <p>Finally, the lift and drag are computed after computing the dynamic pressure.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6a5b1b5c-c808-492a-98d1-46706fe04420">
-<span class="eqno">(23)<a class="headerlink" href="#equation-6a5b1b5c-c808-492a-98d1-46706fe04420" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-69f871ff-ceeb-49c3-9818-6cba663fdd78">
+<span class="eqno">(23)<a class="headerlink" href="#equation-69f871ff-ceeb-49c3-9818-6cba663fdd78" title="Permalink to this equation">¶</a></span>\[\begin{align}
     q &amp;= 0.5 \rho v^2 \\
     L &amp;= q  S  C_L \\
     D &amp;= q S \left( C_{D0} + K C_{L}^2 \right)
@@ -862,8 +862,8 @@ If the optimizer proposes a combination of initial states and a control history 
 <p>This model relies on the ratio of the current true airspeed to stall speed (<span class="math notranslate nohighlight">\(\frac{v}{v_{stall}}\)</span>).
 This constraint is used to trigger the beginning of rotation and is used as a boundary constraint at the end of the initial climb.
 Stall speed is given by Equation 5.6 in Raymer[&#64;raymer2012aircraft].</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ed080b35-e40c-4ce9-b2e9-e43a37d3a35e">
-<span class="eqno">(24)<a class="headerlink" href="#equation-ed080b35-e40c-4ce9-b2e9-e43a37d3a35e" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-b641267c-d29c-4d23-b0a5-51911a380695">
+<span class="eqno">(24)<a class="headerlink" href="#equation-b641267c-d29c-4d23-b0a5-51911a380695" title="Permalink to this equation">¶</a></span>\[\begin{align}
     W &amp;= m g \\
     v_{stall} &amp;= \sqrt{\frac{2 * W}{\rho S C_{L-max}}}
 \end{align}\]</div>
@@ -871,8 +871,8 @@ Stall speed is given by Equation 5.6 in Raymer[&#64;raymer2012aircraft].</p>
 <div class="section" id="runway-equations-of-motion">
 <h3>Runway Equations of Motion<a class="headerlink" href="#runway-equations-of-motion" title="Permalink to this headline">¶</a></h3>
 <p>The runway equations of motion are used to integrate range and speed as the vehicle rolls along the runway.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5810745c-0c41-41c8-99f8-cfb935e3c750">
-<span class="eqno">(25)<a class="headerlink" href="#equation-5810745c-0c41-41c8-99f8-cfb935e3c750" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-8cb8d7a1-71f7-46a9-b10e-0534bc6affd2">
+<span class="eqno">(25)<a class="headerlink" href="#equation-8cb8d7a1-71f7-46a9-b10e-0534bc6affd2" title="Permalink to this equation">¶</a></span>\[\begin{align}
   F_r &amp;= mg - L \cos \alpha - T \sin \alpha \\
   \dot{v} &amp;= \frac{T \cos \alpha - D - F_r \mu_r}{m} \\
   \dot{r} &amp;= v
@@ -899,8 +899,8 @@ Stall speed is given by Equation 5.6 in Raymer[&#64;raymer2012aircraft].</p>
 <div class="section" id="flight-equations-of-motion">
 <h3>Flight Equations of Motion<a class="headerlink" href="#flight-equations-of-motion" title="Permalink to this headline">¶</a></h3>
 <p>The flight equations of motion include two additional state variables: the flight-path angle (<span class="math notranslate nohighlight">\(\gamma\)</span>) and altitude (<span class="math notranslate nohighlight">\(h\)</span>).</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f0d3ad1f-ccb0-4a4e-98a9-acdd02670b16">
-<span class="eqno">(26)<a class="headerlink" href="#equation-f0d3ad1f-ccb0-4a4e-98a9-acdd02670b16" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-441005c1-7e02-4180-a46d-e3bcec7bf141">
+<span class="eqno">(26)<a class="headerlink" href="#equation-441005c1-7e02-4180-a46d-e3bcec7bf141" title="Permalink to this equation">¶</a></span>\[\begin{align}
   \dot{v} &amp;= \frac{T}{m} \cos \alpha - \frac{D}{m} - g \sin \gamma \\
   \dot{\gamma} &amp;= \frac{T}{m v} \sin \alpha + \frac{L}{m v} - \frac{g \cos \gamma}{v} \\
   \dot{h} &amp;= v \sin \gamma \\
@@ -1429,7 +1429,7 @@ First we define the problem and specify the optimizer settings.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;dymos.phase.phase.Phase at 0x7f5c7a7eaf70&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;dymos.phase.phase.Phase at 0x7f627a625340&gt;
 </pre></div>
 </div>
 </div>
@@ -1637,8 +1637,8 @@ FWD solves: 16   REV solves: 0
 Total colors vs. total size: 16 vs 60  (73.3% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.045175 sec.
-Time to compute coloring: 0.023617 sec.
+Time to compute sparsity: 0.023452 sec.
+Time to compute coloring: 0.012935 sec.
 
 Coloring for &#39;traj.phases.rto.rhs_all&#39; (class BalancedFieldODEComp)
 
@@ -1647,42 +1647,43 @@ FWD solves: 16   REV solves: 0
 Total colors vs. total size: 16 vs 60  (73.3% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.043004 sec.
-Time to compute coloring: 0.022911 sec.
-
-Coloring for &#39;traj.phases.v1_to_vr.rhs_all&#39; (class BalancedFieldODEComp)
-
-Jacobian shape: (132, 60)  (10.15% nonzero)
-FWD solves: 16   REV solves: 0
-Total colors vs. total size: 16 vs 60  (73.3% improvement)
-
-Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.042616 sec.
-Time to compute coloring: 0.024255 sec.
+Time to compute sparsity: 0.021928 sec.
+Time to compute coloring: 0.012829 sec.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Coloring for &#39;traj.phases.rotate.rhs_all&#39; (class BalancedFieldODEComp)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Coloring for &#39;traj.phases.v1_to_vr.rhs_all&#39; (class BalancedFieldODEComp)
 
 Jacobian shape: (132, 60)  (10.15% nonzero)
 FWD solves: 16   REV solves: 0
 Total colors vs. total size: 16 vs 60  (73.3% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.048138 sec.
-Time to compute coloring: 0.022921 sec.
+Time to compute sparsity: 0.024207 sec.
+Time to compute coloring: 0.013934 sec.
 
-Coloring for &#39;traj.phases.climb.rhs_all&#39; (class BalancedFieldODEComp)
+Coloring for &#39;traj.phases.rotate.rhs_all&#39; (class BalancedFieldODEComp)
+
+Jacobian shape: (132, 60)  (10.15% nonzero)
+FWD solves: 16   REV solves: 0
+Total colors vs. total size: 16 vs 60  (73.3% improvement)
+
+Sparsity computed using tolerance: 1e-25
+Time to compute sparsity: 0.022151 sec.
+Time to compute coloring: 0.013105 sec.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Coloring for &#39;traj.phases.climb.rhs_all&#39; (class BalancedFieldODEComp)
 
 Jacobian shape: (260, 111)  ( 5.54% nonzero)
 FWD solves: 16   REV solves: 0
 Total colors vs. total size: 16 vs 111  (85.6% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.079776 sec.
-Time to compute coloring: 0.039319 sec.
+Time to compute sparsity: 0.045544 sec.
+Time to compute coloring: 0.025791 sec.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 2.456983 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 1.409806 seconds.
 Total jacobian shape: (179, 166) 
 
 
@@ -1691,11 +1692,8 @@ FWD solves: 12   REV solves: 0
 Total colors vs. total size: 12 vs 166  (92.8% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 2.456983 sec.
-Time to compute coloring: 0.161883 sec.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.8/site-packages/openmdao/core/total_jac.py:1539: DerivativesWarning:Constraints or objectives [(&#39;traj.phases.climb.path_constraints.path:gam&#39;, inds=[(0, 0)])] cannot be impacted by the design variables of the problem.
+Time to compute sparsity: 1.409806 sec.
+Time to compute coloring: 0.088685 sec.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Using option file &quot;IPOPT_options.opt&quot;.
@@ -1728,6 +1726,9 @@ iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
    0  5.0000000e+00 1.45e+03 1.34e-01   0.0 0.00e+00    -  0.00e+00 0.00e+00   0
 </pre></div>
 </div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.8/site-packages/openmdao/core/total_jac.py:1539: DerivativesWarning:Constraints or objectives [(&#39;traj.phases.climb.path_constraints.path:gam&#39;, inds=[(0, 0)])] cannot be impacted by the design variables of the problem.
+</pre></div>
+</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   1  4.7292571e+00 6.78e+02 5.02e+01   0.0 2.23e+01    -  3.03e-02 5.32e-01f  1
 </pre></div>
 </div>
@@ -1752,42 +1753,42 @@ iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   8  4.4683333e+00 5.48e-02 1.31e+05  -1.9 1.66e+02    -  1.23e-01 2.43e-02f  1
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   9  3.2048485e+00 3.59e-01 1.06e+06  -1.9 5.70e+01    -  1.00e+00 1.71e-01f  1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   9  3.2048484e+00 3.59e-01 1.06e+06  -1.9 5.70e+01    -  1.00e+00 1.71e-01f  1
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
-  10  2.0239843e+00 8.29e-01 4.41e+05  -1.6 1.38e+01    -  1.00e+00 7.85e-01f  1
+  10  2.0239841e+00 8.29e-01 4.41e+05  -1.6 1.38e+01    -  1.00e+00 7.85e-01f  1
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  11  2.2691377e+00 2.60e-02 6.80e-02  -2.2 1.13e+00    -  1.00e+00 1.00e+00h  1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  11  2.2691373e+00 2.60e-02 6.80e-02  -2.2 1.13e+00    -  1.00e+00 1.00e+00h  1
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  12  2.2128772e+00 9.07e-03 2.21e+05  -3.1 7.11e-01    -  9.97e-01 6.47e-01h  1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  12  2.2128772e+00 9.07e-03 2.20e+05  -3.1 7.11e-01    -  9.97e-01 6.47e-01h  1
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  13  2.2032585e+00 6.20e-02 1.09e-02  -3.2 5.36e-01    -  1.00e+00 1.00e+00h  1
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  14  2.1967486e+00 6.30e-02 4.40e+02  -3.6 9.89e-01    -  9.86e-01 1.00e+00h  1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  14  2.1967487e+00 6.30e-02 4.40e+02  -3.6 9.89e-01    -  9.86e-01 1.00e+00h  1
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  15  2.1978657e+00 5.55e-04 5.69e-03  -3.7 3.28e-01    -  1.00e+00 1.00e+00h  1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  15  2.1978657e+00 5.56e-04 5.69e-03  -3.7 3.28e-01    -  1.00e+00 1.00e+00h  1
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  16  2.1982705e+00 7.19e-05 5.96e+01  -4.5 1.38e-01    -  9.96e-01 1.00e+00H  1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  16  2.1982705e+00 7.19e-05 5.95e+01  -4.5 1.38e-01    -  9.96e-01 1.00e+00H  1
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  17  2.1977119e+00 1.66e-03 8.93e-04  -5.4 9.07e-02    -  1.00e+00 1.00e+00h  1
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  18  2.1977458e+00 1.99e-04 1.66e-02  -5.6 3.78e-02    -  1.00e+00 1.00e+00h  1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  18  2.1977458e+00 1.99e-04 1.55e-02  -5.6 3.78e-02    -  1.00e+00 1.00e+00h  1
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  19  2.1977175e+00 2.47e-04 1.32e+02  -5.3 1.22e-01    -  1.00e+00 3.48e-01h  1
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
-  20  2.1977185e+00 4.42e-06 4.73e-05  -6.0 7.94e-03    -  1.00e+00 1.00e+00h  1
+  20  2.1977185e+00 4.42e-06 4.72e-05  -6.0 7.94e-03    -  1.00e+00 1.00e+00h  1
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  21  2.1977143e+00 3.87e-06 2.35e-05  -7.0 4.31e-03    -  1.00e+00 1.00e+00h  1
@@ -1796,19 +1797,19 @@ iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  22  2.1977138e+00 3.28e-07 1.51e-05  -7.5 2.38e-03    -  1.00e+00 1.00e+00h  1
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  23  2.1977136e+00 6.03e-08 1.04e-02  -9.5 9.61e-04    -  1.00e+00 9.97e-01h  1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  23  2.1977136e+00 6.03e-08 1.04e-02  -9.5 9.60e-04    -  1.00e+00 9.97e-01h  1
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  24  2.1977136e+00 4.02e-11 3.42e-07  -9.8 4.03e-05    -  1.00e+00 1.00e+00h  1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  24  2.1977136e+00 4.02e-11 3.40e-07  -9.8 4.02e-05    -  1.00e+00 1.00e+00h  1
 
 Number of Iterations....: 24
 
                                    (scaled)                 (unscaled)
-Objective...............:   2.1977135643807166e+00    2.1977135643807166e+00
-Dual infeasibility......:   3.4156213322847957e-07    3.4156213322847957e-07
-Constraint violation....:   4.0150123076398710e-11    4.0150123076398710e-11
-Complementarity.........:   1.8224341414660412e-10    1.8224341414660412e-10
-Overall NLP error.......:   3.4156213322847957e-07    3.4156213322847957e-07
+Objective...............:   2.1977135643802392e+00    2.1977135643802392e+00
+Dual infeasibility......:   3.4026077468457563e-07    3.4026077468457563e-07
+Constraint violation....:   4.0236275155946677e-11    4.0236275155946677e-11
+Complementarity.........:   1.8256904568790031e-10    1.8256904568790031e-10
+Overall NLP error.......:   3.4026077468457563e-07    3.4026077468457563e-07
 
 
 Number of objective function evaluations             = 26
@@ -1818,8 +1819,8 @@ Number of inequality constraint evaluations          = 26
 Number of equality constraint Jacobian evaluations   = 25
 Number of inequality constraint Jacobian evaluations = 25
 Number of Lagrangian Hessian evaluations             = 0
-Total CPU secs in IPOPT (w/o function evaluations)   =      0.320
-Total CPU secs in NLP function evaluations           =      5.226
+Total CPU secs in IPOPT (w/o function evaluations)   =      0.186
+Total CPU secs in NLP function evaluations           =      2.989
 
 EXIT: Optimal Solution Found.
 </pre></div>

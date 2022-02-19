@@ -578,8 +578,8 @@ Each phase represents the trajectory of a dynamical system, and may be subject t
 Multiple phases may be assembled to form one or more trajectories by enforcing compatibility constraints between them.</p>
 <p>For implicit and explicit phases, the equations-of-motion or process equations are defined via an ordinary differential equation.</p>
 <p>An ODE is of the form</p>
-<div class="amsmath math notranslate nohighlight" id="equation-33f9baa7-9aea-45ac-8f39-6b13eef0285d">
-<span class="eqno">(81)<a class="headerlink" href="#equation-33f9baa7-9aea-45ac-8f39-6b13eef0285d" title="Permalink to this equation">¶</a></span>\[\begin{align}  
+<div class="amsmath math notranslate nohighlight" id="equation-ec6b5b4e-d25a-4af2-96bc-3999c5bde4bc">
+<span class="eqno">(81)<a class="headerlink" href="#equation-ec6b5b4e-d25a-4af2-96bc-3999c5bde4bc" title="Permalink to this equation">¶</a></span>\[\begin{align}  
     \frac{\partial \textbf x}{\partial t} = \textbf f(t, \textbf x, \textbf u)
 \end{align}\]</div>
 <p>where
@@ -592,8 +592,8 @@ and
 In addition, Dymos automatically calculates the first and second time-derivatives of the controls.
 These derivatives can then be utilized as via constraints or as additional parameters to the ODE.
 Subsequently, the optimal control problem as solved by Dymos can be expressed as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a6f01662-c4a3-4eb4-88e8-74222608bc1b">
-<span class="eqno">(82)<a class="headerlink" href="#equation-a6f01662-c4a3-4eb4-88e8-74222608bc1b" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d8c11efa-caf3-4642-b134-67c8c00aa73d">
+<span class="eqno">(82)<a class="headerlink" href="#equation-d8c11efa-caf3-4642-b134-67c8c00aa73d" title="Permalink to this equation">¶</a></span>\[\begin{align}
   \textrm{Minimize}:&amp; \quad J = \textbf f_{obj}(t, \textbf x, \textbf u, \dot{\textbf u}, \ddot{\textbf u}) \\
   \textrm{subject to:}&amp; \\
   &amp;\textrm{system dynamics} \quad &amp;\frac{\partial \textbf x}{\partial t} &amp;= \textbf f_{ode}(t, \textbf x, \textbf u, \dot{\textbf u}, \ddot{\textbf u}) \\

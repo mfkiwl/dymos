@@ -770,7 +770,7 @@ parameter as a value.</p>
 <dt><strong>shape</strong><span class="classifier">Sequence of int</span></dt><dd><p>The shape of the parameter.</p>
 </dd>
 <dt><strong>dynamic</strong><span class="classifier">bool</span></dt><dd><p>True if the targets in the ODE may be dynamic (if the inputs are sized to the number
-of nodes) else False.</p>
+of nodes) else False. This argument is deprecated in favor of static_target.</p>
 </dd>
 <dt><strong>static_target</strong><span class="classifier">bool or _unspecified</span></dt><dd><p>True if the targets in the ODE are not shaped with num_nodes as the first dimension
 (meaning they cannot have a unique value at each node).  Otherwise False.</p>
