@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
@@ -34,26 +34,26 @@
     
   <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
-    <script >let toggleHintShow = 'Click to show';</script>
-    <script >let toggleHintHide = 'Click to hide';</script>
-    <script >let toggleOpenOnPrint = 'true';</script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../_static/togglebutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script >const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Commercial Aircraft Range Maximization by Differential Inclusion" href="../commercial_aircraft/commercial_aircraft.html" />
@@ -101,7 +101,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Installation
  </span>
@@ -113,7 +113,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Getting Started
  </span>
@@ -150,7 +150,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Examples and Tutorials
  </span>
@@ -279,7 +279,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Feature Reference
  </span>
@@ -343,7 +343,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Frequently Asked Questions
  </span>
@@ -397,7 +397,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Dymos API Reference
  </span>
@@ -436,7 +436,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Contributing
  </span>
@@ -669,15 +669,15 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="the-bryson-denham-problem">
 <span id="examples-bryson-denham"></span><h1>The Bryson-Denham Problem<a class="headerlink" href="#the-bryson-denham-problem" title="Permalink to this headline">¶</a></h1>
-<p>The Bryson-Denham problem is a variation of the double integrator problem <span id="id1">[<a class="reference internal" href="#id18">BH75</a>]</span>. It can be stated as:</p>
+<p>The Bryson-Denham problem is a variation of the double integrator problem <span id="id1">[<a class="reference internal" href="#id18" title="Arthur E Bryson and Yu-Chi Ho. Applied Optimal Control: Optimization, Estimation and Control. CRC Press, 1975.">BH75</a>]</span>. It can be stated as:</p>
 <p>Minimize the control effort required to reverse the direction of motion of a frictionless sliding block such that the reversal happens with some limited amount of displacement.</p>
 <div class="section" id="state-and-control-variables">
 <h2>State and control variables<a class="headerlink" href="#state-and-control-variables" title="Permalink to this headline">¶</a></h2>
 <p>This system has two state variables, the position (<span class="math notranslate nohighlight">\(x\)</span>) and velocity (<span class="math notranslate nohighlight">\(v\)</span>) of the sliding block.</p>
 <p>This system has a single control variable (<span class="math notranslate nohighlight">\(u\)</span>), the acceleration of the block.</p>
 <p>The dynamics of the system are governed by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-64eb34f6-33e6-4d0f-ba0b-8d80b18f3f53">
-<span class="eqno">(27)<a class="headerlink" href="#equation-64eb34f6-33e6-4d0f-ba0b-8d80b18f3f53" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-24a0a334-0c54-4a45-95dc-c2ce7f3e5c4e">
+<span class="eqno">(27)<a class="headerlink" href="#equation-24a0a334-0c54-4a45-95dc-c2ce7f3e5c4e" title="Permalink to this equation">¶</a></span>\[\begin{align}
   \dot{x} &amp;= v \\
   \dot{v} &amp;= u
 \end{align}\]</div>
@@ -685,25 +685,25 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="section" id="problem-definition">
 <h2>Problem Definition<a class="headerlink" href="#problem-definition" title="Permalink to this headline">¶</a></h2>
 <p>We seek to minimize the time required to exit the well in the positive direction.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-810f4cdf-c6c7-4a4e-8b81-e458c8e1684c">
-<span class="eqno">(28)<a class="headerlink" href="#equation-810f4cdf-c6c7-4a4e-8b81-e458c8e1684c" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-ea470540-cbf5-4080-8d02-5a463df5450b">
+<span class="eqno">(28)<a class="headerlink" href="#equation-ea470540-cbf5-4080-8d02-5a463df5450b" title="Permalink to this equation">¶</a></span>\[\begin{align}
     \mathrm{Minimize} \, J &amp;= 0.5 \int_0^1 u^2 dt
 \end{align}\]</div>
 <p>Subject to the initial conditions</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d17f6c28-08e6-47b5-9f4b-800ba3427b46">
-<span class="eqno">(29)<a class="headerlink" href="#equation-d17f6c28-08e6-47b5-9f4b-800ba3427b46" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-bbd9d98d-c3f1-4cec-afc8-3ea7bc04b8ab">
+<span class="eqno">(29)<a class="headerlink" href="#equation-bbd9d98d-c3f1-4cec-afc8-3ea7bc04b8ab" title="Permalink to this equation">¶</a></span>\[\begin{align}
     x_0 &amp;= 0.0 \\
     v_0 &amp;= 1.0
 \end{align}\]</div>
 <p>and the terminal constraints</p>
-<div class="amsmath math notranslate nohighlight" id="equation-dcdcc34c-528d-4529-ba32-59396cc8328f">
-<span class="eqno">(30)<a class="headerlink" href="#equation-dcdcc34c-528d-4529-ba32-59396cc8328f" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-a31a2cb0-fbe2-4d89-b090-953c3478e2e6">
+<span class="eqno">(30)<a class="headerlink" href="#equation-a31a2cb0-fbe2-4d89-b090-953c3478e2e6" title="Permalink to this equation">¶</a></span>\[\begin{align}
     x_f &amp;= 0.0 \\
     v_f &amp;= -1.0
 \end{align}\]</div>
 <p>In addition, <span class="math notranslate nohighlight">\(x\)</span> is consrained to remain below a displacement of 1/9.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7d4dee6c-d97e-4e11-9126-7b97d0bc7dfd">
-<span class="eqno">(31)<a class="headerlink" href="#equation-7d4dee6c-d97e-4e11-9126-7b97d0bc7dfd" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-6c72866b-e114-4731-a7a3-66dc764bc125">
+<span class="eqno">(31)<a class="headerlink" href="#equation-6c72866b-e114-4731-a7a3-66dc764bc125" title="Permalink to this equation">¶</a></span>\[\begin{align}
     x &amp;\le 1/9
 \end{align}\]</div>
 </div>
@@ -712,8 +712,8 @@ const thebe_selector_output = ".output, .cell_output"
 <p>In classic optimal control, the objective is often broken into the terminal component (the Mayer term) and the integral component (the Lagrange term).
 Dymos does not distinguish between the two.
 In this case, since the objective <span class="math notranslate nohighlight">\(J\)</span> is an integrated quantity, we add a term to the ODE</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2257dfe0-1206-40c2-b9ca-87d38547731f">
-<span class="eqno">(32)<a class="headerlink" href="#equation-2257dfe0-1206-40c2-b9ca-87d38547731f" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-87a9996a-b0bf-449a-9611-bfd6772fa0d4">
+<span class="eqno">(32)<a class="headerlink" href="#equation-87a9996a-b0bf-449a-9611-bfd6772fa0d4" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \dot{J} &amp;= 0.5 u^2
 \end{align}\]</div>
 </div>
@@ -857,7 +857,7 @@ The rate source and units for the states are obtained from the tags in the ODE c
         [path]     x &lt;= 1.1111e-01  [m]
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;openmdao.core.problem.Problem at 0x7fb1b4e48d00&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;openmdao.core.problem.Problem at 0x7f4ccc7c7fd0&gt;
 </pre></div>
 </div>
 </div>
@@ -898,17 +898,17 @@ This will attempt to repeatedly solve the problem and change the number of segme
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model viewer data has already has already been recorded for Driver.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.468610 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.824684 seconds.
 Total jacobian shape: (336, 286) 
-
-
-Jacobian shape: (336, 286)  ( 1.30% nonzero)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jacobian shape: (336, 286)  ( 1.30% nonzero)
 FWD solves: 7   REV solves: 0
 Total colors vs. total size: 7 vs 286  (97.6% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.468610 sec.
-Time to compute coloring: 0.138180 sec.
+Time to compute sparsity: 0.824684 sec.
+Time to compute coloring: 0.268282 sec.
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.8/site-packages/openmdao/core/total_jac.py:1539: DerivativesWarning:Constraints or objectives [(&#39;traj.phases.phase0.path_constraints.path:x&#39;, inds=[(0, 0), (95, 0)])] cannot be impacted by the design variables of the problem.
@@ -1314,42 +1314,42 @@ input[type=range].anim-slider {
 </style>
 
 <div class="animation">
-  <img id="_anim_imgaecabb2dc9954cf18f385ae55830f704">
+  <img id="_anim_imgdbe2de3c6818435fad7e24ff09015a31">
   <div class="anim-controls">
-    <input id="_anim_slideraecabb2dc9954cf18f385ae55830f704" type="range" class="anim-slider"
+    <input id="_anim_sliderdbe2de3c6818435fad7e24ff09015a31" type="range" class="anim-slider"
            name="points" min="0" max="1" step="1" value="0"
-           oninput="animaecabb2dc9954cf18f385ae55830f704.set_frame(parseInt(this.value));"></input>
+           oninput="animdbe2de3c6818435fad7e24ff09015a31.set_frame(parseInt(this.value));"></input>
     <div class="anim-buttons">
-      <button title="Decrease speed" aria-label="Decrease speed" onclick="animaecabb2dc9954cf18f385ae55830f704.slower()">
+      <button title="Decrease speed" aria-label="Decrease speed" onclick="animdbe2de3c6818435fad7e24ff09015a31.slower()">
           <i class="fa fa-minus"></i></button>
-      <button title="First frame" aria-label="First frame" onclick="animaecabb2dc9954cf18f385ae55830f704.first_frame()">
+      <button title="First frame" aria-label="First frame" onclick="animdbe2de3c6818435fad7e24ff09015a31.first_frame()">
         <i class="fa fa-fast-backward"></i></button>
-      <button title="Previous frame" aria-label="Previous frame" onclick="animaecabb2dc9954cf18f385ae55830f704.previous_frame()">
+      <button title="Previous frame" aria-label="Previous frame" onclick="animdbe2de3c6818435fad7e24ff09015a31.previous_frame()">
           <i class="fa fa-step-backward"></i></button>
-      <button title="Play backwards" aria-label="Play backwards" onclick="animaecabb2dc9954cf18f385ae55830f704.reverse_animation()">
+      <button title="Play backwards" aria-label="Play backwards" onclick="animdbe2de3c6818435fad7e24ff09015a31.reverse_animation()">
           <i class="fa fa-play fa-flip-horizontal"></i></button>
-      <button title="Pause" aria-label="Pause" onclick="animaecabb2dc9954cf18f385ae55830f704.pause_animation()">
+      <button title="Pause" aria-label="Pause" onclick="animdbe2de3c6818435fad7e24ff09015a31.pause_animation()">
           <i class="fa fa-pause"></i></button>
-      <button title="Play" aria-label="Play" onclick="animaecabb2dc9954cf18f385ae55830f704.play_animation()">
+      <button title="Play" aria-label="Play" onclick="animdbe2de3c6818435fad7e24ff09015a31.play_animation()">
           <i class="fa fa-play"></i></button>
-      <button title="Next frame" aria-label="Next frame" onclick="animaecabb2dc9954cf18f385ae55830f704.next_frame()">
+      <button title="Next frame" aria-label="Next frame" onclick="animdbe2de3c6818435fad7e24ff09015a31.next_frame()">
           <i class="fa fa-step-forward"></i></button>
-      <button title="Last frame" aria-label="Last frame" onclick="animaecabb2dc9954cf18f385ae55830f704.last_frame()">
+      <button title="Last frame" aria-label="Last frame" onclick="animdbe2de3c6818435fad7e24ff09015a31.last_frame()">
           <i class="fa fa-fast-forward"></i></button>
-      <button title="Increase speed" aria-label="Increase speed" onclick="animaecabb2dc9954cf18f385ae55830f704.faster()">
+      <button title="Increase speed" aria-label="Increase speed" onclick="animdbe2de3c6818435fad7e24ff09015a31.faster()">
           <i class="fa fa-plus"></i></button>
     </div>
-    <form title="Repetition mode" aria-label="Repetition mode" action="#n" name="_anim_loop_selectaecabb2dc9954cf18f385ae55830f704"
+    <form title="Repetition mode" aria-label="Repetition mode" action="#n" name="_anim_loop_selectdbe2de3c6818435fad7e24ff09015a31"
           class="anim-state">
-      <input type="radio" name="state" value="once" id="_anim_radio1_aecabb2dc9954cf18f385ae55830f704"
+      <input type="radio" name="state" value="once" id="_anim_radio1_dbe2de3c6818435fad7e24ff09015a31"
              >
-      <label for="_anim_radio1_aecabb2dc9954cf18f385ae55830f704">Once</label>
-      <input type="radio" name="state" value="loop" id="_anim_radio2_aecabb2dc9954cf18f385ae55830f704"
+      <label for="_anim_radio1_dbe2de3c6818435fad7e24ff09015a31">Once</label>
+      <input type="radio" name="state" value="loop" id="_anim_radio2_dbe2de3c6818435fad7e24ff09015a31"
              checked>
-      <label for="_anim_radio2_aecabb2dc9954cf18f385ae55830f704">Loop</label>
-      <input type="radio" name="state" value="reflect" id="_anim_radio3_aecabb2dc9954cf18f385ae55830f704"
+      <label for="_anim_radio2_dbe2de3c6818435fad7e24ff09015a31">Loop</label>
+      <input type="radio" name="state" value="reflect" id="_anim_radio3_dbe2de3c6818435fad7e24ff09015a31"
              >
-      <label for="_anim_radio3_aecabb2dc9954cf18f385ae55830f704">Reflect</label>
+      <label for="_anim_radio3_dbe2de3c6818435fad7e24ff09015a31">Reflect</label>
     </form>
   </div>
 </div>
@@ -1359,9 +1359,9 @@ input[type=range].anim-slider {
   /* Instantiate the Animation class. */
   /* The IDs given should match those used in the template above. */
   (function() {
-    var img_id = "_anim_imgaecabb2dc9954cf18f385ae55830f704";
-    var slider_id = "_anim_slideraecabb2dc9954cf18f385ae55830f704";
-    var loop_select_id = "_anim_loop_selectaecabb2dc9954cf18f385ae55830f704";
+    var img_id = "_anim_imgdbe2de3c6818435fad7e24ff09015a31";
+    var slider_id = "_anim_sliderdbe2de3c6818435fad7e24ff09015a31";
+    var loop_select_id = "_anim_loop_selectdbe2de3c6818435fad7e24ff09015a31";
     var frames = new Array(90);
 
   frames[0] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA2AAAAGwCAYAAADPMwaiAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
@@ -45968,7 +45968,7 @@ NXEDzMzMzMzMrCZugJmZmZmZmdXEDTAzMzMzM7Oa/B/U/Ti1/S5C6AAAAABJRU5ErkJggg==\
     /* set a timeout to make sure all the above elements are created before
        the object is initialized. */
     setTimeout(function() {
-        animaecabb2dc9954cf18f385ae55830f704 = new Animation(frames, img_id, slider_id, 50.0,
+        animdbe2de3c6818435fad7e24ff09015a31 = new Animation(frames, img_id, slider_id, 50.0,
                                  loop_select_id);
     }, 0);
   })()
