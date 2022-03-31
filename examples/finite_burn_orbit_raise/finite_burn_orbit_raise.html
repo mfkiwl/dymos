@@ -624,8 +624,8 @@ three-phase orbit raising maneuver with a burn-coast-burn phase
 sequence. This example is based on the problem provided in
 Enright <span id="id1">[<a class="reference internal" href="#id24" title="Paul J Enright and Brace A Conway. Optimal finite-thrust spacecraft trajectories using collocation and nonlinear programming. Journal of Guidance, Control, and Dynamics, 14(5):981–985, 1991.">EC91</a>]</span>.</p>
 <p>The dynamics are given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4ddacf01-aaa1-420e-8335-f612bc534687">
-<span class="eqno">(53)<a class="headerlink" href="#equation-4ddacf01-aaa1-420e-8335-f612bc534687" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-6fc32eeb-763b-4494-b055-a86400ff6b90">
+<span class="eqno">(53)<a class="headerlink" href="#equation-6fc32eeb-763b-4494-b055-a86400ff6b90" title="Permalink to this equation">¶</a></span>\[\begin{align}
   \frac{dr}{dt} &amp;= v_r \\
   \frac{d\theta}{dt} &amp;= \frac{v_\theta}{r} \\
   \frac{dv_r}{dt} &amp;= \frac{v^2_\theta}{r} - \frac{1}{r^2} + a_{thrust} \sin u_1 \\
@@ -634,8 +634,8 @@ Enright <span id="id1">[<a class="reference internal" href="#id24" title="Paul J
   \frac{d \Delta v}{dt} &amp;= a_{thrust}
 \end{align}\]</div>
 <p>The initial conditions are</p>
-<div class="amsmath math notranslate nohighlight" id="equation-83eac9ca-a9ff-4e1f-a9de-00e1604130c3">
-<span class="eqno">(54)<a class="headerlink" href="#equation-83eac9ca-a9ff-4e1f-a9de-00e1604130c3" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-972e5097-a286-4cdb-baed-2e0a4c7a4df5">
+<span class="eqno">(54)<a class="headerlink" href="#equation-972e5097-a286-4cdb-baed-2e0a4c7a4df5" title="Permalink to this equation">¶</a></span>\[\begin{align}
   r &amp;= 1 \rm{\,DU} \\
   \theta &amp;= 0 \rm{\,rad} \\
   v_r &amp;= 0 \rm{\,DU/TU}\\
@@ -644,8 +644,8 @@ Enright <span id="id1">[<a class="reference internal" href="#id24" title="Paul J
   \Delta v &amp;= 0 \rm{\,DU/TU}
 \end{align}\]</div>
 <p>and the final conditions are</p>
-<div class="amsmath math notranslate nohighlight" id="equation-03aa546a-d8aa-4f3c-9a6a-218fd7331dcb">
-<span class="eqno">(55)<a class="headerlink" href="#equation-03aa546a-d8aa-4f3c-9a6a-218fd7331dcb" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-f507d124-17be-4892-be3f-8a4792c41a7c">
+<span class="eqno">(55)<a class="headerlink" href="#equation-f507d124-17be-4892-be3f-8a4792c41a7c" title="Permalink to this equation">¶</a></span>\[\begin{align}
   r &amp;= 3 \rm{\,DU} \\
   \theta &amp;= \rm{free} \\
   v_r &amp;= 0 \rm{\,DU/TU}\\
@@ -1093,13 +1093,13 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         None
 </pre></div>
 </div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.8/site-packages/openmdao/core/problem.py:487: OMDeprecationWarning:Problem problem1 &#39;value&#39; will be deprecated in 4.0. Please use &#39;val&#39; in the future.
+</pre></div>
+</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking out_of_order
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking system
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.8/site-packages/openmdao/core/problem.py:487: OMDeprecationWarning:Problem problem1 &#39;value&#39; will be deprecated in 4.0. Please use &#39;val&#39; in the future.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking solvers
@@ -1151,7 +1151,7 @@ INFO: checking out_of_order
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking auto_ivc_warnings
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.786017 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.885916 seconds.
 Total jacobian shape: (120, 204) 
 
 
@@ -1160,8 +1160,8 @@ FWD solves: 13   REV solves: 0
 Total colors vs. total size: 13 vs 204  (93.6% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.786017 sec.
-Time to compute coloring: 0.097008 sec.
+Time to compute sparsity: 0.885916 sec.
+Time to compute coloring: 0.101651 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
@@ -1181,11 +1181,11 @@ This program contains Ipopt, a library for large-scale nonlinear optimization.
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                    2.4899
-       User Objective Time :       0.1188
-       User Sensitivity Time :     1.7727
-       Interface Time :            0.5128
-       Opt Solver Time:            0.0855
+    Total Time:                    2.6667
+       User Objective Time :       0.1246
+       User Sensitivity Time :     1.9358
+       Interface Time :            0.5160
+       Opt Solver Time:            0.0904
     Calls to Objective Function :      22
     Calls to Sens Function :           22
 

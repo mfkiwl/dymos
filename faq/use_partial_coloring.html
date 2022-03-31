@@ -1048,7 +1048,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model viewer data has already has already been recorded for Driver.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.470311 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.501765 seconds.
 Total jacobian shape: (361, 212) 
 </pre></div>
 </div>
@@ -1057,8 +1057,8 @@ FWD solves: 13   REV solves: 0
 Total colors vs. total size: 13 vs 212  (93.9% improvement)
 
 Sparsity computed using tolerance: 1e-12
-Time to compute sparsity: 0.470311 sec.
-Time to compute coloring: 0.259037 sec.
+Time to compute sparsity: 0.501765 sec.
+Time to compute coloring: 0.270062 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
@@ -1081,11 +1081,11 @@ This program contains Ipopt, a library for large-scale nonlinear optimization.
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                    7.9957
-       User Objective Time :       3.8835
-       User Sensitivity Time :     2.3892
-       Interface Time :            1.0867
-       Opt Solver Time:            0.6363
+    Total Time:                    8.2898
+       User Objective Time :       4.0303
+       User Sensitivity Time :     2.4608
+       Interface Time :            1.1570
+       Opt Solver Time:            0.6417
     Calls to Objective Function :     204
     Calls to Sens Function :          122
 
@@ -1683,8 +1683,8 @@ FWD solves: 13   REV solves: 0
 Total colors vs. total size: 13 vs 212  (93.9% improvement)
 
 Sparsity computed using tolerance: 1e-12
-Time to compute sparsity: 0.470311 sec.
-Time to compute coloring: 0.259037 sec.
+Time to compute sparsity: 0.501765 sec.
+Time to compute coloring: 0.270062 sec.
 Memory to compute coloring: 0.000000 MB.
 Finite Differencing: True  Partial Coloring: False
 
@@ -1700,7 +1700,7 @@ Finite Differencing: True  Partial Coloring: False
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model viewer data has already has already been recorded for Driver.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.546222 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.557520 seconds.
 Total jacobian shape: (361, 212) 
 </pre></div>
 </div>
@@ -1709,9 +1709,9 @@ FWD solves: 154   REV solves: 0
 Total colors vs. total size: 154 vs 212  (27.4% improvement)
 
 Sparsity computed using tolerance: 1e-12
-Time to compute sparsity: 0.546222 sec.
-Time to compute coloring: 1.261595 sec.
-Memory to compute coloring: 18.054688 MB.
+Time to compute sparsity: 0.557520 sec.
+Time to compute coloring: 1.359385 sec.
+Memory to compute coloring: 17.980469 MB.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Using option file &quot;IPOPT_options.opt&quot;.
@@ -1726,11 +1726,11 @@ Memory to compute coloring: 18.054688 MB.
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                   25.2005
-       User Objective Time :       4.9962
-       User Sensitivity Time :    17.2908
-       Interface Time :            1.3712
-       Opt Solver Time:            1.5424
+    Total Time:                   26.3801
+       User Objective Time :       5.2946
+       User Sensitivity Time :    18.1015
+       Interface Time :            1.4564
+       Opt Solver Time:            1.5275
     Calls to Objective Function :     260
     Calls to Sens Function :          143
 
@@ -2331,9 +2331,9 @@ FWD solves: 154   REV solves: 0
 Total colors vs. total size: 154 vs 212  (27.4% improvement)
 
 Sparsity computed using tolerance: 1e-12
-Time to compute sparsity: 0.546222 sec.
-Time to compute coloring: 1.261595 sec.
-Memory to compute coloring: 18.054688 MB.
+Time to compute sparsity: 0.557520 sec.
+Time to compute coloring: 1.359385 sec.
+Memory to compute coloring: 17.980469 MB.
 Finite Differencing: True  Partial Coloring: True
 
 --- Constraint Report [traj] ---
@@ -2382,7 +2382,10 @@ f...........................................................f...................
 ..............................f...........................................................f............................. 30  q
 ...............................f...........................................................f............................ 31  q
 ................................f...........................................................f........................... 32  q
-.................................f...........................................................f.......................... 33  q
+.................................f.................................................
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>..........f.......................... 33  q
 ..................................f...........................................................f......................... 34  q
 ...................................f...........................................................f........................ 35  q
 ....................................f...........................................................f....................... 36  q
@@ -2417,8 +2420,8 @@ FWD solves: 2   REV solves: 0
 Total colors vs. total size: 2 vs 120  (98.3% improvement)
 
 Sparsity computed using tolerance: 1e-06
-Time to compute sparsity: 0.015536 sec.
-Time to compute coloring: 0.011184 sec.
+Time to compute sparsity: 0.013735 sec.
+Time to compute coloring: 0.012279 sec.
 Memory to compute coloring: 0.000000 MB.
 
 Coloring for &#39;traj.phases.phase0.rhs_col.aero.q_comp&#39; (class DynamicPressureCompFD)
@@ -2460,12 +2463,12 @@ FWD solves: 2   REV solves: 0
 Total colors vs. total size: 2 vs 60  (96.7% improvement)
 
 Sparsity computed using tolerance: 1e-06
-Time to compute sparsity: 0.006621 sec.
-Time to compute coloring: 0.005801 sec.
+Time to compute sparsity: 0.006241 sec.
+Time to compute coloring: 0.006348 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.604962 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.637635 seconds.
 Total jacobian shape: (361, 212) 
 </pre></div>
 </div>
@@ -2474,8 +2477,8 @@ FWD solves: 13   REV solves: 0
 Total colors vs. total size: 13 vs 212  (93.9% improvement)
 
 Sparsity computed using tolerance: 1e-12
-Time to compute sparsity: 0.604962 sec.
-Time to compute coloring: 0.257577 sec.
+Time to compute sparsity: 0.637635 sec.
+Time to compute coloring: 0.280807 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
@@ -2491,11 +2494,11 @@ Memory to compute coloring: 0.000000 MB.
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                    8.3229
-       User Objective Time :       3.9165
-       User Sensitivity Time :     2.7236
-       Interface Time :            1.0675
-       Opt Solver Time:            0.6153
+    Total Time:                    8.8255
+       User Objective Time :       4.1871
+       User Sensitivity Time :     2.8557
+       Interface Time :            1.1375
+       Opt Solver Time:            0.6452
     Calls to Objective Function :     206
     Calls to Sens Function :          119
 
@@ -3090,14 +3093,14 @@ Memory to compute coloring: 0.000000 MB.
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 396x396 with 0 Axes&gt;
 </pre></div>
 </div>
-<img alt="../_images/use_partial_coloring_6_27.png" src="../_images/use_partial_coloring_6_27.png" />
+<img alt="../_images/use_partial_coloring_6_28.png" src="../_images/use_partial_coloring_6_28.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jacobian shape: (361, 212)  ( 3.44% nonzero)
 FWD solves: 13   REV solves: 0
 Total colors vs. total size: 13 vs 212  (93.9% improvement)
 
 Sparsity computed using tolerance: 1e-12
-Time to compute sparsity: 0.604962 sec.
-Time to compute coloring: 0.257577 sec.
+Time to compute sparsity: 0.637635 sec.
+Time to compute coloring: 0.280807 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
