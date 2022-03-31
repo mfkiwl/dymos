@@ -673,13 +673,13 @@ This makes scaling the problem easier, and gives the implicit variables more int
 <h2>Example:  Simulating the fall of an object<a class="headerlink" href="#example-simulating-the-fall-of-an-object" title="Permalink to this headline">¶</a></h2>
 <p>As a “hello, world” problem for Dymos, consider the vertical fall of an object acting under gravity - like Galileo dropping cannonballs from the Tower of Pisa.
 Ignoring aerodynamics and treating the ball as a point mass in a rectilinear gravity field, the motion is governed by:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-80f55dff-2579-4a9f-b4a5-d21f792e5f24">
-<span class="eqno">(5)<a class="headerlink" href="#equation-80f55dff-2579-4a9f-b4a5-d21f792e5f24" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-e480161e-8f21-45c0-907d-6158c92e684f">
+<span class="eqno">(5)<a class="headerlink" href="#equation-e480161e-8f21-45c0-907d-6158c92e684f" title="Permalink to this equation">¶</a></span>\[\begin{align}
     \ddot{y} = -g
 \end{align}\]</div>
 <p>The techniques in Dymos are generally centered around first-order dynamics, so we convert the above equation into the following system of ODEs.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-816725cd-b18d-4f79-8777-7b4ca354c766">
-<span class="eqno">(6)<a class="headerlink" href="#equation-816725cd-b18d-4f79-8777-7b4ca354c766" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-248c0530-9c20-4b7e-9eae-ed0a96f76fbf">
+<span class="eqno">(6)<a class="headerlink" href="#equation-248c0530-9c20-4b7e-9eae-ed0a96f76fbf" title="Permalink to this equation">¶</a></span>\[\begin{align}
     \dot{y} &amp;= v_y \\
     \dot{v_y} &amp;= -g
 \end{align}\]</div>
@@ -755,8 +755,8 @@ In LGL collocation, these points are chosen to be the LGL <em>nodes</em> in the 
 <p>To form 3rd-order polynomials for the states we need four pieces of information, but so far we only have the two endpoint values.
 We’ll use the state rates at the state discretization nodes to provide the other two values needed for interpolation.
 To obtain these, we evaluate our ODE at the state discretization nodes.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-cc06d3eb-d5cd-4978-a36c-42d29f565abe">
-<span class="eqno">(7)<a class="headerlink" href="#equation-cc06d3eb-d5cd-4978-a36c-42d29f565abe" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d397ff43-8a34-4c66-be4b-e65296e7db8d">
+<span class="eqno">(7)<a class="headerlink" href="#equation-d397ff43-8a34-4c66-be4b-e65296e7db8d" title="Permalink to this equation">¶</a></span>\[\begin{align}
     \dot{y}_0 &amp;= 0 \\
     \dot{y}_f &amp;= -50 \\
     \dot{v}_{y0} &amp;= -9.80665 \\
@@ -770,21 +770,21 @@ We call this difference in slope the collocation <em>defect</em>.</p>
 <p>Having computed the ODE at the state discretization nodes, we can form interpolants for the values and the slope of the states at the collocation nodes.
 Dymos uses Lagrange interpolants, such that the inputs to the system are the values of the states and controls, rather than less intuitive coefficients.
 In this case, the state values at our single collocation node are:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-bdb63fe5-f38f-4ca4-9cba-a6c87e2a1b84">
-<span class="eqno">(8)<a class="headerlink" href="#equation-bdb63fe5-f38f-4ca4-9cba-a6c87e2a1b84" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d586cc3c-da1d-4bf3-b4b3-b9b84e3a56d8">
+<span class="eqno">(8)<a class="headerlink" href="#equation-d586cc3c-da1d-4bf3-b4b3-b9b84e3a56d8" title="Permalink to this equation">¶</a></span>\[\begin{align}
     y_m &amp;= 50 \\
     v_{ym} &amp;= -25
 \end{align}\]</div>
 <p><img alt="Screenshot" src="../_images/lgl_animation_2.png" /></p>
 <p>The polynomial slopes at the collocation node are:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-424b12a6-2ebf-4a6f-9991-d59880b7a3db">
-<span class="eqno">(9)<a class="headerlink" href="#equation-424b12a6-2ebf-4a6f-9991-d59880b7a3db" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-f797f1d9-e8ac-429e-b751-ac5e29e8c022">
+<span class="eqno">(9)<a class="headerlink" href="#equation-f797f1d9-e8ac-429e-b751-ac5e29e8c022" title="Permalink to this equation">¶</a></span>\[\begin{align}
     y'_m &amp;= 50 \\
     v'_{ym} &amp;= -25
 \end{align}\]</div>
 <p>Now, having the state and time values at the collocation nodes, we can again evaluate the ODE.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-eab80eff-fdb6-42a4-a50d-7993849bcd52">
-<span class="eqno">(10)<a class="headerlink" href="#equation-eab80eff-fdb6-42a4-a50d-7993849bcd52" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-f1c3da2d-69f2-4934-ada0-78425a4acd62">
+<span class="eqno">(10)<a class="headerlink" href="#equation-f1c3da2d-69f2-4934-ada0-78425a4acd62" title="Permalink to this equation">¶</a></span>\[\begin{align}
     \dot{y}_m &amp;= -17 \\
     \dot{v}_{ym} &amp;= -9.80665
 \end{align}\]</div>

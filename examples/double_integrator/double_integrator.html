@@ -614,20 +614,20 @@ traveled by a block (that starts and ends at rest) sliding without
 friction along a horizontal surface, with acceleration as the control.</p>
 <p>We minimize the final time, <span class="math notranslate nohighlight">\(t_f\)</span>, by varying the dynamic control,
 <span class="math notranslate nohighlight">\(u\)</span>, subject to the dynamics:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7590d3a1-f2fa-4984-834a-35e29c677934">
-<span class="eqno">(45)<a class="headerlink" href="#equation-7590d3a1-f2fa-4984-834a-35e29c677934" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-51f3cd1f-4d05-4fc4-9bb0-035de7fac052">
+<span class="eqno">(45)<a class="headerlink" href="#equation-51f3cd1f-4d05-4fc4-9bb0-035de7fac052" title="Permalink to this equation">¶</a></span>\[\begin{align}
   \frac{dx}{dt} &amp;= v \\
   \frac{dv}{dt} &amp;= u
 \end{align}\]</div>
 <p>The initial conditions are</p>
-<div class="amsmath math notranslate nohighlight" id="equation-84be139f-aadd-4ba5-a580-fb50f474608e">
-<span class="eqno">(46)<a class="headerlink" href="#equation-84be139f-aadd-4ba5-a580-fb50f474608e" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-caf7f44d-d997-48d5-981c-fd0d42f1ec4a">
+<span class="eqno">(46)<a class="headerlink" href="#equation-caf7f44d-d997-48d5-981c-fd0d42f1ec4a" title="Permalink to this equation">¶</a></span>\[\begin{align}
   x_0 &amp;= 0 \\
   v_0 &amp;= 0
 \end{align}\]</div>
 <p>and the final conditions are</p>
-<div class="amsmath math notranslate nohighlight" id="equation-bed61ccd-5734-4bb2-a935-e01d2fb7b17b">
-<span class="eqno">(47)<a class="headerlink" href="#equation-bed61ccd-5734-4bb2-a935-e01d2fb7b17b" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-1aab3326-5ab8-4f21-94c5-36345c493d32">
+<span class="eqno">(47)<a class="headerlink" href="#equation-1aab3326-5ab8-4f21-94c5-36345c493d32" title="Permalink to this equation">¶</a></span>\[\begin{align}
   x_f &amp;= \rm{free} \\
   v_f &amp;= 0
 \end{align}\]</div>
@@ -863,6 +863,9 @@ INFO: checking out_of_order
 INFO: checking out_of_order
 </pre></div>
 </div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.8/site-packages/openmdao/utils/options_dictionary.py:347: OMDeprecationWarning:&#39;gradient method&#39; is not a valid python name and will become an invalid option name in a future release. You can prevent this warning (and future exceptions) by declaring this option using a valid python name.
+</pre></div>
+</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking system
 </pre></div>
 </div>
@@ -891,10 +894,7 @@ INFO: checking out_of_order
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking auto_ivc_warnings
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.8/site-packages/openmdao/utils/options_dictionary.py:332: OMDeprecationWarning:&#39;gradient method&#39; is not a valid python name and will become an invalid option name in a future release. You can prevent this warning (and future exceptions) by declaring this option using a valid python name.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.137633 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.106014 seconds.
 Total jacobian shape: (181, 327) 
 </pre></div>
 </div>
@@ -903,8 +903,9 @@ FWD solves: 0   REV solves: 6
 Total colors vs. total size: 6 vs 181  (96.7% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.137633 sec.
-Time to compute coloring: 0.207922 sec.
+Time to compute sparsity: 0.106014 sec.
+Time to compute coloring: 0.129780 sec.
+Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization Problem -- Optimization using pyOpt_sparse
@@ -913,11 +914,11 @@ Time to compute coloring: 0.207922 sec.
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                    2.7850
-       User Objective Time :       0.0351
-       User Sensitivity Time :     0.1150
-       Interface Time :            0.1943
-       Opt Solver Time:            2.4405
+    Total Time:                    2.4332
+       User Objective Time :       0.0289
+       User Sensitivity Time :     0.0915
+       Interface Time :            0.1538
+       Opt Solver Time:            2.1590
     Calls to Objective Function :      19
     Calls to Sens Function :           19
 
