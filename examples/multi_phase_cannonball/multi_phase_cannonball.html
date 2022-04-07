@@ -673,24 +673,24 @@ the system at an event in the trajectory. Here, we have the first phase
 (ascent) terminate when the flight path angle reaches zero (apogee). The
 descent phase follows until the cannonball impacts the ground.</p>
 <p>The dynamics are given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ff9572be-12fd-440f-aabe-f100d4e3dfc2">
-<span class="eqno">(65)<a class="headerlink" href="#equation-ff9572be-12fd-440f-aabe-f100d4e3dfc2" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-f597ce15-1d7f-4c2a-a32b-8debd80cc085">
+<span class="eqno">(65)<a class="headerlink" href="#equation-f597ce15-1d7f-4c2a-a32b-8debd80cc085" title="Permalink to this equation">¶</a></span>\[\begin{align}
   \frac{dv}{dt} &amp;= \frac{D}{m} - g \sin \gamma \\
   \frac{d\gamma}{dt} &amp;= - \frac{g \cos \gamma}{v} \\
   \frac{dh}{dt} &amp;= v \sin \gamma \\
   \frac{dr}{dt} &amp;= v \cos \gamma \\
 \end{align}\]</div>
 <p>The initial conditions are</p>
-<div class="amsmath math notranslate nohighlight" id="equation-80a7a967-59e4-4a1f-b3c3-8ecce0482061">
-<span class="eqno">(66)<a class="headerlink" href="#equation-80a7a967-59e4-4a1f-b3c3-8ecce0482061" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-71083b19-a558-4cfa-9331-2f1669cc42a0">
+<span class="eqno">(66)<a class="headerlink" href="#equation-71083b19-a558-4cfa-9331-2f1669cc42a0" title="Permalink to this equation">¶</a></span>\[\begin{align}
   r_0 &amp;= 0 \rm{\,m} \\
   h_0 &amp;= 100 \rm{\,m} \\
   v_0 &amp;= \rm{free} \\
   \gamma_0 &amp;= \rm{free}
 \end{align}\]</div>
 <p>and the final conditions are</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1b3a9eca-d1f2-4c8e-9e75-642e663d3bb5">
-<span class="eqno">(67)<a class="headerlink" href="#equation-1b3a9eca-d1f2-4c8e-9e75-642e663d3bb5" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-b10f5ba0-c198-47d3-8cf1-9555a7b63916">
+<span class="eqno">(67)<a class="headerlink" href="#equation-b10f5ba0-c198-47d3-8cf1-9555a7b63916" title="Permalink to this equation">¶</a></span>\[\begin{align}
   h_f &amp;= 0 \rm{\,m}
 \end{align}\]</div>
 </div>
@@ -703,8 +703,8 @@ energy and that our cannonball is made of solid iron. The volume (and
 mass) of the cannonball is proportional to its radius cubed, while the
 cross-sectional area is proportional to its radius squared. If we
 increase the size of the cannonball, the ballistic coefficient</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d3769284-55ca-46d8-badf-3ecd3c0126a5">
-<span class="eqno">(68)<a class="headerlink" href="#equation-d3769284-55ca-46d8-badf-3ecd3c0126a5" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-1407b2b9-aa9e-47d6-aa10-09001eb727eb">
+<span class="eqno">(68)<a class="headerlink" href="#equation-1407b2b9-aa9e-47d6-aa10-09001eb727eb" title="Permalink to this equation">¶</a></span>\[\begin{align}
   BC &amp;= \frac{m}{C_D A}
 \end{align}\]</div>
 <p>will increase, meaning the cannonball overcome air resistance more
@@ -998,21 +998,21 @@ account.</p>
         [initial] 0.0000e+00 &lt;= ke &lt;= 4.0000e+05  [J]
     --- descent ---
         None
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model viewer data has already has already been recorded for Driver.
+
 Model viewer data has already has already been recorded for Driver.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Coloring for &#39;traj.phases.ascent.rhs_all&#39; (class CannonballODE)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model viewer data has already has already been recorded for Driver.
+
+Coloring for &#39;traj.phases.ascent.rhs_all&#39; (class CannonballODE)
 
 Jacobian shape: (100, 63)  ( 4.44% nonzero)
 FWD solves: 6   REV solves: 0
 Total colors vs. total size: 6 vs 63  (90.5% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.046639 sec.
-Time to compute coloring: 0.019337 sec.
+Time to compute sparsity: 0.026446 sec.
+Time to compute coloring: 0.010356 sec.
 Memory to compute coloring: 0.000000 MB.
 
 Coloring for &#39;traj.phases.descent.rhs_disc&#39; (class CannonballODE)
@@ -1022,8 +1022,8 @@ FWD solves: 6   REV solves: 0
 Total colors vs. total size: 6 vs 33  (81.8% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.023481 sec.
-Time to compute coloring: 0.008723 sec.
+Time to compute sparsity: 0.014123 sec.
+Time to compute coloring: 0.005483 sec.
 Memory to compute coloring: 0.000000 MB.
 
 Coloring for &#39;traj.phases.descent.rhs_col&#39; (class CannonballODE)
@@ -1033,21 +1033,23 @@ FWD solves: 6   REV solves: 0
 Total colors vs. total size: 6 vs 18  (66.7% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.013949 sec.
-Time to compute coloring: 0.004927 sec.
+Time to compute sparsity: 0.008069 sec.
+Time to compute coloring: 0.003150 sec.
 Memory to compute coloring: 0.000000 MB.
-Full total jacobian was computed 3 times, taking 0.240973 seconds.
-Total jacobian shape: (87, 88) 
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jacobian shape: (87, 88)  (16.24% nonzero)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.151520 seconds.
+Total jacobian shape: (87, 88) 
+
+
+Jacobian shape: (87, 88)  (16.37% nonzero)
 FWD solves: 30   REV solves: 0
 Total colors vs. total size: 30 vs 88  (65.9% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.240973 sec.
-Time to compute coloring: 0.122374 sec.
-Memory to compute coloring: 0.308594 MB.
+Time to compute sparsity: 0.151520 sec.
+Time to compute coloring: 0.075444 sec.
+Memory to compute coloring: 0.628906 MB.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization Problem -- Optimization using pyOpt_sparse
@@ -1056,11 +1058,11 @@ Memory to compute coloring: 0.308594 MB.
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                    3.0983
-       User Objective Time :       0.4453
-       User Sensitivity Time :     1.8370
-       Interface Time :            0.6049
-       Opt Solver Time:            0.2111
+    Total Time:                    2.2738
+       User Objective Time :       0.3008
+       User Sensitivity Time :     1.3113
+       Interface Time :            0.4606
+       Opt Solver Time:            0.2010
     Calls to Objective Function :     118
     Calls to Sens Function :           89
 
@@ -1147,7 +1149,7 @@ Memory to compute coloring: 0.308594 MB.
          73  traj.phases.descent.indep_states.states:h_2        c    -1.000000E+21     7.651714E+02     1.000000E+21           
          74  traj.phases.descent.indep_states.states:h_3        c    -1.000000E+21     5.609894E+02     1.000000E+21           
          75  traj.phases.descent.indep_states.states:h_4        c    -1.000000E+21     3.009916E+02     1.000000E+21           
-         76  traj.phases.descent.indep_states.states:gam_0      c    -1.000000E+21     4.230610E-20     1.000000E+21           
+         76  traj.phases.descent.indep_states.states:gam_0      c    -1.000000E+21     1.317183E-20     1.000000E+21           
          77  traj.phases.descent.indep_states.states:gam_1      c    -1.000000E+21    -3.251038E-01     1.000000E+21           
          78  traj.phases.descent.indep_states.states:gam_2      c    -1.000000E+21    -6.397506E-01     1.000000E+21           
          79  traj.phases.descent.indep_states.states:gam_3      c    -1.000000E+21    -8.901606E-01     1.000000E+21           
@@ -1162,90 +1164,90 @@ Memory to compute coloring: 0.308594 MB.
 
    Constraints (i - inequality, e - equality)
       Index  Name                                                             Type          Lower           Value           Upper    Status  Lagrange Multiplier (N/A)
-          0  traj.phases.ascent.collocation_constraint.defects:r                 e   0.000000E+00    1.331710E-11    0.000000E+00              9.00000E+100
-          1  traj.phases.ascent.collocation_constraint.defects:r                 e   0.000000E+00    6.961209E-12    0.000000E+00              9.00000E+100
-          2  traj.phases.ascent.collocation_constraint.defects:r                 e   0.000000E+00    3.631935E-12    0.000000E+00              9.00000E+100
-          3  traj.phases.ascent.collocation_constraint.defects:r                 e   0.000000E+00    2.663419E-12    0.000000E+00              9.00000E+100
-          4  traj.phases.ascent.collocation_constraint.defects:r                 e   0.000000E+00    8.777176E-13    0.000000E+00              9.00000E+100
-          5  traj.phases.ascent.collocation_constraint.defects:r                 e   0.000000E+00    9.079838E-13    0.000000E+00              9.00000E+100
-          6  traj.phases.ascent.collocation_constraint.defects:r                 e   0.000000E+00    1.815968E-13    0.000000E+00              9.00000E+100
-          7  traj.phases.ascent.collocation_constraint.defects:r                 e   0.000000E+00   -8.171854E-13    0.000000E+00              9.00000E+100
-          8  traj.phases.ascent.collocation_constraint.defects:r                 e   0.000000E+00   -4.842580E-13    0.000000E+00              9.00000E+100
-          9  traj.phases.ascent.collocation_constraint.defects:r                 e   0.000000E+00   -8.171854E-13    0.000000E+00              9.00000E+100
-         10  traj.phases.ascent.collocation_constraint.defects:r                 e   0.000000E+00   -9.079838E-13    0.000000E+00              9.00000E+100
-         11  traj.phases.ascent.collocation_constraint.defects:r                 e   0.000000E+00   -9.382499E-13    0.000000E+00              9.00000E+100
-         12  traj.phases.ascent.collocation_constraint.defects:r                 e   0.000000E+00   -9.231168E-13    0.000000E+00              9.00000E+100
-         13  traj.phases.ascent.collocation_constraint.defects:r                 e   0.000000E+00   -7.869193E-13    0.000000E+00              9.00000E+100
-         14  traj.phases.ascent.collocation_constraint.defects:r                 e   0.000000E+00   -5.901894E-13    0.000000E+00              9.00000E+100
-         15  traj.phases.ascent.collocation_constraint.defects:h                 e   0.000000E+00    7.687596E-12    0.000000E+00              9.00000E+100
-         16  traj.phases.ascent.collocation_constraint.defects:h                 e   0.000000E+00    2.542355E-12    0.000000E+00              9.00000E+100
-         17  traj.phases.ascent.collocation_constraint.defects:h                 e   0.000000E+00    4.237258E-13    0.000000E+00              9.00000E+100
-         18  traj.phases.ascent.collocation_constraint.defects:h                 e   0.000000E+00    6.053225E-14    0.000000E+00              9.00000E+100
-         19  traj.phases.ascent.collocation_constraint.defects:h                 e   0.000000E+00    2.421290E-13    0.000000E+00              9.00000E+100
-         20  traj.phases.ascent.collocation_constraint.defects:h                 e   0.000000E+00    2.723951E-13    0.000000E+00              9.00000E+100
-         21  traj.phases.ascent.collocation_constraint.defects:h                 e   0.000000E+00    2.572621E-13    0.000000E+00              9.00000E+100
-         22  traj.phases.ascent.collocation_constraint.defects:h                 e   0.000000E+00    1.361976E-13    0.000000E+00              9.00000E+100
-         23  traj.phases.ascent.collocation_constraint.defects:h                 e   0.000000E+00    5.826229E-13    0.000000E+00              9.00000E+100
-         24  traj.phases.ascent.collocation_constraint.defects:h                 e   0.000000E+00   -8.928507E-13    0.000000E+00              9.00000E+100
-         25  traj.phases.ascent.collocation_constraint.defects:h                 e   0.000000E+00    3.707600E-13    0.000000E+00              9.00000E+100
-         26  traj.phases.ascent.collocation_constraint.defects:h                 e   0.000000E+00    3.518437E-13    0.000000E+00              9.00000E+100
-         27  traj.phases.ascent.collocation_constraint.defects:h                 e   0.000000E+00    3.480604E-13    0.000000E+00              9.00000E+100
-         28  traj.phases.ascent.collocation_constraint.defects:h                 e   0.000000E+00    2.515872E-13    0.000000E+00              9.00000E+100
-         29  traj.phases.ascent.collocation_constraint.defects:h                 e   0.000000E+00    3.064445E-13    0.000000E+00              9.00000E+100
-         30  traj.phases.ascent.collocation_constraint.defects:gam               e   0.000000E+00    7.269116E-15    0.000000E+00              9.00000E+100
-         31  traj.phases.ascent.collocation_constraint.defects:gam               e   0.000000E+00    4.093612E-15    0.000000E+00              9.00000E+100
-         32  traj.phases.ascent.collocation_constraint.defects:gam               e   0.000000E+00    2.523409E-15    0.000000E+00              9.00000E+100
-         33  traj.phases.ascent.collocation_constraint.defects:gam               e   0.000000E+00    1.189660E-15    0.000000E+00              9.00000E+100
-         34  traj.phases.ascent.collocation_constraint.defects:gam               e   0.000000E+00    7.019731E-16    0.000000E+00              9.00000E+100
-         35  traj.phases.ascent.collocation_constraint.defects:gam               e   0.000000E+00    4.433514E-17    0.000000E+00              9.00000E+100
-         36  traj.phases.ascent.collocation_constraint.defects:gam               e   0.000000E+00    5.911353E-17    0.000000E+00              9.00000E+100
-         37  traj.phases.ascent.collocation_constraint.defects:gam               e   0.000000E+00    2.216757E-17    0.000000E+00              9.00000E+100
-         38  traj.phases.ascent.collocation_constraint.defects:gam               e   0.000000E+00    1.477838E-17    0.000000E+00              9.00000E+100
-         39  traj.phases.ascent.collocation_constraint.defects:gam               e   0.000000E+00    1.847298E-16    0.000000E+00              9.00000E+100
-         40  traj.phases.ascent.collocation_constraint.defects:gam               e   0.000000E+00    3.990163E-16    0.000000E+00              9.00000E+100
-         41  traj.phases.ascent.collocation_constraint.defects:gam               e   0.000000E+00    9.014813E-16    0.000000E+00              9.00000E+100
-         42  traj.phases.ascent.collocation_constraint.defects:gam               e   0.000000E+00    1.019708E-15    0.000000E+00              9.00000E+100
-         43  traj.phases.ascent.collocation_constraint.defects:gam               e   0.000000E+00    1.581287E-15    0.000000E+00              9.00000E+100
-         44  traj.phases.ascent.collocation_constraint.defects:gam               e   0.000000E+00    2.305428E-15    0.000000E+00              9.00000E+100
-         45  traj.phases.ascent.collocation_constraint.defects:v                 e   0.000000E+00    3.120135E-10    0.000000E+00              9.00000E+100
-         46  traj.phases.ascent.collocation_constraint.defects:v                 e   0.000000E+00    1.022087E-10    0.000000E+00              9.00000E+100
-         47  traj.phases.ascent.collocation_constraint.defects:v                 e   0.000000E+00    3.836231E-11    0.000000E+00              9.00000E+100
-         48  traj.phases.ascent.collocation_constraint.defects:v                 e   0.000000E+00    2.633153E-11    0.000000E+00              9.00000E+100
-         49  traj.phases.ascent.collocation_constraint.defects:v                 e   0.000000E+00    1.464124E-11    0.000000E+00              9.00000E+100
-         50  traj.phases.ascent.collocation_constraint.defects:v                 e   0.000000E+00    7.611931E-12    0.000000E+00              9.00000E+100
-         51  traj.phases.ascent.collocation_constraint.defects:v                 e   0.000000E+00    6.060792E-12    0.000000E+00              9.00000E+100
-         52  traj.phases.ascent.collocation_constraint.defects:v                 e   0.000000E+00    4.089710E-12    0.000000E+00              9.00000E+100
-         53  traj.phases.ascent.collocation_constraint.defects:v                 e   0.000000E+00    2.398590E-12    0.000000E+00              9.00000E+100
-         54  traj.phases.ascent.collocation_constraint.defects:v                 e   0.000000E+00    2.254826E-12    0.000000E+00              9.00000E+100
-         55  traj.phases.ascent.collocation_constraint.defects:v                 e   0.000000E+00    1.609780E-12    0.000000E+00              9.00000E+100
-         56  traj.phases.ascent.collocation_constraint.defects:v                 e   0.000000E+00    1.061206E-12    0.000000E+00              9.00000E+100
-         57  traj.phases.ascent.collocation_constraint.defects:v                 e   0.000000E+00    9.458164E-13    0.000000E+00              9.00000E+100
-         58  traj.phases.ascent.collocation_constraint.defects:v                 e   0.000000E+00    7.490866E-13    0.000000E+00              9.00000E+100
-         59  traj.phases.ascent.collocation_constraint.defects:v                 e   0.000000E+00    6.223472E-13    0.000000E+00              9.00000E+100
-         60  traj.phases.descent.collocation_constraint.defects:r                e   0.000000E+00    8.779411E-12    0.000000E+00              9.00000E+100
-         61  traj.phases.descent.collocation_constraint.defects:r                e   0.000000E+00    9.583807E-12    0.000000E+00              9.00000E+100
-         62  traj.phases.descent.collocation_constraint.defects:r                e   0.000000E+00    9.514859E-12    0.000000E+00              9.00000E+100
-         63  traj.phases.descent.collocation_constraint.defects:r                e   0.000000E+00    8.503618E-12    0.000000E+00              9.00000E+100
-         64  traj.phases.descent.collocation_constraint.defects:r                e   0.000000E+00    7.538343E-12    0.000000E+00              9.00000E+100
-         65  traj.phases.descent.collocation_constraint.defects:h                e   0.000000E+00   -2.025355E-12    0.000000E+00              9.00000E+100
-         66  traj.phases.descent.collocation_constraint.defects:h                e   0.000000E+00   -5.665248E-12    0.000000E+00              9.00000E+100
-         67  traj.phases.descent.collocation_constraint.defects:h                e   0.000000E+00   -7.101670E-12    0.000000E+00              9.00000E+100
-         68  traj.phases.descent.collocation_constraint.defects:h                e   0.000000E+00   -7.699222E-12    0.000000E+00              9.00000E+100
-         69  traj.phases.descent.collocation_constraint.defects:h                e   0.000000E+00   -8.572566E-12    0.000000E+00              9.00000E+100
-         70  traj.phases.descent.collocation_constraint.defects:gam              e   0.000000E+00    1.806750E-14    0.000000E+00              9.00000E+100
-         71  traj.phases.descent.collocation_constraint.defects:gam              e   0.000000E+00    6.082349E-15    0.000000E+00              9.00000E+100
-         72  traj.phases.descent.collocation_constraint.defects:gam              e   0.000000E+00   -9.359187E-15    0.000000E+00              9.00000E+100
-         73  traj.phases.descent.collocation_constraint.defects:gam              e   0.000000E+00   -1.358990E-14    0.000000E+00              9.00000E+100
-         74  traj.phases.descent.collocation_constraint.defects:gam              e   0.000000E+00   -1.246769E-14    0.000000E+00              9.00000E+100
-         75  traj.phases.descent.collocation_constraint.defects:v                e   0.000000E+00    7.210838E-13    0.000000E+00              9.00000E+100
-         76  traj.phases.descent.collocation_constraint.defects:v                e   0.000000E+00    3.932205E-13    0.000000E+00              9.00000E+100
-         77  traj.phases.descent.collocation_constraint.defects:v                e   0.000000E+00    1.301757E-12    0.000000E+00              9.00000E+100
-         78  traj.phases.descent.collocation_constraint.defects:v                e   0.000000E+00    2.341368E-12    0.000000E+00              9.00000E+100
-         79  traj.phases.descent.collocation_constraint.defects:v                e   0.000000E+00    2.909473E-12    0.000000E+00              9.00000E+100
+          0  traj.phases.ascent.collocation_constraint.defects:r                 e   0.000000E+00    1.307497E-11    0.000000E+00              9.00000E+100
+          1  traj.phases.ascent.collocation_constraint.defects:r                 e   0.000000E+00    7.021741E-12    0.000000E+00              9.00000E+100
+          2  traj.phases.ascent.collocation_constraint.defects:r                 e   0.000000E+00    3.450338E-12    0.000000E+00              9.00000E+100
+          3  traj.phases.ascent.collocation_constraint.defects:r                 e   0.000000E+00    2.966080E-12    0.000000E+00              9.00000E+100
+          4  traj.phases.ascent.collocation_constraint.defects:r                 e   0.000000E+00    1.392242E-12    0.000000E+00              9.00000E+100
+          5  traj.phases.ascent.collocation_constraint.defects:r                 e   0.000000E+00    9.079838E-14    0.000000E+00              9.00000E+100
+          6  traj.phases.ascent.collocation_constraint.defects:r                 e   0.000000E+00    3.026613E-13    0.000000E+00              9.00000E+100
+          7  traj.phases.ascent.collocation_constraint.defects:r                 e   0.000000E+00    3.026613E-14    0.000000E+00              9.00000E+100
+          8  traj.phases.ascent.collocation_constraint.defects:r                 e   0.000000E+00   -1.029048E-12    0.000000E+00              9.00000E+100
+          9  traj.phases.ascent.collocation_constraint.defects:r                 e   0.000000E+00   -3.329274E-13    0.000000E+00              9.00000E+100
+         10  traj.phases.ascent.collocation_constraint.defects:r                 e   0.000000E+00   -8.171854E-13    0.000000E+00              9.00000E+100
+         11  traj.phases.ascent.collocation_constraint.defects:r                 e   0.000000E+00   -7.566531E-13    0.000000E+00              9.00000E+100
+         12  traj.phases.ascent.collocation_constraint.defects:r                 e   0.000000E+00    5.599233E-13    0.000000E+00              9.00000E+100
+         13  traj.phases.ascent.collocation_constraint.defects:r                 e   0.000000E+00   -1.059314E-12    0.000000E+00              9.00000E+100
+         14  traj.phases.ascent.collocation_constraint.defects:r                 e   0.000000E+00   -1.150113E-12    0.000000E+00              9.00000E+100
+         15  traj.phases.ascent.collocation_constraint.defects:h                 e   0.000000E+00    6.416419E-12    0.000000E+00              9.00000E+100
+         16  traj.phases.ascent.collocation_constraint.defects:h                 e   0.000000E+00    1.725169E-12    0.000000E+00              9.00000E+100
+         17  traj.phases.ascent.collocation_constraint.defects:h                 e   0.000000E+00    1.210645E-13    0.000000E+00              9.00000E+100
+         18  traj.phases.ascent.collocation_constraint.defects:h                 e   0.000000E+00   -6.053225E-14    0.000000E+00              9.00000E+100
+         19  traj.phases.ascent.collocation_constraint.defects:h                 e   0.000000E+00    0.000000E+00    0.000000E+00              9.00000E+100
+         20  traj.phases.ascent.collocation_constraint.defects:h                 e   0.000000E+00    1.664637E-13    0.000000E+00              9.00000E+100
+         21  traj.phases.ascent.collocation_constraint.defects:h                 e   0.000000E+00    2.723951E-13    0.000000E+00              9.00000E+100
+         22  traj.phases.ascent.collocation_constraint.defects:h                 e   0.000000E+00    3.480604E-13    0.000000E+00              9.00000E+100
+         23  traj.phases.ascent.collocation_constraint.defects:h                 e   0.000000E+00    1.513306E-14    0.000000E+00              9.00000E+100
+         24  traj.phases.ascent.collocation_constraint.defects:h                 e   0.000000E+00    8.701511E-13    0.000000E+00              9.00000E+100
+         25  traj.phases.ascent.collocation_constraint.defects:h                 e   0.000000E+00    4.842580E-13    0.000000E+00              9.00000E+100
+         26  traj.phases.ascent.collocation_constraint.defects:h                 e   0.000000E+00    5.485735E-13    0.000000E+00              9.00000E+100
+         27  traj.phases.ascent.collocation_constraint.defects:h                 e   0.000000E+00    7.490866E-13    0.000000E+00              9.00000E+100
+         28  traj.phases.ascent.collocation_constraint.defects:h                 e   0.000000E+00    4.237258E-13    0.000000E+00              9.00000E+100
+         29  traj.phases.ascent.collocation_constraint.defects:h                 e   0.000000E+00    1.201187E-13    0.000000E+00              9.00000E+100
+         30  traj.phases.ascent.collocation_constraint.defects:gam               e   0.000000E+00    8.035745E-15    0.000000E+00              9.00000E+100
+         31  traj.phases.ascent.collocation_constraint.defects:gam               e   0.000000E+00    4.300509E-15    0.000000E+00              9.00000E+100
+         32  traj.phases.ascent.collocation_constraint.defects:gam               e   0.000000E+00    2.290649E-15    0.000000E+00              9.00000E+100
+         33  traj.phases.ascent.collocation_constraint.defects:gam               e   0.000000E+00    1.995082E-15    0.000000E+00              9.00000E+100
+         34  traj.phases.ascent.collocation_constraint.defects:gam               e   0.000000E+00    6.059136E-16    0.000000E+00              9.00000E+100
+         35  traj.phases.ascent.collocation_constraint.defects:gam               e   0.000000E+00    2.512325E-16    0.000000E+00              9.00000E+100
+         36  traj.phases.ascent.collocation_constraint.defects:gam               e   0.000000E+00    1.551730E-16    0.000000E+00              9.00000E+100
+         37  traj.phases.ascent.collocation_constraint.defects:gam               e   0.000000E+00   -1.403946E-16    0.000000E+00              9.00000E+100
+         38  traj.phases.ascent.collocation_constraint.defects:gam               e   0.000000E+00    2.955676E-16    0.000000E+00              9.00000E+100
+         39  traj.phases.ascent.collocation_constraint.defects:gam               e   0.000000E+00    3.768487E-16    0.000000E+00              9.00000E+100
+         40  traj.phases.ascent.collocation_constraint.defects:gam               e   0.000000E+00    3.546812E-16    0.000000E+00              9.00000E+100
+         41  traj.phases.ascent.collocation_constraint.defects:gam               e   0.000000E+00    9.901516E-16    0.000000E+00              9.00000E+100
+         42  traj.phases.ascent.collocation_constraint.defects:gam               e   0.000000E+00    1.182271E-15    0.000000E+00              9.00000E+100
+         43  traj.phases.ascent.collocation_constraint.defects:gam               e   0.000000E+00    1.729071E-15    0.000000E+00              9.00000E+100
+         44  traj.phases.ascent.collocation_constraint.defects:gam               e   0.000000E+00    2.512325E-15    0.000000E+00              9.00000E+100
+         45  traj.phases.ascent.collocation_constraint.defects:v                 e   0.000000E+00    3.212749E-10    0.000000E+00              9.00000E+100
+         46  traj.phases.ascent.collocation_constraint.defects:v                 e   0.000000E+00    1.050840E-10    0.000000E+00              9.00000E+100
+         47  traj.phases.ascent.collocation_constraint.defects:v                 e   0.000000E+00    3.925516E-11    0.000000E+00              9.00000E+100
+         48  traj.phases.ascent.collocation_constraint.defects:v                 e   0.000000E+00    2.708818E-11    0.000000E+00              9.00000E+100
+         49  traj.phases.ascent.collocation_constraint.defects:v                 e   0.000000E+00    1.505740E-11    0.000000E+00              9.00000E+100
+         50  traj.phases.ascent.collocation_constraint.defects:v                 e   0.000000E+00    7.672463E-12    0.000000E+00              9.00000E+100
+         51  traj.phases.ascent.collocation_constraint.defects:v                 e   0.000000E+00    6.318054E-12    0.000000E+00              9.00000E+100
+         52  traj.phases.ascent.collocation_constraint.defects:v                 e   0.000000E+00    4.218341E-12    0.000000E+00              9.00000E+100
+         53  traj.phases.ascent.collocation_constraint.defects:v                 e   0.000000E+00    2.542355E-12    0.000000E+00              9.00000E+100
+         54  traj.phases.ascent.collocation_constraint.defects:v                 e   0.000000E+00    2.156461E-12    0.000000E+00              9.00000E+100
+         55  traj.phases.ascent.collocation_constraint.defects:v                 e   0.000000E+00    1.658962E-12    0.000000E+00              9.00000E+100
+         56  traj.phases.ascent.collocation_constraint.defects:v                 e   0.000000E+00    1.102822E-12    0.000000E+00              9.00000E+100
+         57  traj.phases.ascent.collocation_constraint.defects:v                 e   0.000000E+00    9.439248E-13    0.000000E+00              9.00000E+100
+         58  traj.phases.ascent.collocation_constraint.defects:v                 e   0.000000E+00    7.850276E-13    0.000000E+00              9.00000E+100
+         59  traj.phases.ascent.collocation_constraint.defects:v                 e   0.000000E+00    5.920811E-13    0.000000E+00              9.00000E+100
+         60  traj.phases.descent.collocation_constraint.defects:r                e   0.000000E+00    9.698721E-12    0.000000E+00              9.00000E+100
+         61  traj.phases.descent.collocation_constraint.defects:r                e   0.000000E+00    9.951531E-12    0.000000E+00              9.00000E+100
+         62  traj.phases.descent.collocation_constraint.defects:r                e   0.000000E+00    9.928549E-12    0.000000E+00              9.00000E+100
+         63  traj.phases.descent.collocation_constraint.defects:r                e   0.000000E+00    9.020730E-12    0.000000E+00              9.00000E+100
+         64  traj.phases.descent.collocation_constraint.defects:r                e   0.000000E+00    8.204842E-12    0.000000E+00              9.00000E+100
+         65  traj.phases.descent.collocation_constraint.defects:h                e   0.000000E+00   -2.191980E-12    0.000000E+00              9.00000E+100
+         66  traj.phases.descent.collocation_constraint.defects:h                e   0.000000E+00   -5.722705E-12    0.000000E+00              9.00000E+100
+         67  traj.phases.descent.collocation_constraint.defects:h                e   0.000000E+00   -7.342989E-12    0.000000E+00              9.00000E+100
+         68  traj.phases.descent.collocation_constraint.defects:h                e   0.000000E+00   -7.952032E-12    0.000000E+00              9.00000E+100
+         69  traj.phases.descent.collocation_constraint.defects:h                e   0.000000E+00   -8.940290E-12    0.000000E+00              9.00000E+100
+         70  traj.phases.descent.collocation_constraint.defects:gam              e   0.000000E+00    1.901015E-14    0.000000E+00              9.00000E+100
+         71  traj.phases.descent.collocation_constraint.defects:gam              e   0.000000E+00    6.306790E-15    0.000000E+00              9.00000E+100
+         72  traj.phases.descent.collocation_constraint.defects:gam              e   0.000000E+00   -1.021206E-14    0.000000E+00              9.00000E+100
+         73  traj.phases.descent.collocation_constraint.defects:gam              e   0.000000E+00   -1.411733E-14    0.000000E+00              9.00000E+100
+         74  traj.phases.descent.collocation_constraint.defects:gam              e   0.000000E+00   -1.306246E-14    0.000000E+00              9.00000E+100
+         75  traj.phases.descent.collocation_constraint.defects:v                e   0.000000E+00    7.153381E-13    0.000000E+00              9.00000E+100
+         76  traj.phases.descent.collocation_constraint.defects:v                e   0.000000E+00    3.806518E-13    0.000000E+00              9.00000E+100
+         77  traj.phases.descent.collocation_constraint.defects:v                e   0.000000E+00    1.322226E-12    0.000000E+00              9.00000E+100
+         78  traj.phases.descent.collocation_constraint.defects:v                e   0.000000E+00    2.418216E-12    0.000000E+00              9.00000E+100
+         79  traj.phases.descent.collocation_constraint.defects:v                e   0.000000E+00    3.024386E-12    0.000000E+00              9.00000E+100
          80  traj.linkages.ascent:time_final|descent:time_initial                e   0.000000E+00    0.000000E+00    0.000000E+00              9.00000E+100
          81  traj.linkages.ascent:r_final|descent:r_initial                      e   0.000000E+00    0.000000E+00    0.000000E+00              9.00000E+100
          82  traj.linkages.ascent:h_final|descent:h_initial                      e   0.000000E+00    0.000000E+00    0.000000E+00              9.00000E+100
-         83  traj.linkages.ascent:gam_final|descent:gam_initial                  e   0.000000E+00   -4.230610E-20    0.000000E+00              9.00000E+100
+         83  traj.linkages.ascent:gam_final|descent:gam_initial                  e   0.000000E+00   -1.317183E-20    0.000000E+00              9.00000E+100
          84  traj.linkages.ascent:v_final|descent:v_initial                      e   0.000000E+00    0.000000E+00    0.000000E+00              9.00000E+100
          85  traj.phases.ascent.initial_boundary_constraints.initial_value:ke    i   0.000000E+00    4.000000E+00    4.000000E+00         u    9.00000E+100
 
@@ -1339,11 +1341,11 @@ Memory to compute coloring: 0.308594 MB.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>optimal radius: 0.04185302555272147 m 
-cannonball mass: 2.416817836394416 kg 
-cannonball aerodynamic reference area: 55.030516611266876 cm**2 
-launch angle: 32.01951040477112 deg
-maximum range: 3183.1177267999483 m
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>optimal radius: 0.041853025566183616 m 
+cannonball mass: 2.4168178387265455 kg 
+cannonball aerodynamic reference area: 55.030516646668325 cm**2 
+launch angle: 32.01951041452407 deg
+maximum range: 3183.11772680137 m
 </pre></div>
 </div>
 <img alt="../../_images/multi_phase_cannonball_9_1.png" src="../../_images/multi_phase_cannonball_9_1.png" />
