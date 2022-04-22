@@ -801,13 +801,13 @@ Dynamic systems are typically defined by some set of ordinary
 differential equations (the ODE) which governs their behavior.</p>
 <p>Consider a simple damped harmonic oscillator.</p>
 <p><img alt="Damped harmonic oscillator free-body diagram" src="../../_images/spring_mass_damper.png" /></p>
-<div class="amsmath math notranslate nohighlight" id="equation-02a15a70-ee6e-4a27-a504-cd7c7d9f46c6">
-<span class="eqno">(11)<a class="headerlink" href="#equation-02a15a70-ee6e-4a27-a504-cd7c7d9f46c6" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-deb54b34-853a-4fe8-933e-8993ccd05704">
+<span class="eqno">(11)<a class="headerlink" href="#equation-deb54b34-853a-4fe8-933e-8993ccd05704" title="Permalink to this equation">#</a></span>\[\begin{align}
     \ddot{x} &amp;= -\frac{kx}{m} - \frac{c \dot{x}}{m}
 \end{align}\]</div>
 <p>Converting this to a first order system results in an ODE system with two states:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-28206a49-3988-4429-ae26-4a69c5ee4382">
-<span class="eqno">(12)<a class="headerlink" href="#equation-28206a49-3988-4429-ae26-4a69c5ee4382" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-f9fe8303-86ca-474d-b9f2-b91629934bec">
+<span class="eqno">(12)<a class="headerlink" href="#equation-f9fe8303-86ca-474d-b9f2-b91629934bec" title="Permalink to this equation">#</a></span>\[\begin{align}
     \dot{x} &amp;= v \\
     \dot{v} &amp;= -\frac{kx}{m} - \frac{c \dot{x}}{m}
 \end{align}\]</div>
@@ -956,12 +956,10 @@ Some elements of this code will be explained later, but we’ll hit the highligh
 
 
 Simulating trajectory traj
+Done simulating trajectory traj
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Done simulating trajectory traj
-</pre></div>
-</div>
-<img alt="../../_images/intro_ivp_5_2.png" src="../../_images/intro_ivp_5_2.png" />
+<img alt="../../_images/intro_ivp_5_1.png" src="../../_images/intro_ivp_5_1.png" />
 </div>
 </div>
 </div>
@@ -1106,12 +1104,10 @@ NL: Newton 2 ; 3.51117631e-15 5.40580956e-17
 NL: Newton Converged
 
 Simulating trajectory traj
+Done simulating trajectory traj
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Done simulating trajectory traj
-</pre></div>
-</div>
-<img alt="../../_images/intro_ivp_7_2.png" src="../../_images/intro_ivp_7_2.png" />
+<img alt="../../_images/intro_ivp_7_1.png" src="../../_images/intro_ivp_7_1.png" />
 </div>
 </div>
 </div>
@@ -1213,14 +1209,13 @@ Even though the initial time and duration of the phase are fixed, we provide the
             Gradient evaluations: 1
 Optimization Complete
 -----------------------------------
-
-Simulating trajectory traj
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.8/site-packages/openmdao/core/total_jac.py:1568: DerivativesWarning:Constraints or objectives [(&#39;traj.phases.phase0.time.time&#39;, inds=[15])] cannot be impacted by the design variables of the problem.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Done simulating trajectory traj
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Simulating trajectory traj
+Done simulating trajectory traj
 </pre></div>
 </div>
 <img alt="../../_images/intro_ivp_10_4.png" src="../../_images/intro_ivp_10_4.png" />

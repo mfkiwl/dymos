@@ -2445,7 +2445,8 @@ title="Open an issue"
         <span class="k">return</span> <span class="n">res</span></div>
 
     <span class="k">def</span> <span class="nf">get_simulation_phase</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">times_per_seg</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span>
-                             <span class="n">rtol</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span> <span class="n">first_step</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span> <span class="n">max_step</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">):</span>
+                             <span class="n">rtol</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span> <span class="n">first_step</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span> <span class="n">max_step</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span>
+                             <span class="n">reports</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Return a SolveIVPPhase instance.</span>
 
@@ -2470,6 +2471,8 @@ title="Open an issue"
 <span class="sd">            Initial step size for the integration.</span>
 <span class="sd">        max_step : float or _unspecified</span>
 <span class="sd">            Maximum step size for the integration.</span>
+<span class="sd">        reports : bool or None or str or Sequence</span>
+<span class="sd">            The reports setting for the subproblem run under each simulation segment.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2483,7 +2486,8 @@ title="Open an issue"
 
         <span class="n">sim_phase</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">Phase</span><span class="p">(</span><span class="n">from_phase</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span>
                              <span class="n">transcription</span><span class="o">=</span><span class="n">SolveIVP</span><span class="p">(</span><span class="n">grid_data</span><span class="o">=</span><span class="n">t</span><span class="o">.</span><span class="n">grid_data</span><span class="p">,</span>
-                                                    <span class="n">output_nodes_per_seg</span><span class="o">=</span><span class="n">times_per_seg</span><span class="p">))</span>
+                                                    <span class="n">output_nodes_per_seg</span><span class="o">=</span><span class="n">times_per_seg</span><span class="p">,</span>
+                                                    <span class="n">reports</span><span class="o">=</span><span class="n">reports</span><span class="p">))</span>
 
         <span class="c1"># Copy over any simulation options from the simulate call.  The fallback will be to</span>
         <span class="c1"># phase.simulate_options, which are copied from the original phase.</span>
