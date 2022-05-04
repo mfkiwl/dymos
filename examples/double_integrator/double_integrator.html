@@ -743,20 +743,20 @@ traveled by a block (that starts and ends at rest) sliding without
 friction along a horizontal surface, with acceleration as the control.</p>
 <p>We minimize the final time, <span class="math notranslate nohighlight">\(t_f\)</span>, by varying the dynamic control,
 <span class="math notranslate nohighlight">\(u\)</span>, subject to the dynamics:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9060795a-aca8-402a-80a4-2f27a74de337">
-<span class="eqno">(45)<a class="headerlink" href="#equation-9060795a-aca8-402a-80a4-2f27a74de337" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-51103af6-e6d0-40e9-83c0-6c570289268c">
+<span class="eqno">(45)<a class="headerlink" href="#equation-51103af6-e6d0-40e9-83c0-6c570289268c" title="Permalink to this equation">#</a></span>\[\begin{align}
   \frac{dx}{dt} &amp;= v \\
   \frac{dv}{dt} &amp;= u
 \end{align}\]</div>
 <p>The initial conditions are</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d396ca04-4005-4afb-8a58-4bc5c8b61335">
-<span class="eqno">(46)<a class="headerlink" href="#equation-d396ca04-4005-4afb-8a58-4bc5c8b61335" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-4e14a715-f6ed-4734-82ca-906fb3f39d8f">
+<span class="eqno">(46)<a class="headerlink" href="#equation-4e14a715-f6ed-4734-82ca-906fb3f39d8f" title="Permalink to this equation">#</a></span>\[\begin{align}
   x_0 &amp;= 0 \\
   v_0 &amp;= 0
 \end{align}\]</div>
 <p>and the final conditions are</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9c42eede-db13-40e9-8582-ed8604e733ea">
-<span class="eqno">(47)<a class="headerlink" href="#equation-9c42eede-db13-40e9-8582-ed8604e733ea" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-9db24109-8863-45a1-a06b-4d7a922bb5a4">
+<span class="eqno">(47)<a class="headerlink" href="#equation-9db24109-8863-45a1-a06b-4d7a922bb5a4" title="Permalink to this equation">#</a></span>\[\begin{align}
   x_f &amp;= \rm{free} \\
   v_f &amp;= 0
 \end{align}\]</div>
@@ -988,6 +988,9 @@ INFO: checking out_of_order
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking auto_ivc_warnings
 </pre></div>
 </div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.8/site-packages/openmdao/utils/options_dictionary.py:347: OMDeprecationWarning:&#39;gradient method&#39; is not a valid python name and will become an invalid option name in a future release. You can prevent this warning (and future exceptions) by declaring this option using a valid python name.
+</pre></div>
+</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model viewer data has already has already been recorded for Driver.
 INFO: checking out_of_order
 </pre></div>
@@ -1007,9 +1010,6 @@ INFO: checking out_of_order
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: The Problem has no recorder of any kind attached
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.8/site-packages/openmdao/utils/options_dictionary.py:347: OMDeprecationWarning:&#39;gradient method&#39; is not a valid python name and will become an invalid option name in a future release. You can prevent this warning (and future exceptions) by declaring this option using a valid python name.
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking unserializable_options
 </pre></div>
 </div>
@@ -1023,17 +1023,17 @@ INFO: checking out_of_order
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking auto_ivc_warnings
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.104973 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.136820 seconds.
 Total jacobian shape: (181, 327) 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jacobian shape: (181, 327)  ( 1.51% nonzero)
+
+
+Jacobian shape: (181, 327)  ( 1.51% nonzero)
 FWD solves: 0   REV solves: 6
 Total colors vs. total size: 6 vs 181  (96.7% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.104973 sec.
-Time to compute coloring: 0.133595 sec.
+Time to compute sparsity: 0.136820 sec.
+Time to compute coloring: 0.199301 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
@@ -1043,11 +1043,11 @@ Memory to compute coloring: 0.000000 MB.
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                    2.4176
-       User Objective Time :       0.0265
-       User Sensitivity Time :     0.0894
-       Interface Time :            0.1506
-       Opt Solver Time:            2.1511
+    Total Time:                    2.8802
+       User Objective Time :       0.0354
+       User Sensitivity Time :     0.1162
+       Interface Time :            0.1944
+       Opt Solver Time:            2.5342
     Calls to Objective Function :      19
     Calls to Sens Function :           19
 
