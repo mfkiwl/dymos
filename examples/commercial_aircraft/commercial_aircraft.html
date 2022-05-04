@@ -1241,8 +1241,8 @@ preferable when using a differential inclusion approach to problems.</p>
 <p><em>TrueAirspeedComp</em> uses the Mach number, provided as a
 control, and the speed of sound from the atmosphere model to compute the
 true airspeed of the aircraft.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a194e17a-348b-4f10-a72c-49cbfca9a9f4">
-<span class="eqno">(33)<a class="headerlink" href="#equation-a194e17a-348b-4f10-a72c-49cbfca9a9f4" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-cf15f8c4-dd4c-42d9-bf0f-87d68df898d3">
+<span class="eqno">(33)<a class="headerlink" href="#equation-cf15f8c4-dd4c-42d9-bf0f-87d68df898d3" title="Permalink to this equation">#</a></span>\[\begin{align}
   TAS &amp;= mach \cdot sos
 \end{align}\]</div>
 <table class="colwidths-auto table">
@@ -1273,8 +1273,8 @@ true airspeed of the aircraft.</p>
 <p><em>SteadyFlightPathAngleComp</em> uses the true airspeed and the
 climb rate, obtained by differentiating the altitude time history at the
 nodes, to compute the flight path angle.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d32c6684-c2d7-4f66-b4bd-9114b1b6e2f9">
-<span class="eqno">(34)<a class="headerlink" href="#equation-d32c6684-c2d7-4f66-b4bd-9114b1b6e2f9" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-ec86fb23-c8fb-4c12-a1e3-fe0a04f47537">
+<span class="eqno">(34)<a class="headerlink" href="#equation-ec86fb23-c8fb-4c12-a1e3-fe0a04f47537" title="Permalink to this equation">#</a></span>\[\begin{align}
   \gamma &amp;= \arcsin \frac{\dot h}{TAS}
 \end{align}\]</div>
 <table class="colwidths-auto table">
@@ -1305,8 +1305,8 @@ nodes, to compute the flight path angle.</p>
 <p><em>RangeRateComp</em> uses the true airspeed and the flight path
 angle to determine the velocity projected along the ground. This is the
 derivative of the state variable <em>range</em>.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-dcaa6477-bab8-41cc-a8af-6b01c3c9d481">
-<span class="eqno">(35)<a class="headerlink" href="#equation-dcaa6477-bab8-41cc-a8af-6b01c3c9d481" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-8ece633a-38cb-44aa-b96e-3f4b94fa638c">
+<span class="eqno">(35)<a class="headerlink" href="#equation-8ece633a-38cb-44aa-b96e-3f4b94fa638c" title="Permalink to this equation">#</a></span>\[\begin{align}
   \dot{range} &amp;= TAS \cos \gamma
 \end{align}\]</div>
 <table class="colwidths-auto table">
@@ -1338,8 +1338,8 @@ derivative of the state variable <em>range</em>.</p>
 <code class="docutils literal notranslate"><span class="pre">mass_comp.py</span></code> computes the aircraft total mass based on
 its empty mass, payload mass, and current fuel mass. It also computes
 total weight which simplifies some equations later on.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8583573e-a361-4466-928d-9587445c5799">
-<span class="eqno">(36)<a class="headerlink" href="#equation-8583573e-a361-4466-928d-9587445c5799" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-f3b8f3a0-3d86-485e-98e5-f3ca3db6bfc3">
+<span class="eqno">(36)<a class="headerlink" href="#equation-f3b8f3a0-3d86-485e-98e5-f3ca3db6bfc3" title="Permalink to this equation">#</a></span>\[\begin{align}
   mass_{total} &amp;= mass_{empty} + mass_{payload} + mass_{fuel} \\
   W_{total} &amp;= 9.80665 \, mass_{total}
 \end{align}\]</div>
@@ -1378,8 +1378,8 @@ total weight which simplifies some equations later on.</p>
 <h3>Dynamic Pressure<a class="headerlink" href="#dynamic-pressure" title="Permalink to this headline">#</a></h3>
 <p>The <em>DynamicPressureComp</em> computes the dynamic pressure from
 true airspeed and atmospheric density.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-af544ed5-3ff5-467d-8475-47159dafc915">
-<span class="eqno">(37)<a class="headerlink" href="#equation-af544ed5-3ff5-467d-8475-47159dafc915" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-b4540b5d-4a24-4555-a66b-4251571c72dd">
+<span class="eqno">(37)<a class="headerlink" href="#equation-b4540b5d-4a24-4555-a66b-4251571c72dd" title="Permalink to this equation">#</a></span>\[\begin{align}
   q &amp;= \frac{1}{2} \rho TAS^2
 \end{align}\]</div>
 <table class="colwidths-auto table">
@@ -1491,14 +1491,14 @@ profile being modeled is so benign that assuming steady flight at
 discrete points (nodes) in the trajectory is not terribly inaccurate.</p>
 <p>The thrust necessary for steady flight is computed by balancing the drag
 equation</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6cc6c3ff-f601-4a5d-b24d-65fdd2c0b1c4">
-<span class="eqno">(38)<a class="headerlink" href="#equation-6cc6c3ff-f601-4a5d-b24d-65fdd2c0b1c4" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-82286746-8916-44a7-bdb5-ca58331c9234">
+<span class="eqno">(38)<a class="headerlink" href="#equation-82286746-8916-44a7-bdb5-ca58331c9234" title="Permalink to this equation">#</a></span>\[\begin{align}
   C_T &amp;= W_{total} \frac{sin \gamma}{q \cdot S \cdot \cos \alpha} + \frac{C_D}{\cos \alpha}
 \end{align}\]</div>
 <p>The lift coefficient required for steady flight is found by balancing
 lift and weight:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9e11dde8-b5d1-4d5f-87ee-22abaad8fcd1">
-<span class="eqno">(39)<a class="headerlink" href="#equation-9e11dde8-b5d1-4d5f-87ee-22abaad8fcd1" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-e950b05b-20e4-4642-956e-1ef73b981cf7">
+<span class="eqno">(39)<a class="headerlink" href="#equation-e950b05b-20e4-4642-956e-1ef73b981cf7" title="Permalink to this equation">#</a></span>\[\begin{align}
   \tilde{C_L} &amp;= W_{total} \frac{cos \gamma}{q \cdot S} - C_T \sin \alpha
 \end{align}\]</div>
 <p>Using coefficients in the balance equations is better scaled from a numerical standpoint.</p>
@@ -1510,30 +1510,30 @@ rate of fuel burn. In addition, by normalizing thrust at any point by
 the maximum possible thrust, we obtain the throttle parameter <span class="math notranslate nohighlight">\(\tau\)</span>.
 The propulsion group uses a number of components to perform these
 calculations.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-361bfa9d-97bc-47a4-9329-771fcb6fb863">
-<span class="eqno">(40)<a class="headerlink" href="#equation-361bfa9d-97bc-47a4-9329-771fcb6fb863" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-c8401083-066a-4774-a685-9be0ea45e96a">
+<span class="eqno">(40)<a class="headerlink" href="#equation-c8401083-066a-4774-a685-9be0ea45e96a" title="Permalink to this equation">#</a></span>\[\begin{align}
   T &amp;= C_T \cdot q \cdot S
 \end{align}\]</div>
 <p>Maximum thrust is computed by multiplying sea-level thrust by the ratio
 of pressure to sea-level atmospheric pressure.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5cd0bafc-eaee-4baf-891a-1b4edc5780de">
-<span class="eqno">(41)<a class="headerlink" href="#equation-5cd0bafc-eaee-4baf-891a-1b4edc5780de" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-598b86d7-a4c6-47cc-aeda-e2874efaa6aa">
+<span class="eqno">(41)<a class="headerlink" href="#equation-598b86d7-a4c6-47cc-aeda-e2874efaa6aa" title="Permalink to this equation">#</a></span>\[\begin{align}
   T_{max} &amp;= T_{max,sl} \frac{P}{P_{sl}}
 \end{align}\]</div>
 <p>The throttle parameter is then the ratio current thrust to maximum
 possible thrust.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-dd2b966a-0950-4b1e-be24-f86e48253853">
-<span class="eqno">(42)<a class="headerlink" href="#equation-dd2b966a-0950-4b1e-be24-f86e48253853" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-6783c231-0cfe-4676-bd82-672bbcd31361">
+<span class="eqno">(42)<a class="headerlink" href="#equation-6783c231-0cfe-4676-bd82-672bbcd31361" title="Permalink to this equation">#</a></span>\[\begin{align}
   \tau &amp;= \frac{T}{T_{max}}
 \end{align}\]</div>
 <p>The thrust specific fuel consumption is computed as follows:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1062d13b-077f-48a8-a404-206a789b5e66">
-<span class="eqno">(43)<a class="headerlink" href="#equation-1062d13b-077f-48a8-a404-206a789b5e66" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-241d40db-dbb3-4bea-902a-d904213fb0d2">
+<span class="eqno">(43)<a class="headerlink" href="#equation-241d40db-dbb3-4bea-902a-d904213fb0d2" title="Permalink to this equation">#</a></span>\[\begin{align}
   TSFC &amp;= TSFC_{sl} - 1.5 E - 10 \cdot 9.80665 \cdot alt
 \end{align}\]</div>
 <p>Finally, fuel burn rate is:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d86a77f4-cbb7-478c-ac32-ca3b0563a210">
-<span class="eqno">(44)<a class="headerlink" href="#equation-d86a77f4-cbb7-478c-ac32-ca3b0563a210" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-eb39469c-856d-4267-86ef-a66dd0faa552">
+<span class="eqno">(44)<a class="headerlink" href="#equation-eb39469c-856d-4267-86ef-a66dd0faa552" title="Permalink to this equation">#</a></span>\[\begin{align}
   \dot{mass_{fuel}} &amp;= -TSFC \frac{T}{9.80665}
 \end{align}\]</div>
 </div>
@@ -1860,7 +1860,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 Model viewer data has already has already been recorded for Driver.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 1.353185 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 1.370712 seconds.
 Total jacobian shape: (224, 221) 
 
 
@@ -1869,8 +1869,8 @@ FWD solves: 12   REV solves: 0
 Total colors vs. total size: 12 vs 221  (94.6% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 1.353185 sec.
-Time to compute coloring: 0.160114 sec.
+Time to compute sparsity: 1.370712 sec.
+Time to compute coloring: 0.161088 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
@@ -2050,8 +2050,8 @@ Number of inequality constraint evaluations          = 45
 Number of equality constraint Jacobian evaluations   = 43
 Number of inequality constraint Jacobian evaluations = 43
 Number of Lagrangian Hessian evaluations             = 0
-Total CPU secs in IPOPT (w/o function evaluations)   =      0.555
-Total CPU secs in NLP function evaluations           =     14.076
+Total CPU secs in IPOPT (w/o function evaluations)   =      0.544
+Total CPU secs in NLP function evaluations           =     13.950
 
 EXIT: Optimal Solution Found.
 
@@ -2062,11 +2062,11 @@ Optimization Problem -- Optimization using pyOpt_sparse
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                   12.2950
-       User Objective Time :       8.7061
-       User Sensitivity Time :     2.7911
-       Interface Time :            0.3356
-       Opt Solver Time:            0.4621
+    Total Time:                   12.2265
+       User Objective Time :       8.6569
+       User Sensitivity Time :     2.7854
+       Interface Time :            0.3310
+       Opt Solver Time:            0.4533
     Calls to Objective Function :      45
     Calls to Sens Function :           43
 
