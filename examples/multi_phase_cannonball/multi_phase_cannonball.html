@@ -802,24 +802,24 @@ the system at an event in the trajectory. Here, we have the first phase
 (ascent) terminate when the flight path angle reaches zero (apogee). The
 descent phase follows until the cannonball impacts the ground.</p>
 <p>The dynamics are given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5b6d32a9-1165-4d3b-b14b-90f6cedf675c">
-<span class="eqno">(65)<a class="headerlink" href="#equation-5b6d32a9-1165-4d3b-b14b-90f6cedf675c" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-92ebc344-4c64-4af5-a4dd-ebad7e18dd62">
+<span class="eqno">(65)<a class="headerlink" href="#equation-92ebc344-4c64-4af5-a4dd-ebad7e18dd62" title="Permalink to this equation">#</a></span>\[\begin{align}
   \frac{dv}{dt} &amp;= \frac{D}{m} - g \sin \gamma \\
   \frac{d\gamma}{dt} &amp;= - \frac{g \cos \gamma}{v} \\
   \frac{dh}{dt} &amp;= v \sin \gamma \\
   \frac{dr}{dt} &amp;= v \cos \gamma \\
 \end{align}\]</div>
 <p>The initial conditions are</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d6a50b65-620b-4ec0-b0e0-9e44e023c371">
-<span class="eqno">(66)<a class="headerlink" href="#equation-d6a50b65-620b-4ec0-b0e0-9e44e023c371" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-fc276e4a-72b9-4d7e-8ae2-c763c2d6ca79">
+<span class="eqno">(66)<a class="headerlink" href="#equation-fc276e4a-72b9-4d7e-8ae2-c763c2d6ca79" title="Permalink to this equation">#</a></span>\[\begin{align}
   r_0 &amp;= 0 \rm{\,m} \\
   h_0 &amp;= 100 \rm{\,m} \\
   v_0 &amp;= \rm{free} \\
   \gamma_0 &amp;= \rm{free}
 \end{align}\]</div>
 <p>and the final conditions are</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0c41cf17-43aa-4736-b92d-88adc3a5eb64">
-<span class="eqno">(67)<a class="headerlink" href="#equation-0c41cf17-43aa-4736-b92d-88adc3a5eb64" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d440a27e-5705-4455-a760-dfe5fc3225df">
+<span class="eqno">(67)<a class="headerlink" href="#equation-d440a27e-5705-4455-a760-dfe5fc3225df" title="Permalink to this equation">#</a></span>\[\begin{align}
   h_f &amp;= 0 \rm{\,m}
 \end{align}\]</div>
 </div>
@@ -832,8 +832,8 @@ energy and that our cannonball is made of solid iron. The volume (and
 mass) of the cannonball is proportional to its radius cubed, while the
 cross-sectional area is proportional to its radius squared. If we
 increase the size of the cannonball, the ballistic coefficient</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8eec5e14-0dce-4509-b9ec-ab096227e24b">
-<span class="eqno">(68)<a class="headerlink" href="#equation-8eec5e14-0dce-4509-b9ec-ab096227e24b" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-334cc80f-22bb-4f83-920d-dc0fca3603f1">
+<span class="eqno">(68)<a class="headerlink" href="#equation-334cc80f-22bb-4f83-920d-dc0fca3603f1" title="Permalink to this equation">#</a></span>\[\begin{align}
   BC &amp;= \frac{m}{C_D A}
 \end{align}\]</div>
 <p>will increase, meaning the cannonball overcome air resistance more
@@ -1120,7 +1120,7 @@ account.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.8/site-packages/openmdao/utils/options_dictionary.py:347: OMDeprecationWarning:&#39;gradient method&#39; is not a valid python name and will become an invalid option name in a future release. You can prevent this warning (and future exceptions) by declaring this option using a valid python name.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.8/site-packages/openmdao/utils/options_dictionary.py:354: OMDeprecationWarning:&#39;gradient method&#39; is not a valid python name and will become an invalid option name in a future release. You can prevent this warning (and future exceptions) by declaring this option using a valid python name.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Constraint Report [traj] ---
@@ -1128,10 +1128,11 @@ account.</p>
         [initial] 0.0000e+00 &lt;= ke &lt;= 4.0000e+05  [J]
     --- descent ---
         None
+
+Model viewer data has already been recorded for Driver.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model viewer data has already has already been recorded for Driver.
-Model viewer data has already has already been recorded for Driver.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model viewer data has already been recorded for Driver.
 
 Coloring for &#39;traj.phases.ascent.rhs_all&#39; (class CannonballODE)
 
@@ -1140,8 +1141,8 @@ FWD solves: 6   REV solves: 0
 Total colors vs. total size: 6 vs 63  (90.5% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.026953 sec.
-Time to compute coloring: 0.010513 sec.
+Time to compute sparsity: 0.026878 sec.
+Time to compute coloring: 0.010517 sec.
 Memory to compute coloring: 0.000000 MB.
 
 Coloring for &#39;traj.phases.descent.rhs_disc&#39; (class CannonballODE)
@@ -1151,8 +1152,8 @@ FWD solves: 6   REV solves: 0
 Total colors vs. total size: 6 vs 33  (81.8% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.014480 sec.
-Time to compute coloring: 0.005599 sec.
+Time to compute sparsity: 0.014339 sec.
+Time to compute coloring: 0.005582 sec.
 Memory to compute coloring: 0.000000 MB.
 
 Coloring for &#39;traj.phases.descent.rhs_col&#39; (class CannonballODE)
@@ -1162,12 +1163,12 @@ FWD solves: 6   REV solves: 0
 Total colors vs. total size: 6 vs 18  (66.7% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.008152 sec.
-Time to compute coloring: 0.003209 sec.
+Time to compute sparsity: 0.008214 sec.
+Time to compute coloring: 0.003134 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.153970 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.152313 seconds.
 Total jacobian shape: (87, 88) 
 
 
@@ -1176,9 +1177,9 @@ FWD solves: 30   REV solves: 0
 Total colors vs. total size: 30 vs 88  (65.9% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.153970 sec.
-Time to compute coloring: 0.077185 sec.
-Memory to compute coloring: 0.570312 MB.
+Time to compute sparsity: 0.152313 sec.
+Time to compute coloring: 0.077534 sec.
+Memory to compute coloring: 0.312500 MB.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization Problem -- Optimization using pyOpt_sparse
@@ -1187,11 +1188,11 @@ Memory to compute coloring: 0.570312 MB.
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                    2.3226
-       User Objective Time :       0.3151
-       User Sensitivity Time :     1.3306
-       Interface Time :            0.4729
-       Opt Solver Time:            0.2040
+    Total Time:                    2.2753
+       User Objective Time :       0.3049
+       User Sensitivity Time :     1.3042
+       Interface Time :            0.4635
+       Opt Solver Time:            0.2027
     Calls to Objective Function :     118
     Calls to Sens Function :           89
 

@@ -754,8 +754,8 @@ It finds the pitch profile for a single-stage-to-orbit launch vehicle that minim
 required to reach orbit insertion under constant thrust.</p>
 <p><img alt="The free-body-diagram of the single-stage-to-orbit problem." src="../../_images/ssto_fbd.png" /></p>
 <p>The vehicle dynamics are given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3ec334b2-ed06-4d33-af95-74e48e772177">
-<span class="eqno">(74)<a class="headerlink" href="#equation-3ec334b2-ed06-4d33-af95-74e48e772177" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-1466ae8a-7b48-43d0-bbd8-8a2fb93b3b75">
+<span class="eqno">(74)<a class="headerlink" href="#equation-1466ae8a-7b48-43d0-bbd8-8a2fb93b3b75" title="Permalink to this equation">#</a></span>\[\begin{align}
   \frac{dx}{dt} &amp;= v_x \\
   \frac{dy}{dt} &amp;= v_y \\
   \frac{dv_x}{dt} &amp;= \frac{1}{m} (T \cos \theta - D \cos \gamma) \\
@@ -763,8 +763,8 @@ required to reach orbit insertion under constant thrust.</p>
   \frac{dm}{dt} &amp;= \frac{T}{g I_{sp}}
 \end{align}\]</div>
 <p>The initial conditions are</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2826a60f-6edf-44d6-97ee-6af40b1402d5">
-<span class="eqno">(75)<a class="headerlink" href="#equation-2826a60f-6edf-44d6-97ee-6af40b1402d5" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-0e6bc488-6f1e-494e-83ca-c08bcf3ff4a8">
+<span class="eqno">(75)<a class="headerlink" href="#equation-0e6bc488-6f1e-494e-83ca-c08bcf3ff4a8" title="Permalink to this equation">#</a></span>\[\begin{align}
   x_0 &amp;= 0 \\
   y_0 &amp;= 0 \\
   v_{x0} &amp;= 0 \\
@@ -772,8 +772,8 @@ required to reach orbit insertion under constant thrust.</p>
   m_0 &amp;= 117000 \rm{\,kg}
 \end{align}\]</div>
 <p>and the final conditions are</p>
-<div class="amsmath math notranslate nohighlight" id="equation-50c790f4-a393-4cf5-9cc5-6557d73fb6e2">
-<span class="eqno">(76)<a class="headerlink" href="#equation-50c790f4-a393-4cf5-9cc5-6557d73fb6e2" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-8c579c40-1f7d-47ff-8956-5693b6e0902e">
+<span class="eqno">(76)<a class="headerlink" href="#equation-8c579c40-1f7d-47ff-8956-5693b6e0902e" title="Permalink to this equation">#</a></span>\[\begin{align}
   x_f &amp;= \rm{free} \\
   y_f &amp;= 185 \rm{\,km} \\
   v_{xf} &amp;= V_{circ} \\
@@ -1033,10 +1033,10 @@ INFO: checking out_of_order
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking auto_ivc_warnings
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.8/site-packages/openmdao/utils/options_dictionary.py:347: OMDeprecationWarning:&#39;gradient method&#39; is not a valid python name and will become an invalid option name in a future release. You can prevent this warning (and future exceptions) by declaring this option using a valid python name.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.8/site-packages/openmdao/utils/options_dictionary.py:354: OMDeprecationWarning:&#39;gradient method&#39; is not a valid python name and will become an invalid option name in a future release. You can prevent this warning (and future exceptions) by declaring this option using a valid python name.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model viewer data has already has already been recorded for Driver.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model viewer data has already been recorded for Driver.
 INFO: checking out_of_order
 </pre></div>
 </div>
@@ -1222,8 +1222,8 @@ FWD solves: 5   REV solves: 0
 Total colors vs. total size: 5 vs 168  (97.0% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.042071 sec.
-Time to compute coloring: 0.019647 sec.
+Time to compute sparsity: 0.040289 sec.
+Time to compute coloring: 0.016937 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
@@ -1313,12 +1313,12 @@ FWD solves: 5   REV solves: 0
 Total colors vs. total size: 5 vs 84  (94.0% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.024199 sec.
-Time to compute coloring: 0.009867 sec.
+Time to compute sparsity: 0.021063 sec.
+Time to compute coloring: 0.008749 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.348673 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.312557 seconds.
 Total jacobian shape: (74, 152) 
 </pre></div>
 </div>
@@ -1327,8 +1327,8 @@ FWD solves: 12   REV solves: 0
 Total colors vs. total size: 12 vs 152  (92.1% improvement)
 
 Sparsity computed using tolerance: 1e-12
-Time to compute sparsity: 0.348673 sec.
-Time to compute coloring: 0.080088 sec.
+Time to compute sparsity: 0.312557 sec.
+Time to compute coloring: 0.069091 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
@@ -1338,11 +1338,11 @@ Memory to compute coloring: 0.000000 MB.
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                    1.9880
-       User Objective Time :       0.1120
-       User Sensitivity Time :     0.8738
-       Interface Time :            0.3821
-       Opt Solver Time:            0.6202
+    Total Time:                    1.9800
+       User Objective Time :       0.1095
+       User Sensitivity Time :     0.8686
+       Interface Time :            0.3802
+       Opt Solver Time:            0.6216
     Calls to Objective Function :      51
     Calls to Sens Function :           48
 
@@ -1653,9 +1653,6 @@ Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Simulating trajectory traj
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Done simulating trajectory traj

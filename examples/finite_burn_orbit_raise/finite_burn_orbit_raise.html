@@ -753,8 +753,8 @@ three-phase orbit raising maneuver with a burn-coast-burn phase
 sequence. This example is based on the problem provided in
 Enright <span id="id1">[<a class="reference internal" href="#id24" title="Paul J Enright and Brace A Conway. Optimal finite-thrust spacecraft trajectories using collocation and nonlinear programming. Journal of Guidance, Control, and Dynamics, 14(5):981–985, 1991.">EC91</a>]</span>.</p>
 <p>The dynamics are given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d83a2ca4-e9be-4c01-aba8-743c10a2cc8c">
-<span class="eqno">(53)<a class="headerlink" href="#equation-d83a2ca4-e9be-4c01-aba8-743c10a2cc8c" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-9c8f846f-cf64-4d69-8e65-5fd587388e35">
+<span class="eqno">(53)<a class="headerlink" href="#equation-9c8f846f-cf64-4d69-8e65-5fd587388e35" title="Permalink to this equation">#</a></span>\[\begin{align}
   \frac{dr}{dt} &amp;= v_r \\
   \frac{d\theta}{dt} &amp;= \frac{v_\theta}{r} \\
   \frac{dv_r}{dt} &amp;= \frac{v^2_\theta}{r} - \frac{1}{r^2} + a_{thrust} \sin u_1 \\
@@ -763,8 +763,8 @@ Enright <span id="id1">[<a class="reference internal" href="#id24" title="Paul J
   \frac{d \Delta v}{dt} &amp;= a_{thrust}
 \end{align}\]</div>
 <p>The initial conditions are</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ab9313b9-8b91-4c26-97b3-dca2ab3546a5">
-<span class="eqno">(54)<a class="headerlink" href="#equation-ab9313b9-8b91-4c26-97b3-dca2ab3546a5" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d47a32f3-2bf5-4284-a392-2423219fd482">
+<span class="eqno">(54)<a class="headerlink" href="#equation-d47a32f3-2bf5-4284-a392-2423219fd482" title="Permalink to this equation">#</a></span>\[\begin{align}
   r &amp;= 1 \rm{\,DU} \\
   \theta &amp;= 0 \rm{\,rad} \\
   v_r &amp;= 0 \rm{\,DU/TU}\\
@@ -773,8 +773,8 @@ Enright <span id="id1">[<a class="reference internal" href="#id24" title="Paul J
   \Delta v &amp;= 0 \rm{\,DU/TU}
 \end{align}\]</div>
 <p>and the final conditions are</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f7b7496c-ddbc-4a3b-8a93-8b99921bf58c">
-<span class="eqno">(55)<a class="headerlink" href="#equation-f7b7496c-ddbc-4a3b-8a93-8b99921bf58c" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-33687dd9-5d2c-4b5d-9249-f0a4dcbbacba">
+<span class="eqno">(55)<a class="headerlink" href="#equation-33687dd9-5d2c-4b5d-9249-f0a4dcbbacba" title="Permalink to this equation">#</a></span>\[\begin{align}
   r &amp;= 3 \rm{\,DU} \\
   \theta &amp;= \rm{free} \\
   v_r &amp;= 0 \rm{\,DU/TU}\\
@@ -1210,7 +1210,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.8/site-packages/openmdao/utils/options_dictionary.py:347: OMDeprecationWarning:&#39;gradient method&#39; is not a valid python name and will become an invalid option name in a future release. You can prevent this warning (and future exceptions) by declaring this option using a valid python name.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.8/site-packages/openmdao/utils/options_dictionary.py:354: OMDeprecationWarning:&#39;gradient method&#39; is not a valid python name and will become an invalid option name in a future release. You can prevent this warning (and future exceptions) by declaring this option using a valid python name.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Constraint Report [traj] ---
@@ -1249,10 +1249,10 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking auto_ivc_warnings
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.8/site-packages/openmdao/core/problem.py:487: OMDeprecationWarning:Problem problem1 &#39;value&#39; will be deprecated in 4.0. Please use &#39;val&#39; in the future.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.8/site-packages/openmdao/core/problem.py:495: OMDeprecationWarning:Problem problem1 &#39;value&#39; will be deprecated in 4.0. Please use &#39;val&#39; in the future.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model viewer data has already has already been recorded for Driver.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model viewer data has already been recorded for Driver.
 INFO: checking out_of_order
 </pre></div>
 </div>
@@ -1280,7 +1280,7 @@ INFO: checking out_of_order
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking auto_ivc_warnings
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.831130 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.742215 seconds.
 Total jacobian shape: (120, 204) 
 
 
@@ -1289,8 +1289,8 @@ FWD solves: 13   REV solves: 0
 Total colors vs. total size: 13 vs 204  (93.6% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.831130 sec.
-Time to compute coloring: 0.100669 sec.
+Time to compute sparsity: 0.742215 sec.
+Time to compute coloring: 0.086123 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
@@ -1310,11 +1310,11 @@ This program contains Ipopt, a library for large-scale nonlinear optimization.
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                    2.4932
-       User Objective Time :       0.1202
-       User Sensitivity Time :     1.8352
-       Interface Time :            0.4526
-       Opt Solver Time:            0.0852
+    Total Time:                    2.2973
+       User Objective Time :       0.1171
+       User Sensitivity Time :     1.6885
+       Interface Time :            0.4078
+       Opt Solver Time:            0.0839
     Calls to Objective Function :      22
     Calls to Sens Function :           22
 
