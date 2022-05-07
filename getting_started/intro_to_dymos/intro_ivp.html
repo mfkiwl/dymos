@@ -801,13 +801,13 @@ Dynamic systems are typically defined by some set of ordinary
 differential equations (the ODE) which governs their behavior.</p>
 <p>Consider a simple damped harmonic oscillator.</p>
 <p><img alt="Damped harmonic oscillator free-body diagram" src="../../_images/spring_mass_damper.png" /></p>
-<div class="amsmath math notranslate nohighlight" id="equation-680db5e4-5848-42da-b839-0c4390edf74f">
-<span class="eqno">(11)<a class="headerlink" href="#equation-680db5e4-5848-42da-b839-0c4390edf74f" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-815fbfcd-7118-4b01-af77-94c53d91631c">
+<span class="eqno">(11)<a class="headerlink" href="#equation-815fbfcd-7118-4b01-af77-94c53d91631c" title="Permalink to this equation">#</a></span>\[\begin{align}
     \ddot{x} &amp;= -\frac{kx}{m} - \frac{c \dot{x}}{m}
 \end{align}\]</div>
 <p>Converting this to a first order system results in an ODE system with two states:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-191bb9bb-63c8-4b4d-825e-e5095bead92c">
-<span class="eqno">(12)<a class="headerlink" href="#equation-191bb9bb-63c8-4b4d-825e-e5095bead92c" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-66b16f1e-5fba-4074-aa90-d0621fa7dd79">
+<span class="eqno">(12)<a class="headerlink" href="#equation-66b16f1e-5fba-4074-aa90-d0621fa7dd79" title="Permalink to this equation">#</a></span>\[\begin{align}
     \dot{x} &amp;= v \\
     \dot{v} &amp;= -\frac{kx}{m} - \frac{c \dot{x}}{m}
 \end{align}\]</div>
@@ -956,10 +956,12 @@ Some elements of this code will be explained later, but we’ll hit the highligh
 
 
 Simulating trajectory traj
-Done simulating trajectory traj
 </pre></div>
 </div>
-<img alt="../../_images/intro_ivp_5_1.png" src="../../_images/intro_ivp_5_1.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Done simulating trajectory traj
+</pre></div>
+</div>
+<img alt="../../_images/intro_ivp_5_2.png" src="../../_images/intro_ivp_5_2.png" />
 </div>
 </div>
 </div>
@@ -1099,15 +1101,17 @@ Otherwise, we can pass it only to certain states as an argument to <code class="
 traj.phases.phase0
 ==================
 NL: Newton 0 ; 64.9519053 1
-NL: Newton 1 ; 5.02959831e-08 7.74357317e-10
-NL: Newton 2 ; 3.51117631e-15 5.40580956e-17
+NL: Newton 1 ; 5.02959697e-08 7.7435711e-10
+NL: Newton 2 ; 5.5101175e-15 8.48338085e-17
 NL: Newton Converged
 
 Simulating trajectory traj
-Done simulating trajectory traj
 </pre></div>
 </div>
-<img alt="../../_images/intro_ivp_7_1.png" src="../../_images/intro_ivp_7_1.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Done simulating trajectory traj
+</pre></div>
+</div>
+<img alt="../../_images/intro_ivp_7_2.png" src="../../_images/intro_ivp_7_2.png" />
 </div>
 </div>
 </div>
