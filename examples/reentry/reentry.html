@@ -763,8 +763,8 @@ optimal control problem governed by six equations of motion and limited
 by the aerodynamic heating rate. For a detailed layout of this problem
 and other optimal control problems see Betts <span id="id1">[<a class="reference internal" href="#id19" title="J. Betts. Practical Methods for Optimal Control and Estimation Using Nonlinear Programming. Society for Industrial and Applied Mathematics, second edition, 2010. URL: https://epubs.siam.org/doi/abs/10.1137/1.9780898718577, arXiv:https://epubs.siam.org/doi/pdf/10.1137/1.9780898718577, doi:10.1137/1.9780898718577.">Bet10</a>]</span>.
 The governing equations of motion for this problem are:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2e911370-82c1-472d-a4ad-6806dbf29cff">
-<span class="eqno">(69)<a class="headerlink" href="#equation-2e911370-82c1-472d-a4ad-6806dbf29cff" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d7e91670-974a-4f00-b0e5-f9ad62d8b025">
+<span class="eqno">(69)<a class="headerlink" href="#equation-d7e91670-974a-4f00-b0e5-f9ad62d8b025" title="Permalink to this equation">#</a></span>\[\begin{align}
   \frac{dh}{dt} &amp;= v \sin \gamma \\
   \frac{d\phi}{dt} &amp;= \frac{v}{r} \cos \gamma \frac{\sin \psi}{\cos \theta} \\
   \frac{d\theta}{dt} &amp;= \frac{v}{r} \cos \gamma \cos \psi  \\
@@ -787,8 +787,8 @@ final altitude, without exceding a maximum heat rate at the leading
 edges. This heat rate is constrained by <span class="math notranslate nohighlight">\(q \leq 70\)</span> where q
 <span class="math notranslate nohighlight">\([\frac{btu}{ft^2s}]\)</span> is the heating rate.</p>
 <p>The initial conditions are</p>
-<div class="amsmath math notranslate nohighlight" id="equation-acbadf74-91e9-4405-90ab-085444acf405">
-<span class="eqno">(70)<a class="headerlink" href="#equation-acbadf74-91e9-4405-90ab-085444acf405" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-2ea5a4bf-b05c-44c9-a1cd-0d6ac201228f">
+<span class="eqno">(70)<a class="headerlink" href="#equation-2ea5a4bf-b05c-44c9-a1cd-0d6ac201228f" title="Permalink to this equation">#</a></span>\[\begin{align}
   h_0 &amp;= 26000 \\
   v_0 &amp;= 25600 \\
   \phi_0 &amp;= 0 \\
@@ -797,8 +797,8 @@ edges. This heat rate is constrained by <span class="math notranslate nohighligh
   \psi_0 &amp;= \frac{\pi}{2}
 \end{align}\]</div>
 <p>and the final conditions are</p>
-<div class="amsmath math notranslate nohighlight" id="equation-660ee049-f12b-482a-9b96-84ddd0132578">
-<span class="eqno">(71)<a class="headerlink" href="#equation-660ee049-f12b-482a-9b96-84ddd0132578" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-25c6f96e-c08a-4b4d-9167-44eebdf0c4b3">
+<span class="eqno">(71)<a class="headerlink" href="#equation-25c6f96e-c08a-4b4d-9167-44eebdf0c4b3" title="Permalink to this equation">#</a></span>\[\begin{align}
   h_0 &amp;= 80000 \\
   v_0 &amp;= 2500 \\
   \gamma_0 &amp;= -0.08727 \\
@@ -816,13 +816,13 @@ second component computes the aerodynamic forces of lift and drag on the
 shuttle. The third component is where the heating rate on the leading
 edge of the shuttles wings is computed. The heating rate is given by
 <span class="math notranslate nohighlight">\(q = q_a q_r\)</span> where</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8718d23d-8182-4570-90ec-e5d54091eeb2">
-<span class="eqno">(72)<a class="headerlink" href="#equation-8718d23d-8182-4570-90ec-e5d54091eeb2" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-53f3cc8e-b125-4983-8b86-f4e460f6b7a2">
+<span class="eqno">(72)<a class="headerlink" href="#equation-53f3cc8e-b125-4983-8b86-f4e460f6b7a2" title="Permalink to this equation">#</a></span>\[\begin{align}
   q_a &amp;= c_0 + c_1\alpha + c_2 \alpha^2 + c_3 \alpha^3
 \end{align}\]</div>
 <p>and</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9177beca-6f7b-44e9-bbed-cdf8cdf663d2">
-<span class="eqno">(73)<a class="headerlink" href="#equation-9177beca-6f7b-44e9-bbed-cdf8cdf663d2" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d5be4124-3cf0-4a65-9c5d-2c4b71829e30">
+<span class="eqno">(73)<a class="headerlink" href="#equation-d5be4124-3cf0-4a65-9c5d-2c4b71829e30" title="Permalink to this equation">#</a></span>\[\begin{align}
   q_r &amp;= 17700 \rho^.5 (.0001v)^{3.07}
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(c_0, c_1, c_2,\)</span> and <span class="math notranslate nohighlight">\(c_3\)</span> are constants, <span class="math notranslate nohighlight">\(\alpha\)</span> <span class="math notranslate nohighlight">\([deg]\)</span> is the
@@ -1296,6 +1296,9 @@ The two controls are <span class="math notranslate nohighlight">\(\alpha\)</span
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.8/site-packages/openmdao/utils/options_dictionary.py:354: OMDeprecationWarning:&#39;gradient method&#39; is not a valid python name and will become an invalid option name in a future release. You can prevent this warning (and future exceptions) by declaring this option using a valid python name.
+</pre></div>
+</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Constraint Report [traj] ---
     --- phase0 ---
         None
@@ -1324,9 +1327,6 @@ INFO: checking out_of_order
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking comp_has_no_outputs
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.8/site-packages/openmdao/utils/options_dictionary.py:354: OMDeprecationWarning:&#39;gradient method&#39; is not a valid python name and will become an invalid option name in a future release. You can prevent this warning (and future exceptions) by declaring this option using a valid python name.
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking auto_ivc_warnings
 </pre></div>
 </div>
@@ -1386,7 +1386,7 @@ INFO: checking out_of_order
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking auto_ivc_warnings
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 2.646387 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 3.514020 seconds.
 Total jacobian shape: (327, 358) 
 </pre></div>
 </div>
@@ -1395,8 +1395,8 @@ FWD solves: 20   REV solves: 0
 Total colors vs. total size: 20 vs 358  (94.4% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 2.646387 sec.
-Time to compute coloring: 0.499033 sec.
+Time to compute sparsity: 3.514020 sec.
+Time to compute coloring: 0.712363 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
@@ -1406,11 +1406,11 @@ Memory to compute coloring: 0.000000 MB.
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                   53.3659
-       User Objective Time :       1.1512
-       User Sensitivity Time :    10.7936
-       Interface Time :            2.5330
-       Opt Solver Time:           38.8880
+    Total Time:                   51.7509
+       User Objective Time :       1.1911
+       User Sensitivity Time :    10.8225
+       Interface Time :            2.4746
+       Opt Solver Time:           37.2627
     Calls to Objective Function :     474
     Calls to Sens Function :          210
 

@@ -753,8 +753,8 @@ three-phase orbit raising maneuver with a burn-coast-burn phase
 sequence. This example is based on the problem provided in
 Enright <span id="id1">[<a class="reference internal" href="#id24" title="Paul J Enright and Brace A Conway. Optimal finite-thrust spacecraft trajectories using collocation and nonlinear programming. Journal of Guidance, Control, and Dynamics, 14(5):981–985, 1991.">EC91</a>]</span>.</p>
 <p>The dynamics are given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b8d2b85d-0406-4855-9b5b-9bace3a13b3c">
-<span class="eqno">(53)<a class="headerlink" href="#equation-b8d2b85d-0406-4855-9b5b-9bace3a13b3c" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-cad0b88a-2669-412f-9c67-6e044a58976b">
+<span class="eqno">(53)<a class="headerlink" href="#equation-cad0b88a-2669-412f-9c67-6e044a58976b" title="Permalink to this equation">#</a></span>\[\begin{align}
   \frac{dr}{dt} &amp;= v_r \\
   \frac{d\theta}{dt} &amp;= \frac{v_\theta}{r} \\
   \frac{dv_r}{dt} &amp;= \frac{v^2_\theta}{r} - \frac{1}{r^2} + a_{thrust} \sin u_1 \\
@@ -763,8 +763,8 @@ Enright <span id="id1">[<a class="reference internal" href="#id24" title="Paul J
   \frac{d \Delta v}{dt} &amp;= a_{thrust}
 \end{align}\]</div>
 <p>The initial conditions are</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1d345b85-ba7f-4626-a8b1-d54abdd906c4">
-<span class="eqno">(54)<a class="headerlink" href="#equation-1d345b85-ba7f-4626-a8b1-d54abdd906c4" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-0a3c586f-3be0-40d8-98ed-1556df6b5d04">
+<span class="eqno">(54)<a class="headerlink" href="#equation-0a3c586f-3be0-40d8-98ed-1556df6b5d04" title="Permalink to this equation">#</a></span>\[\begin{align}
   r &amp;= 1 \rm{\,DU} \\
   \theta &amp;= 0 \rm{\,rad} \\
   v_r &amp;= 0 \rm{\,DU/TU}\\
@@ -773,8 +773,8 @@ Enright <span id="id1">[<a class="reference internal" href="#id24" title="Paul J
   \Delta v &amp;= 0 \rm{\,DU/TU}
 \end{align}\]</div>
 <p>and the final conditions are</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9a395bd0-192d-4d55-b6d7-e593d0786ff5">
-<span class="eqno">(55)<a class="headerlink" href="#equation-9a395bd0-192d-4d55-b6d7-e593d0786ff5" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-7ef194e0-2b04-4e9d-8f9a-02c9ba66cd3a">
+<span class="eqno">(55)<a class="headerlink" href="#equation-7ef194e0-2b04-4e9d-8f9a-02c9ba66cd3a" title="Permalink to this equation">#</a></span>\[\begin{align}
   r &amp;= 3 \rm{\,DU} \\
   \theta &amp;= \rm{free} \\
   v_r &amp;= 0 \rm{\,DU/TU}\\
@@ -1280,7 +1280,7 @@ INFO: checking out_of_order
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking auto_ivc_warnings
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 1.254420 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 1.173492 seconds.
 Total jacobian shape: (120, 204) 
 
 
@@ -1289,8 +1289,8 @@ FWD solves: 13   REV solves: 0
 Total colors vs. total size: 13 vs 204  (93.6% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 1.254420 sec.
-Time to compute coloring: 0.142180 sec.
+Time to compute sparsity: 1.173492 sec.
+Time to compute coloring: 0.151712 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
@@ -1310,11 +1310,11 @@ This program contains Ipopt, a library for large-scale nonlinear optimization.
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                    3.5085
-       User Objective Time :       0.1616
-       User Sensitivity Time :     2.6761
-       Interface Time :            0.5636
-       Opt Solver Time:            0.1071
+    Total Time:                    3.6269
+       User Objective Time :       0.1743
+       User Sensitivity Time :     2.6529
+       Interface Time :            0.6924
+       Opt Solver Time:            0.1073
     Calls to Objective Function :      22
     Calls to Sens Function :           22
 

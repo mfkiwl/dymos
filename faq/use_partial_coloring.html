@@ -1180,12 +1180,10 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model viewer data has already been recorded for Driver.
+Model viewer data has already been recorded for Driver.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model viewer data has already been recorded for Driver.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.593449 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.613438 seconds.
 Total jacobian shape: (361, 212) 
 </pre></div>
 </div>
@@ -1194,9 +1192,9 @@ FWD solves: 13   REV solves: 0
 Total colors vs. total size: 13 vs 212  (93.9% improvement)
 
 Sparsity computed using tolerance: 1e-12
-Time to compute sparsity: 0.593449 sec.
-Time to compute coloring: 0.362649 sec.
-Memory to compute coloring: 0.710938 MB.
+Time to compute sparsity: 0.613438 sec.
+Time to compute coloring: 0.382236 sec.
+Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Using option file &quot;IPOPT_options.opt&quot;.
@@ -1626,8 +1624,8 @@ Number of inequality constraint evaluations          = 169
 Number of equality constraint Jacobian evaluations   = 123
 Number of inequality constraint Jacobian evaluations = 123
 Number of Lagrangian Hessian evaluations             = 0
-Total CPU secs in IPOPT (w/o function evaluations)   =      3.686
-Total CPU secs in NLP function evaluations           =     13.727
+Total CPU secs in IPOPT (w/o function evaluations)   =      3.764
+Total CPU secs in NLP function evaluations           =     13.957
 
 EXIT: Optimal Solution Found.
 
@@ -1638,11 +1636,11 @@ Optimization Problem -- Optimization using pyOpt_sparse
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                   11.6498
-       User Objective Time :       4.4830
-       User Sensitivity Time :     3.2160
-       Interface Time :            1.6101
-       Opt Solver Time:            2.3408
+    Total Time:                   11.8850
+       User Objective Time :       4.5932
+       User Sensitivity Time :     3.1595
+       Interface Time :            1.6774
+       Opt Solver Time:            2.4550
     Calls to Objective Function :     170
     Calls to Sens Function :          124
 
@@ -2232,15 +2230,15 @@ Optimization Problem -- Optimization using pyOpt_sparse
 --------------------------------------------------------------------------------
 </pre></div>
 </div>
-<img alt="../_images/use_partial_coloring_6_130.png" src="../_images/use_partial_coloring_6_130.png" />
+<img alt="../_images/use_partial_coloring_6_129.png" src="../_images/use_partial_coloring_6_129.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jacobian shape: (361, 212)  ( 3.44% nonzero)
 FWD solves: 13   REV solves: 0
 Total colors vs. total size: 13 vs 212  (93.9% improvement)
 
 Sparsity computed using tolerance: 1e-12
-Time to compute sparsity: 0.593449 sec.
-Time to compute coloring: 0.362649 sec.
-Memory to compute coloring: 0.710938 MB.
+Time to compute sparsity: 0.613438 sec.
+Time to compute coloring: 0.382236 sec.
+Memory to compute coloring: 0.000000 MB.
 Finite Differencing: True  Partial Coloring: False
 
 --- Constraint Report [traj] ---
@@ -2253,12 +2251,10 @@ Finite Differencing: True  Partial Coloring: False
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model viewer data has already been recorded for Driver.
+Model viewer data has already been recorded for Driver.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model viewer data has already been recorded for Driver.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.671887 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.675882 seconds.
 Total jacobian shape: (361, 212) 
 </pre></div>
 </div>
@@ -2267,9 +2263,9 @@ FWD solves: 154   REV solves: 0
 Total colors vs. total size: 154 vs 212  (27.4% improvement)
 
 Sparsity computed using tolerance: 1e-12
-Time to compute sparsity: 0.671887 sec.
-Time to compute coloring: 1.519110 sec.
-Memory to compute coloring: -0.640625 MB.
+Time to compute sparsity: 0.675882 sec.
+Time to compute coloring: 1.547501 sec.
+Memory to compute coloring: -0.699219 MB.
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.8/site-packages/openmdao/core/total_jac.py:1569: DerivativesWarning:Constraints or objectives [(&#39;traj.phases.phase0.timeseries.states:h&#39;, inds=[(0, 0)]), (&#39;traj.phases.phase0.timeseries.mach&#39;, inds=[(0, 0)])] cannot be impacted by the design variables of the problem.
@@ -2859,8 +2855,8 @@ Number of inequality constraint evaluations          = 397
 Number of equality constraint Jacobian evaluations   = 177
 Number of inequality constraint Jacobian evaluations = 177
 Number of Lagrangian Hessian evaluations             = 0
-Total CPU secs in IPOPT (w/o function evaluations)   =      8.572
-Total CPU secs in NLP function evaluations           =     50.886
+Total CPU secs in IPOPT (w/o function evaluations)   =      8.738
+Total CPU secs in NLP function evaluations           =     52.773
 
 EXIT: Optimal Solution Found.
 </pre></div>
@@ -2871,11 +2867,11 @@ EXIT: Optimal Solution Found.
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                   45.1770
-       User Objective Time :      10.0505
-       User Sensitivity Time :    26.8489
-       Interface Time :            2.5336
-       Opt Solver Time:            5.7439
+    Total Time:                   46.9313
+       User Objective Time :      10.7549
+       User Sensitivity Time :    27.6071
+       Interface Time :            2.7255
+       Opt Solver Time:            5.8437
     Calls to Objective Function :     398
     Calls to Sens Function :          178
 
@@ -3468,15 +3464,15 @@ EXIT: Optimal Solution Found.
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 396x396 with 0 Axes&gt;
 </pre></div>
 </div>
-<img alt="../_images/use_partial_coloring_6_316.png" src="../_images/use_partial_coloring_6_316.png" />
+<img alt="../_images/use_partial_coloring_6_314.png" src="../_images/use_partial_coloring_6_314.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jacobian shape: (361, 212)  (23.30% nonzero)
 FWD solves: 154   REV solves: 0
 Total colors vs. total size: 154 vs 212  (27.4% improvement)
 
 Sparsity computed using tolerance: 1e-12
-Time to compute sparsity: 0.671887 sec.
-Time to compute coloring: 1.519110 sec.
-Memory to compute coloring: -0.640625 MB.
+Time to compute sparsity: 0.675882 sec.
+Time to compute coloring: 1.547501 sec.
+Memory to compute coloring: -0.699219 MB.
 Finite Differencing: True  Partial Coloring: True
 
 --- Constraint Report [traj] ---
@@ -3561,8 +3557,8 @@ FWD solves: 2   REV solves: 0
 Total colors vs. total size: 2 vs 120  (98.3% improvement)
 
 Sparsity computed using tolerance: 1e-06
-Time to compute sparsity: 0.021445 sec.
-Time to compute coloring: 0.017483 sec.
+Time to compute sparsity: 0.019949 sec.
+Time to compute coloring: 0.016848 sec.
 Memory to compute coloring: 0.000000 MB.
 
 Coloring for &#39;traj.phases.phase0.rhs_col.aero.q_comp&#39; (class DynamicPressureCompFD)
@@ -3604,12 +3600,12 @@ FWD solves: 2   REV solves: 0
 Total colors vs. total size: 2 vs 60  (96.7% improvement)
 
 Sparsity computed using tolerance: 1e-06
-Time to compute sparsity: 0.010052 sec.
-Time to compute coloring: 0.008771 sec.
+Time to compute sparsity: 0.010650 sec.
+Time to compute coloring: 0.008909 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.735826 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.783249 seconds.
 Total jacobian shape: (361, 212) 
 </pre></div>
 </div>
@@ -3618,8 +3614,8 @@ FWD solves: 13   REV solves: 0
 Total colors vs. total size: 13 vs 212  (93.9% improvement)
 
 Sparsity computed using tolerance: 1e-12
-Time to compute sparsity: 0.735826 sec.
-Time to compute coloring: 0.361349 sec.
+Time to compute sparsity: 0.783249 sec.
+Time to compute coloring: 0.362464 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
@@ -4037,8 +4033,8 @@ Number of inequality constraint evaluations          = 171
 Number of equality constraint Jacobian evaluations   = 121
 Number of inequality constraint Jacobian evaluations = 121
 Number of Lagrangian Hessian evaluations             = 0
-Total CPU secs in IPOPT (w/o function evaluations)   =      3.720
-Total CPU secs in NLP function evaluations           =     14.694
+Total CPU secs in IPOPT (w/o function evaluations)   =      3.958
+Total CPU secs in NLP function evaluations           =     15.534
 
 EXIT: Optimal Solution Found.
 
@@ -4049,11 +4045,11 @@ Optimization Problem -- Optimization using pyOpt_sparse
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                   12.2345
-       User Objective Time :       4.5432
-       User Sensitivity Time :     3.7109
-       Interface Time :            1.6058
-       Opt Solver Time:            2.3746
+    Total Time:                   12.9288
+       User Objective Time :       4.8163
+       User Sensitivity Time :     3.8983
+       Interface Time :            1.7274
+       Opt Solver Time:            2.4868
     Calls to Objective Function :     172
     Calls to Sens Function :          122
 
@@ -4646,14 +4642,14 @@ Optimization Problem -- Optimization using pyOpt_sparse
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 396x396 with 0 Axes&gt;
 </pre></div>
 </div>
-<img alt="../_images/use_partial_coloring_6_445.png" src="../_images/use_partial_coloring_6_445.png" />
+<img alt="../_images/use_partial_coloring_6_443.png" src="../_images/use_partial_coloring_6_443.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jacobian shape: (361, 212)  ( 3.44% nonzero)
 FWD solves: 13   REV solves: 0
 Total colors vs. total size: 13 vs 212  (93.9% improvement)
 
 Sparsity computed using tolerance: 1e-12
-Time to compute sparsity: 0.735826 sec.
-Time to compute coloring: 0.361349 sec.
+Time to compute sparsity: 0.783249 sec.
+Time to compute coloring: 0.362464 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
