@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Aircraft Balanced Field Length Calculation &#8212; Dymos</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -26,8 +27,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/myfile.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
@@ -44,6 +44,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -896,7 +897,7 @@ title="Print to PDF"
                 
   <div class="cell tag_active-ipynb tag_remove-input tag_remove-output docutils container">
 </div>
-<div class="tex2jax_ignore mathjax_ignore section" id="aircraft-balanced-field-length-calculation">
+<section class="tex2jax_ignore mathjax_ignore" id="aircraft-balanced-field-length-calculation">
 <span id="examples-balanced-field"></span><h1>Aircraft Balanced Field Length Calculation<a class="headerlink" href="#aircraft-balanced-field-length-calculation" title="Permalink to this headline">#</a></h1>
 <div class="admonition-things-you-ll-learn-through-this-example admonition">
 <p class="admonition-title">Things you’ll learn through this example</p>
@@ -954,23 +955,23 @@ at the end of the RTO phase is equal to <code class="docutils literal notranslat
 <p>More information on calculating the balanced field length is available
 in section 17.8 of <em>Aircraft Design: A Conceptual Approach</em> by
 Daniel Raymer <span id="id1">[<a class="reference internal" href="#id49" title="Daniel Raymer. Aircraft design: a conceptual approach. American Institute of Aeronautics and Astronautics, Inc., 2012.">Ray12</a>]</span>.</p>
-<div class="section" id="the-ode-system">
+<section id="the-ode-system">
 <h2>The ODE System<a class="headerlink" href="#the-ode-system" title="Permalink to this headline">#</a></h2>
 <p>In this problem two sets of ordinary differential equations are used:
 one for the aircraft motion on the runway, and one for the aircraft motion once airborne.</p>
 <p>For simplification, we’re going to assume a constant atmospheric model since the aircraft will never exceed 35 feet of altitude.
 Also, since the duration of the trajectory is small, we’re going to assume that the vehicle fuel burn is negligible</p>
-<div class="section" id="the-aerodynamic-model">
+<section id="the-aerodynamic-model">
 <h3>The Aerodynamic Model<a class="headerlink" href="#the-aerodynamic-model" title="Permalink to this headline">#</a></h3>
 <p>Both sets of equations of motion have common aerodynamic models.</p>
 <p>First, the lift coefficient is computed using a model which assumes linearity in lift wrt the angle of attack.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3d28bcde-0537-44cc-8084-ad20ec945ffd">
-<span class="eqno">(21)<a class="headerlink" href="#equation-3d28bcde-0537-44cc-8084-ad20ec945ffd" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-54771a15-510b-440c-bbc4-7a1e4356c276">
+<span class="eqno">(21)<a class="headerlink" href="#equation-54771a15-510b-440c-bbc4-7a1e4356c276" title="Permalink to this equation">#</a></span>\[\begin{align}
     C_L &amp;= C_{L0} + \frac{\alpha}{\alpha_{max}} \left(C_{L-max} - C_{L0}\right)
 \end{align}\]</div>
 <p>Next, the drag-due-to-lift factor is computed (Equations 12.48 and 12.61 in Raymer[&#64;raymer2012aircraft]).</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a0a45be2-a8d2-4133-b919-8ad1be35ccd7">
-<span class="eqno">(22)<a class="headerlink" href="#equation-a0a45be2-a8d2-4133-b919-8ad1be35ccd7" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-2cace319-8077-408b-a696-17bace8797ab">
+<span class="eqno">(22)<a class="headerlink" href="#equation-2cace319-8077-408b-a696-17bace8797ab" title="Permalink to this equation">#</a></span>\[\begin{align}
     K_{nom} &amp;= \frac{1}{ \pi  AR  e} \\
     b &amp;= \frac{span}{2} \\
     K &amp;= 33 K_{nom} \frac{ \left(\frac{h + h_w}{b} \right) ^{\frac{3}{2}}}{1.0 + 33 \left( \frac{h + h_w}{b}\right) ^{\frac{3}{2}}}
@@ -979,29 +980,29 @@ Also, since the duration of the trajectory is small, we’re going to assume tha
 This causes this problem to be difficult to solve using a shooting method.
 If the optimizer proposes a combination of initial states and a control history that results in altitude dropping significantly below zero, the propagation will fail.</p>
 <p>Finally, the lift and drag are computed after computing the dynamic pressure.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-99c26118-f6c2-4058-a638-62d9860612cd">
-<span class="eqno">(23)<a class="headerlink" href="#equation-99c26118-f6c2-4058-a638-62d9860612cd" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-9ce19b9d-e797-465d-a3c0-4565d1afa505">
+<span class="eqno">(23)<a class="headerlink" href="#equation-9ce19b9d-e797-465d-a3c0-4565d1afa505" title="Permalink to this equation">#</a></span>\[\begin{align}
     q &amp;= 0.5 \rho v^2 \\
     L &amp;= q  S  C_L \\
     D &amp;= q S \left( C_{D0} + K C_{L}^2 \right)
 \end{align}\]</div>
-</div>
-<div class="section" id="stall-speed">
+</section>
+<section id="stall-speed">
 <h3>Stall Speed<a class="headerlink" href="#stall-speed" title="Permalink to this headline">#</a></h3>
 <p>This model relies on the ratio of the current true airspeed to stall speed (<span class="math notranslate nohighlight">\(\frac{v}{v_{stall}}\)</span>).
 This constraint is used to trigger the beginning of rotation and is used as a boundary constraint at the end of the initial climb.
 Stall speed is given by Equation 5.6 in Raymer[&#64;raymer2012aircraft].</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5d24ada3-1edc-4340-adac-8eb79f473ff2">
-<span class="eqno">(24)<a class="headerlink" href="#equation-5d24ada3-1edc-4340-adac-8eb79f473ff2" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-8a30ed56-5aa8-414d-a6b7-0cd684712ed0">
+<span class="eqno">(24)<a class="headerlink" href="#equation-8a30ed56-5aa8-414d-a6b7-0cd684712ed0" title="Permalink to this equation">#</a></span>\[\begin{align}
     W &amp;= m g \\
     v_{stall} &amp;= \sqrt{\frac{2 * W}{\rho S C_{L-max}}}
 \end{align}\]</div>
-</div>
-<div class="section" id="runway-equations-of-motion">
+</section>
+<section id="runway-equations-of-motion">
 <h3>Runway Equations of Motion<a class="headerlink" href="#runway-equations-of-motion" title="Permalink to this headline">#</a></h3>
 <p>The runway equations of motion are used to integrate range and speed as the vehicle rolls along the runway.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-bf230f8a-d1d4-4cd8-a88c-92b739676d88">
-<span class="eqno">(25)<a class="headerlink" href="#equation-bf230f8a-d1d4-4cd8-a88c-92b739676d88" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-4e7619cf-bb35-4522-a91b-cc2ddbf4ef06">
+<span class="eqno">(25)<a class="headerlink" href="#equation-4e7619cf-bb35-4522-a91b-cc2ddbf4ef06" title="Permalink to this equation">#</a></span>\[\begin{align}
   F_r &amp;= mg - L \cos \alpha - T \sin \alpha \\
   \dot{v} &amp;= \frac{T \cos \alpha - D - F_r \mu_r}{m} \\
   \dot{r} &amp;= v
@@ -1024,12 +1025,12 @@ Stall speed is given by Equation 5.6 in Raymer[&#64;raymer2012aircraft].</p>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="flight-equations-of-motion">
+</section>
+<section id="flight-equations-of-motion">
 <h3>Flight Equations of Motion<a class="headerlink" href="#flight-equations-of-motion" title="Permalink to this headline">#</a></h3>
 <p>The flight equations of motion include two additional state variables: the flight-path angle (<span class="math notranslate nohighlight">\(\gamma\)</span>) and altitude (<span class="math notranslate nohighlight">\(h\)</span>).</p>
-<div class="amsmath math notranslate nohighlight" id="equation-444d6160-3bbf-45c4-b770-3624b3668eb4">
-<span class="eqno">(26)<a class="headerlink" href="#equation-444d6160-3bbf-45c4-b770-3624b3668eb4" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-72518cec-e800-4ac5-8548-171dba43cd33">
+<span class="eqno">(26)<a class="headerlink" href="#equation-72518cec-e800-4ac5-8548-171dba43cd33" title="Permalink to this equation">#</a></span>\[\begin{align}
   \dot{v} &amp;= \frac{T}{m} \cos \alpha - \frac{D}{m} - g \sin \gamma \\
   \dot{\gamma} &amp;= \frac{T}{m v} \sin \alpha + \frac{L}{m v} - \frac{g \cos \gamma}{v} \\
   \dot{h} &amp;= v \sin \gamma \\
@@ -1061,16 +1062,16 @@ Stall speed is given by Equation 5.6 in Raymer[&#64;raymer2012aircraft].</p>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="treatment-of-the-angle-of-attack-alpha">
+</section>
+<section id="treatment-of-the-angle-of-attack-alpha">
 <h3>Treatment of the angle-of-attack (<span class="math notranslate nohighlight">\(\alpha\)</span>)<a class="headerlink" href="#treatment-of-the-angle-of-attack-alpha" title="Permalink to this headline">#</a></h3>
 <p>In three of the runway phases (break release to <span class="math notranslate nohighlight">\(V1\)</span>, <span class="math notranslate nohighlight">\(V1\)</span> to <span class="math notranslate nohighlight">\(V_r\)</span>, and rejected takeoff) <span class="math notranslate nohighlight">\(\alpha\)</span> is treated as a fixed static parameter.</p>
 <p>In the rotation phase, <span class="math notranslate nohighlight">\(\alpha\)</span> is treated as a polynomial control of order 1.
 <span class="math notranslate nohighlight">\(\alpha\)</span> starts at an initial value of zero and increases at a linear rate until the upward forces on the aircraft due to lift and thrust cancel the downward force due to gravity.</p>
 <p>In the climb phase, <span class="math notranslate nohighlight">\(\alpha\)</span> is treated as a dynamic control to be chosen by the optimizer.</p>
 <p>Phase linkage constraints are used to maintain continuity in <span class="math notranslate nohighlight">\(\alpha\)</span> throughout the trajectory.</p>
-</div>
-<div class="section" id="parameters">
+</section>
+<section id="parameters">
 <h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">#</a></h3>
 <p>The following parameters define properties of the aircraft and environment for the problem.</p>
 <table class="colwidths-auto table">
@@ -1154,12 +1155,12 @@ Stall speed is given by Equation 5.6 in Raymer[&#64;raymer2012aircraft].</p>
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div class="section" id="the-optimal-control-problem">
+</section>
+</section>
+<section id="the-optimal-control-problem">
 <h2>The Optimal Control Problem<a class="headerlink" href="#the-optimal-control-problem" title="Permalink to this headline">#</a></h2>
 <p>The following constraints and objective complete the definition of this optimal control problem.</p>
-<div class="section" id="objective">
+<section id="objective">
 <h3>Objective<a class="headerlink" href="#objective" title="Permalink to this headline">#</a></h3>
 <table class="colwidths-auto table">
 <thead>
@@ -1181,8 +1182,8 @@ Stall speed is given by Equation 5.6 in Raymer[&#64;raymer2012aircraft].</p>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="nonlinear-boundary-constraints">
+</section>
+<section id="nonlinear-boundary-constraints">
 <h3>Nonlinear Boundary Constraints<a class="headerlink" href="#nonlinear-boundary-constraints" title="Permalink to this headline">#</a></h3>
 <table class="colwidths-auto table">
 <thead>
@@ -1260,8 +1261,8 @@ Stall speed is given by Equation 5.6 in Raymer[&#64;raymer2012aircraft].</p>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="nonlinear-path-constraints">
+</section>
+<section id="nonlinear-path-constraints">
 <h3>Nonlinear Path Constraints<a class="headerlink" href="#nonlinear-path-constraints" title="Permalink to this headline">#</a></h3>
 <table class="colwidths-auto table">
 <thead>
@@ -1287,8 +1288,8 @@ Stall speed is given by Equation 5.6 in Raymer[&#64;raymer2012aircraft].</p>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="phase-continuity-constraints">
+</section>
+<section id="phase-continuity-constraints">
 <h3>Phase Continuity Constraints<a class="headerlink" href="#phase-continuity-constraints" title="Permalink to this headline">#</a></h3>
 <table class="colwidths-auto table">
 <thead>
@@ -1320,9 +1321,9 @@ Stall speed is given by Equation 5.6 in Raymer[&#64;raymer2012aircraft].</p>
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div class="section" id="source-code">
+</section>
+</section>
+<section id="source-code">
 <h2>Source Code<a class="headerlink" href="#source-code" title="Permalink to this headline">#</a></h2>
 <p>Unlike most other Dymos examples, which use analytic derivatives, the ODE in this case is a single component.
 All calculations within the ODE are complex-safe and thus we can use complex-step, in conjunction with
@@ -1331,7 +1332,7 @@ to automatically compute the derivatives using complex-step with reasonable spee
 <p>Since there is significant commonality between the ODEs for the runway roll and the climb, this implementation
 uses a single ODE class with an option <code class="docutils literal notranslate"><span class="pre">mode</span></code> that can be set to either <code class="docutils literal notranslate"><span class="pre">'runway'</span></code> or <code class="docutils literal notranslate"><span class="pre">'climb'</span></code>.
 Based on the value of <code class="docutils literal notranslate"><span class="pre">mode</span></code>, the component conditionally changes its inputs and outputs.</p>
-<div class="section" id="balancedfieldodecomp">
+<section id="balancedfieldodecomp">
 <h3>BalancedFieldODEComp<a class="headerlink" href="#balancedfieldodecomp" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1457,9 +1458,9 @@ Based on the value of <code class="docutils literal notranslate"><span class="pr
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="building-and-running-the-problem">
+</section>
+</section>
+<section id="building-and-running-the-problem">
 <h2>Building and running the problem<a class="headerlink" href="#building-and-running-the-problem" title="Permalink to this headline">#</a></h2>
 <p>In the following code we define and solve the optimal control problem.
 First we define the problem and specify the optimizer settings.</p>
@@ -1558,7 +1559,7 @@ First we define the problem and specify the optimizer settings.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;dymos.phase.phase.Phase at 0x7f0b652d41c0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;dymos.phase.phase.Phase at 0x7f8259ac01c0&gt;
 </pre></div>
 </div>
 </div>
@@ -1702,9 +1703,8 @@ By specifying these constraints as linear, we’re also letting the optimizer kn
         [final]   5.0000e+00 == gam [deg]
         [final]   1.2500e+00 &lt;= v_over_v_stall  [None]
         [path]    0.0000e+00 &lt;= gam &lt;= 5.0000e+00  [deg]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking out_of_order
+
+INFO: checking out_of_order
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking system
@@ -1766,57 +1766,59 @@ FWD solves: 16   REV solves: 0
 Total colors vs. total size: 16 vs 60  (73.3% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.044419 sec.
-Time to compute coloring: 0.027432 sec.
-Memory to compute coloring: 0.000000 MB.
-
-Coloring for &#39;traj.phases.rto.rhs_all&#39; (class BalancedFieldODEComp)
-
-Jacobian shape: (132, 60)  ( 9.79% nonzero)
-FWD solves: 16   REV solves: 0
-Total colors vs. total size: 16 vs 60  (73.3% improvement)
-
-Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.035293 sec.
-Time to compute coloring: 0.021476 sec.
-Memory to compute coloring: 0.000000 MB.
-
-Coloring for &#39;traj.phases.v1_to_vr.rhs_all&#39; (class BalancedFieldODEComp)
-
-Jacobian shape: (132, 60)  (10.15% nonzero)
-FWD solves: 16   REV solves: 0
-Total colors vs. total size: 16 vs 60  (73.3% improvement)
-
-Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.035112 sec.
-Time to compute coloring: 0.021492 sec.
+Time to compute sparsity: 0.024108 sec.
+Time to compute coloring: 0.014591 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Coloring for &#39;traj.phases.rotate.rhs_all&#39; (class BalancedFieldODEComp)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Coloring for &#39;traj.phases.rto.rhs_all&#39; (class BalancedFieldODEComp)
+
+Jacobian shape: (132, 60)  ( 9.77% nonzero)
+FWD solves: 16   REV solves: 0
+Total colors vs. total size: 16 vs 60  (73.3% improvement)
+
+Sparsity computed using tolerance: 1e-25
+Time to compute sparsity: 0.023464 sec.
+Time to compute coloring: 0.016739 sec.
+Memory to compute coloring: 0.000000 MB.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Coloring for &#39;traj.phases.v1_to_vr.rhs_all&#39; (class BalancedFieldODEComp)
 
 Jacobian shape: (132, 60)  (10.15% nonzero)
 FWD solves: 16   REV solves: 0
 Total colors vs. total size: 16 vs 60  (73.3% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.036288 sec.
-Time to compute coloring: 0.027503 sec.
+Time to compute sparsity: 0.023753 sec.
+Time to compute coloring: 0.014549 sec.
 Memory to compute coloring: 0.000000 MB.
 
-Coloring for &#39;traj.phases.climb.rhs_all&#39; (class BalancedFieldODEComp)
+Coloring for &#39;traj.phases.rotate.rhs_all&#39; (class BalancedFieldODEComp)
+
+Jacobian shape: (132, 60)  (10.15% nonzero)
+FWD solves: 16   REV solves: 0
+Total colors vs. total size: 16 vs 60  (73.3% improvement)
+
+Sparsity computed using tolerance: 1e-25
+Time to compute sparsity: 0.023710 sec.
+Time to compute coloring: 0.014730 sec.
+Memory to compute coloring: 0.000000 MB.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Coloring for &#39;traj.phases.climb.rhs_all&#39; (class BalancedFieldODEComp)
 
 Jacobian shape: (260, 111)  ( 5.54% nonzero)
 FWD solves: 16   REV solves: 0
 Total colors vs. total size: 16 vs 111  (85.6% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.071854 sec.
-Time to compute coloring: 0.040003 sec.
+Time to compute sparsity: 0.049261 sec.
+Time to compute coloring: 0.029951 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 2.336005 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 1.537325 seconds.
 Total jacobian shape: (178, 166) 
 
 
@@ -1825,12 +1827,9 @@ FWD solves: 12   REV solves: 0
 Total colors vs. total size: 12 vs 166  (92.8% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 2.336005 sec.
-Time to compute coloring: 0.157042 sec.
+Time to compute sparsity: 1.537325 sec.
+Time to compute coloring: 0.100121 sec.
 Memory to compute coloring: 0.000000 MB.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.8/site-packages/openmdao/core/total_jac.py:1569: DerivativesWarning:Constraints or objectives [(&#39;traj.phases.climb.timeseries.states:gam&#39;, inds=[(0, 0)])] cannot be impacted by the design variables of the problem.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Using option file &quot;IPOPT_options.opt&quot;.
@@ -1861,6 +1860,9 @@ Total number of inequality constraints...............:       21
 
 iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
    0  5.0000000e+00 1.45e+03 1.34e-01   0.0 0.00e+00    -  0.00e+00 0.00e+00   0
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.8/site-packages/openmdao/core/total_jac.py:1569: DerivativesWarning:Constraints or objectives [(&#39;traj.phases.climb.timeseries.states:gam&#39;, inds=[(0, 0)])] cannot be impacted by the design variables of the problem.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   1  4.7292571e+00 6.78e+02 5.02e+01   0.0 2.23e+01    -  3.03e-02 5.32e-01f  1
@@ -1951,11 +1953,11 @@ iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
 Number of Iterations....: 28
 
                                    (scaled)                 (unscaled)
-Objective...............:   2.1977135635050149e+00    2.1977135635050149e+00
-Dual infeasibility......:   4.8492105176777648e-09    4.8492105176777648e-09
-Constraint violation....:   1.2639498243277645e-12    1.2639498243277645e-12
-Complementarity.........:   1.0037873013587235e-11    1.0037873013587235e-11
-Overall NLP error.......:   4.8492105176777648e-09    4.8492105176777648e-09
+Objective...............:   2.1977135635050131e+00    2.1977135635050131e+00
+Dual infeasibility......:   4.8492119887232724e-09    4.8492119887232724e-09
+Constraint violation....:   1.2641155013266274e-12    1.2641155013266274e-12
+Complementarity.........:   1.0037873013543860e-11    1.0037873013543860e-11
+Overall NLP error.......:   4.8492119887232724e-09    4.8492119887232724e-09
 
 
 Number of objective function evaluations             = 29
@@ -1965,8 +1967,8 @@ Number of inequality constraint evaluations          = 29
 Number of equality constraint Jacobian evaluations   = 29
 Number of inequality constraint Jacobian evaluations = 29
 Number of Lagrangian Hessian evaluations             = 0
-Total CPU secs in IPOPT (w/o function evaluations)   =      0.303
-Total CPU secs in NLP function evaluations           =      5.240
+Total CPU secs in IPOPT (w/o function evaluations)   =      0.225
+Total CPU secs in NLP function evaluations           =      3.644
 
 EXIT: Optimal Solution Found.
 </pre></div>
@@ -2034,8 +2036,8 @@ This is the shortest possible field that accommodates both a rejected takeoff an
 </div>
 <div class="cell tag_remove-input tag_remove-output docutils container">
 </div>
-</div>
-<div class="section" id="references">
+</section>
+<section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
 <div class="docutils container" id="id2">
 <dl class="citation">
@@ -2044,8 +2046,8 @@ This is the shortest possible field that accommodates both a rejected takeoff an
 </dd>
 </dl>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -2097,7 +2099,7 @@ This is the shortest possible field that accommodates both a rejected takeoff an
   
     By The Dymos Development Team<br/>
   
-      &copy; Copyright 2021.<br/>
+      &copy; Copyright 2022.<br/>
 </p>
         </footer>
     </div>

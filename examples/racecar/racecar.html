@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Race car Lap Simulation &#8212; Dymos</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -26,8 +27,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/myfile.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
@@ -44,6 +44,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -780,7 +781,7 @@ title="Print to PDF"
                 
   <div class="cell tag_active-ipynb tag_remove-input tag_remove-output docutils container">
 </div>
-<div class="tex2jax_ignore mathjax_ignore section" id="race-car-lap-simulation">
+<section class="tex2jax_ignore mathjax_ignore" id="race-car-lap-simulation">
 <h1>Race car Lap Simulation<a class="headerlink" href="#race-car-lap-simulation" title="Permalink to this headline">#</a></h1>
 <div class="admonition-things-you-ll-learn-through-this-example admonition">
 <p class="admonition-title">Things you’ll learn through this example</p>
@@ -800,7 +801,7 @@ The solution must be such that the start and end states are identical. The probl
 is given a race track shape, what is the optimum values for the controls such that the time elapsed to complete
 the track is a minimum.</em></p>
 </div>
-<div class="section" id="background-of-the-problem">
+<section id="background-of-the-problem">
 <h2>Background of the problem<a class="headerlink" href="#background-of-the-problem" title="Permalink to this headline">#</a></h2>
 <p>This example is based on the work of <a class="reference external" href="http://www.formulae.one/contact">Pieter de Buck</a>
 The goal of his problem was to find an optimal trajectory for the race car with active aerodynamic and
@@ -835,8 +836,8 @@ file, modify the lines:</p>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="optimizing-trajectories-for-cyclic-events">
+</section>
+<section id="optimizing-trajectories-for-cyclic-events">
 <h2>Optimizing trajectories for cyclic events<a class="headerlink" href="#optimizing-trajectories-for-cyclic-events" title="Permalink to this headline">#</a></h2>
 <p>For trajectory optimization of cyclic events (such as race car laps), there needs to be
 a way that ensure that the start and end states are identical.</p>
@@ -855,8 +856,8 @@ to the value of <code class="docutils literal notranslate"><span class="pre">V</
 This call does the same for the other 6 state variables as well.</p>
 <p>See the <a class="reference external" href="https://openmdao.github.io/dymos/api/trajectory_api.html">Trajectory API page</a>
 for more information about the <code class="docutils literal notranslate"><span class="pre">link_phases</span></code> method.</p>
-</div>
-<div class="section" id="using-an-independent-variable-other-than-time">
+</section>
+<section id="using-an-independent-variable-other-than-time">
 <h2>Using an independent variable other than time<a class="headerlink" href="#using-an-independent-variable-other-than-time" title="Permalink to this headline">#</a></h2>
 <p>In all the other dymos examples, time is the independent variable.
 In this race car example, the independent variable is the arc length along the track.
@@ -864,13 +865,13 @@ Integration is done from the start of the track to the end.
 The “typical” equations of motion are computed, so the rate of change of x wrt time (<strong><span class="math notranslate nohighlight">\(\frac{dx}{dt}\)</span></strong>).</p>
 <p>By dividing the rates of change w.r.t. time by (<strong><span class="math notranslate nohighlight">\(\frac{ds}{dt}\)</span></strong>),
 the rates of change of the states w.r.t. track arclength traversed are computed.</p>
-</div>
-<div class="section" id="definition-of-the-problem">
+</section>
+<section id="definition-of-the-problem">
 <h2>Definition of the problem<a class="headerlink" href="#definition-of-the-problem" title="Permalink to this headline">#</a></h2>
 <p>Here are some figures which help define the problem.</p>
 <p>This table describes the controls, states, and constraints. The symbols match up with the
 variable names in the code shown at the bottom of this page.</p>
-<div class="section" id="table-1-optimization-problem-formulation">
+<section id="table-1-optimization-problem-formulation">
 <h3>Table 1. Optimization problem formulation<a class="headerlink" href="#table-1-optimization-problem-formulation" title="Permalink to this headline">#</a></h3>
 <table class="colwidths-auto table">
 <thead>
@@ -1069,8 +1070,8 @@ variable names in the code shown at the bottom of this page.</p>
 </table>
 <p>The next figure defines the vehicle parameters. Again, the symbols match up with the
 variable names in the code.</p>
-</div>
-<div class="section" id="table-2-vehicle-parameters">
+</section>
+<section id="table-2-vehicle-parameters">
 <h3>Table 2. Vehicle parameters<a class="headerlink" href="#table-2-vehicle-parameters" title="Permalink to this headline">#</a></h3>
 <table class="colwidths-auto table">
 <thead>
@@ -1582,7 +1583,7 @@ INFO: checking out_of_order
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking auto_ivc_warnings
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 22.258416 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 14.410898 seconds.
 Total jacobian shape: (1256, 609) 
 </pre></div>
 </div>
@@ -1591,9 +1592,9 @@ FWD solves: 20   REV solves: 0
 Total colors vs. total size: 20 vs 609  (96.7% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 22.258416 sec.
-Time to compute coloring: 1.085029 sec.
-Memory to compute coloring: -9.742188 MB.
+Time to compute sparsity: 14.410898 sec.
+Time to compute coloring: 0.764309 sec.
+Memory to compute coloring: -9.164062 MB.
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.8/site-packages/openmdao/core/total_jac.py:1569: DerivativesWarning:Constraints or objectives [(&#39;traj.phases.phase0.timeseries.c_fr&#39;, inds=[(0, 0), (1, 0), (2, 0), (3, 0), (4, 0), (5, 0), (6, 0), (7, 0), (8, 0), (9, 0), (10, 0), (11, 0), (12, 0), (13, 0), (14, 0), (15, 0), (16, 0), (17, 0), (18, 0), (19, 0), (20, 0), (21, 0), (22, 0), (23, 0), (24, 0), (25, 0), (26, 0), (27, 0), (28, 0), (29, 0), (30, 0), (31, 0), (32, 0), (33, 0), (34, 0), (35, 0), (36, 0), (37, 0), (38, 0), (39, 0), (40, 0), (41, 0), (42, 0), (43, 0), (44, 0), (45, 0), (46, 0), (47, 0), (48, 0), (49, 0), (50, 0), (51, 0), (52, 0), (53, 0), (54, 0), (55, 0), (56, 0), (57, 0), (58, 0), (59, 0), (60, 0), (61, 0), (62, 0), (63, 0), (64, 0), (65, 0), (66, 0), (67, 0), (68, 0), (69, 0), (70, 0), (71, 0), (72, 0), (73, 0), (74, 0), (75, 0), (76, 0), (77, 0), (78, 0), (79, 0), (80, 0), (81, 0), (82, 0), (83, 0), (84, 0), (85, 0), (86, 0), (87, 0), (88, 0), (89, 0), (90, 0), (91, 0), (92, 0), (93, 0), (94, 0), (95, 0), (96, 0), (97, 0), (98, 0), (99, 0), (100, 0), (101, 0), (102, 0), (103, 0), (104, 0), (105, 0), (106, 0), (107, 0), (108, 0), (109, 0), (110, 0), (111, 0), (112, 0), (113, 0), (114, 0), (115, 0), (116, 0), (117, 0), (118, 0), (119, 0), (120, 0), (121, 0), (122, 0), (123, 0), (124, 0), (125, 0), (126, 0), (127, 0), (128, 0), (129, 0), (130, 0), (131, 0), (132, 0), (133, 0), (134, 0), (135, 0), (136, 0), (137, 0), (138, 0), (139, 0), (140, 0), (141, 0), (142, 0), (143, 0), (144, 0), (145, 0), (146, 0), (147, 0), (148, 0), (149, 0)]), (&#39;traj.phases.phase0.timeseries.c_fl&#39;, inds=[(0, 0), (1, 0), (2, 0), (3, 0), (4, 0), (5, 0), (6, 0), (7, 0), (8, 0), (9, 0), (10, 0), (11, 0), (12, 0), (13, 0), (14, 0), (15, 0), (16, 0), (17, 0), (18, 0), (19, 0), (20, 0), (21, 0), (22, 0), (23, 0), (24, 0), (25, 0), (26, 0), (27, 0), (28, 0), (29, 0), (30, 0), (31, 0), (32, 0), (33, 0), (34, 0), (35, 0), (36, 0), (37, 0), (38, 0), (39, 0), (40, 0), (41, 0), (42, 0), (43, 0), (44, 0), (45, 0), (46, 0), (47, 0), (48, 0), (49, 0), (50, 0), (51, 0), (52, 0), (53, 0), (54, 0), (55, 0), (56, 0), (57, 0), (58, 0), (59, 0), (60, 0), (61, 0), (62, 0), (63, 0), (64, 0), (65, 0), (66, 0), (67, 0), (68, 0), (69, 0), (70, 0), (71, 0), (72, 0), (73, 0), (74, 0), (75, 0), (76, 0), (77, 0), (78, 0), (79, 0), (80, 0), (81, 0), (82, 0), (83, 0), (84, 0), (85, 0), (86, 0), (87, 0), (88, 0), (89, 0), (90, 0), (91, 0), (92, 0), (93, 0), (94, 0), (95, 0), (96, 0), (97, 0), (98, 0), (99, 0), (100, 0), (101, 0), (102, 0), (103, 0), (104, 0), (105, 0), (106, 0), (107, 0), (108, 0), (109, 0), (110, 0), (111, 0), (112, 0), (113, 0), (114, 0), (115, 0), (116, 0), (117, 0), (118, 0), (119, 0), (120, 0), (121, 0), (122, 0), (123, 0), (124, 0), (125, 0), (126, 0), (127, 0), (128, 0), (129, 0), (130, 0), (131, 0), (132, 0), (133, 0), (134, 0), (135, 0), (136, 0), (137, 0), (138, 0), (139, 0), (140, 0), (141, 0), (142, 0), (143, 0), (144, 0), (145, 0), (146, 0), (147, 0), (148, 0), (149, 0)])] cannot be impacted by the design variables of the problem.
@@ -1771,7 +1772,7 @@ iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  46  2.2329676e+01 1.23e+00 2.35e-02  -4.0 2.71e+00    -  8.87e-01 3.74e-01h  1
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  47  2.2305355e+01 1.15e+00 4.87e-02  -4.0 2.68e+00    -  6.26e-01 4.19e-01h  1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  47  2.2305355e+01 1.15e+00 4.87e-02  -4.0 2.69e+00    -  6.26e-01 4.19e-01h  1
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  48  2.2286821e+01 6.18e-01 5.67e-02  -4.0 1.03e+00    -  1.00e+00 7.26e-01h  1
@@ -1790,7 +1791,7 @@ iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  52  2.2282077e+01 2.02e-01 1.05e-02  -4.0 3.12e-01    -  1.00e+00 1.00e+00h  1
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  53  2.2281214e+01 2.57e-01 7.82e-03  -4.0 4.07e-01    -  1.00e+00 1.00e+00h  1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  53  2.2281213e+01 2.57e-01 7.82e-03  -4.0 4.07e-01    -  1.00e+00 1.00e+00h  1
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  54  2.2279998e+01 4.89e-01 6.87e-03  -4.0 7.77e-01    -  1.00e+00 1.00e+00h  1
@@ -1802,95 +1803,92 @@ iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  56  2.2275181e+01 3.88e+00 3.57e-02  -4.0 1.39e+01    -  1.00e+00 3.64e-01h  1
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  57  2.2262032e+01 8.68e-01 3.02e-02  -4.0 1.42e+00    -  1.00e+00 9.92e-01h  1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  57  2.2262034e+01 8.68e-01 3.02e-02  -4.0 1.42e+00    -  1.00e+00 9.92e-01h  1
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  58  2.2263133e+01 2.66e-01 5.98e-02  -4.0 3.26e-01    -  1.00e+00 1.00e+00h  1
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  59  2.2260559e+01 1.94e-01 9.21e-03  -4.0 3.59e-01    -  1.00e+00 1.00e+00h  1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  59  2.2260558e+01 1.94e-01 9.22e-03  -4.0 3.59e-01    -  1.00e+00 1.00e+00h  1
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
   60  2.2265904e+01 8.04e-02 8.73e-03  -4.0 6.62e-02    -  1.00e+00 1.00e+00h  1
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  61  2.2265790e+01 5.38e-02 7.51e-03  -4.0 9.05e-02    -  1.00e+00 1.00e+00h  1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  61  2.2265790e+01 5.39e-02 7.52e-03  -4.0 9.06e-02    -  1.00e+00 1.00e+00h  1
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  62  2.2265643e+01 3.79e-02 7.54e-03  -4.0 6.47e-02    -  1.00e+00 1.00e+00h  1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  62  2.2265643e+01 3.80e-02 7.54e-03  -4.0 6.48e-02    -  1.00e+00 1.00e+00h  1
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  63  2.2265847e+01 9.03e-03 1.61e-03  -4.0 2.64e-02    -  1.00e+00 1.00e+00h  1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  63  2.2265847e+01 8.97e-03 1.61e-03  -4.0 2.64e-02    -  1.00e+00 1.00e+00h  1
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  64  2.2265920e+01 8.66e-03 4.52e-03  -4.0 1.56e-02    -  1.00e+00 1.00e+00h  1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  64  2.2265920e+01 8.58e-03 4.50e-03  -4.0 1.55e-02    -  1.00e+00 1.00e+00h  1
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  65  2.2265893e+01 4.98e-03 3.11e-04  -4.0 7.06e-03    -  1.00e+00 1.00e+00h  1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  65  2.2265893e+01 5.01e-03 3.13e-04  -4.0 7.03e-03    -  1.00e+00 1.00e+00h  1
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  66  2.2265923e+01 6.31e-03 1.75e-04  -4.0 3.12e-03    -  1.00e+00 1.00e+00h  1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  66  2.2265923e+01 6.34e-03 1.77e-04  -4.0 3.13e-03    -  1.00e+00 1.00e+00h  1
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  67  2.2265862e+01 1.56e-02 4.94e-03  -4.0 6.95e-02    -  1.00e+00 1.00e+00H  1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  67  2.2265863e+01 1.57e-02 4.94e-03  -4.0 6.96e-02    -  1.00e+00 1.00e+00H  1
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  68  2.2265821e+01 2.07e-02 3.08e-03  -4.0 3.36e-02    -  1.00e+00 1.00e+00h  1
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  69  2.2265813e+01 1.93e-02 6.06e-03  -4.0 3.06e-02    -  1.00e+00 1.00e+00h  1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  69  2.2265813e+01 1.93e-02 6.07e-03  -4.0 3.07e-02    -  1.00e+00 1.00e+00h  1
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
-  70  2.2265793e+01 1.66e-02 3.96e-04  -4.0 2.68e-02    -  1.00e+00 1.00e+00h  1
+  70  2.2265793e+01 1.66e-02 3.91e-04  -4.0 2.67e-02    -  1.00e+00 1.00e+00h  1
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  71  2.2265807e+01 5.67e-03 9.12e-05  -4.0 8.58e-03    -  1.00e+00 1.00e+00h  1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  71  2.2265807e+01 5.61e-03 9.14e-05  -4.0 8.53e-03    -  1.00e+00 1.00e+00h  1
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  72  2.2265795e+01 3.78e-03 1.45e-03  -4.0 1.88e-02    -  1.00e+00 1.00e+00H  1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  72  2.2265795e+01 3.72e-03 1.39e-03  -4.0 1.87e-02    -  1.00e+00 1.00e+00H  1
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  73  2.2265801e+01 4.43e-03 8.35e-04  -4.0 7.51e-03    -  1.00e+00 1.00e+00h  1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  73  2.2265800e+01 4.27e-03 8.15e-04  -4.0 7.95e-03    -  1.00e+00 1.00e+00h  1
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  74  2.2265802e+01 3.40e-03 8.21e-04  -4.0 6.21e-03    -  1.00e+00 1.00e+00H  1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  74  2.2265804e+01 3.44e-03 7.21e-04  -4.0 5.21e-03    -  1.00e+00 1.00e+00H  1
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  75  2.2265797e+01 5.07e-03 2.76e-04  -4.0 5.56e-03    -  1.00e+00 1.00e+00h  1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  75  2.2265797e+01 5.41e-03 4.01e-04  -4.0 5.28e-03    -  1.00e+00 1.00e+00h  1
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  76  2.2265794e+01 4.57e-03 3.86e-04  -4.0 4.91e-03    -  1.00e+00 1.00e+00h  1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  76  2.2265795e+01 3.96e-03 4.54e-04  -4.0 4.84e-03    -  1.00e+00 1.00e+00h  1
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  77  2.2265800e+01 1.33e-03 7.55e-04  -4.0 2.39e-03    -  1.00e+00 1.00e+00h  1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  77  2.2265800e+01 1.34e-03 6.19e-04  -4.0 2.92e-03    -  1.00e+00 1.00e+00h  1
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  78  2.2265803e+01 1.10e-03 2.34e-04  -4.0 2.17e-03    -  1.00e+00 1.00e+00h  1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  79  2.2265804e+01 5.62e-04 1.07e-04  -4.0 6.87e-04    -  1.00e+00 1.00e+00h  1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  78  2.2265803e+01 8.89e-04 2.26e-04  -4.0 3.11e-03    -  1.00e+00 1.00e+00h  1
 
-Number of Iterations....: 79
+Number of Iterations....: 78
 
                                    (scaled)                 (unscaled)
-Objective...............:   2.2265803975764182e+01    2.2265803975764182e+01
-Dual infeasibility......:   1.0704646009196406e-04    1.0704646009196406e-04
-Constraint violation....:   5.6231632601408399e-04    5.6231632601408399e-04
+Objective...............:   2.2265802784755405e+01    2.2265802784755405e+01
+Dual infeasibility......:   2.2582400641693590e-04    2.2582400641693590e-04
+Constraint violation....:   8.8856330958320129e-04    8.8856330958320129e-04
 Complementarity.........:   9.0909090909090931e-05    9.0909090909090931e-05
-Overall NLP error.......:   5.6231632601408399e-04    5.6231632601408399e-04
+Overall NLP error.......:   8.8856330958320129e-04    8.8856330958320129e-04
 
 
-Number of objective function evaluations             = 86
-Number of objective gradient evaluations             = 80
-Number of equality constraint evaluations            = 86
-Number of inequality constraint evaluations          = 86
-Number of equality constraint Jacobian evaluations   = 80
-Number of inequality constraint Jacobian evaluations = 80
+Number of objective function evaluations             = 85
+Number of objective gradient evaluations             = 79
+Number of equality constraint evaluations            = 85
+Number of inequality constraint evaluations          = 85
+Number of equality constraint Jacobian evaluations   = 79
+Number of inequality constraint Jacobian evaluations = 79
 Number of Lagrangian Hessian evaluations             = 0
-Total CPU secs in IPOPT (w/o function evaluations)   =     53.316
-Total CPU secs in NLP function evaluations           =     26.016
+Total CPU secs in IPOPT (w/o function evaluations)   =     42.190
+Total CPU secs in NLP function evaluations           =     19.524
 
 EXIT: Optimal Solution Found.
 </pre></div>
@@ -2085,9 +2083,9 @@ EXIT: Optimal Solution Found.
 </div>
 <div class="cell tag_remove-input tag_remove-output docutils container">
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -2139,7 +2137,7 @@ EXIT: Optimal Solution Found.
   
     By The Dymos Development Team<br/>
   
-      &copy; Copyright 2021.<br/>
+      &copy; Copyright 2022.<br/>
 </p>
         </footer>
     </div>

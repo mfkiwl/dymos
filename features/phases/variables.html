@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Variables &#8212; Dymos</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -26,8 +27,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/myfile.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
@@ -44,6 +44,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -834,10 +835,10 @@ title="Print to PDF"
                 
   <div class="cell tag_active-ipynb tag_remove-input tag_remove-output docutils container">
 </div>
-<div class="tex2jax_ignore mathjax_ignore section" id="variables">
+<section class="tex2jax_ignore mathjax_ignore" id="variables">
 <h1>Variables<a class="headerlink" href="#variables" title="Permalink to this headline">#</a></h1>
 <p>An Optimal Control problem in Dymos consists of the following variable types.</p>
-<div class="section" id="time">
+<section id="time">
 <h2>Time<a class="headerlink" href="#time" title="Permalink to this headline">#</a></h2>
 <p>Optimal control problems in Dymos assume a system that is evolving in time.  State variables
 typically obey some ordinary differential equation that provides the derivative of the states
@@ -861,7 +862,7 @@ Dymos computes the following time values, which can be used inside the ODE:</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">t_initial</span></code> - The initial time of the current phase (this value is the same at all nodes within the phase).</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">t_duration</span></code> - The phase time duration of the current phase (this value is the same at all nodes within the phase).</p></li>
 </ul>
-<div class="section" id="options-for-time-variables">
+<section id="options-for-time-variables">
 <h3>Options for Time Variables<a class="headerlink" href="#options-for-time-variables" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -899,9 +900,9 @@ Dymos computes the following time values, which can be used inside the ODE:</p>
 </tbody>
 </table></div></div>
 </div>
-</div>
-</div>
-<div class="section" id="states">
+</section>
+</section>
+<section id="states">
 <h2>States<a class="headerlink" href="#states" title="Permalink to this headline">#</a></h2>
 <p>States are variables that define the current condition of the system.  For instance, in trajectory
 optimization they are typically coordinates that define the position and velocity of the vehicle.
@@ -923,7 +924,7 @@ what is defined in the rate source. There are two exceptions:</p>
 </ul>
 <p>Settings on a previously-added state variable may be changed using the <code class="docutils literal notranslate"><span class="pre">set_state_options</span></code> method.
 The following options are valid:</p>
-<div class="section" id="options-for-state-variables">
+<section id="options-for-state-variables">
 <h3>Options for State Variables<a class="headerlink" href="#options-for-state-variables" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -983,9 +984,9 @@ The state values are connected to inputs of the given name or names in the ODE.
 These targets are specified by their path relative to the top level of the ODE.</p></li>
 </ul>
 <p>To simplify state specifications, using the first option (not specifying targets) and promoting targets of the state to inputs of the same name at the top-level of the ODE.</p>
-</div>
-</div>
-<div class="section" id="controls">
+</section>
+</section>
+<section id="controls">
 <h2>Controls<a class="headerlink" href="#controls" title="Permalink to this headline">#</a></h2>
 <p>Typically, an ODE will have inputs that impact its values but, unlike states, don’t define the
 system itself.  Such inputs include things like throttle level, elevator deflection angle,
@@ -1001,7 +1002,7 @@ be represented by a second-order polynomial.
 </pre></div>
 </div>
 </div>
-<div class="section" id="options-for-control-variables">
+<section id="options-for-control-variables">
 <h3>Options for Control Variables<a class="headerlink" href="#options-for-control-variables" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1047,15 +1048,15 @@ First derivatives of controls in Dymos assume the name <code class="docutils lit
 Second derivatives of controls in Dymos assume the name <code class="docutils literal notranslate"><span class="pre">&lt;control_name&gt;_rate2</span></code>.
 Control rates are automatically connected if a top-level input of the ODE is named <code class="docutils literal notranslate"><span class="pre">&lt;control_name&gt;_rate</span></code> or <code class="docutils literal notranslate"><span class="pre">&lt;control_name&gt;_rate2</span></code>.
 These variables are available in the timeseries output as <code class="docutils literal notranslate"><span class="pre">timeseries.control_rates.&lt;control_name&gt;_rate</span></code> and <code class="docutils literal notranslate"><span class="pre">timeseries.control_rates.&lt;control_name&gt;_rate2</span></code>, respectively.</p>
-</div>
-</div>
-<div class="section" id="polynomial-controls">
+</section>
+</section>
+<section id="polynomial-controls">
 <h2>Polynomial Controls<a class="headerlink" href="#polynomial-controls" title="Permalink to this headline">#</a></h2>
 <p>Sometimes it can be easier to optimize a problem by reducing the freedom in the controls.
 For instance, one might want the control to be linearly or quadratically varying throughout a phase, rather than having a different value specified at each node.
 In Dymos, this role is filled by the PolynomialControl.
 Polynomial controls are specified at some limited number of points throughout a <em>phase</em>, and then have their values interpolated to each node in each segment.</p>
-<div class="section" id="options-for-polynomial-control-variables">
+<section id="options-for-polynomial-control-variables">
 <h3>Options for Polynomial Control Variables<a class="headerlink" href="#options-for-polynomial-control-variables" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1097,16 +1098,16 @@ First derivatives of controls in Dymos assume the name <code class="docutils lit
 Second derivatives of controls in Dymos assume the name <code class="docutils literal notranslate"><span class="pre">&lt;control_name&gt;_rate2</span></code>.
 Control rates are automatically connected if a top-level input of the ODE is named <code class="docutils literal notranslate"><span class="pre">&lt;control_name&gt;_rate</span></code> or <code class="docutils literal notranslate"><span class="pre">&lt;control_name&gt;_rate2</span></code>.
 These variables are available in the timeseries output as <code class="docutils literal notranslate"><span class="pre">timeseries.polynomial_control_rates.&lt;control_name&gt;_rate</span></code> and <code class="docutils literal notranslate"><span class="pre">timeseries.polynomial_control_rates.&lt;control_name&gt;_rate2</span></code>, respectively.</p>
-</div>
-</div>
-<div class="section" id="parameters">
+</section>
+</section>
+<section id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">#</a></h2>
 <p>Some inputs impact the system but have one set value throughout the trajectory.
 We refer to these non-time-varying inputs as <em>parameters</em>, since they typically involve parameters which define a system.
 Parameters could include things like the wingspan of a vehicle or the mass of a heatsink.
 In Dymos, parameters can be optimized (by providing argument <code class="docutils literal notranslate"><span class="pre">opt</span> <span class="pre">=</span> <span class="pre">True</span></code>).
 If not optimized they can be targets for connections from outside of the Phase or Trajectory.</p>
-<div class="section" id="options-for-parameters">
+<section id="options-for-parameters">
 <h3>Options for Parameters<a class="headerlink" href="#options-for-parameters" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1145,9 +1146,9 @@ Note that &#x27;static_target&#x27; has the opposite meaning of option &#x27;dyn
 <p>Parameters are available in the timeseries output as <code class="docutils literal notranslate"><span class="pre">timeseries.parameters.&lt;parameter_name&gt;</span></code>.
 Since parameters are constant throughout a trajectory, some users may want to prevent them from inclusion in the timeseries.
 This can be done by specifying <code class="docutils literal notranslate"><span class="pre">include_timeseries</span> <span class="pre">=</span> <span class="pre">False</span></code> in the parameter options.</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1199,7 +1200,7 @@ This can be done by specifying <code class="docutils literal notranslate"><span 
   
     By The Dymos Development Team<br/>
   
-      &copy; Copyright 2021.<br/>
+      &copy; Copyright 2022.<br/>
 </p>
         </footer>
     </div>
