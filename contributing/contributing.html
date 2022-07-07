@@ -810,10 +810,10 @@ The Dymos development team is small and we can’t promise that we’ll add ever
 </section>
 <section id="adding-new-examples">
 <h2>Adding new examples<a class="headerlink" href="#adding-new-examples" title="Permalink to this headline">#</a></h2>
-<p>Adding new examples are a great way to contribute to Dymos.
-They’re a great introduction to the Dymos development process, and examples provide a great way for users to learn to apply Dymos in new applications.
+<p>Adding a new example is a great way to contribute to Dymos.
+It’s a great introduction to the Dymos development process, and examples provide a great way for users to learn to apply Dymos in new applications.
 Submit new examples via <a class="reference external" href="https://github.com/OpenMDAO/dymos/issues">the Dymos issues on Github</a>.
-New examples should do the following:</p>
+A new example should do the following:</p>
 <ul class="simple">
 <li><p>Include a new directory under the <code class="docutils literal notranslate"><span class="pre">dymos/examples</span></code> directory.</p></li>
 <li><p>A unittest should be included in a <code class="docutils literal notranslate"><span class="pre">doc</span></code> subfolder within the example directory.</p></li>
@@ -1018,21 +1018,21 @@ Component: BrachistochroneODE &#39;ode&#39;
 &#39;&lt;output&gt;&#39; wrt &#39;&lt;variable&gt;&#39; | calc mag.  | check mag. | a(cal-chk) | r(cal-chk)
 -------------------------------------------------------------------------------
 
-&#39;check&#39;    wrt &#39;theta&#39;      | 3.8366e+04 | 3.8366e+04 | 2.1828e-11 | 5.6893e-16
-&#39;check&#39;    wrt &#39;v&#39;          | 6.3673e+01 | 6.3673e+01 | 3.1402e-16 | 4.9317e-18
-&#39;vdot&#39;     wrt &#39;theta&#39;      | 1.3764e+01 | 1.3764e+01 | 1.7766e-15 | 1.2907e-16
+&#39;check&#39;    wrt &#39;theta&#39;      | 8.6909e+01 | 8.6909e+01 | 2.5681e-14 | 2.9549e-16
+&#39;check&#39;    wrt &#39;v&#39;          | 5.9567e+00 | 5.9567e+00 | 9.6787e-16 | 1.6249e-16
+&#39;vdot&#39;     wrt &#39;theta&#39;      | 1.4477e+01 | 1.4477e+01 | 3.4471e-15 | 2.3810e-16
 &#39;vdot&#39;     wrt &#39;v&#39;          | 0.0000e+00 | 0.0000e+00 | 0.0000e+00 | nan
-&#39;xdot&#39;     wrt &#39;theta&#39;      | 1.1894e+01 | 1.1894e+01 | 2.5511e-15 | 2.1448e-16
-&#39;xdot&#39;     wrt &#39;v&#39;          | 1.4036e+00 | 1.4036e+00 | 1.1108e-16 | 7.9138e-17
-&#39;ydot&#39;     wrt &#39;theta&#39;      | 9.5747e+00 | 9.5747e+00 | 8.9552e-16 | 9.3530e-17
-&#39;ydot&#39;     wrt &#39;v&#39;          | 1.7407e+00 | 1.7407e+00 | 2.9374e-16 | 1.6875e-16
+&#39;xdot&#39;     wrt &#39;theta&#39;      | 1.1792e+01 | 1.1792e+01 | 2.9458e-15 | 2.4980e-16
+&#39;xdot&#39;     wrt &#39;v&#39;          | 1.4763e+00 | 1.4763e+00 | 1.9429e-16 | 1.3161e-16
+&#39;ydot&#39;     wrt &#39;theta&#39;      | 8.8051e+00 | 8.8051e+00 | 1.2610e-15 | 1.4321e-16
+&#39;ydot&#39;     wrt &#39;v&#39;          | 1.6795e+00 | 1.6795e+00 | 3.1524e-16 | 1.8770e-16
 
 ##################################################################
 Sub Jacobian with Largest Relative Error: BrachistochroneODE &#39;ode&#39;
 ##################################################################
 &#39;&lt;output&gt;&#39; wrt &#39;&lt;variable&gt;&#39; | calc mag.  | check mag. | a(cal-chk) | r(cal-chk)
 -------------------------------------------------------------------------------
-&#39;check&#39;    wrt &#39;theta&#39;      | 3.8366e+04 | 3.8366e+04 | 2.1828e-11 | 5.6893e-16
+&#39;check&#39;    wrt &#39;theta&#39;      | 8.6909e+01 | 8.6909e+01 | 2.5681e-14 | 2.9549e-16
 </pre></div>
 </div>
 </div>
@@ -1228,8 +1228,8 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </pre></div>
 </div></div>
 </div>
-<p><strong>Citing</strong>
-If you want to cite a journal, article, book, etc, simply add <code class="docutils literal notranslate"><span class="pre">{cite}`youbibtextname`</span> </code> next to what you want to cite. Add your citiation to <code class="docutils literal notranslate"><span class="pre">reference.bib</span></code> so that keyword will be picked up by JupyterBook. Below is an example of a Bibtex citation, that citation applied, and then a reference section with a filter to compile a list of the references mentioned in this notebook.</p>
+<p><strong>Citing</strong></p>
+<p>If you want to cite a journal, article, book, etc, simply add <code class="docutils literal notranslate"><span class="pre">{cite}`youbibtextname`</span> </code> next to what you want to cite. Add your citiation to <code class="docutils literal notranslate"><span class="pre">reference.bib</span></code> so that keyword will be picked up by JupyterBook. Below is an example of a Bibtex citation, that citation applied, and then a reference section with a filter to compile a list of the references mentioned in this notebook.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@inproceedings</span><span class="p">{</span><span class="n">gray2010openmdao</span><span class="p">,</span>
   <span class="n">title</span><span class="o">=</span><span class="p">{</span><span class="n">OpenMDAO</span><span class="p">:</span> <span class="n">An</span> <span class="nb">open</span> <span class="n">source</span> <span class="n">framework</span> <span class="k">for</span> <span class="n">multidisciplinary</span> <span class="n">analysis</span> <span class="ow">and</span> <span class="n">optimization</span><span class="p">},</span>
   <span class="n">author</span><span class="o">=</span><span class="p">{</span><span class="n">Gray</span><span class="p">,</span> <span class="n">Justin</span> <span class="ow">and</span> <span class="n">Moore</span><span class="p">,</span> <span class="n">Kenneth</span> <span class="ow">and</span> <span class="n">Naylor</span><span class="p">,</span> <span class="n">Bret</span><span class="p">},</span>
