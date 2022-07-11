@@ -1582,7 +1582,7 @@ INFO: checking out_of_order
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking auto_ivc_warnings
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 11.603673 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 14.038235 seconds.
 Total jacobian shape: (1256, 609) 
 </pre></div>
 </div>
@@ -1591,9 +1591,9 @@ FWD solves: 20   REV solves: 0
 Total colors vs. total size: 20 vs 609  (96.7% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 11.603673 sec.
-Time to compute coloring: 0.791106 sec.
-Memory to compute coloring: -3.011719 MB.
+Time to compute sparsity: 14.038235 sec.
+Time to compute coloring: 0.886395 sec.
+Memory to compute coloring: -3.074219 MB.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>List of user-set options:
@@ -1641,9 +1641,8 @@ Total number of inequality constraints...............:      750
         inequality constraints with only lower bounds:        0
    inequality constraints with lower and upper bounds:        0
         inequality constraints with only upper bounds:      750
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
+
+iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
    0  1.0000000e+02 2.49e+00 7.08e-01  -3.0 0.00e+00    -  0.00e+00 0.00e+00   0
 </pre></div>
 </div>
@@ -1654,6 +1653,9 @@ Total number of inequality constraints...............:      750
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   3  1.0633805e+01 1.34e+02 4.37e+00  -3.0 1.86e+00    -  3.36e-01 4.56e-03h  1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   4  2.1500273e+01 9.66e+01 1.10e+01  -3.0 1.85e+00    -  1.00e+00 5.07e-01h  1
@@ -1737,9 +1739,7 @@ Total number of inequality constraints...............:      750
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  30  2.2453790e+01 4.15e-01 7.60e-02  -3.0 8.51e-01    -  4.28e-01 6.49e-01h  1
+  30  2.2453790e+01 4.15e-01 7.60e-02  -3.0 8.51e-01    -  4.28e-01 6.49e-01h  1
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  31  2.2462624e+01 1.13e-01 9.64e-02  -3.0 6.81e-01    -  6.98e-01 7.57e-01h  1
@@ -1770,9 +1770,7 @@ Total number of inequality constraints...............:      750
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  40  2.2472927e+01 6.24e-02 3.81e-03  -3.0 4.71e-01    -  1.00e+00 1.00e+00H  1
+  40  2.2472927e+01 6.24e-02 3.81e-03  -3.0 4.71e-01    -  1.00e+00 1.00e+00H  1
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  41  2.2472545e+01 4.90e-02 2.86e-03  -3.0 6.49e-02    -  1.00e+00 1.00e+00h  1
@@ -1803,9 +1801,7 @@ Total number of inequality constraints...............:      750
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  50  2.2282137e+01 1.28e-01 1.44e-02  -4.0 1.56e-01    -  1.00e+00 6.57e-01h  1
+  50  2.2282137e+01 1.28e-01 1.44e-02  -4.0 1.56e-01    -  1.00e+00 6.57e-01h  1
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  51  2.2282612e+01 1.83e-01 9.40e-03  -4.0 2.86e-01    -  1.00e+00 1.00e+00h  1
@@ -1821,9 +1817,6 @@ Total number of inequality constraints...............:      750
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  55  2.2277871e+01 1.16e+00 6.24e-03  -4.0 1.84e+00    -  1.00e+00 1.00e+00h  1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  56  2.2275182e+01 3.88e+00 3.57e-02  -4.0 1.39e+01    -  1.00e+00 3.64e-01h  1
@@ -1843,9 +1836,6 @@ Total number of inequality constraints...............:      750
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  61  2.2265790e+01 5.37e-02 7.50e-03  -4.0 9.03e-02    -  1.00e+00 1.00e+00h  1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  62  2.2265644e+01 3.78e-02 7.54e-03  -4.0 6.45e-02    -  1.00e+00 1.00e+00h  1
@@ -1873,7 +1863,9 @@ Total number of inequality constraints...............:      750
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
-  70  2.2265793e+01 1.67e-02 4.02e-04  -4.0 2.68e-02    -  1.00e+00 1.00e+00h  1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  70  2.2265793e+01 1.67e-02 4.02e-04  -4.0 2.68e-02    -  1.00e+00 1.00e+00h  1
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  71  2.2265807e+01 5.75e-03 9.08e-05  -4.0 8.66e-03    -  1.00e+00 1.00e+00h  1
@@ -1919,8 +1911,8 @@ Number of inequality constraint evaluations          = 86
 Number of equality constraint Jacobian evaluations   = 80
 Number of inequality constraint Jacobian evaluations = 80
 Number of Lagrangian Hessian evaluations             = 0
-Total CPU secs in IPOPT (w/o function evaluations)   =     45.831
-Total CPU secs in NLP function evaluations           =     16.272
+Total CPU secs in IPOPT (w/o function evaluations)   =     48.048
+Total CPU secs in NLP function evaluations           =     20.089
 
 EXIT: Optimal Solution Found.
 </pre></div>
@@ -1928,7 +1920,7 @@ EXIT: Optimal Solution Found.
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization finished
 </pre></div>
 </div>
-<img alt="../../_images/racecar_7_121.png" src="../../_images/racecar_7_121.png" />
+<img alt="../../_images/racecar_7_117.png" src="../../_images/racecar_7_117.png" />
 </div>
 </div>
 <div class="cell docutils container">
