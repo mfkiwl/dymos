@@ -386,12 +386,12 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../../faq/upstream_analysis.html">
-     How do connect the outputs of an upstream analysis as inputs to Dymos?
+     How do I connect the outputs of an upstream analysis as inputs to Dymos?
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../../faq/downstream_analysis.html">
-     How do connect the outputs of Dymos to a downstream analysis?
+     How do I connect the outputs of Dymos to a downstream analysis?
     </a>
    </li>
    <li class="toctree-l2">
@@ -872,8 +872,8 @@ In order to enforce continuity among certain variables across phases, the user m
 There are two methods in dymos which provide this functionality.
 The <code class="docutils literal notranslate"><span class="pre">add_linkage_constraint</span></code> method provides a very general way of coupling two phases together.
 It does so by generating a constraint of the following form:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b67f4e86-8e2e-42b9-990e-c3c2ef5e8ecd">
-<span class="eqno">(84)<a class="headerlink" href="#equation-b67f4e86-8e2e-42b9-990e-c3c2ef5e8ecd" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-f9f5fe23-4eef-4918-b17e-a56c56817949">
+<span class="eqno">(84)<a class="headerlink" href="#equation-f9f5fe23-4eef-4918-b17e-a56c56817949" title="Permalink to this equation">#</a></span>\[\begin{align}
     c = \mathrm{sign}_a \mathrm{var}_a + \mathrm{sign}_b \mathrm{var}_b
 \end{align}\]</div>
 <p>Method <code class="docutils literal notranslate"><span class="pre">add_linkage_constraint</span></code> lets the user specify the variables and phases to be compared for this constraint, as well as the location of the variable in each phase (either ‘initial’ or ‘final’)
@@ -1072,7 +1072,7 @@ specifiers given.</p>
 <p>Often times, there are parameters which apply to the entirety of a trajectory that potentially need to be optimized.
 If we implemented these as parameters within each phase individually, we would need some constraints to ensure that they held the same value within each phase.
 To avoid this complexity, Dymos Trajectory objects support their own Parameters.</p>
-<p>Like their Phase-based counterparts, Trajectory parameters produce may be design variables for the problem or used as inputs to the trajectory from external sources.</p>
+<p>Like their Phase-based counterparts, Trajectory parameters may be design variables for the problem or they may be inputs to the trajectory from external sources.</p>
 <p>When using Trajectory parameters, their values are connected to each phase as an Input Parameter within the Phase.
 Because ODEs in different phases may have different names for parameters (e.g. ‘mass’, ‘m’, ‘m_total’, etc) Dymos allows the user to specify the targeted ODE parameters on a phase-by-phase basis using the <code class="docutils literal notranslate"><span class="pre">targets</span></code> and <code class="docutils literal notranslate"><span class="pre">target_params</span></code> option.
 It can take on the following values.</p>

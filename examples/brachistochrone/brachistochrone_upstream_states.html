@@ -382,12 +382,12 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../../faq/upstream_analysis.html">
-     How do connect the outputs of an upstream analysis as inputs to Dymos?
+     How do I connect the outputs of an upstream analysis as inputs to Dymos?
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../../faq/downstream_analysis.html">
-     How do connect the outputs of Dymos to a downstream analysis?
+     How do I connect the outputs of Dymos to a downstream analysis?
     </a>
    </li>
    <li class="toctree-l2">
@@ -1066,7 +1066,7 @@ INFO: checking out_of_order
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.10/site-packages/openmdao/recorders/sqlite_recorder.py:227: UserWarning:The existing case recorder file, dymos_solution.db, is being overwritten.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.119277 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.114755 seconds.
 Total jacobian shape: (41, 51) 
 </pre></div>
 </div>
@@ -1075,8 +1075,8 @@ FWD solves: 8   REV solves: 0
 Total colors vs. total size: 8 vs 51  (84.3% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.119277 sec.
-Time to compute coloring: 0.038188 sec.
+Time to compute sparsity: 0.114755 sec.
+Time to compute coloring: 0.033350 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
@@ -1121,9 +1121,7 @@ Optimization Complete
  [1.80160615]]
 
 Simulating trajectory traj
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Done simulating trajectory traj
+Done simulating trajectory traj
 </pre></div>
 </div>
 </div>

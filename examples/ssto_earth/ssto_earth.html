@@ -386,12 +386,12 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../../faq/upstream_analysis.html">
-     How do connect the outputs of an upstream analysis as inputs to Dymos?
+     How do I connect the outputs of an upstream analysis as inputs to Dymos?
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../../faq/downstream_analysis.html">
-     How do connect the outputs of Dymos to a downstream analysis?
+     How do I connect the outputs of Dymos to a downstream analysis?
     </a>
    </li>
    <li class="toctree-l2">
@@ -755,8 +755,8 @@ It finds the pitch profile for a single-stage-to-orbit launch vehicle that minim
 required to reach orbit insertion under constant thrust.</p>
 <p><img alt="The free-body-diagram of the single-stage-to-orbit problem." src="../../_images/ssto_fbd.png" /></p>
 <p>The vehicle dynamics are given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4511425e-f9cd-45c0-92a3-160f20149aa0">
-<span class="eqno">(74)<a class="headerlink" href="#equation-4511425e-f9cd-45c0-92a3-160f20149aa0" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-de2b34f2-61dc-4fed-86ad-9da2f2524c98">
+<span class="eqno">(74)<a class="headerlink" href="#equation-de2b34f2-61dc-4fed-86ad-9da2f2524c98" title="Permalink to this equation">#</a></span>\[\begin{align}
   \frac{dx}{dt} &amp;= v_x \\
   \frac{dy}{dt} &amp;= v_y \\
   \frac{dv_x}{dt} &amp;= \frac{1}{m} (T \cos \theta - D \cos \gamma) \\
@@ -764,8 +764,8 @@ required to reach orbit insertion under constant thrust.</p>
   \frac{dm}{dt} &amp;= \frac{T}{g I_{sp}}
 \end{align}\]</div>
 <p>The initial conditions are</p>
-<div class="amsmath math notranslate nohighlight" id="equation-60cb9596-fa1e-4b4c-9aaf-3d11aaa83d2e">
-<span class="eqno">(75)<a class="headerlink" href="#equation-60cb9596-fa1e-4b4c-9aaf-3d11aaa83d2e" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-34dd055e-1492-40ed-841c-930f30ab5e3c">
+<span class="eqno">(75)<a class="headerlink" href="#equation-34dd055e-1492-40ed-841c-930f30ab5e3c" title="Permalink to this equation">#</a></span>\[\begin{align}
   x_0 &amp;= 0 \\
   y_0 &amp;= 0 \\
   v_{x0} &amp;= 0 \\
@@ -773,8 +773,8 @@ required to reach orbit insertion under constant thrust.</p>
   m_0 &amp;= 117000 \rm{\,kg}
 \end{align}\]</div>
 <p>and the final conditions are</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f4c50ad7-c7bf-4335-817c-51937d987cf8">
-<span class="eqno">(76)<a class="headerlink" href="#equation-f4c50ad7-c7bf-4335-817c-51937d987cf8" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-dd24b3c4-3a82-4792-9c93-3f7fc89c9f06">
+<span class="eqno">(76)<a class="headerlink" href="#equation-dd24b3c4-3a82-4792-9c93-3f7fc89c9f06" title="Permalink to this equation">#</a></span>\[\begin{align}
   x_f &amp;= \rm{free} \\
   y_f &amp;= 185 \rm{\,km} \\
   v_{xf} &amp;= V_{circ} \\
@@ -1173,10 +1173,7 @@ f...............................................f.......................f.......
 ...................................................................................................................................f.......................f............ 107  mdot
 ....................................................................................................................................f.......................f........... 108  mdot
 .....................................................................................................................................f.......................f.......... 109  mdot
-.........................................................
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>.............................................................................f.......................f......... 110  mdot
+......................................................................................................................................f.......................f......... 110  mdot
 .......................................................................................................................................f.......................f........ 111  mdot
 ........................................................................................................................................f.......................f....... 112  mdot
 .........................................................................................................................................f.......................f...... 113  mdot
@@ -1193,22 +1190,19 @@ f...............................................................................
 ....f................................................................................................................................................................... 124  rho
 .....f.................................................................................................................................................................. 125  rho
 ......f................................................................................................................................................................. 126  rho
-.......f................................................................
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>................................................................................................ 127  rho
+.......f................................................................................................................................................................ 127  rho
 ........f............................................................................................................................................................... 128  rho
 .........f.............................................................................................................................................................. 129  rho
 ..........f............................................................................................................................................................. 130  rho
 ...........f............................................................................................................................................................ 131  rho
 ............f........................................................................................................................................................... 132  rho
-.............f.......................................................................................................................................................... 133  rho
-..............f......................................................................................................................................................... 134  rho
-...............f........................................................................................................................................................ 135  rho
-.....
+.............f......................................
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>...........f....................................................................................................................................................... 136  rho
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>.................................................................................................................... 133  rho
+..............f......................................................................................................................................................... 134  rho
+...............f........................................................................................................................................................ 135  rho
+................f....................................................................................................................................................... 136  rho
 .................f...................................................................................................................................................... 137  rho
 ..................f..................................................................................................................................................... 138  rho
 ...................f.................................................................................................................................................... 139  rho
@@ -1229,8 +1223,8 @@ FWD solves: 5   REV solves: 0
 Total colors vs. total size: 5 vs 168  (97.0% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.047336 sec.
-Time to compute coloring: 0.020374 sec.
+Time to compute sparsity: 0.044211 sec.
+Time to compute coloring: 0.018636 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
@@ -1320,12 +1314,12 @@ FWD solves: 5   REV solves: 0
 Total colors vs. total size: 5 vs 84  (94.0% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.022619 sec.
-Time to compute coloring: 0.010836 sec.
+Time to compute sparsity: 0.019581 sec.
+Time to compute coloring: 0.009727 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.363699 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.336609 seconds.
 Total jacobian shape: (74, 152) 
 </pre></div>
 </div>
@@ -1334,8 +1328,8 @@ FWD solves: 12   REV solves: 0
 Total colors vs. total size: 12 vs 152  (92.1% improvement)
 
 Sparsity computed using tolerance: 1e-12
-Time to compute sparsity: 0.363699 sec.
-Time to compute coloring: 0.087077 sec.
+Time to compute sparsity: 0.336609 sec.
+Time to compute coloring: 0.079240 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
@@ -1349,11 +1343,11 @@ Memory to compute coloring: 0.000000 MB.
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                    2.1634
-       User Objective Time :       0.1204
-       User Sensitivity Time :     0.9721
-       Interface Time :            0.3940
-       Opt Solver Time:            0.6768
+    Total Time:                    2.0407
+       User Objective Time :       0.1211
+       User Sensitivity Time :     0.9169
+       Interface Time :            0.3707
+       Opt Solver Time:            0.6320
     Calls to Objective Function :      51
     Calls to Sens Function :           48
 
@@ -1672,7 +1666,7 @@ Memory to compute coloring: 0.000000 MB.
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
 </pre></div>
 </div>
-<img alt="../../_images/ssto_earth_4_30.png" src="../../_images/ssto_earth_4_30.png" />
+<img alt="../../_images/ssto_earth_4_28.png" src="../../_images/ssto_earth_4_28.png" />
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">

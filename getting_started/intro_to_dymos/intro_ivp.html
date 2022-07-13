@@ -386,12 +386,12 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../../faq/upstream_analysis.html">
-     How do connect the outputs of an upstream analysis as inputs to Dymos?
+     How do I connect the outputs of an upstream analysis as inputs to Dymos?
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../../faq/downstream_analysis.html">
-     How do connect the outputs of Dymos to a downstream analysis?
+     How do I connect the outputs of Dymos to a downstream analysis?
     </a>
    </li>
    <li class="toctree-l2">
@@ -802,13 +802,13 @@ Dynamic systems are typically defined by some set of ordinary
 differential equations (the ODE) which governs their behavior.</p>
 <p>Consider a simple damped harmonic oscillator.</p>
 <p><img alt="Damped harmonic oscillator free-body diagram" src="../../_images/spring_mass_damper.png" /></p>
-<div class="amsmath math notranslate nohighlight" id="equation-17e6f416-0ba9-4bfe-a53e-538e2a9e536b">
-<span class="eqno">(11)<a class="headerlink" href="#equation-17e6f416-0ba9-4bfe-a53e-538e2a9e536b" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-b325f741-6c02-4865-8468-639459645572">
+<span class="eqno">(11)<a class="headerlink" href="#equation-b325f741-6c02-4865-8468-639459645572" title="Permalink to this equation">#</a></span>\[\begin{align}
     \ddot{x} &amp;= -\frac{kx}{m} - \frac{c \dot{x}}{m}
 \end{align}\]</div>
 <p>Converting this to a first order system results in an ODE system with two states:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-312040ac-02a2-42cc-a024-90bd9f5469b2">
-<span class="eqno">(12)<a class="headerlink" href="#equation-312040ac-02a2-42cc-a024-90bd9f5469b2" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-77aabd64-60ef-4e57-ab8a-b42e2566e743">
+<span class="eqno">(12)<a class="headerlink" href="#equation-77aabd64-60ef-4e57-ab8a-b42e2566e743" title="Permalink to this equation">#</a></span>\[\begin{align}
     \dot{x} &amp;= v \\
     \dot{v} &amp;= -\frac{kx}{m} - \frac{c \dot{x}}{m}
 \end{align}\]</div>
@@ -957,12 +957,10 @@ Some elements of this code will be explained later, but we’ll hit the highligh
 
 
 Simulating trajectory traj
+Done simulating trajectory traj
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Done simulating trajectory traj
-</pre></div>
-</div>
-<img alt="../../_images/intro_ivp_5_2.png" src="../../_images/intro_ivp_5_2.png" />
+<img alt="../../_images/intro_ivp_5_1.png" src="../../_images/intro_ivp_5_1.png" />
 </div>
 </div>
 </section>
@@ -1107,12 +1105,10 @@ NL: Newton 2 ; 6.67418801e-15 1.02755846e-16
 NL: Newton Converged
 
 Simulating trajectory traj
+Done simulating trajectory traj
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Done simulating trajectory traj
-</pre></div>
-</div>
-<img alt="../../_images/intro_ivp_7_2.png" src="../../_images/intro_ivp_7_2.png" />
+<img alt="../../_images/intro_ivp_7_1.png" src="../../_images/intro_ivp_7_1.png" />
 </div>
 </div>
 </section>
@@ -1216,15 +1212,13 @@ Optimization Complete
 -----------------------------------
 
 Simulating trajectory traj
+Done simulating trajectory traj
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.10/site-packages/openmdao/core/total_jac.py:1567: DerivativesWarning:Constraints or objectives [(&#39;traj.phases.phase0.time.time&#39;, inds=[15])] cannot be impacted by the design variables of the problem.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Done simulating trajectory traj
-</pre></div>
-</div>
-<img alt="../../_images/intro_ivp_10_4.png" src="../../_images/intro_ivp_10_4.png" />
+<img alt="../../_images/intro_ivp_10_3.png" src="../../_images/intro_ivp_10_3.png" />
 </div>
 </div>
 </section>

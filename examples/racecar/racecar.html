@@ -386,12 +386,12 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../../faq/upstream_analysis.html">
-     How do connect the outputs of an upstream analysis as inputs to Dymos?
+     How do I connect the outputs of an upstream analysis as inputs to Dymos?
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../../faq/downstream_analysis.html">
-     How do connect the outputs of Dymos to a downstream analysis?
+     How do I connect the outputs of Dymos to a downstream analysis?
     </a>
    </li>
    <li class="toctree-l2">
@@ -1486,7 +1486,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.10/site-packages/dymos/phase/phase.py:1670: UserWarning: Phase time options have no effect because fix_duration=True or input_duration=True for phase &#39;traj.phases.phase0&#39;: duration_ref, duration_ref0
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.10/site-packages/dymos/phase/phase.py:1736: UserWarning: Phase time options have no effect because fix_duration=True or input_duration=True for phase &#39;traj.phases.phase0&#39;: duration_ref, duration_ref0
   warnings.warn(f&#39;Phase time options have no effect because fix_duration=True &#39;
 </pre></div>
 </div>
@@ -1582,7 +1582,7 @@ INFO: checking out_of_order
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking auto_ivc_warnings
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 14.038235 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 13.812729 seconds.
 Total jacobian shape: (1256, 609) 
 </pre></div>
 </div>
@@ -1591,9 +1591,9 @@ FWD solves: 20   REV solves: 0
 Total colors vs. total size: 20 vs 609  (96.7% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 14.038235 sec.
-Time to compute coloring: 0.886395 sec.
-Memory to compute coloring: -3.074219 MB.
+Time to compute sparsity: 13.812729 sec.
+Time to compute coloring: 0.774164 sec.
+Memory to compute coloring: -3.011719 MB.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>List of user-set options:
@@ -1641,8 +1641,9 @@ Total number of inequality constraints...............:      750
         inequality constraints with only lower bounds:        0
    inequality constraints with lower and upper bounds:        0
         inequality constraints with only upper bounds:      750
-
-iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
    0  1.0000000e+02 2.49e+00 7.08e-01  -3.0 0.00e+00    -  0.00e+00 0.00e+00   0
 </pre></div>
 </div>
@@ -1653,9 +1654,6 @@ iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   3  1.0633805e+01 1.34e+02 4.37e+00  -3.0 1.86e+00    -  3.36e-01 4.56e-03h  1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   4  2.1500273e+01 9.66e+01 1.10e+01  -3.0 1.85e+00    -  1.00e+00 5.07e-01h  1
@@ -1911,8 +1909,8 @@ Number of inequality constraint evaluations          = 86
 Number of equality constraint Jacobian evaluations   = 80
 Number of inequality constraint Jacobian evaluations = 80
 Number of Lagrangian Hessian evaluations             = 0
-Total CPU secs in IPOPT (w/o function evaluations)   =     48.048
-Total CPU secs in NLP function evaluations           =     20.089
+Total CPU secs in IPOPT (w/o function evaluations)   =     43.761
+Total CPU secs in NLP function evaluations           =     18.737
 
 EXIT: Optimal Solution Found.
 </pre></div>
