@@ -1182,7 +1182,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 Model viewer data has already been recorded for Driver.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.442377 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.439823 seconds.
 Total jacobian shape: (361, 212) 
 </pre></div>
 </div>
@@ -1191,8 +1191,8 @@ FWD solves: 13   REV solves: 0
 Total colors vs. total size: 13 vs 212  (93.9% improvement)
 
 Sparsity computed using tolerance: 1e-12
-Time to compute sparsity: 0.442377 sec.
-Time to compute coloring: 0.346221 sec.
+Time to compute sparsity: 0.439823 sec.
+Time to compute coloring: 0.338496 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
@@ -1250,9 +1250,6 @@ iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   4  3.9969130e+00 1.99e+00 6.90e+01  -1.0 1.50e+01    -  4.60e-01 9.90e-01h  1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   5  3.9965944e+00 5.13e-01 3.44e+01  -1.0 9.17e+00    -  5.50e-01 1.00e+00h  1
@@ -1481,13 +1478,7 @@ iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  77  3.2350569e+00 1.06e-08 9.82e-06  -5.7 1.45e-03    -  1.00e+00 1.00e+00h  1
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  78  3.2350528e+00 3.67e-07 5.27e-05  -8.0 8.44e-03    -  9.99e-01 9.90e-01h  1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  79  3.2350506e+00 8.00e-06 2.09e-04  -8.0 6.05e-02    -  1.00e+00 1.00e+00f  1
@@ -1617,10 +1608,11 @@ iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 119  3.2350517e+00 1.23e-07 1.23e-06  -8.0 6.85e-03    -  1.00e+00 1.00e+00h  1
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 120  3.2350519e+00 1.31e-08 1.67e-06  -8.0 1.98e-03    -  1.00e+00 1.00e+00h  1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
+ 120  3.2350519e+00 1.31e-08 1.67e-06  -8.0 1.98e-03    -  1.00e+00 1.00e+00h  1
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 121  3.2350519e+00 3.22e-09 8.05e-07  -8.0 7.77e-04    -  1.00e+00 1.00e+00h  1
@@ -1654,8 +1646,8 @@ Number of inequality constraint evaluations          = 222
 Number of equality constraint Jacobian evaluations   = 126
 Number of inequality constraint Jacobian evaluations = 126
 Number of Lagrangian Hessian evaluations             = 0
-Total CPU secs in IPOPT (w/o function evaluations)   =      3.877
-Total CPU secs in NLP function evaluations           =     12.460
+Total CPU secs in IPOPT (w/o function evaluations)   =      3.565
+Total CPU secs in NLP function evaluations           =     11.911
 
 EXIT: Optimal Solution Found.
 
@@ -1666,11 +1658,11 @@ Optimization Problem -- Optimization using pyOpt_sparse
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                   11.0269
-       User Objective Time :       4.4576
-       User Sensitivity Time :     2.6212
-       Interface Time :            1.3093
-       Opt Solver Time:            2.6387
+    Total Time:                   10.5421
+       User Objective Time :       4.3424
+       User Sensitivity Time :     2.5871
+       Interface Time :            1.2396
+       Opt Solver Time:            2.3730
     Calls to Objective Function :     223
     Calls to Sens Function :          127
 
@@ -2260,15 +2252,15 @@ Optimization Problem -- Optimization using pyOpt_sparse
 --------------------------------------------------------------------------------
 </pre></div>
 </div>
-<img alt="../_images/use_partial_coloring_6_138.png" src="../_images/use_partial_coloring_6_138.png" />
-<img alt="../_images/use_partial_coloring_6_139.png" src="../_images/use_partial_coloring_6_139.png" />
+<img alt="../_images/use_partial_coloring_6_135.png" src="../_images/use_partial_coloring_6_135.png" />
+<img alt="../_images/use_partial_coloring_6_136.png" src="../_images/use_partial_coloring_6_136.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jacobian shape: (361, 212)  ( 3.44% nonzero)
 FWD solves: 13   REV solves: 0
 Total colors vs. total size: 13 vs 212  (93.9% improvement)
 
 Sparsity computed using tolerance: 1e-12
-Time to compute sparsity: 0.442377 sec.
-Time to compute coloring: 0.346221 sec.
+Time to compute sparsity: 0.439823 sec.
+Time to compute coloring: 0.338496 sec.
 Memory to compute coloring: 0.000000 MB.
 Finite Differencing: True  Partial Coloring: False
 
@@ -2285,7 +2277,7 @@ Finite Differencing: True  Partial Coloring: False
 Model viewer data has already been recorded for Driver.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.516104 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.497926 seconds.
 Total jacobian shape: (361, 212) 
 </pre></div>
 </div>
@@ -2294,9 +2286,9 @@ FWD solves: 154   REV solves: 0
 Total colors vs. total size: 154 vs 212  (27.4% improvement)
 
 Sparsity computed using tolerance: 1e-12
-Time to compute sparsity: 0.516104 sec.
-Time to compute coloring: 1.310716 sec.
-Memory to compute coloring: -1.304688 MB.
+Time to compute sparsity: 0.497926 sec.
+Time to compute coloring: 1.298344 sec.
+Memory to compute coloring: -1.160156 MB.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>List of user-set options:
@@ -2398,7 +2390,9 @@ iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
-  20  2.2572765e+00 1.60e+00 4.00e-02  -2.5 1.66e+01    -  1.96e-01 4.15e-01h  2
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  20  2.2572765e+00 1.60e+00 4.00e-02  -2.5 1.66e+01    -  1.96e-01 4.15e-01h  2
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  21  2.4817578e+00 8.71e-01 6.82e-02  -2.5 2.08e+01    -  6.12e-01 4.07e-01h  2
@@ -2423,6 +2417,9 @@ iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  28  3.2593908e+00 9.54e-02 6.95e-02  -2.5 3.16e+00    -  1.00e+00 1.00e+00h  1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  29  3.2715913e+00 3.98e-02 4.31e-02  -2.5 1.75e+00    -  1.00e+00 1.00e+00h  1
@@ -2587,9 +2584,7 @@ iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  80  3.2350520e+00 1.31e-07 7.54e-06  -8.0 5.23e-03    -  1.00e+00 9.91e-01h  1
+  80  3.2350520e+00 1.31e-07 7.54e-06  -8.0 5.23e-03    -  1.00e+00 9.91e-01h  1
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  81  3.2350518e+00 1.43e-06 9.19e-05  -8.0 1.17e-02    -  1.00e+00 1.00e+00f  1
@@ -2617,6 +2612,9 @@ iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  89  3.2350519e+00 5.84e-12 1.52e-06  -8.0 1.28e-03    -  1.00e+00 1.00e+00H  1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
@@ -2657,9 +2655,6 @@ iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 101  3.2350519e+00 1.30e-11 1.69e-06  -8.0 1.28e-03    -  1.00e+00 1.00e+00H  1
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 102  3.2350519e+00 7.82e-09 4.44e-06  -8.0 1.65e-03    -  1.00e+00 1.00e+00h  1
 </pre></div>
 </div>
@@ -2694,8 +2689,8 @@ Number of inequality constraint evaluations          = 162
 Number of equality constraint Jacobian evaluations   = 108
 Number of inequality constraint Jacobian evaluations = 108
 Number of Lagrangian Hessian evaluations             = 0
-Total CPU secs in IPOPT (w/o function evaluations)   =      4.900
-Total CPU secs in NLP function evaluations           =     22.946
+Total CPU secs in IPOPT (w/o function evaluations)   =      4.738
+Total CPU secs in NLP function evaluations           =     22.722
 
 EXIT: Optimal Solution Found.
 
@@ -2706,11 +2701,11 @@ Optimization Problem -- Optimization using pyOpt_sparse
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                   20.4733
-       User Objective Time :       3.2731
-       User Sensitivity Time :    12.6401
-       Interface Time :            1.1713
-       Opt Solver Time:            3.3887
+    Total Time:                   20.1116
+       User Objective Time :       3.1990
+       User Sensitivity Time :    12.5160
+       Interface Time :            1.1388
+       Opt Solver Time:            3.2579
     Calls to Objective Function :     163
     Calls to Sens Function :          109
 
@@ -3303,16 +3298,16 @@ Optimization Problem -- Optimization using pyOpt_sparse
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 396x396 with 0 Axes&gt;
 </pre></div>
 </div>
-<img alt="../_images/use_partial_coloring_6_258.png" src="../_images/use_partial_coloring_6_258.png" />
-<img alt="../_images/use_partial_coloring_6_259.png" src="../_images/use_partial_coloring_6_259.png" />
+<img alt="../_images/use_partial_coloring_6_256.png" src="../_images/use_partial_coloring_6_256.png" />
+<img alt="../_images/use_partial_coloring_6_257.png" src="../_images/use_partial_coloring_6_257.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jacobian shape: (361, 212)  (23.30% nonzero)
 FWD solves: 154   REV solves: 0
 Total colors vs. total size: 154 vs 212  (27.4% improvement)
 
 Sparsity computed using tolerance: 1e-12
-Time to compute sparsity: 0.516104 sec.
-Time to compute coloring: 1.310716 sec.
-Memory to compute coloring: -1.304688 MB.
+Time to compute sparsity: 0.497926 sec.
+Time to compute coloring: 1.298344 sec.
+Memory to compute coloring: -1.160156 MB.
 Finite Differencing: True  Partial Coloring: True
 
 --- Constraint Report [traj] ---
@@ -3397,8 +3392,8 @@ FWD solves: 2   REV solves: 0
 Total colors vs. total size: 2 vs 120  (98.3% improvement)
 
 Sparsity computed using tolerance: 1e-06
-Time to compute sparsity: 0.012835 sec.
-Time to compute coloring: 0.011733 sec.
+Time to compute sparsity: 0.012156 sec.
+Time to compute coloring: 0.010880 sec.
 Memory to compute coloring: 0.000000 MB.
 
 Coloring for &#39;traj.phases.phase0.rhs_col.aero.q_comp&#39; (class DynamicPressureCompFD)
@@ -3440,12 +3435,12 @@ FWD solves: 2   REV solves: 0
 Total colors vs. total size: 2 vs 60  (96.7% improvement)
 
 Sparsity computed using tolerance: 1e-06
-Time to compute sparsity: 0.006788 sec.
-Time to compute coloring: 0.006137 sec.
+Time to compute sparsity: 0.006343 sec.
+Time to compute coloring: 0.005585 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.592036 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.545304 seconds.
 Total jacobian shape: (361, 212) 
 </pre></div>
 </div>
@@ -3454,12 +3449,11 @@ FWD solves: 13   REV solves: 0
 Total colors vs. total size: 13 vs 212  (93.9% improvement)
 
 Sparsity computed using tolerance: 1e-12
-Time to compute sparsity: 0.592036 sec.
-Time to compute coloring: 0.269855 sec.
+Time to compute sparsity: 0.545304 sec.
+Time to compute coloring: 0.259647 sec.
 Memory to compute coloring: 0.000000 MB.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>List of user-set options:
+
+List of user-set options:
 
                                     Name   Value                used
                              alpha_for_y = safer-min-dual-infeas  yes
@@ -3474,7 +3468,9 @@ Memory to compute coloring: 0.000000 MB.
                       print_user_options = yes                   yes
                                       sb = yes                   yes
                                      tol = 1e-07                 yes
-This is Ipopt version 3.13.5, running with linear solver mumps.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>This is Ipopt version 3.13.5, running with linear solver mumps.
 NOTE: Other linear solvers might be more efficient (see Ipopt documentation).
 
 Number of nonzeros in equality constraint Jacobian...:     2559
@@ -3896,8 +3892,8 @@ Number of inequality constraint evaluations          = 169
 Number of equality constraint Jacobian evaluations   = 124
 Number of inequality constraint Jacobian evaluations = 124
 Number of Lagrangian Hessian evaluations             = 0
-Total CPU secs in IPOPT (w/o function evaluations)   =      4.020
-Total CPU secs in NLP function evaluations           =     11.769
+Total CPU secs in IPOPT (w/o function evaluations)   =      3.552
+Total CPU secs in NLP function evaluations           =     11.369
 
 EXIT: Optimal Solution Found.
 
@@ -3908,11 +3904,11 @@ Optimization Problem -- Optimization using pyOpt_sparse
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                   10.5150
-       User Objective Time :       3.4552
-       User Sensitivity Time :     3.1501
-       Interface Time :            1.2891
-       Opt Solver Time:            2.6206
+    Total Time:                   10.0093
+       User Objective Time :       3.3669
+       User Sensitivity Time :     3.0294
+       Interface Time :            1.2182
+       Opt Solver Time:            2.3948
     Calls to Objective Function :     170
     Calls to Sens Function :          125
 
@@ -4505,15 +4501,15 @@ Optimization Problem -- Optimization using pyOpt_sparse
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 396x396 with 0 Axes&gt;
 </pre></div>
 </div>
-<img alt="../_images/use_partial_coloring_6_392.png" src="../_images/use_partial_coloring_6_392.png" />
-<img alt="../_images/use_partial_coloring_6_393.png" src="../_images/use_partial_coloring_6_393.png" />
+<img alt="../_images/use_partial_coloring_6_390.png" src="../_images/use_partial_coloring_6_390.png" />
+<img alt="../_images/use_partial_coloring_6_391.png" src="../_images/use_partial_coloring_6_391.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jacobian shape: (361, 212)  ( 3.44% nonzero)
 FWD solves: 13   REV solves: 0
 Total colors vs. total size: 13 vs 212  (93.9% improvement)
 
 Sparsity computed using tolerance: 1e-12
-Time to compute sparsity: 0.592036 sec.
-Time to compute coloring: 0.269855 sec.
+Time to compute sparsity: 0.545304 sec.
+Time to compute coloring: 0.259647 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>

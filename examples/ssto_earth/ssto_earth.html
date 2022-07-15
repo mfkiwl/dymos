@@ -755,8 +755,8 @@ It finds the pitch profile for a single-stage-to-orbit launch vehicle that minim
 required to reach orbit insertion under constant thrust.</p>
 <p><img alt="The free-body-diagram of the single-stage-to-orbit problem." src="../../_images/ssto_fbd.png" /></p>
 <p>The vehicle dynamics are given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-de2b34f2-61dc-4fed-86ad-9da2f2524c98">
-<span class="eqno">(74)<a class="headerlink" href="#equation-de2b34f2-61dc-4fed-86ad-9da2f2524c98" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-c5f22298-7902-47e4-b0b7-9265ee6f4410">
+<span class="eqno">(74)<a class="headerlink" href="#equation-c5f22298-7902-47e4-b0b7-9265ee6f4410" title="Permalink to this equation">#</a></span>\[\begin{align}
   \frac{dx}{dt} &amp;= v_x \\
   \frac{dy}{dt} &amp;= v_y \\
   \frac{dv_x}{dt} &amp;= \frac{1}{m} (T \cos \theta - D \cos \gamma) \\
@@ -764,8 +764,8 @@ required to reach orbit insertion under constant thrust.</p>
   \frac{dm}{dt} &amp;= \frac{T}{g I_{sp}}
 \end{align}\]</div>
 <p>The initial conditions are</p>
-<div class="amsmath math notranslate nohighlight" id="equation-34dd055e-1492-40ed-841c-930f30ab5e3c">
-<span class="eqno">(75)<a class="headerlink" href="#equation-34dd055e-1492-40ed-841c-930f30ab5e3c" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-3096eb2a-5594-488e-b4a1-4f1363b4e9ac">
+<span class="eqno">(75)<a class="headerlink" href="#equation-3096eb2a-5594-488e-b4a1-4f1363b4e9ac" title="Permalink to this equation">#</a></span>\[\begin{align}
   x_0 &amp;= 0 \\
   y_0 &amp;= 0 \\
   v_{x0} &amp;= 0 \\
@@ -773,8 +773,8 @@ required to reach orbit insertion under constant thrust.</p>
   m_0 &amp;= 117000 \rm{\,kg}
 \end{align}\]</div>
 <p>and the final conditions are</p>
-<div class="amsmath math notranslate nohighlight" id="equation-dd24b3c4-3a82-4792-9c93-3f7fc89c9f06">
-<span class="eqno">(76)<a class="headerlink" href="#equation-dd24b3c4-3a82-4792-9c93-3f7fc89c9f06" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-70f77f15-8365-4f25-8c17-5620ec4b9bb2">
+<span class="eqno">(76)<a class="headerlink" href="#equation-70f77f15-8365-4f25-8c17-5620ec4b9bb2" title="Permalink to this equation">#</a></span>\[\begin{align}
   x_f &amp;= \rm{free} \\
   y_f &amp;= 185 \rm{\,km} \\
   v_{xf} &amp;= V_{circ} \\
@@ -1192,14 +1192,14 @@ f...............................................................................
 ......f................................................................................................................................................................. 126  rho
 .......f................................................................................................................................................................ 127  rho
 ........f............................................................................................................................................................... 128  rho
-.........f.............................................................................................................................................................. 129  rho
+.........f..............................................................................................
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>................................................................ 129  rho
 ..........f............................................................................................................................................................. 130  rho
 ...........f............................................................................................................................................................ 131  rho
 ............f........................................................................................................................................................... 132  rho
-.............f......................................
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>.................................................................................................................... 133  rho
+.............f.......................................................................................................................................................... 133  rho
 ..............f......................................................................................................................................................... 134  rho
 ...............f........................................................................................................................................................ 135  rho
 ................f....................................................................................................................................................... 136  rho
@@ -1223,8 +1223,8 @@ FWD solves: 5   REV solves: 0
 Total colors vs. total size: 5 vs 168  (97.0% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.044211 sec.
-Time to compute coloring: 0.018636 sec.
+Time to compute sparsity: 0.042459 sec.
+Time to compute coloring: 0.020083 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
@@ -1314,12 +1314,12 @@ FWD solves: 5   REV solves: 0
 Total colors vs. total size: 5 vs 84  (94.0% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.019581 sec.
-Time to compute coloring: 0.009727 sec.
+Time to compute sparsity: 0.019985 sec.
+Time to compute coloring: 0.009495 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.336609 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.323610 seconds.
 Total jacobian shape: (74, 152) 
 </pre></div>
 </div>
@@ -1328,8 +1328,8 @@ FWD solves: 12   REV solves: 0
 Total colors vs. total size: 12 vs 152  (92.1% improvement)
 
 Sparsity computed using tolerance: 1e-12
-Time to compute sparsity: 0.336609 sec.
-Time to compute coloring: 0.079240 sec.
+Time to compute sparsity: 0.323610 sec.
+Time to compute coloring: 0.077176 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
@@ -1343,11 +1343,11 @@ Memory to compute coloring: 0.000000 MB.
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                    2.0407
-       User Objective Time :       0.1211
-       User Sensitivity Time :     0.9169
-       Interface Time :            0.3707
-       Opt Solver Time:            0.6320
+    Total Time:                    1.9575
+       User Objective Time :       0.1116
+       User Sensitivity Time :     0.8615
+       Interface Time :            0.3564
+       Opt Solver Time:            0.6280
     Calls to Objective Function :      51
     Calls to Sens Function :           48
 

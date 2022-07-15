@@ -764,8 +764,8 @@ optimal control problem governed by six equations of motion and limited
 by the aerodynamic heating rate. For a detailed layout of this problem
 and other optimal control problems see Betts <span id="id1">[<a class="reference internal" href="#id19" title="J. Betts. Practical Methods for Optimal Control and Estimation Using Nonlinear Programming. Society for Industrial and Applied Mathematics, second edition, 2010. URL: https://epubs.siam.org/doi/abs/10.1137/1.9780898718577, arXiv:https://epubs.siam.org/doi/pdf/10.1137/1.9780898718577, doi:10.1137/1.9780898718577.">Bet10</a>]</span>.
 The governing equations of motion for this problem are:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a5825730-31b6-49c9-805e-e933f62efadc">
-<span class="eqno">(69)<a class="headerlink" href="#equation-a5825730-31b6-49c9-805e-e933f62efadc" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-21dbaf8f-856a-4468-aa83-f676fde2c314">
+<span class="eqno">(69)<a class="headerlink" href="#equation-21dbaf8f-856a-4468-aa83-f676fde2c314" title="Permalink to this equation">#</a></span>\[\begin{align}
   \frac{dh}{dt} &amp;= v \sin \gamma \\
   \frac{d\phi}{dt} &amp;= \frac{v}{r} \cos \gamma \frac{\sin \psi}{\cos \theta} \\
   \frac{d\theta}{dt} &amp;= \frac{v}{r} \cos \gamma \cos \psi  \\
@@ -788,8 +788,8 @@ final altitude, without exceding a maximum heat rate at the leading
 edges. This heat rate is constrained by <span class="math notranslate nohighlight">\(q \leq 70\)</span> where q
 <span class="math notranslate nohighlight">\([\frac{btu}{ft^2s}]\)</span> is the heating rate.</p>
 <p>The initial conditions are</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5456aa0d-9fa5-426e-aab0-285f4562cbd8">
-<span class="eqno">(70)<a class="headerlink" href="#equation-5456aa0d-9fa5-426e-aab0-285f4562cbd8" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-e3c33f9f-e27a-4da3-82a8-79334ce4b4b0">
+<span class="eqno">(70)<a class="headerlink" href="#equation-e3c33f9f-e27a-4da3-82a8-79334ce4b4b0" title="Permalink to this equation">#</a></span>\[\begin{align}
   h_0 &amp;= 26000 \\
   v_0 &amp;= 25600 \\
   \phi_0 &amp;= 0 \\
@@ -798,8 +798,8 @@ edges. This heat rate is constrained by <span class="math notranslate nohighligh
   \psi_0 &amp;= \frac{\pi}{2}
 \end{align}\]</div>
 <p>and the final conditions are</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d8a2d00d-48bd-40a3-b59c-bb819ed368be">
-<span class="eqno">(71)<a class="headerlink" href="#equation-d8a2d00d-48bd-40a3-b59c-bb819ed368be" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-5a45a2d7-71cc-4426-bc37-07c28f68595c">
+<span class="eqno">(71)<a class="headerlink" href="#equation-5a45a2d7-71cc-4426-bc37-07c28f68595c" title="Permalink to this equation">#</a></span>\[\begin{align}
   h_0 &amp;= 80000 \\
   v_0 &amp;= 2500 \\
   \gamma_0 &amp;= -0.08727 \\
@@ -817,13 +817,13 @@ second component computes the aerodynamic forces of lift and drag on the
 shuttle. The third component is where the heating rate on the leading
 edge of the shuttles wings is computed. The heating rate is given by
 <span class="math notranslate nohighlight">\(q = q_a q_r\)</span> where</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6fab7187-c89e-4e94-9e3c-430f11a8aad4">
-<span class="eqno">(72)<a class="headerlink" href="#equation-6fab7187-c89e-4e94-9e3c-430f11a8aad4" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-e5ac02e5-a7fe-4f45-8372-fd3bfed41325">
+<span class="eqno">(72)<a class="headerlink" href="#equation-e5ac02e5-a7fe-4f45-8372-fd3bfed41325" title="Permalink to this equation">#</a></span>\[\begin{align}
   q_a &amp;= c_0 + c_1\alpha + c_2 \alpha^2 + c_3 \alpha^3
 \end{align}\]</div>
 <p>and</p>
-<div class="amsmath math notranslate nohighlight" id="equation-86d3f469-c82d-47c0-80e1-846694488fa2">
-<span class="eqno">(73)<a class="headerlink" href="#equation-86d3f469-c82d-47c0-80e1-846694488fa2" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-15f91ca2-1ef4-4d61-8d5f-b1d05d23e52a">
+<span class="eqno">(73)<a class="headerlink" href="#equation-15f91ca2-1ef4-4d61-8d5f-b1d05d23e52a" title="Permalink to this equation">#</a></span>\[\begin{align}
   q_r &amp;= 17700 \rho^.5 (.0001v)^{3.07}
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(c_0, c_1, c_2,\)</span> and <span class="math notranslate nohighlight">\(c_3\)</span> are constants, <span class="math notranslate nohighlight">\(\alpha\)</span> <span class="math notranslate nohighlight">\([deg]\)</span> is the
@@ -1384,7 +1384,7 @@ INFO: checking out_of_order
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking auto_ivc_warnings
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 1.395616 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 1.198742 seconds.
 Total jacobian shape: (327, 358) 
 </pre></div>
 </div>
@@ -1393,8 +1393,8 @@ FWD solves: 20   REV solves: 0
 Total colors vs. total size: 20 vs 358  (94.4% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 1.395616 sec.
-Time to compute coloring: 0.371895 sec.
+Time to compute sparsity: 1.198742 sec.
+Time to compute coloring: 0.356455 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
@@ -1408,11 +1408,11 @@ Memory to compute coloring: 0.000000 MB.
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                   70.9885
-       User Objective Time :       1.5910
-       User Sensitivity Time :     9.2115
-       Interface Time :            2.8308
-       Opt Solver Time:           57.3552
+    Total Time:                   64.3236
+       User Objective Time :       1.4395
+       User Sensitivity Time :     8.2294
+       Interface Time :            2.7422
+       Opt Solver Time:           51.9124
     Calls to Objective Function :     747
     Calls to Sens Function :          318
 

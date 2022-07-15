@@ -628,14 +628,27 @@ title="Open an issue"
 <span class="sd">    ----------</span>
 <span class="sd">    **kwargs : dict</span>
 <span class="sd">        Dictionary of optional arguments.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    parameter_options : dict</span>
+<span class="sd">        A dictionary of parameter names and their associated TrajectoryParameterOptionsDictionary</span>
+<span class="sd">    phases : om.Group or om.ParallelGroup</span>
+<span class="sd">        The Group which contains phases for this Trajectory.</span>
+
+<span class="sd">    _linkages : OrderedDict</span>
+<span class="sd">        A dictionary containing phase linkage information for the Trajectory.</span>
+<span class="sd">    _phases : dict</span>
+<span class="sd">        A dictionary of phase names as keys with the Phase objects being their associated values.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">Trajectory</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
+        <span class="bp">self</span><span class="o">.</span><span class="n">_linkages</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_phases</span> <span class="o">=</span> <span class="p">{}</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">parameter_options</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_linkages</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_phases</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_phase_add_kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">phases</span> <span class="o">=</span> <span class="n">om</span><span class="o">.</span><span class="n">ParallelGroup</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -664,8 +677,7 @@ title="Open an issue"
 <span class="sd">        PhaseBase</span>
 <span class="sd">            The Phase object added to the trajectory.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_phases</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">phase</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_phase_add_kwargs</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_phases</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">phases</span><span class="o">.</span><span class="n">add_subsystem</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">phase</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">phase</span></div>
 
     <span class="k">def</span> <span class="nf">set_parameter_options</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span> <span class="n">opt</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
@@ -917,10 +929,8 @@ title="Open an issue"
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameter_options</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_setup_parameters</span><span class="p">()</span>
 
-        <span class="n">phases_group</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_subsystem</span><span class="p">(</span><span class="s1">&#39;phases&#39;</span><span class="p">,</span> <span class="n">subsys</span><span class="o">=</span><span class="n">om</span><span class="o">.</span><span class="n">ParallelGroup</span><span class="p">())</span>
-
-        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">phs</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_phases</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-            <span class="n">phases_group</span><span class="o">.</span><span class="n">add_subsystem</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">phs</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">_phase_add_kwargs</span><span class="p">[</span><span class="n">name</span><span class="p">])</span>
+        <span class="c1"># This will override the existing phases attribute with the same thing.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_subsystem</span><span class="p">(</span><span class="s1">&#39;phases&#39;</span><span class="p">,</span> <span class="n">subsys</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">phases</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_linkages</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_setup_linkages</span><span class="p">()</span>
