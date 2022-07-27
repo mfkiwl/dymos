@@ -802,13 +802,13 @@ Dynamic systems are typically defined by some set of ordinary
 differential equations (the ODE) which governs their behavior.</p>
 <p>Consider a simple damped harmonic oscillator.</p>
 <p><img alt="Damped harmonic oscillator free-body diagram" src="../../_images/spring_mass_damper.png" /></p>
-<div class="amsmath math notranslate nohighlight" id="equation-6659096d-8309-4784-b225-7ba08260f5db">
-<span class="eqno">(11)<a class="headerlink" href="#equation-6659096d-8309-4784-b225-7ba08260f5db" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-920fcda6-daa3-4589-a678-42a7f5a47837">
+<span class="eqno">(11)<a class="headerlink" href="#equation-920fcda6-daa3-4589-a678-42a7f5a47837" title="Permalink to this equation">#</a></span>\[\begin{align}
     \ddot{x} &amp;= -\frac{kx}{m} - \frac{c \dot{x}}{m}
 \end{align}\]</div>
 <p>Converting this to a first order system results in an ODE system with two states:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-eb919f38-827f-4b9b-8e8c-ed44cedf9a41">
-<span class="eqno">(12)<a class="headerlink" href="#equation-eb919f38-827f-4b9b-8e8c-ed44cedf9a41" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-07cb233f-0071-41b4-90b4-8e2b4bb37dcf">
+<span class="eqno">(12)<a class="headerlink" href="#equation-07cb233f-0071-41b4-90b4-8e2b4bb37dcf" title="Permalink to this equation">#</a></span>\[\begin{align}
     \dot{x} &amp;= v \\
     \dot{v} &amp;= -\frac{kx}{m} - \frac{c \dot{x}}{m}
 \end{align}\]</div>
@@ -889,7 +889,7 @@ Some elements of this code will be explained later, but we’ll hit the highligh
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="c1"># plt.switch_backend(&#39;Agg&#39;)  # disable plotting to the screen</span>
 
-<span class="kn">from</span> <span class="nn">dymos.examples.oscillator.doc.oscillator_ode</span> <span class="kn">import</span> <span class="n">OscillatorODE</span>
+<span class="kn">from</span> <span class="nn">dymos.examples.oscillator.oscillator_ode</span> <span class="kn">import</span> <span class="n">OscillatorODE</span>
 
 <span class="c1"># Instantiate an OpenMDAO Problem instance.</span>
 <span class="n">prob</span> <span class="o">=</span> <span class="n">om</span><span class="o">.</span><span class="n">Problem</span><span class="p">()</span>
@@ -1029,7 +1029,7 @@ Otherwise, we can pass it only to certain states as an argument to <code class="
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">switch_backend</span><span class="p">(</span><span class="s1">&#39;Agg&#39;</span><span class="p">)</span>  <span class="c1"># disable plotting to the screen</span>
 
-<span class="kn">from</span> <span class="nn">dymos.examples.oscillator.doc.oscillator_ode</span> <span class="kn">import</span> <span class="n">OscillatorODE</span>
+<span class="kn">from</span> <span class="nn">dymos.examples.oscillator.oscillator_ode</span> <span class="kn">import</span> <span class="n">OscillatorODE</span>
 
 <span class="c1"># Instantiate an OpenMDAO Problem instance.</span>
 <span class="n">prob</span> <span class="o">=</span> <span class="n">om</span><span class="o">.</span><span class="n">Problem</span><span class="p">()</span>
@@ -1126,7 +1126,7 @@ Even though the initial time and duration of the phase are fixed, we provide the
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">switch_backend</span><span class="p">(</span><span class="s1">&#39;Agg&#39;</span><span class="p">)</span>  <span class="c1"># disable plotting to the screen</span>
 
-<span class="kn">from</span> <span class="nn">dymos.examples.oscillator.doc.oscillator_ode</span> <span class="kn">import</span> <span class="n">OscillatorODE</span>
+<span class="kn">from</span> <span class="nn">dymos.examples.oscillator.oscillator_ode</span> <span class="kn">import</span> <span class="n">OscillatorODE</span>
 
 <span class="c1"># Instantiate an OpenMDAO Problem instance.</span>
 <span class="n">prob</span> <span class="o">=</span> <span class="n">om</span><span class="o">.</span><span class="n">Problem</span><span class="p">()</span>

@@ -805,8 +805,18 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#building-and-running-the-problem">
-   Building and running the problem
+  <a class="reference internal nav-link" href="#building-the-problem">
+   Building the problem
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#set-the-initial-guesses-and-assumptions">
+   Set the initial guesses and assumptions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#run-the-problem">
+   Run the problem
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -952,8 +962,18 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#building-and-running-the-problem">
-   Building and running the problem
+  <a class="reference internal nav-link" href="#building-the-problem">
+   Building the problem
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#set-the-initial-guesses-and-assumptions">
+   Set the initial guesses and assumptions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#run-the-problem">
+   Run the problem
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -1242,8 +1262,8 @@ preferable when using a differential inclusion approach to problems.</p>
 <p><em>TrueAirspeedComp</em> uses the Mach number, provided as a
 control, and the speed of sound from the atmosphere model to compute the
 true airspeed of the aircraft.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d6371725-4935-4a27-b637-32c1185ca1d5">
-<span class="eqno">(33)<a class="headerlink" href="#equation-d6371725-4935-4a27-b637-32c1185ca1d5" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-5abbc541-2927-402b-a3a3-bc518fc988f0">
+<span class="eqno">(33)<a class="headerlink" href="#equation-5abbc541-2927-402b-a3a3-bc518fc988f0" title="Permalink to this equation">#</a></span>\[\begin{align}
   TAS &amp;= mach \cdot sos
 \end{align}\]</div>
 <table class="colwidths-auto table">
@@ -1274,8 +1294,8 @@ true airspeed of the aircraft.</p>
 <p><em>SteadyFlightPathAngleComp</em> uses the true airspeed and the
 climb rate, obtained by differentiating the altitude time history at the
 nodes, to compute the flight path angle.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f0a839df-78df-4f8c-85e5-4002ad52b46d">
-<span class="eqno">(34)<a class="headerlink" href="#equation-f0a839df-78df-4f8c-85e5-4002ad52b46d" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-cc8689a5-c638-4128-8812-b468882fdd5e">
+<span class="eqno">(34)<a class="headerlink" href="#equation-cc8689a5-c638-4128-8812-b468882fdd5e" title="Permalink to this equation">#</a></span>\[\begin{align}
   \gamma &amp;= \arcsin \frac{\dot h}{TAS}
 \end{align}\]</div>
 <table class="colwidths-auto table">
@@ -1306,8 +1326,8 @@ nodes, to compute the flight path angle.</p>
 <p><em>RangeRateComp</em> uses the true airspeed and the flight path
 angle to determine the velocity projected along the ground. This is the
 derivative of the state variable <em>range</em>.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-047ac196-ab97-46d5-b00d-ff19bdfaefe2">
-<span class="eqno">(35)<a class="headerlink" href="#equation-047ac196-ab97-46d5-b00d-ff19bdfaefe2" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-eb8c68bc-5927-4e98-9474-a3d0edda1fc3">
+<span class="eqno">(35)<a class="headerlink" href="#equation-eb8c68bc-5927-4e98-9474-a3d0edda1fc3" title="Permalink to this equation">#</a></span>\[\begin{align}
   \dot{range} &amp;= TAS \cos \gamma
 \end{align}\]</div>
 <table class="colwidths-auto table">
@@ -1339,8 +1359,8 @@ derivative of the state variable <em>range</em>.</p>
 <code class="docutils literal notranslate"><span class="pre">mass_comp.py</span></code> computes the aircraft total mass based on
 its empty mass, payload mass, and current fuel mass. It also computes
 total weight which simplifies some equations later on.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-76997626-23b4-47c0-b294-4a3024326486">
-<span class="eqno">(36)<a class="headerlink" href="#equation-76997626-23b4-47c0-b294-4a3024326486" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-21d337aa-6624-4b8a-aee2-1a7bdcde7028">
+<span class="eqno">(36)<a class="headerlink" href="#equation-21d337aa-6624-4b8a-aee2-1a7bdcde7028" title="Permalink to this equation">#</a></span>\[\begin{align}
   mass_{total} &amp;= mass_{empty} + mass_{payload} + mass_{fuel} \\
   W_{total} &amp;= 9.80665 \, mass_{total}
 \end{align}\]</div>
@@ -1379,8 +1399,8 @@ total weight which simplifies some equations later on.</p>
 <h3>Dynamic Pressure<a class="headerlink" href="#dynamic-pressure" title="Permalink to this headline">#</a></h3>
 <p>The <em>DynamicPressureComp</em> computes the dynamic pressure from
 true airspeed and atmospheric density.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7a79abd6-db90-4aa3-9ecb-60cd819e7a6b">
-<span class="eqno">(37)<a class="headerlink" href="#equation-7a79abd6-db90-4aa3-9ecb-60cd819e7a6b" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-14a97a7a-7c22-4016-a8ed-87b1becdde5d">
+<span class="eqno">(37)<a class="headerlink" href="#equation-14a97a7a-7c22-4016-a8ed-87b1becdde5d" title="Permalink to this equation">#</a></span>\[\begin{align}
   q &amp;= \frac{1}{2} \rho TAS^2
 \end{align}\]</div>
 <table class="colwidths-auto table">
@@ -1492,14 +1512,14 @@ profile being modeled is so benign that assuming steady flight at
 discrete points (nodes) in the trajectory is not terribly inaccurate.</p>
 <p>The thrust necessary for steady flight is computed by balancing the drag
 equation</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7e836e2f-7ede-468d-b6e2-145f464796f4">
-<span class="eqno">(38)<a class="headerlink" href="#equation-7e836e2f-7ede-468d-b6e2-145f464796f4" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-b952ee5a-fb2c-4618-ade7-ff4aeafd3fd5">
+<span class="eqno">(38)<a class="headerlink" href="#equation-b952ee5a-fb2c-4618-ade7-ff4aeafd3fd5" title="Permalink to this equation">#</a></span>\[\begin{align}
   C_T &amp;= W_{total} \frac{sin \gamma}{q \cdot S \cdot \cos \alpha} + \frac{C_D}{\cos \alpha}
 \end{align}\]</div>
 <p>The lift coefficient required for steady flight is found by balancing
 lift and weight:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-47304be1-3e07-41c8-96e2-6987632fa37c">
-<span class="eqno">(39)<a class="headerlink" href="#equation-47304be1-3e07-41c8-96e2-6987632fa37c" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-0fb33aa1-11a1-49e2-bdac-f8bdc508a77d">
+<span class="eqno">(39)<a class="headerlink" href="#equation-0fb33aa1-11a1-49e2-bdac-f8bdc508a77d" title="Permalink to this equation">#</a></span>\[\begin{align}
   \tilde{C_L} &amp;= W_{total} \frac{cos \gamma}{q \cdot S} - C_T \sin \alpha
 \end{align}\]</div>
 <p>Using coefficients in the balance equations is better scaled from a numerical standpoint.</p>
@@ -1511,30 +1531,30 @@ rate of fuel burn. In addition, by normalizing thrust at any point by
 the maximum possible thrust, we obtain the throttle parameter <span class="math notranslate nohighlight">\(\tau\)</span>.
 The propulsion group uses a number of components to perform these
 calculations.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b5e0da62-67b1-46a4-bb58-22b12b5060c9">
-<span class="eqno">(40)<a class="headerlink" href="#equation-b5e0da62-67b1-46a4-bb58-22b12b5060c9" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-2aa30f57-4f60-4b37-aca8-c3c2fecca804">
+<span class="eqno">(40)<a class="headerlink" href="#equation-2aa30f57-4f60-4b37-aca8-c3c2fecca804" title="Permalink to this equation">#</a></span>\[\begin{align}
   T &amp;= C_T \cdot q \cdot S
 \end{align}\]</div>
 <p>Maximum thrust is computed by multiplying sea-level thrust by the ratio
 of pressure to sea-level atmospheric pressure.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8131e722-5e9a-47aa-98c4-319116d03523">
-<span class="eqno">(41)<a class="headerlink" href="#equation-8131e722-5e9a-47aa-98c4-319116d03523" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-3af4b9c2-0704-42be-8b45-57ff6b0acb24">
+<span class="eqno">(41)<a class="headerlink" href="#equation-3af4b9c2-0704-42be-8b45-57ff6b0acb24" title="Permalink to this equation">#</a></span>\[\begin{align}
   T_{max} &amp;= T_{max,sl} \frac{P}{P_{sl}}
 \end{align}\]</div>
 <p>The throttle parameter is then the ratio current thrust to maximum
 possible thrust.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f1419210-1fbe-4207-bf9d-892e0e2ba8af">
-<span class="eqno">(42)<a class="headerlink" href="#equation-f1419210-1fbe-4207-bf9d-892e0e2ba8af" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-81237633-1466-494b-afb4-dc0fdfcbe597">
+<span class="eqno">(42)<a class="headerlink" href="#equation-81237633-1466-494b-afb4-dc0fdfcbe597" title="Permalink to this equation">#</a></span>\[\begin{align}
   \tau &amp;= \frac{T}{T_{max}}
 \end{align}\]</div>
 <p>The thrust specific fuel consumption is computed as follows:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e9c968c4-e3dc-4361-87e6-df58bce82b4f">
-<span class="eqno">(43)<a class="headerlink" href="#equation-e9c968c4-e3dc-4361-87e6-df58bce82b4f" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-8dbd7933-c8a3-465c-9ce1-cc92d5f46626">
+<span class="eqno">(43)<a class="headerlink" href="#equation-8dbd7933-c8a3-465c-9ce1-cc92d5f46626" title="Permalink to this equation">#</a></span>\[\begin{align}
   TSFC &amp;= TSFC_{sl} - 1.5 E - 10 \cdot 9.80665 \cdot alt
 \end{align}\]</div>
 <p>Finally, fuel burn rate is:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ad081dd1-cc6a-4ea2-aa2d-c8e117cc3184">
-<span class="eqno">(44)<a class="headerlink" href="#equation-ad081dd1-cc6a-4ea2-aa2d-c8e117cc3184" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-cc5294a6-0341-401d-b6ea-75e6dd82de94">
+<span class="eqno">(44)<a class="headerlink" href="#equation-cc5294a6-0341-401d-b6ea-75e6dd82de94" title="Permalink to this equation">#</a></span>\[\begin{align}
   \dot{mass_{fuel}} &amp;= -TSFC \frac{T}{9.80665}
 \end{align}\]</div>
 </section>
@@ -1604,8 +1624,8 @@ Two of them (<em>alt</em> and <em>climb_rate</em>) will be varied dynamically in
 The other four (<em>mach</em>, <em>S</em>, <em>mass_empty</em>, and <em>mass_payload</em>), will be set to fixed values as non-optimized parameters.
 More details on the various models involved can be found in the examples code.</p>
 </section>
-<section id="building-and-running-the-problem">
-<h2>Building and running the problem<a class="headerlink" href="#building-and-running-the-problem" title="Permalink to this headline">#</a></h2>
+<section id="building-the-problem">
+<h2>Building the problem<a class="headerlink" href="#building-the-problem" title="Permalink to this headline">#</a></h2>
 <p>In the following code we define and solve the optimal control problem.
 Note that we demonstrate the use of externally-connected design parameters in this case.
 The four parameters are connected to a source provided by the <em>assumptions</em> IndepVarComp.</p>
@@ -1769,7 +1789,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="n">p</span> <span class="o">=</span> <span class="n">om</span><span class="o">.</span><span class="n">Problem</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">om</span><span class="o">.</span><span class="n">Group</span><span class="p">())</span>
 <span class="n">p</span><span class="o">.</span><span class="n">driver</span> <span class="o">=</span> <span class="n">om</span><span class="o">.</span><span class="n">pyOptSparseDriver</span><span class="p">()</span>
 <span class="n">p</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s1">&#39;optimizer&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;IPOPT&#39;</span>
-<span class="n">p</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">opt_settings</span><span class="p">[</span><span class="s1">&#39;print_level&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">p</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">opt_settings</span><span class="p">[</span><span class="s1">&#39;print_level&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">p</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">declare_coloring</span><span class="p">()</span>
 
 <span class="n">num_seg</span> <span class="o">=</span> <span class="mi">15</span>
@@ -1833,8 +1853,26 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="n">phase</span><span class="o">.</span><span class="n">add_timeseries_output</span><span class="p">(</span><span class="s1">&#39;aero.CD&#39;</span><span class="p">)</span>
 
 <span class="n">p</span><span class="o">.</span><span class="n">setup</span><span class="p">()</span>
-
-<span class="n">p</span><span class="p">[</span><span class="s1">&#39;traj.phase0.t_initial&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Constraint Report [traj] ---
+    --- phase0 ---
+        [path]    1.0000e-02 &lt;= propulsion.tau &lt;= 2.0000e+00  [None]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;openmdao.core.problem.Problem at 0x7f9a1858da50&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="set-the-initial-guesses-and-assumptions">
+<h2>Set the initial guesses and assumptions<a class="headerlink" href="#set-the-initial-guesses-and-assumptions" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span><span class="p">[</span><span class="s1">&#39;traj.phase0.t_initial&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
 <span class="n">p</span><span class="p">[</span><span class="s1">&#39;traj.phase0.t_duration&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">3600.0</span>
 <span class="n">p</span><span class="p">[</span><span class="s1">&#39;traj.phase0.states:range&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">phase</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="s1">&#39;range&#39;</span><span class="p">,</span> <span class="n">ys</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">724.0</span><span class="p">))</span>
 <span class="n">p</span><span class="p">[</span><span class="s1">&#39;traj.phase0.states:mass_fuel&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">phase</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="s1">&#39;mass_fuel&#39;</span><span class="p">,</span> <span class="n">ys</span><span class="o">=</span><span class="p">(</span><span class="mi">30000</span><span class="p">,</span> <span class="mf">1e-3</span><span class="p">))</span>
@@ -1845,20 +1883,26 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="n">p</span><span class="p">[</span><span class="s1">&#39;assumptions.S&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">427.8</span>
 <span class="n">p</span><span class="p">[</span><span class="s1">&#39;assumptions.mass_empty&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.15E6</span>
 <span class="n">p</span><span class="p">[</span><span class="s1">&#39;assumptions.mass_payload&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">84.02869</span> <span class="o">*</span> <span class="mi">400</span>
-
-<span class="n">dm</span><span class="o">.</span><span class="n">run_problem</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">simulate</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">make_plots</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="run-the-problem">
+<h2>Run the problem<a class="headerlink" href="#run-the-problem" title="Permalink to this headline">#</a></h2>
+<p>The dymos <code class="docutils literal notranslate"><span class="pre">run_problem</span></code> method is used to automatically run the driver and follow the driver execution with a simulation run to help verify the results.
+Plots of the resulting solution and simulation will be generated.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dm</span><span class="o">.</span><span class="n">run_problem</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">simulate</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">make_plots</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Constraint Report [traj] ---
-    --- phase0 ---
-        [path]    1.0000e-02 &lt;= propulsion.tau &lt;= 2.0000e+00  [None]
-
-Model viewer data has already been recorded for Driver.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model viewer data has already been recorded for Driver.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 1.011851 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.939786 seconds.
 Total jacobian shape: (224, 221) 
 
 
@@ -1867,8 +1911,8 @@ FWD solves: 12   REV solves: 0
 Total colors vs. total size: 12 vs 221  (94.6% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 1.011851 sec.
-Time to compute coloring: 0.166415 sec.
+Time to compute sparsity: 0.939786 sec.
+Time to compute coloring: 0.168358 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
@@ -1876,168 +1920,17 @@ Memory to compute coloring: 0.000000 MB.
   warnings.warn(&quot;The argument `type=` is deprecated. Use `varType` in the future.&quot;)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>List of user-set options:
-
-                                    Name   Value                used
-                        file_print_level = 5                     yes
-                   hessian_approximation = limited-memory        yes
-                           linear_solver = mumps                 yes
-                      nlp_scaling_method = user-scaling          yes
-                             output_file = IPOPT.out             yes
-                             print_level = 5                     yes
-                      print_user_options = yes                   yes
-                                      sb = yes                   yes
-This is Ipopt version 3.13.5, running with linear solver mumps.
-NOTE: Other linear solvers might be more efficient (see Ipopt documentation).
-
-Number of nonzeros in equality constraint Jacobian...:     7953
-Number of nonzeros in inequality constraint Jacobian.:    13260
-Number of nonzeros in Lagrangian Hessian.............:        0
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total number of variables............................:      221
-                     variables with only lower bounds:        0
-                variables with lower and upper bounds:      221
-                     variables with only upper bounds:        0
-Total number of equality constraints.................:      205
-Total number of inequality constraints...............:       60
-        inequality constraints with only lower bounds:        0
-   inequality constraints with lower and upper bounds:       60
-        inequality constraints with only upper bounds:        0
-
-iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
-   0 -7.2400000e+02 1.08e+04 4.84e-05   0.0 0.00e+00    -  0.00e+00 0.00e+00   0
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   1 -7.2274887e+02 6.05e+03 1.20e+09   4.5 2.69e+04    -  1.00e+00 4.69e-01f  1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   2 -7.2235743e+02 3.70e+03 9.29e+08   4.2 1.36e+04    -  1.00e+00 4.00e-01h  1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   3 -7.2219641e+02 3.44e+03 8.94e+08   3.7 9.53e+03    -  1.00e+00 6.96e-02h  1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   4 -7.2175519e+02 3.00e+03 8.05e+08   3.2 1.02e+04    -  1.00e+00 1.30e-01h  1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   5 -7.2079006e+02 2.32e+03 6.10e+08   5.5 1.08e+04    -  1.78e-01 2.27e-01h  1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   6 -7.2054739e+02 2.20e+03 5.65e+08   4.8 1.15e+04    -  6.41e-01 5.21e-02h  1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   7 -7.1742004e+02 1.01e+03 1.11e+08   4.3 1.02e+04    -  1.00e+00 5.45e-01h  1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   8 -7.1501668e+02 4.91e+02 3.74e+07   3.5 4.88e+03    -  1.00e+00 5.23e-01h  1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   9 -7.1424760e+02 3.91e+02 2.99e+07   2.9 3.90e+03    -  9.60e-01 2.04e-01h  1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
-  10 -7.1222765e+02 1.92e+02 1.47e+07  -3.0 3.98e+03    -  6.26e-01 5.14e-01h  1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  11 -7.1040556e+02 7.53e+01 5.36e+06   1.9 2.89e+03    -  8.67e-01 6.30e-01h  1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  12 -7.0926495e+02 1.08e+02 1.26e+04   0.6 1.14e+03    -  9.75e-01 1.00e+00h  1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  13 -7.0934104e+02 2.49e-01 2.47e+00  -1.2 1.06e+02    -  9.87e-01 1.00e+00h  1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  14 -7.1409594e+02 9.91e+01 1.37e+01  -1.6 4.75e+03    -  9.18e-01 1.00e+00f  1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  15 -7.1408967e+02 9.13e+01 4.33e+00  -1.5 3.46e+02  -4.0 7.77e-01 7.86e-02h  1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  16 -7.1781172e+02 2.86e+02 6.33e+00   0.5 3.04e+04    -  2.71e-02 1.22e-01f  1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  17 -7.4689289e+02 1.44e+03 1.62e+01  -1.4 3.34e+04    -  6.68e-01 8.71e-01h  1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  18 -7.2493847e+02 7.25e+02 3.57e+00  -1.4 2.20e+04    -  8.22e-01 1.00e+00h  1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  19 -7.4518470e+02 2.38e+02 5.41e-01  -1.1 2.02e+04    -  3.67e-01 1.00e+00h  1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
-  20 -7.4517385e+02 2.37e+02 4.35e-01  -1.4 5.29e+03  -4.5 1.31e-01 6.92e-03h  1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  21 -7.2395029e+02 1.13e+02 1.81e+01  -0.9 2.12e+04    -  9.15e-01 1.00e+00h  1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  22 -7.2440751e+02 9.62e-01 2.21e+00  -1.9 2.22e+03    -  9.43e-01 1.00e+00h  1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  23 -7.2620331e+02 5.41e+00 5.22e-01  -2.5 2.24e+03    -  9.92e-01 1.00e+00h  1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  24 -7.2536600e+02 7.50e-01 3.36e-01  -3.1 1.02e+03    -  1.00e+00 1.00e+00h  1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  25 -7.2534893e+02 1.01e-01 2.25e-01  -4.3 6.95e+02    -  9.99e-01 1.00e+00h  1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  26 -7.2531763e+02 1.99e-02 1.45e-01  -5.5 3.55e+02    -  1.00e+00 1.00e+00h  1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  27 -7.2532991e+02 2.01e-02 7.78e-03  -6.7 2.28e+02    -  1.00e+00 1.00e+00h  1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  28 -7.2531987e+02 1.75e-03 2.36e-03  -8.4 6.43e+01    -  1.00e+00 1.00e+00h  1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  29 -7.2531917e+02 1.37e-05 5.77e-05 -10.4 4.66e+00    -  1.00e+00 1.00e+00h  1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
-  30 -7.2531916e+02 4.73e-08 2.00e-09 -11.0 3.84e-01    -  1.00e+00 1.00e+00h  1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  31 -7.2531916e+02 7.53e-10 1.42e-10 -11.0 5.29e-02    -  1.00e+00 1.00e+00h  1
-
-Number of Iterations....: 31
-
-                                   (scaled)                 (unscaled)
-Objective...............:  -7.2531916165279108e+02   -7.2531916165279108e+02
-Dual infeasibility......:   1.4201347445517266e-10    1.4201347445517266e-10
-Constraint violation....:   7.5299447480837946e-10    7.5299447480837946e-10
-Complementarity.........:   1.0000878393010979e-11    1.0000878393010979e-11
-Overall NLP error.......:   7.5299447480837946e-10    7.5299447480837946e-10
-
-
-Number of objective function evaluations             = 32
-Number of objective gradient evaluations             = 32
-Number of equality constraint evaluations            = 32
-Number of inequality constraint evaluations          = 32
-Number of equality constraint Jacobian evaluations   = 32
-Number of inequality constraint Jacobian evaluations = 32
-Number of Lagrangian Hessian evaluations             = 0
-Total CPU secs in IPOPT (w/o function evaluations)   =      0.370
-Total CPU secs in NLP function evaluations           =      8.375
-
-EXIT: Optimal Solution Found.
-
-
-Optimization Problem -- Optimization using pyOpt_sparse
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization Problem -- Optimization using pyOpt_sparse
 ================================================================================
     Objective Function: _objfunc
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                    8.7969
-       User Objective Time :       6.4014
-       User Sensitivity Time :     1.7449
-       Interface Time :            0.2570
-       Opt Solver Time:            0.3935
+    Total Time:                    7.7348
+       User Objective Time :       5.5503
+       User Sensitivity Time :     1.5666
+       Interface Time :            0.2183
+       Opt Solver Time:            0.3997
     Calls to Objective Function :      32
     Calls to Sens Function :           32
 
@@ -2560,7 +2453,7 @@ Optimization Problem -- Optimization using pyOpt_sparse
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/commercial_aircraft_10_0.png" src="../../_images/commercial_aircraft_10_0.png" />
+<img alt="../../_images/commercial_aircraft_14_0.png" src="../../_images/commercial_aircraft_14_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2570,7 +2463,7 @@ Optimization Problem -- Optimization using pyOpt_sparse
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/commercial_aircraft_11_0.png" src="../../_images/commercial_aircraft_11_0.png" />
+<img alt="../../_images/commercial_aircraft_15_0.png" src="../../_images/commercial_aircraft_15_0.png" />
 </div>
 </div>
 <div class="cell tag_remove-input tag_remove-output docutils container">
