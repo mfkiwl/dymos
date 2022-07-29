@@ -754,8 +754,8 @@ three-phase orbit raising maneuver with a burn-coast-burn phase
 sequence. This example is based on the problem provided in
 Enright <span id="id1">[<a class="reference internal" href="#id24" title="Paul J Enright and Brace A Conway. Optimal finite-thrust spacecraft trajectories using collocation and nonlinear programming. Journal of Guidance, Control, and Dynamics, 14(5):981–985, 1991.">EC91</a>]</span>.</p>
 <p>The dynamics are given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-62a007b7-7672-46e9-8852-3197db18f3ab">
-<span class="eqno">(53)<a class="headerlink" href="#equation-62a007b7-7672-46e9-8852-3197db18f3ab" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d2ec785d-e430-46a0-b5be-84b69768a505">
+<span class="eqno">(53)<a class="headerlink" href="#equation-d2ec785d-e430-46a0-b5be-84b69768a505" title="Permalink to this equation">#</a></span>\[\begin{align}
   \frac{dr}{dt} &amp;= v_r \\
   \frac{d\theta}{dt} &amp;= \frac{v_\theta}{r} \\
   \frac{dv_r}{dt} &amp;= \frac{v^2_\theta}{r} - \frac{1}{r^2} + a_{thrust} \sin u_1 \\
@@ -764,8 +764,8 @@ Enright <span id="id1">[<a class="reference internal" href="#id24" title="Paul J
   \frac{d \Delta v}{dt} &amp;= a_{thrust}
 \end{align}\]</div>
 <p>The initial conditions are</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a4354d91-4dfd-4fc8-885d-a23fd59ba20d">
-<span class="eqno">(54)<a class="headerlink" href="#equation-a4354d91-4dfd-4fc8-885d-a23fd59ba20d" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-4d72019c-9983-4b90-8d1c-a1231bd9bd4f">
+<span class="eqno">(54)<a class="headerlink" href="#equation-4d72019c-9983-4b90-8d1c-a1231bd9bd4f" title="Permalink to this equation">#</a></span>\[\begin{align}
   r &amp;= 1 \rm{\,DU} \\
   \theta &amp;= 0 \rm{\,rad} \\
   v_r &amp;= 0 \rm{\,DU/TU}\\
@@ -774,8 +774,8 @@ Enright <span id="id1">[<a class="reference internal" href="#id24" title="Paul J
   \Delta v &amp;= 0 \rm{\,DU/TU}
 \end{align}\]</div>
 <p>and the final conditions are</p>
-<div class="amsmath math notranslate nohighlight" id="equation-54f3ce1a-f1b6-47af-9b59-16786c130ea0">
-<span class="eqno">(55)<a class="headerlink" href="#equation-54f3ce1a-f1b6-47af-9b59-16786c130ea0" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-b876a0db-529d-478b-8e11-77d38f321824">
+<span class="eqno">(55)<a class="headerlink" href="#equation-b876a0db-529d-478b-8e11-77d38f321824" title="Permalink to this equation">#</a></span>\[\begin{align}
   r &amp;= 3 \rm{\,DU} \\
   \theta &amp;= \rm{free} \\
   v_r &amp;= 0 \rm{\,DU/TU}\\
@@ -1330,7 +1330,7 @@ INFO: checking out_of_order
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking auto_ivc_warnings
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.673766 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.672312 seconds.
 Total jacobian shape: (120, 204) 
 
 
@@ -1339,9 +1339,9 @@ FWD solves: 13   REV solves: 0
 Total colors vs. total size: 13 vs 204  (93.6% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.673766 sec.
-Time to compute coloring: 0.099068 sec.
-Memory to compute coloring: 0.425781 MB.
+Time to compute sparsity: 0.672312 sec.
+Time to compute coloring: 0.100643 sec.
+Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.10/site-packages/pyoptsparse/pyOpt_optimization.py:234: UserWarning: The argument `type=` is deprecated. Use `varType` in the future.
@@ -1354,11 +1354,11 @@ Memory to compute coloring: 0.425781 MB.
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                    1.8370
-       User Objective Time :       0.0955
-       User Sensitivity Time :     1.4051
-       Interface Time :            0.2227
-       Opt Solver Time:            0.1138
+    Total Time:                    1.8001
+       User Objective Time :       0.0965
+       User Sensitivity Time :     1.3677
+       Interface Time :            0.2218
+       Opt Solver Time:            0.1141
     Calls to Objective Function :      20
     Calls to Sens Function :           20
 
