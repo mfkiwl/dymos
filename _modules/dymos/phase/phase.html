@@ -291,6 +291,11 @@ const thebe_selector_output = ".output, .cell_output"
      Cart-Pole Optimal Control
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../examples/brachistochrone/brachistochrone_tandem_phases.html">
+     Brachistochrone with tandem phases
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -620,7 +625,7 @@ title="Open an issue"
 <span class="kn">from</span> <span class="nn">..utils.indexing</span> <span class="kn">import</span> <span class="n">get_constraint_flat_idxs</span>
 <span class="kn">from</span> <span class="nn">..utils.introspection</span> <span class="kn">import</span> <span class="n">configure_time_introspection</span><span class="p">,</span> <span class="n">_configure_constraint_introspection</span><span class="p">,</span> \
     <span class="n">configure_controls_introspection</span><span class="p">,</span> <span class="n">configure_parameters_introspection</span><span class="p">,</span> <span class="n">configure_states_introspection</span><span class="p">,</span> \
-    <span class="n">classify_var</span><span class="p">,</span> <span class="n">get_promoted_vars</span>
+    <span class="n">configure_timeseries_output_introspection</span><span class="p">,</span> <span class="n">classify_var</span><span class="p">,</span> <span class="n">get_promoted_vars</span>
 <span class="kn">from</span> <span class="nn">..utils.misc</span> <span class="kn">import</span> <span class="n">_unspecified</span>
 <span class="kn">from</span> <span class="nn">..utils.lgl</span> <span class="kn">import</span> <span class="n">lgl</span>
 
@@ -1881,11 +1886,13 @@ title="Open an issue"
         <span class="k">if</span> <span class="n">timeseries</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeseries</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Timeseries </span><span class="si">{</span><span class="n">timeseries</span><span class="si">}</span><span class="s1"> does not exist in phase </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">pathname</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="n">output_name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s1">&#39;*&#39;</span> <span class="ow">in</span> <span class="n">name</span><span class="p">:</span>
+            <span class="n">output_name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="k">elif</span> <span class="n">output_name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">output_name</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">rpartition</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 
-            <span class="k">if</span> <span class="n">rate</span><span class="p">:</span>
-                <span class="n">output_name</span> <span class="o">=</span> <span class="n">output_name</span> <span class="o">+</span> <span class="s1">&#39;_rate&#39;</span>
+        <span class="k">if</span> <span class="n">rate</span><span class="p">:</span>
+            <span class="n">output_name</span> <span class="o">=</span> <span class="n">output_name</span> <span class="o">+</span> <span class="s1">&#39;_rate&#39;</span>
 
         <span class="k">if</span> <span class="n">output_name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeseries</span><span class="p">[</span><span class="n">timeseries</span><span class="p">][</span><span class="s1">&#39;outputs&#39;</span><span class="p">]:</span>
             <span class="n">om</span><span class="o">.</span><span class="n">issue_warning</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Output name `</span><span class="si">{</span><span class="n">output_name</span><span class="si">}</span><span class="s1">` is already in timeseries `</span><span class="si">{</span><span class="n">timeseries</span><span class="si">}</span><span class="s1">`. &#39;</span>
@@ -2220,8 +2227,8 @@ title="Open an issue"
             <span class="n">configure_states_introspection</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state_options</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">time_options</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">control_options</span><span class="p">,</span>
                                            <span class="bp">self</span><span class="o">.</span><span class="n">parameter_options</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">polynomial_control_options</span><span class="p">,</span>
                                            <span class="n">ode</span><span class="p">)</span>
-        <span class="k">except</span> <span class="ne">RuntimeError</span> <span class="k">as</span> <span class="n">val_err</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Error during configure_states_introspection in phase </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">pathname</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">val_err</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="ne">RuntimeError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Error during configure_states_introspection in phase </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">pathname</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
 
         <span class="n">transcription</span><span class="o">.</span><span class="n">configure_time</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="n">transcription</span><span class="o">.</span><span class="n">configure_controls</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
@@ -2240,6 +2247,11 @@ title="Open an issue"
         <span class="n">transcription</span><span class="o">.</span><span class="n">configure_path_constraints</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
         <span class="n">transcription</span><span class="o">.</span><span class="n">configure_objective</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">configure_timeseries_output_introspection</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">RuntimeError</span> <span class="k">as</span> <span class="n">val_err</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Error during configure_timeseries_output_introspection in phase </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">pathname</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">val_err</span>
 
         <span class="n">transcription</span><span class="o">.</span><span class="n">configure_timeseries_outputs</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
