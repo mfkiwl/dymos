@@ -764,8 +764,8 @@ three-phase orbit raising maneuver with a burn-coast-burn phase
 sequence. This example is based on the problem provided in
 Enright <span id="id1">[<a class="reference internal" href="#id24" title="Paul J Enright and Brace A Conway. Optimal finite-thrust spacecraft trajectories using collocation and nonlinear programming. Journal of Guidance, Control, and Dynamics, 14(5):981–985, 1991.">EC91</a>]</span>.</p>
 <p>The dynamics are given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ef37fbc4-34f2-4ee2-9b39-5f03f02cc888">
-<span class="eqno">(53)<a class="headerlink" href="#equation-ef37fbc4-34f2-4ee2-9b39-5f03f02cc888" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-5f984900-c2ad-4635-b2dd-2cdc8d6bf372">
+<span class="eqno">(53)<a class="headerlink" href="#equation-5f984900-c2ad-4635-b2dd-2cdc8d6bf372" title="Permalink to this equation">#</a></span>\[\begin{align}
   \frac{dr}{dt} &amp;= v_r \\
   \frac{d\theta}{dt} &amp;= \frac{v_\theta}{r} \\
   \frac{dv_r}{dt} &amp;= \frac{v^2_\theta}{r} - \frac{1}{r^2} + a_{thrust} \sin u_1 \\
@@ -774,8 +774,8 @@ Enright <span id="id1">[<a class="reference internal" href="#id24" title="Paul J
   \frac{d \Delta v}{dt} &amp;= a_{thrust}
 \end{align}\]</div>
 <p>The initial conditions are</p>
-<div class="amsmath math notranslate nohighlight" id="equation-20082095-970f-4cc4-b340-2bad1c4d6e0f">
-<span class="eqno">(54)<a class="headerlink" href="#equation-20082095-970f-4cc4-b340-2bad1c4d6e0f" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-71a26681-9fbc-475a-b1a5-10b1dbf46b67">
+<span class="eqno">(54)<a class="headerlink" href="#equation-71a26681-9fbc-475a-b1a5-10b1dbf46b67" title="Permalink to this equation">#</a></span>\[\begin{align}
   r &amp;= 1 \rm{\,DU} \\
   \theta &amp;= 0 \rm{\,rad} \\
   v_r &amp;= 0 \rm{\,DU/TU}\\
@@ -784,8 +784,8 @@ Enright <span id="id1">[<a class="reference internal" href="#id24" title="Paul J
   \Delta v &amp;= 0 \rm{\,DU/TU}
 \end{align}\]</div>
 <p>and the final conditions are</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b98bc940-9159-4f8e-873d-eba8d427a70b">
-<span class="eqno">(55)<a class="headerlink" href="#equation-b98bc940-9159-4f8e-873d-eba8d427a70b" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-f28f3c9b-f6c6-44ef-bb59-f014796dbe54">
+<span class="eqno">(55)<a class="headerlink" href="#equation-f28f3c9b-f6c6-44ef-bb59-f014796dbe54" title="Permalink to this equation">#</a></span>\[\begin{align}
   r &amp;= 3 \rm{\,DU} \\
   \theta &amp;= \rm{free} \\
   v_r &amp;= 0 \rm{\,DU/TU}\\
@@ -1230,13 +1230,11 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         None
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.10/site-packages/openmdao/core/problem.py:582: OMDeprecationWarning:Problem problem &#39;value&#39; will be deprecated in 4.0. Please use &#39;val&#39; in the future.
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking out_of_order
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking out_of_order
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.10/site-packages/openmdao/core/problem.py:582: OMDeprecationWarning:Problem problem &#39;value&#39; will be deprecated in 4.0. Please use &#39;val&#39; in the future.
+INFO:check_config:checking out_of_order
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking system
@@ -1342,7 +1340,7 @@ INFO: checking out_of_order
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking auto_ivc_warnings
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.925777 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.674121 seconds.
 Total jacobian shape: (120, 204) 
 
 
@@ -1351,8 +1349,8 @@ FWD solves: 13   REV solves: 0
 Total colors vs. total size: 13 vs 204  (93.6% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.925777 sec.
-Time to compute coloring: 0.121750 sec.
+Time to compute sparsity: 0.674121 sec.
+Time to compute coloring: 0.101869 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
@@ -1366,11 +1364,11 @@ Memory to compute coloring: 0.000000 MB.
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                    2.5230
-       User Objective Time :       0.1430
-       User Sensitivity Time :     1.9646
-       Interface Time :            0.2977
-       Opt Solver Time:            0.1177
+    Total Time:                    1.8764
+       User Objective Time :       0.1032
+       User Sensitivity Time :     1.4558
+       Interface Time :            0.2333
+       Opt Solver Time:            0.0841
     Calls to Objective Function :      21
     Calls to Sens Function :           21
 
