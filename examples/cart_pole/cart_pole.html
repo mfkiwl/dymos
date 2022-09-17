@@ -813,16 +813,16 @@ Friction force is ignored to simplify the problem.</p>
 <section id="trajectory-optimization-problem">
 <h2>Trajectory Optimization Problem<a class="headerlink" href="#trajectory-optimization-problem" title="Permalink to this headline">#</a></h2>
 <p>We use the following quadratic objective function to approximately minimize the total control effort:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f22db8a1-55ac-4102-9395-7fe204ecb7c9">
-<span class="eqno">(81)<a class="headerlink" href="#equation-f22db8a1-55ac-4102-9395-7fe204ecb7c9" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-3bdaff5d-797c-4e68-abe2-8010fda7a204">
+<span class="eqno">(81)<a class="headerlink" href="#equation-3bdaff5d-797c-4e68-abe2-8010fda7a204" title="Permalink to this equation">#</a></span>\[\begin{equation}
     J = \int_{t_0}^{t_f} F(t)^2 dt ~~ \rightarrow ~ \min
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(F(t)\)</span> is the external force, <span class="math notranslate nohighlight">\(t_0\)</span> is the initial time, and <span class="math notranslate nohighlight">\(t_f\)</span> is the final time.</p>
 <section id="dynamics">
 <h3>Dynamics<a class="headerlink" href="#dynamics" title="Permalink to this headline">#</a></h3>
 <p>The equations of motion of the cart-pole system are given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7c20e417-85d5-46a0-95da-aa02c9c1a3c4">
-<span class="eqno">(82)<a class="headerlink" href="#equation-7c20e417-85d5-46a0-95da-aa02c9c1a3c4" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-3842bcd3-4326-42cb-9e6b-4216a4755e2a">
+<span class="eqno">(82)<a class="headerlink" href="#equation-3842bcd3-4326-42cb-9e6b-4216a4755e2a" title="Permalink to this equation">#</a></span>\[\begin{equation}
     \begin{bmatrix}
         \ddot{x} \\ \ddot{\theta}
     \end{bmatrix} =
@@ -839,13 +839,13 @@ Friction force is ignored to simplify the problem.</p>
 To do so, we define our state vector to be <span class="math notranslate nohighlight">\(X = [x, \dot{x}, \theta, \dot{\theta}]^T\)</span>.
 We also add an “energy” state <span class="math notranslate nohighlight">\(e\)</span> and set <span class="math notranslate nohighlight">\(\dot{e} = F^2\)</span> to keep track of the accumulated control input.
 By setting setting <span class="math notranslate nohighlight">\(e_0 = 0\)</span>, the objective function is equal to the final value of the state <span class="math notranslate nohighlight">\(e\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-52e15d20-c754-433f-9899-6f62d85cf957">
-<span class="eqno">(83)<a class="headerlink" href="#equation-52e15d20-c754-433f-9899-6f62d85cf957" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-d40b2bdd-7045-4ffa-88d2-4bb0a98278dd">
+<span class="eqno">(83)<a class="headerlink" href="#equation-d40b2bdd-7045-4ffa-88d2-4bb0a98278dd" title="Permalink to this equation">#</a></span>\[\begin{equation}
     J = \int_{t_0}^{t_f} \dot{e} ~dt = e_f
 \end{equation}\]</div>
 <p>To summarize, the ODE for the cart-pole system is given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8590d5ed-9408-4f17-8999-628e94f5af64">
-<span class="eqno">(84)<a class="headerlink" href="#equation-8590d5ed-9408-4f17-8999-628e94f5af64" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-0793f3a1-c7e5-429d-a92e-10205b4e6702">
+<span class="eqno">(84)<a class="headerlink" href="#equation-0793f3a1-c7e5-429d-a92e-10205b4e6702" title="Permalink to this equation">#</a></span>\[\begin{equation}
     \begin{bmatrix}
         \dot{x} \\ \dot{\theta} \\ \ddot{x} \\ \ddot{\theta} \\ \dot{e} 
     \end{bmatrix} =
@@ -866,8 +866,8 @@ By setting setting <span class="math notranslate nohighlight">\(e_0 = 0\)</span>
 <section id="initial-and-terminal-conditions">
 <h3>Initial and terminal conditions<a class="headerlink" href="#initial-and-terminal-conditions" title="Permalink to this headline">#</a></h3>
 <p>The initial state variables are all zero at <span class="math notranslate nohighlight">\(t_0 = 0\)</span>, and the final conditions at time <span class="math notranslate nohighlight">\(t_f\)</span> are</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8005d0d2-70a7-427b-b7b2-2a84a945bb12">
-<span class="eqno">(85)<a class="headerlink" href="#equation-8005d0d2-70a7-427b-b7b2-2a84a945bb12" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-607ef2b5-a425-4867-852d-1d6927c7325b">
+<span class="eqno">(85)<a class="headerlink" href="#equation-607ef2b5-a425-4867-852d-1d6927c7325b" title="Permalink to this equation">#</a></span>\[\begin{align}
     x_f &amp;= d \\
     \dot{x}_f &amp;= 0 \\
     \theta_f &amp;= \pi \\
@@ -1174,7 +1174,7 @@ First, we instantiate the OpenMDAO problem and set up the Dymos trajectory, phas
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;dymos.phase.phase.Phase at 0x7fe951186bc0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;dymos.phase.phase.Phase at 0x7fe564f5b610&gt;
 </pre></div>
 </div>
 </div>
@@ -1257,7 +1257,7 @@ We then call the <code class="docutils literal notranslate"><span class="pre">se
         [final]   0.0000e+00 == f [N]
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;openmdao.core.problem.Problem at 0x7fe9a4812bc0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;openmdao.core.problem.Problem at 0x7fe5b857a800&gt;
 </pre></div>
 </div>
 </div>
@@ -1288,7 +1288,7 @@ We then call the <code class="docutils literal notranslate"><span class="pre">se
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model viewer data has already been recorded for Driver.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.836940 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.832816 seconds.
 Total jacobian shape: (206, 281) 
 
 
@@ -1297,8 +1297,8 @@ FWD solves: 10   REV solves: 0
 Total colors vs. total size: 10 vs 281  (96.4% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.836940 sec.
-Time to compute coloring: 0.140557 sec.
+Time to compute sparsity: 0.832816 sec.
+Time to compute coloring: 0.141467 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
@@ -1353,11 +1353,11 @@ Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 1000x800 with 5 Axes&gt;,
- array([&lt;AxesSubplot:xlabel=&#39;time (s)&#39;, ylabel=&#39;x (m)&#39;&gt;,
-        &lt;AxesSubplot:xlabel=&#39;time (s)&#39;, ylabel=&#39;vx (m/s)&#39;&gt;,
-        &lt;AxesSubplot:xlabel=&#39;time (s)&#39;, ylabel=&#39;theta (rad)&#39;&gt;,
-        &lt;AxesSubplot:xlabel=&#39;time (s)&#39;, ylabel=&#39;theta_dot (rad/s)&#39;&gt;,
-        &lt;AxesSubplot:xlabel=&#39;time (s)&#39;, ylabel=&#39;control (N)&#39;&gt;],
+ array([&lt;AxesSubplot: xlabel=&#39;time (s)&#39;, ylabel=&#39;x (m)&#39;&gt;,
+        &lt;AxesSubplot: xlabel=&#39;time (s)&#39;, ylabel=&#39;vx (m/s)&#39;&gt;,
+        &lt;AxesSubplot: xlabel=&#39;time (s)&#39;, ylabel=&#39;theta (rad)&#39;&gt;,
+        &lt;AxesSubplot: xlabel=&#39;time (s)&#39;, ylabel=&#39;theta_dot (rad/s)&#39;&gt;,
+        &lt;AxesSubplot: xlabel=&#39;time (s)&#39;, ylabel=&#39;control (N)&#39;&gt;],
        dtype=object))
 </pre></div>
 </div>

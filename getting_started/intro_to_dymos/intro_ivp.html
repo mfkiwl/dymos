@@ -812,13 +812,13 @@ Dynamic systems are typically defined by some set of ordinary
 differential equations (the ODE) which governs their behavior.</p>
 <p>Consider a simple damped harmonic oscillator.</p>
 <p><img alt="Damped harmonic oscillator free-body diagram" src="../../_images/spring_mass_damper.png" /></p>
-<div class="amsmath math notranslate nohighlight" id="equation-b953baf0-d7f1-405d-958d-df39faeb96e3">
-<span class="eqno">(11)<a class="headerlink" href="#equation-b953baf0-d7f1-405d-958d-df39faeb96e3" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-3b14be09-7dd5-4988-a059-e505e155b837">
+<span class="eqno">(11)<a class="headerlink" href="#equation-3b14be09-7dd5-4988-a059-e505e155b837" title="Permalink to this equation">#</a></span>\[\begin{align}
     \ddot{x} &amp;= -\frac{kx}{m} - \frac{c \dot{x}}{m}
 \end{align}\]</div>
 <p>Converting this to a first order system results in an ODE system with two states:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d852fa25-1e4d-4e28-9c0e-bd23851ad7b6">
-<span class="eqno">(12)<a class="headerlink" href="#equation-d852fa25-1e4d-4e28-9c0e-bd23851ad7b6" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-f151387f-3741-4898-967c-7b9c3647cddd">
+<span class="eqno">(12)<a class="headerlink" href="#equation-f151387f-3741-4898-967c-7b9c3647cddd" title="Permalink to this equation">#</a></span>\[\begin{align}
     \dot{x} &amp;= v \\
     \dot{v} &amp;= -\frac{kx}{m} - \frac{c \dot{x}}{m}
 \end{align}\]</div>
@@ -970,7 +970,11 @@ Some elements of this code will be explained later, but we’ll hit the highligh
 Done simulating trajectory traj
 </pre></div>
 </div>
-<img alt="../../_images/intro_ivp_5_2.png" src="../../_images/intro_ivp_5_2.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_5449/1136298122.py:61: MatplotlibDeprecationWarning: Passing the loc parameter of __init__() positionally is deprecated since Matplotlib 3.6; the parameter will become keyword-only two minor releases later.
+  fig.legend((sol[0], sim[0]), (&#39;solution&#39;, &#39;simulation&#39;), &#39;lower right&#39;, ncol=2)
+</pre></div>
+</div>
+<img alt="../../_images/intro_ivp_5_3.png" src="../../_images/intro_ivp_5_3.png" />
 </div>
 </div>
 </section>
@@ -1119,6 +1123,10 @@ NL: Newton Converged
 Done simulating trajectory traj
 </pre></div>
 </div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_5449/2581959376.py:61: MatplotlibDeprecationWarning: Passing the loc parameter of __init__() positionally is deprecated since Matplotlib 3.6; the parameter will become keyword-only two minor releases later.
+  fig.legend((sol[0], sim[0]), (&#39;solution&#39;, &#39;simulation&#39;), &#39;lower right&#39;, ncol=2)
+</pre></div>
+</div>
 </div>
 </div>
 </section>
@@ -1227,6 +1235,10 @@ Optimization Complete
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Simulating trajectory traj
 Done simulating trajectory traj
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_5449/1344483348.py:71: MatplotlibDeprecationWarning: Passing the loc parameter of __init__() positionally is deprecated since Matplotlib 3.6; the parameter will become keyword-only two minor releases later.
+  fig.legend((sol[0], sim[0]), (&#39;solution&#39;, &#39;simulation&#39;), &#39;lower right&#39;, ncol=2)
 </pre></div>
 </div>
 </div>
