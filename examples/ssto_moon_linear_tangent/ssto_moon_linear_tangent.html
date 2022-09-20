@@ -1160,18 +1160,22 @@ INFO: checking out_of_order
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking auto_ivc_warnings
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.095499 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.131568 seconds.
 Total jacobian shape: (103, 103) 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jacobian shape: (103, 103)  (14.09% nonzero)
+
+
+Jacobian shape: (103, 103)  (14.09% nonzero)
 FWD solves: 18   REV solves: 0
 Total colors vs. total size: 18 vs 103  (82.5% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.095499 sec.
-Time to compute coloring: 0.103911 sec.
+Time to compute sparsity: 0.131568 sec.
+Time to compute coloring: 0.130535 sec.
 Memory to compute coloring: 0.000000 MB.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.10/site-packages/pyoptsparse/pyOpt_optimization.py:234: UserWarning: The argument `type=` is deprecated. Use `varType` in the future.
+  warnings.warn(&quot;The argument `type=` is deprecated. Use `varType` in the future.&quot;)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization Problem -- Optimization using pyOpt_sparse
@@ -1180,11 +1184,11 @@ Memory to compute coloring: 0.000000 MB.
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                    0.0935
-       User Objective Time :       0.0112
-       User Sensitivity Time :     0.0413
-       Interface Time :            0.0195
-       Opt Solver Time:            0.0215
+    Total Time:                    0.1171
+       User Objective Time :       0.0151
+       User Sensitivity Time :     0.0524
+       Interface Time :            0.0248
+       Opt Solver Time:            0.0248
     Calls to Objective Function :       6
     Calls to Sens Function :            5
 
@@ -1406,10 +1410,6 @@ Memory to compute coloring: 0.000000 MB.
         102  traj.phases.phase0.collocation_constraint.defects:m     e   0.000000E+00   -1.259351E-11    0.000000E+00              9.00000E+100
 
 --------------------------------------------------------------------------------
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.10/site-packages/pyoptsparse/pyOpt_optimization.py:234: UserWarning: The argument `type=` is deprecated. Use `varType` in the future.
-  warnings.warn(&quot;The argument `type=` is deprecated. Use `varType` in the future.&quot;)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Simulating trajectory traj
