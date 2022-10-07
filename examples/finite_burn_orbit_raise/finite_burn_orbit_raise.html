@@ -326,6 +326,11 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="../../features/phases/analytic_phases.html">
+     Analytic Phases in Dymos
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../../features/phases/segments.html">
      Segments
     </a>
@@ -764,8 +769,8 @@ three-phase orbit raising maneuver with a burn-coast-burn phase
 sequence. This example is based on the problem provided in
 Enright <span id="id1">[<a class="reference internal" href="#id24" title="Paul J Enright and Brace A Conway. Optimal finite-thrust spacecraft trajectories using collocation and nonlinear programming. Journal of Guidance, Control, and Dynamics, 14(5):981–985, 1991.">EC91</a>]</span>.</p>
 <p>The dynamics are given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0efee128-60a0-4f2d-bd3e-e1c2f7c245c0">
-<span class="eqno">(53)<a class="headerlink" href="#equation-0efee128-60a0-4f2d-bd3e-e1c2f7c245c0" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-e0f63d43-771b-4d87-8a48-3bf6198532e8">
+<span class="eqno">(53)<a class="headerlink" href="#equation-e0f63d43-771b-4d87-8a48-3bf6198532e8" title="Permalink to this equation">#</a></span>\[\begin{align}
   \frac{dr}{dt} &amp;= v_r \\
   \frac{d\theta}{dt} &amp;= \frac{v_\theta}{r} \\
   \frac{dv_r}{dt} &amp;= \frac{v^2_\theta}{r} - \frac{1}{r^2} + a_{thrust} \sin u_1 \\
@@ -774,8 +779,8 @@ Enright <span id="id1">[<a class="reference internal" href="#id24" title="Paul J
   \frac{d \Delta v}{dt} &amp;= a_{thrust}
 \end{align}\]</div>
 <p>The initial conditions are</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e8ad7426-fe85-4f95-b18c-6c50a794b8e1">
-<span class="eqno">(54)<a class="headerlink" href="#equation-e8ad7426-fe85-4f95-b18c-6c50a794b8e1" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-93cb89f5-c477-44f7-aa00-b660da939f52">
+<span class="eqno">(54)<a class="headerlink" href="#equation-93cb89f5-c477-44f7-aa00-b660da939f52" title="Permalink to this equation">#</a></span>\[\begin{align}
   r &amp;= 1 \rm{\,DU} \\
   \theta &amp;= 0 \rm{\,rad} \\
   v_r &amp;= 0 \rm{\,DU/TU}\\
@@ -784,8 +789,8 @@ Enright <span id="id1">[<a class="reference internal" href="#id24" title="Paul J
   \Delta v &amp;= 0 \rm{\,DU/TU}
 \end{align}\]</div>
 <p>and the final conditions are</p>
-<div class="amsmath math notranslate nohighlight" id="equation-07f0da57-ef97-45ba-8c76-ff018b2adc85">
-<span class="eqno">(55)<a class="headerlink" href="#equation-07f0da57-ef97-45ba-8c76-ff018b2adc85" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-67a328ee-c4b5-437f-bb90-eef0352cfc9a">
+<span class="eqno">(55)<a class="headerlink" href="#equation-67a328ee-c4b5-437f-bb90-eef0352cfc9a" title="Permalink to this equation">#</a></span>\[\begin{align}
   r &amp;= 3 \rm{\,DU} \\
   \theta &amp;= \rm{free} \\
   v_r &amp;= 0 \rm{\,DU/TU}\\
@@ -1340,7 +1345,7 @@ INFO: checking out_of_order
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking auto_ivc_warnings
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 1.146934 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 1.039538 seconds.
 Total jacobian shape: (120, 204) 
 
 
@@ -1349,8 +1354,8 @@ FWD solves: 13   REV solves: 0
 Total colors vs. total size: 13 vs 204  (93.6% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 1.146934 sec.
-Time to compute coloring: 0.145755 sec.
+Time to compute sparsity: 1.039538 sec.
+Time to compute coloring: 0.139864 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
@@ -1360,11 +1365,11 @@ Memory to compute coloring: 0.000000 MB.
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                    2.8853
-       User Objective Time :       0.1613
-       User Sensitivity Time :     2.2929
-       Interface Time :            0.3171
-       Opt Solver Time:            0.1140
+    Total Time:                    2.6902
+       User Objective Time :       0.1575
+       User Sensitivity Time :     2.1288
+       Interface Time :            0.2915
+       Opt Solver Time:            0.1125
     Calls to Objective Function :      21
     Calls to Sens Function :           21
 
@@ -1783,6 +1788,10 @@ Memory to compute coloring: 0.000000 MB.
         198  traj.linkages.burn1:accel_final|burn2:accel_initial                e   0.000000E+00    0.000000E+00    0.000000E+00              9.00000E+100
 
 --------------------------------------------------------------------------------
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.10/site-packages/tabulate/__init__.py:108: FutureWarning: elementwise comparison failed; returning scalar instead, but in the future will perform elementwise comparison
+  or (len(row) &gt;= 2 and row[1] == SEPARATING_LINE)
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.10/site-packages/openmdao/visualization/opt_report/opt_report.py:666: UserWarning: Attempting to set identical low and high ylims makes transformation singular; automatically expanding.
