@@ -817,13 +817,13 @@ Dynamic systems are typically defined by some set of ordinary
 differential equations (the ODE) which governs their behavior.</p>
 <p>Consider a simple damped harmonic oscillator.</p>
 <p><img alt="Damped harmonic oscillator free-body diagram" src="../../_images/spring_mass_damper.png" /></p>
-<div class="amsmath math notranslate nohighlight" id="equation-d128528d-7555-4a91-9f41-724bfa801f89">
-<span class="eqno">(11)<a class="headerlink" href="#equation-d128528d-7555-4a91-9f41-724bfa801f89" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-7226d93c-9a9e-4ab3-ab3d-d56ce194c416">
+<span class="eqno">(11)<a class="headerlink" href="#equation-7226d93c-9a9e-4ab3-ab3d-d56ce194c416" title="Permalink to this equation">#</a></span>\[\begin{align}
     \ddot{x} &amp;= -\frac{kx}{m} - \frac{c \dot{x}}{m}
 \end{align}\]</div>
 <p>Converting this to a first order system results in an ODE system with two states:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-03f3e841-7141-4adf-9943-d402f4f4ef87">
-<span class="eqno">(12)<a class="headerlink" href="#equation-03f3e841-7141-4adf-9943-d402f4f4ef87" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-9f0b30ea-96a3-496b-8969-4750ae9dc8ba">
+<span class="eqno">(12)<a class="headerlink" href="#equation-9f0b30ea-96a3-496b-8969-4750ae9dc8ba" title="Permalink to this equation">#</a></span>\[\begin{align}
     \dot{x} &amp;= v \\
     \dot{v} &amp;= -\frac{kx}{m} - \frac{c \dot{x}}{m}
 \end{align}\]</div>
@@ -969,13 +969,15 @@ Some elements of this code will be explained later, but we’ll hit the highligh
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Constraint Report [traj] ---
     --- phase0 ---
         None
+
+
+Simulating trajectory traj
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Simulating trajectory traj
-Done simulating trajectory traj
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Done simulating trajectory traj
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_5514/1136298122.py:61: MatplotlibDeprecationWarning: Passing the loc parameter of __init__() positionally is deprecated since Matplotlib 3.6; the parameter will become keyword-only two minor releases later.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_5233/1136298122.py:61: MatplotlibDeprecationWarning: Passing the loc parameter of __init__() positionally is deprecated since Matplotlib 3.6; the parameter will become keyword-only two minor releases later.
   fig.legend((sol[0], sim[0]), (&#39;solution&#39;, &#39;simulation&#39;), &#39;lower right&#39;, ncol=2)
 </pre></div>
 </div>
@@ -1113,9 +1115,9 @@ Otherwise, we can pass it only to certain states as an argument to <code class="
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Constraint Report [traj] ---
     --- phase0 ---
         None
-
-
-==================
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==================
 traj.phases.phase0
 ==================
 NL: Newton 0 ; 64.9519053 1
@@ -1125,10 +1127,12 @@ NL: Newton Converged
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Simulating trajectory traj
-Done simulating trajectory traj
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_5514/2581959376.py:61: MatplotlibDeprecationWarning: Passing the loc parameter of __init__() positionally is deprecated since Matplotlib 3.6; the parameter will become keyword-only two minor releases later.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Done simulating trajectory traj
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_5233/2581959376.py:61: MatplotlibDeprecationWarning: Passing the loc parameter of __init__() positionally is deprecated since Matplotlib 3.6; the parameter will become keyword-only two minor releases later.
   fig.legend((sol[0], sim[0]), (&#39;solution&#39;, &#39;simulation&#39;), &#39;lower right&#39;, ncol=2)
 </pre></div>
 </div>
@@ -1244,7 +1248,7 @@ Optimization Complete
 Done simulating trajectory traj
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_5514/1344483348.py:71: MatplotlibDeprecationWarning: Passing the loc parameter of __init__() positionally is deprecated since Matplotlib 3.6; the parameter will become keyword-only two minor releases later.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_5233/1344483348.py:71: MatplotlibDeprecationWarning: Passing the loc parameter of __init__() positionally is deprecated since Matplotlib 3.6; the parameter will become keyword-only two minor releases later.
   fig.legend((sol[0], sim[0]), (&#39;solution&#39;, &#39;simulation&#39;), &#39;lower right&#39;, ncol=2)
 </pre></div>
 </div>
