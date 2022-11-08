@@ -862,8 +862,8 @@ title="Print to PDF"
 Typically this evolution occurs in time, and the ODE represents equations of motion (EOM).
 The equations of motion can define a variety of systems, not just mechanical ones.
 In other fields they are sometimes referred to as <em>process equations</em>.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-73b993ee-1305-4379-9c98-45093a6164ca">
-<span class="eqno">(4)<a class="headerlink" href="#equation-73b993ee-1305-4379-9c98-45093a6164ca" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-854c7a94-ade4-49ec-93d9-421cef781b03">
+<span class="eqno">(4)<a class="headerlink" href="#equation-854c7a94-ade4-49ec-93d9-421cef781b03" title="Permalink to this equation">#</a></span>\[\begin{align}
     \dot{\bar{x}} = f_{ode}(\bar{x},t,\bar{u},\bar{d})
 \end{align}\]</div>
 <p>To represent EOM, Dymos uses a standard OpenMDAO System (a Group or Component).
@@ -1064,13 +1064,17 @@ Inputs tagged with ‘dymos.static_target’ cannot be used as controls or polyn
 </tr>
 <tr class="row-odd"><td class="text-align:left"><p>dymos.state_units:{units}</p></td>
 <td class="text-align:center"><p>Outputs</p></td>
-<td class="text-align:left"><p>Specifies the default units to be used for the state whose rate is provided by the tagged output. May only be used on outputs also tagged with ‘dymos.state_rate_source:{state_name}’.</p></td>
+<td class="text-align:left"><p>Specifies the default units to be used for the state whose rate is provided by the tagged output. May only be used on outputs also tagged with ‘dymos.state_rate_source:{state_name}’ or ‘dymos.state_source:{state_name}’.</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p>dymos.static_target</p></td>
+<tr class="row-even"><td class="text-align:left"><p>dymos.state_source:{state_name}</p></td>
+<td class="text-align:center"><p>Outputs</p></td>
+<td class="text-align:left"><p>For AnalyticPhase only, this tag specifies that the output provides the analytic solution to a state.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>dymos.static_target</p></td>
 <td class="text-align:center"><p>Inputs</p></td>
 <td class="text-align:left"><p>Specifies that the input is <em>not</em> shaped with num_nodes as the first dimension. This effects the way in which parameters are connected to the input. Inputs tagged with ‘dymos.static_target’ cannot be used as controls.</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p>dymos.static_output</p></td>
+<tr class="row-even"><td class="text-align:left"><p>dymos.static_output</p></td>
 <td class="text-align:center"><p>Outputs</p></td>
 <td class="text-align:left"><p>Specifies that the output is <em>not</em> shaped with num_nodes as the first dimension, and may not be used as a timeseries output, boundary constraint, or path constraint.</p></td>
 </tr>
