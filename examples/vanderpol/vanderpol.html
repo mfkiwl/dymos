@@ -835,16 +835,16 @@ title="Print to PDF"
 <section class="tex2jax_ignore mathjax_ignore" id="the-van-der-pol-oscillator">
 <h1>The Van der Pol Oscillator<a class="headerlink" href="#the-van-der-pol-oscillator" title="Permalink to this headline">#</a></h1>
 <p>In dynamics, the Van Der Pol oscillator <span id="id1">[<a class="reference internal" href="#id23" title="Wikipedia contributors. Van der pol oscillator — Wikipedia, the free encyclopedia. 2020. [Online; accessed 12-June-2020]. URL: https://en.wikipedia.org/w/index.php?title=Van_der_Pol_oscillator&amp;oldid=953857769.">Wikipediacontributors20</a>]</span> is a non-conservative oscillator with non-linear damping. It evolves in time according to the second-order differential equation:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-08182d39-cc55-4c12-8a03-45191731246a">
-<span class="eqno">(16)<a class="headerlink" href="#equation-08182d39-cc55-4c12-8a03-45191731246a" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-ecc2b8c7-8303-4762-8795-da633e43d941">
+<span class="eqno">(16)<a class="headerlink" href="#equation-ecc2b8c7-8303-4762-8795-da633e43d941" title="Permalink to this equation">#</a></span>\[\begin{align}
     \frac{d^2x}{dt^2} - u (1 - x^2) \frac{dx}{dt} + x &amp;= 0
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(x\)</span> is the position coordinate (a function of the time <span class="math notranslate nohighlight">\(t\)</span>), and <span class="math notranslate nohighlight">\(u\)</span> is a scalar parameter
 indicating the nonlinearity and the strength of the damping.</p>
 <p>To make this an optimal control problem, we want to find the smallest control that will dampen the oscillation
 (drive the state variables to zero). We can express this as an objective function <span class="math notranslate nohighlight">\(J\)</span> to minimize:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b38e9ab4-42d3-4351-b412-262b0d69e79c">
-<span class="eqno">(17)<a class="headerlink" href="#equation-b38e9ab4-42d3-4351-b412-262b0d69e79c" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-eddb9635-83c5-44d0-9b29-0dff6a0fa29c">
+<span class="eqno">(17)<a class="headerlink" href="#equation-eddb9635-83c5-44d0-9b29-0dff6a0fa29c" title="Permalink to this equation">#</a></span>\[\begin{align}
     J &amp;= \int x^2_0 + x^2_1 + u^2
 \end{align}\]</div>
 <p>In other words, we want to find the optimal (smallest) trajectory of the control <span class="math notranslate nohighlight">\(u\)</span> such that the oscillation
@@ -863,8 +863,8 @@ and the oscillation’s rate of change are driven to zero.</p>
 <section id="system-dynamics">
 <h2>System Dynamics<a class="headerlink" href="#system-dynamics" title="Permalink to this headline">#</a></h2>
 <p>The evolution of the state variables is given by the following ordinary differential equations (ODE):</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ec5a84a7-0bef-4f26-9a06-064a0bec3a2f">
-<span class="eqno">(18)<a class="headerlink" href="#equation-ec5a84a7-0bef-4f26-9a06-064a0bec3a2f" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-9e8538ca-aac9-40ef-be10-aa69168c4ecf">
+<span class="eqno">(18)<a class="headerlink" href="#equation-9e8538ca-aac9-40ef-be10-aa69168c4ecf" title="Permalink to this equation">#</a></span>\[\begin{align}
     \frac{dx_0}{dt} &amp;= (1 - x^2_1) x_0 - x_1 + u \\
     \frac{dx_1}{dt} &amp;= x_0 \\
     \frac{dJ}{dt} &amp;= x^2_0 + x^2_1 + u^2
@@ -881,16 +881,16 @@ and the oscillation’s rate of change are driven to zero.</p>
 <section id="the-initial-and-final-conditions">
 <h2>The initial and final conditions<a class="headerlink" href="#the-initial-and-final-conditions" title="Permalink to this headline">#</a></h2>
 <p>The initial conditions are:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2849c09e-d05b-4ec0-b730-8b40691e20b1">
-<span class="eqno">(19)<a class="headerlink" href="#equation-2849c09e-d05b-4ec0-b730-8b40691e20b1" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-f48a97c0-3176-4d51-af46-32064d78919c">
+<span class="eqno">(19)<a class="headerlink" href="#equation-f48a97c0-3176-4d51-af46-32064d78919c" title="Permalink to this equation">#</a></span>\[\begin{align}
     t_i &amp;= 0 \\
     x_{0i} &amp;= 1 \\
     x_{1i} &amp;= 1 \\
       u_i &amp;= -0.75
 \end{align}\]</div>
 <p>The final conditions are:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0d6b2a1d-0525-45ce-bfb8-160c2edc7eb0">
-<span class="eqno">(20)<a class="headerlink" href="#equation-0d6b2a1d-0525-45ce-bfb8-160c2edc7eb0" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-e08474b5-803b-4f55-acf9-481f11690443">
+<span class="eqno">(20)<a class="headerlink" href="#equation-e08474b5-803b-4f55-acf9-481f11690443" title="Permalink to this equation">#</a></span>\[\begin{align}
     t_f &amp;= 10 \\
     x_{0f} &amp;= 0 \\
     x_{1f} &amp;= 0 \\
@@ -1442,7 +1442,7 @@ INFO: checking out_of_order
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking auto_ivc_warnings
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.271720 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.188775 seconds.
 Total jacobian shape: (60, 130) 
 
 
@@ -1451,8 +1451,8 @@ FWD solves: 0   REV solves: 5
 Total colors vs. total size: 5 vs 60  (91.7% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.271720 sec.
-Time to compute coloring: 0.083316 sec.
+Time to compute sparsity: 0.188775 sec.
+Time to compute coloring: 0.063168 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
@@ -1483,7 +1483,7 @@ Total number of inequality constraints...............:        0
                                    (scaled)                 (unscaled)
 Objective...............:   2.8794727905908775e+00    2.8794727905908775e+00
 Dual infeasibility......:   3.5078177584857428e-09    3.5078177584857428e-09
-Constraint violation....:   3.6082248300317588e-15    3.6082248300317588e-15
+Constraint violation....:   4.0245584642661925e-15    4.0245584642661925e-15
 Variable bound violation:   9.8074164345263171e-09    9.8074164345263171e-09
 Complementarity.........:   1.0000000000000001e-11    1.0000000000000001e-11
 Overall NLP error.......:   3.5078177584857428e-09    3.5078177584857428e-09
@@ -1496,7 +1496,7 @@ Number of inequality constraint evaluations          = 0
 Number of equality constraint Jacobian evaluations   = 35
 Number of inequality constraint Jacobian evaluations = 0
 Number of Lagrangian Hessian evaluations             = 0
-Total seconds in IPOPT                               = 0.784
+Total seconds in IPOPT                               = 0.697
 
 EXIT: Optimal Solution Found.
 </pre></div>
@@ -1667,7 +1667,7 @@ INFO: checking out_of_order
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking auto_ivc_warnings
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.275633 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.164422 seconds.
 Total jacobian shape: (60, 74) 
 
 
@@ -1676,8 +1676,8 @@ FWD solves: 9   REV solves: 0
 Total colors vs. total size: 9 vs 74  (87.8% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.275633 sec.
-Time to compute coloring: 0.061589 sec.
+Time to compute sparsity: 0.164422 sec.
+Time to compute coloring: 0.045839 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
@@ -1715,9 +1715,8 @@ Optimization Complete
 --- Constraint Report [traj] ---
     --- phase0 ---
         None
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model viewer data has already been recorded for Driver.
+
+Model viewer data has already been recorded for Driver.
 Model viewer data has already been recorded for Driver.
 </pre></div>
 </div>
@@ -1725,7 +1724,7 @@ Model viewer data has already been recorded for Driver.
 /usr/share/miniconda/envs/test/lib/python3.10/site-packages/dymos/load_case.py:162: OpenMDAOWarning:phase0.states:x1 specifies &#39;fix_final=True&#39;. If the given restart file has a different final value this will overwrite the user-specified value
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.509933 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.398808 seconds.
 Total jacobian shape: (105, 149) 
 
 
@@ -1734,8 +1733,8 @@ FWD solves: 14   REV solves: 0
 Total colors vs. total size: 14 vs 149  (90.6% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.509933 sec.
-Time to compute coloring: 0.129623 sec.
+Time to compute sparsity: 0.398808 sec.
+Time to compute coloring: 0.092060 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
@@ -1785,7 +1784,7 @@ Model viewer data has already been recorded for Driver.
 /usr/share/miniconda/envs/test/lib/python3.10/site-packages/dymos/load_case.py:162: OpenMDAOWarning:phase0.states:x1 specifies &#39;fix_final=True&#39;. If the given restart file has a different final value this will overwrite the user-specified value
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.754826 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.483025 seconds.
 Total jacobian shape: (147, 209) 
 
 
@@ -1794,8 +1793,8 @@ FWD solves: 14   REV solves: 0
 Total colors vs. total size: 14 vs 209  (93.3% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.754826 sec.
-Time to compute coloring: 0.179464 sec.
+Time to compute sparsity: 0.483025 sec.
+Time to compute coloring: 0.128819 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
@@ -1848,7 +1847,7 @@ Model viewer data has already been recorded for Driver.
 Model viewer data has already been recorded for Driver.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 1.147906 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.752000 seconds.
 Total jacobian shape: (215, 314) 
 </pre></div>
 </div>
@@ -1857,8 +1856,8 @@ FWD solves: 0   REV solves: 33
 Total colors vs. total size: 33 vs 215  (84.7% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 1.147906 sec.
-Time to compute coloring: 0.278834 sec.
+Time to compute sparsity: 0.752000 sec.
+Time to compute coloring: 0.209763 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
@@ -1900,16 +1899,14 @@ Optimization Complete
         None
 
 Model viewer data has already been recorded for Driver.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model viewer data has already been recorded for Driver.
+Model viewer data has already been recorded for Driver.
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.10/site-packages/dymos/load_case.py:162: OpenMDAOWarning:phase0.states:x0 specifies &#39;fix_final=True&#39;. If the given restart file has a different final value this will overwrite the user-specified value
 /usr/share/miniconda/envs/test/lib/python3.10/site-packages/dymos/load_case.py:162: OpenMDAOWarning:phase0.states:x1 specifies &#39;fix_final=True&#39;. If the given restart file has a different final value this will overwrite the user-specified value
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 1.488917 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.929258 seconds.
 Total jacobian shape: (258, 384) 
 </pre></div>
 </div>
@@ -1918,8 +1915,8 @@ FWD solves: 0   REV solves: 33
 Total colors vs. total size: 33 vs 258  (87.2% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 1.488917 sec.
-Time to compute coloring: 0.358765 sec.
+Time to compute sparsity: 0.929258 sec.
+Time to compute coloring: 0.267610 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
@@ -1961,16 +1958,14 @@ Optimization Complete
         None
 
 Model viewer data has already been recorded for Driver.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model viewer data has already been recorded for Driver.
+Model viewer data has already been recorded for Driver.
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.10/site-packages/dymos/load_case.py:162: OpenMDAOWarning:phase0.states:x0 specifies &#39;fix_final=True&#39;. If the given restart file has a different final value this will overwrite the user-specified value
 /usr/share/miniconda/envs/test/lib/python3.10/site-packages/dymos/load_case.py:162: OpenMDAOWarning:phase0.states:x1 specifies &#39;fix_final=True&#39;. If the given restart file has a different final value this will overwrite the user-specified value
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 1.468739 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.936563 seconds.
 Total jacobian shape: (261, 389) 
 </pre></div>
 </div>
@@ -1979,8 +1974,8 @@ FWD solves: 0   REV solves: 33
 Total colors vs. total size: 33 vs 261  (87.4% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 1.468739 sec.
-Time to compute coloring: 0.373941 sec.
+Time to compute sparsity: 0.936563 sec.
+Time to compute coloring: 0.271207 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
