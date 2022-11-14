@@ -2924,14 +2924,38 @@ title="Open an issue"
 <span class="sd">        bool</span>
 <span class="sd">            True if the state of the given name is guaranteed to be fixed at the given location.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">loc</span> <span class="o">==</span> <span class="s1">&#39;initial&#39;</span><span class="p">:</span>
-            <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">control_options</span><span class="p">[</span><span class="n">name</span><span class="p">][</span><span class="s1">&#39;fix_initial&#39;</span><span class="p">]</span>
-        <span class="k">elif</span> <span class="n">loc</span> <span class="o">==</span> <span class="s1">&#39;final&#39;</span><span class="p">:</span>
-            <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">control_options</span><span class="p">[</span><span class="n">name</span><span class="p">][</span><span class="s1">&#39;fix_final&#39;</span><span class="p">]</span>
+        <span class="n">control_opts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">control_options</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">loc</span> <span class="o">==</span> <span class="s1">&#39;initial&#39;</span> <span class="ow">and</span> <span class="n">control_opts</span><span class="p">[</span><span class="s1">&#39;fix_initial&#39;</span><span class="p">]:</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">elif</span> <span class="n">loc</span> <span class="o">==</span> <span class="s1">&#39;final&#39;</span> <span class="ow">and</span> <span class="n">control_opts</span><span class="p">[</span><span class="s1">&#39;fix_final&#39;</span><span class="p">]:</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Unknown value for argument &quot;loc&quot;: must be either &quot;initial&quot; or &#39;</span>
-                             <span class="sa">f</span><span class="s1">&#39;&quot;final&quot; but got </span><span class="si">{</span><span class="n">loc</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">control_opts</span><span class="p">[</span><span class="s1">&#39;opt&#39;</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">res</span>
+
+    <span class="k">def</span> <span class="nf">is_control_rate_fixed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">loc</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Test if the control rate of the given name is guaranteed to be fixed at the initial or final time.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        name : str</span>
+<span class="sd">            The name of the control to be tested.</span>
+<span class="sd">        loc : str</span>
+<span class="sd">            The location of time to be tested: either &#39;initial&#39; or &#39;final&#39;.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        bool</span>
+<span class="sd">            True if the state of the given name is guaranteed to be fixed at the given location.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">name</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;_rate&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">control_options</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> \
+                <span class="n">name</span><span class="p">[:</span><span class="o">-</span><span class="mi">5</span><span class="p">]</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">control_options</span><span class="p">:</span>
+            <span class="n">control_name</span> <span class="o">=</span> <span class="n">name</span><span class="p">[:</span><span class="o">-</span><span class="mi">5</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">name</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;_rate2&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">control_options</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> \
+                <span class="n">name</span><span class="p">[:</span><span class="o">-</span><span class="mi">6</span><span class="p">]</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">control_options</span><span class="p">:</span>
+            <span class="n">control_name</span> <span class="o">=</span> <span class="n">name</span><span class="p">[:</span><span class="o">-</span><span class="mi">6</span><span class="p">]</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_control_fixed</span><span class="p">(</span><span class="n">control_name</span><span class="p">,</span> <span class="n">loc</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">is_polynomial_control_fixed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">loc</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -2957,6 +2981,30 @@ title="Open an issue"
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Unknown value for argument &quot;loc&quot;: must be either &quot;initial&quot; or &#39;</span>
                              <span class="sa">f</span><span class="s1">&#39;&quot;final&quot; but got </span><span class="si">{</span><span class="n">loc</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">res</span>
+
+    <span class="k">def</span> <span class="nf">is_polynomial_control_rate_fixed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">loc</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Test if the polynomial control rate of the given name is guaranteed to be fixed at the initial or final time.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        name : str</span>
+<span class="sd">            The name of the control to be tested.</span>
+<span class="sd">        loc : str</span>
+<span class="sd">            The location of time to be tested: either &#39;initial&#39; or &#39;final&#39;.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        bool</span>
+<span class="sd">            True if the state of the given name is guaranteed to be fixed at the given location.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">name</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;_rate&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">polynomial_control_options</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> \
+                <span class="n">name</span><span class="p">[:</span><span class="o">-</span><span class="mi">5</span><span class="p">]</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">polynomial_control_options</span><span class="p">:</span>
+            <span class="n">control_name</span> <span class="o">=</span> <span class="n">name</span><span class="p">[:</span><span class="o">-</span><span class="mi">5</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">name</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;_rate2&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">polynomial_control_options</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> \
+                <span class="n">name</span><span class="p">[:</span><span class="o">-</span><span class="mi">6</span><span class="p">]</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s1">&#39;polynomial_control_options&#39;</span><span class="p">]:</span>
+            <span class="n">control_name</span> <span class="o">=</span> <span class="n">name</span><span class="p">[:</span><span class="o">-</span><span class="mi">6</span><span class="p">]</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_polynomial_control_fixed</span><span class="p">(</span><span class="n">control_name</span><span class="p">,</span> <span class="n">loc</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_indices_in_constraints</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">loc</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
