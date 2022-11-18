@@ -805,8 +805,8 @@ Such phases are avaialble in dymos through the <code class="docutils literal not
 Compared to implicit approaches this reduces the size of the optimization problem by removing some design variables and corresponding defect constraints.
 Compared to explicit approaches it removes the need to numerically propagate the ODE, which is generally a performance bottleneck.</p>
 <p>For analytic phases, the OpenMDAO system we provide to the phase provides the <em>solution</em> to the ODE, not the ODE itself.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7352aeea-ddac-4c6d-96f6-4b7d73c7639d">
-<span class="eqno">(88)<a class="headerlink" href="#equation-7352aeea-ddac-4c6d-96f6-4b7d73c7639d" title="Permalink to this equation">#</a></span>\[\begin{align}  
+<div class="amsmath math notranslate nohighlight" id="equation-df3a6ff2-2443-4b86-9867-62a8b4413982">
+<span class="eqno">(88)<a class="headerlink" href="#equation-df3a6ff2-2443-4b86-9867-62a8b4413982" title="Permalink to this equation">#</a></span>\[\begin{align}  
     \textbf x = \textbf f(t, \textbf p)
 \end{align}\]</div>
 <p>where
@@ -857,26 +857,26 @@ a shape of (3,).</p>
 <section id="a-basic-example">
 <h2>A basic example<a class="headerlink" href="#a-basic-example" title="Permalink to this headline">#</a></h2>
 <p>Suppose we want to use Dymos to solve the ODE</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1532b40e-ac6e-4de6-af08-7426ded2482c">
-<span class="eqno">(89)<a class="headerlink" href="#equation-1532b40e-ac6e-4de6-af08-7426ded2482c" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-51215258-397a-4b21-ba4a-b7e0a3ec83fb">
+<span class="eqno">(89)<a class="headerlink" href="#equation-51215258-397a-4b21-ba4a-b7e0a3ec83fb" title="Permalink to this equation">#</a></span>\[\begin{align}
   \frac{dx}{dt} = x - t^2 + 1
 \end{align}\]</div>
 <p>subject to:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3e21eede-f49a-479d-bfa0-fe093af8675d">
-<span class="eqno">(90)<a class="headerlink" href="#equation-3e21eede-f49a-479d-bfa0-fe093af8675d" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-e8d4b3b7-a3c8-4f57-90c7-afcd6cab5fd4">
+<span class="eqno">(90)<a class="headerlink" href="#equation-e8d4b3b7-a3c8-4f57-90c7-afcd6cab5fd4" title="Permalink to this equation">#</a></span>\[\begin{align}
   x(0) = 0.5
 \end{align}\]</div>
 <p>Here we want to find the value of <em>x</em> at t=2.</p>
 <p>We can absolutely use a pseudospectral method or explicit shooting in Dymos to find the value of <em>x</em> on a given interval using this information.
 But in this case, the solution is known analytically.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-64340848-6ebe-4342-825d-48690516eff7">
-<span class="eqno">(91)<a class="headerlink" href="#equation-64340848-6ebe-4342-825d-48690516eff7" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-e838e90f-d562-4f3b-90ac-53e66a03a521">
+<span class="eqno">(91)<a class="headerlink" href="#equation-e838e90f-d562-4f3b-90ac-53e66a03a521" title="Permalink to this equation">#</a></span>\[\begin{align}
   x(t) &amp;= t^2 + 2t + 1 - c_1e^t
 \end{align}\]</div>
 <p>We need to find the value of constant <span class="math notranslate nohighlight">\(c_1\)</span> to find our particular solution.
 Applying the given initial condition gives c_1 as 0.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c3da18ff-c795-477f-a3c6-4a23f1985e9c">
-<span class="eqno">(92)<a class="headerlink" href="#equation-c3da18ff-c795-477f-a3c6-4a23f1985e9c" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-f0daabb5-9ba7-4e76-bbee-2aff7328f8aa">
+<span class="eqno">(92)<a class="headerlink" href="#equation-f0daabb5-9ba7-4e76-bbee-2aff7328f8aa" title="Permalink to this equation">#</a></span>\[\begin{align}
   x(0) &amp;= 1 - c_1 = 0.5 \\
   c_1 &amp;\equiv y_0 = 0.5
 \end{align}\]</div>
@@ -1095,6 +1095,10 @@ You’ll need to make sure that both of the target parameters are not designated
         [final]   2.0000e+00 == time [s]
 </pre></div>
 </div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.10/site-packages/tabulate/__init__.py:108: FutureWarning: elementwise comparison failed; returning scalar instead, but in the future will perform elementwise comparison
+  or (len(row) &gt;= 2 and row[1] == SEPARATING_LINE)
+</pre></div>
+</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization terminated successfully    (Exit mode 0)
             Current function value: [0.53387128]
             Iterations: 4
@@ -1106,10 +1110,6 @@ Optimization Complete
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x(0.533871279941519) = 1.5000000542207101
 x(2.0) = 5.305471950534675
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.10/site-packages/tabulate/__init__.py:108: FutureWarning: elementwise comparison failed; returning scalar instead, but in the future will perform elementwise comparison
-  or (len(row) &gt;= 2 and row[1] == SEPARATING_LINE)
 </pre></div>
 </div>
 <img alt="../../_images/analytic_phases_14_4.png" src="../../_images/analytic_phases_14_4.png" />
