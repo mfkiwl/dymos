@@ -536,7 +536,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/OpenMDAO/dymos/master?urlpath=tree/docs/examples/finite_burn_orbit_raise/finite_burn_orbit_raise.ipynb"
+        <a href="https://mybinder.org/v2/gh/OpenMDAO/dymos/master?urlpath=tree/docs/dymos_book/examples/finite_burn_orbit_raise/finite_burn_orbit_raise.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -554,7 +554,7 @@ title="Launch on Binder"
       </li>
       
       <li>
-        <a href="https://colab.research.google.com/github/OpenMDAO/dymos/blob/master/docs/examples/finite_burn_orbit_raise/finite_burn_orbit_raise.ipynb"
+        <a href="https://colab.research.google.com/github/OpenMDAO/dymos/blob/master/docs/dymos_book/examples/finite_burn_orbit_raise/finite_burn_orbit_raise.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -769,8 +769,8 @@ three-phase orbit raising maneuver with a burn-coast-burn phase
 sequence. This example is based on the problem provided in
 Enright <span id="id1">[<a class="reference internal" href="#id24" title="Paul J Enright and Brace A Conway. Optimal finite-thrust spacecraft trajectories using collocation and nonlinear programming. Journal of Guidance, Control, and Dynamics, 14(5):981–985, 1991.">EC91</a>]</span>.</p>
 <p>The dynamics are given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-57e20aae-f144-4ea3-a688-3a59d3dd1927">
-<span class="eqno">(53)<a class="headerlink" href="#equation-57e20aae-f144-4ea3-a688-3a59d3dd1927" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-db43d08f-1b7d-49f4-89d3-c2cb71b4f9bd">
+<span class="eqno">(53)<a class="headerlink" href="#equation-db43d08f-1b7d-49f4-89d3-c2cb71b4f9bd" title="Permalink to this equation">#</a></span>\[\begin{align}
   \frac{dr}{dt} &amp;= v_r \\
   \frac{d\theta}{dt} &amp;= \frac{v_\theta}{r} \\
   \frac{dv_r}{dt} &amp;= \frac{v^2_\theta}{r} - \frac{1}{r^2} + a_{thrust} \sin u_1 \\
@@ -779,8 +779,8 @@ Enright <span id="id1">[<a class="reference internal" href="#id24" title="Paul J
   \frac{d \Delta v}{dt} &amp;= a_{thrust}
 \end{align}\]</div>
 <p>The initial conditions are</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6d3a03a8-e93e-4b2d-b7c7-a129d1896476">
-<span class="eqno">(54)<a class="headerlink" href="#equation-6d3a03a8-e93e-4b2d-b7c7-a129d1896476" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-f88f35d7-dd14-43e7-924a-dbedc77f0ca9">
+<span class="eqno">(54)<a class="headerlink" href="#equation-f88f35d7-dd14-43e7-924a-dbedc77f0ca9" title="Permalink to this equation">#</a></span>\[\begin{align}
   r &amp;= 1 \rm{\,DU} \\
   \theta &amp;= 0 \rm{\,rad} \\
   v_r &amp;= 0 \rm{\,DU/TU}\\
@@ -789,8 +789,8 @@ Enright <span id="id1">[<a class="reference internal" href="#id24" title="Paul J
   \Delta v &amp;= 0 \rm{\,DU/TU}
 \end{align}\]</div>
 <p>and the final conditions are</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e5f555bf-6752-426a-a11b-6f53478a0e86">
-<span class="eqno">(55)<a class="headerlink" href="#equation-e5f555bf-6752-426a-a11b-6f53478a0e86" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-b0008c93-d4be-4e17-a2af-080623bcc6eb">
+<span class="eqno">(55)<a class="headerlink" href="#equation-b0008c93-d4be-4e17-a2af-080623bcc6eb" title="Permalink to this equation">#</a></span>\[\begin{align}
   r &amp;= 3 \rm{\,DU} \\
   \theta &amp;= \rm{free} \\
   v_r &amp;= 0 \rm{\,DU/TU}\\
@@ -1345,7 +1345,7 @@ INFO: checking out_of_order
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking auto_ivc_warnings
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.691613 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.699208 seconds.
 Total jacobian shape: (120, 204) 
 
 
@@ -1354,8 +1354,8 @@ FWD solves: 13   REV solves: 0
 Total colors vs. total size: 13 vs 204  (93.6% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.691613 sec.
-Time to compute coloring: 0.101172 sec.
+Time to compute sparsity: 0.699208 sec.
+Time to compute coloring: 0.104598 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
@@ -1365,11 +1365,11 @@ Memory to compute coloring: 0.000000 MB.
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                    1.8369
-       User Objective Time :       0.1011
-       User Sensitivity Time :     1.4292
-       Interface Time :            0.2278
-       Opt Solver Time:            0.0788
+    Total Time:                    1.8213
+       User Objective Time :       0.0942
+       User Sensitivity Time :     1.4333
+       Interface Time :            0.2185
+       Opt Solver Time:            0.0753
     Calls to Objective Function :      20
     Calls to Sens Function :           20
 
