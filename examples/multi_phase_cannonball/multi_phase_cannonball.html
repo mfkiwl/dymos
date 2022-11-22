@@ -818,24 +818,24 @@ the system at an event in the trajectory. Here, we have the first phase
 (ascent) terminate when the flight path angle reaches zero (apogee). The
 descent phase follows until the cannonball impacts the ground.</p>
 <p>The dynamics are given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2a77620b-7933-406f-adc7-7eb9384a810e">
-<span class="eqno">(65)<a class="headerlink" href="#equation-2a77620b-7933-406f-adc7-7eb9384a810e" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-19943dcb-e28d-40af-8575-bf5a12e64e1b">
+<span class="eqno">(65)<a class="headerlink" href="#equation-19943dcb-e28d-40af-8575-bf5a12e64e1b" title="Permalink to this equation">#</a></span>\[\begin{align}
   \frac{dv}{dt} &amp;= \frac{D}{m} - g \sin \gamma \\
   \frac{d\gamma}{dt} &amp;= - \frac{g \cos \gamma}{v} \\
   \frac{dh}{dt} &amp;= v \sin \gamma \\
   \frac{dr}{dt} &amp;= v \cos \gamma \\
 \end{align}\]</div>
 <p>The initial conditions are</p>
-<div class="amsmath math notranslate nohighlight" id="equation-307e3374-2abc-4d0d-ae35-34276a13944d">
-<span class="eqno">(66)<a class="headerlink" href="#equation-307e3374-2abc-4d0d-ae35-34276a13944d" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-305136db-6c52-4aa2-8505-450de8b35cdb">
+<span class="eqno">(66)<a class="headerlink" href="#equation-305136db-6c52-4aa2-8505-450de8b35cdb" title="Permalink to this equation">#</a></span>\[\begin{align}
   r_0 &amp;= 0 \rm{\,m} \\
   h_0 &amp;= 100 \rm{\,m} \\
   v_0 &amp;= \rm{free} \\
   \gamma_0 &amp;= \rm{free}
 \end{align}\]</div>
 <p>and the final conditions are</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c27340f1-d45a-4e70-9c88-606df3f24484">
-<span class="eqno">(67)<a class="headerlink" href="#equation-c27340f1-d45a-4e70-9c88-606df3f24484" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d2d2913d-e608-40db-a114-3d7c47ea7c03">
+<span class="eqno">(67)<a class="headerlink" href="#equation-d2d2913d-e608-40db-a114-3d7c47ea7c03" title="Permalink to this equation">#</a></span>\[\begin{align}
   h_f &amp;= 0 \rm{\,m}
 \end{align}\]</div>
 </section>
@@ -848,8 +848,8 @@ energy and that our cannonball is made of solid iron. The volume (and
 mass) of the cannonball is proportional to its radius cubed, while the
 cross-sectional area is proportional to its radius squared. If we
 increase the size of the cannonball, the ballistic coefficient</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ba2e5884-c211-4fc6-a904-680db216fac1">
-<span class="eqno">(68)<a class="headerlink" href="#equation-ba2e5884-c211-4fc6-a904-680db216fac1" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-3d9b2ef8-563a-4daf-98cc-9253bc977d5b">
+<span class="eqno">(68)<a class="headerlink" href="#equation-3d9b2ef8-563a-4daf-98cc-9253bc977d5b" title="Permalink to this equation">#</a></span>\[\begin{align}
   BC &amp;= \frac{m}{C_D A}
 \end{align}\]</div>
 <p>will increase, meaning the cannonball overcome air resistance more
@@ -1154,8 +1154,8 @@ FWD solves: 6   REV solves: 0
 Total colors vs. total size: 6 vs 63  (90.5% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.040818 sec.
-Time to compute coloring: 0.013884 sec.
+Time to compute sparsity: 0.044149 sec.
+Time to compute coloring: 0.017710 sec.
 Memory to compute coloring: 0.000000 MB.
 
 Coloring for &#39;traj.phases.descent.rhs_disc&#39; (class CannonballODE)
@@ -1165,8 +1165,8 @@ FWD solves: 6   REV solves: 0
 Total colors vs. total size: 6 vs 33  (81.8% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.021664 sec.
-Time to compute coloring: 0.007423 sec.
+Time to compute sparsity: 0.023280 sec.
+Time to compute coloring: 0.009470 sec.
 Memory to compute coloring: 0.000000 MB.
 
 Coloring for &#39;traj.phases.descent.rhs_col&#39; (class CannonballODE)
@@ -1176,10 +1176,10 @@ FWD solves: 6   REV solves: 0
 Total colors vs. total size: 6 vs 18  (66.7% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.012029 sec.
-Time to compute coloring: 0.004137 sec.
+Time to compute sparsity: 0.013032 sec.
+Time to compute coloring: 0.004809 sec.
 Memory to compute coloring: 0.000000 MB.
-Full total jacobian was computed 3 times, taking 0.207738 seconds.
+Full total jacobian was computed 3 times, taking 0.237301 seconds.
 Total jacobian shape: (87, 88) 
 </pre></div>
 </div>
@@ -1188,9 +1188,9 @@ FWD solves: 30   REV solves: 0
 Total colors vs. total size: 30 vs 88  (65.9% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.207738 sec.
-Time to compute coloring: 0.097662 sec.
-Memory to compute coloring: 0.632812 MB.
+Time to compute sparsity: 0.237301 sec.
+Time to compute coloring: 0.108576 sec.
+Memory to compute coloring: 0.703125 MB.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization Problem -- Optimization using pyOpt_sparse
@@ -1199,11 +1199,11 @@ Memory to compute coloring: 0.632812 MB.
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                    2.6982
-       User Objective Time :       0.4009
-       User Sensitivity Time :     1.7335
-       Interface Time :            0.3609
-       Opt Solver Time:            0.2029
+    Total Time:                    3.2665
+       User Objective Time :       0.4960
+       User Sensitivity Time :     2.0731
+       Interface Time :            0.4593
+       Opt Solver Time:            0.2381
     Calls to Objective Function :     118
     Calls to Sens Function :           89
 

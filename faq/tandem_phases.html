@@ -757,8 +757,8 @@ This is one application of the interpolating timeseries component.</p>
 This is a trivial solution which should find a straight line from the starting point to the ending point.</p>
 <p>There are two phases involved, the first utilizes the standard ODE for the brachistochrone problem.
 The second integrates the arclength (𝑆) of the wire using the equation:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-fe7e0f48-a8c2-43a4-b4c8-a61c96488e76">
-<span class="eqno">(95)<a class="headerlink" href="#equation-fe7e0f48-a8c2-43a4-b4c8-a61c96488e76" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-1573f3bf-f132-47ef-95c7-e81277d4c3d5">
+<span class="eqno">(95)<a class="headerlink" href="#equation-1573f3bf-f132-47ef-95c7-e81277d4c3d5" title="Permalink to this equation">#</a></span>\[\begin{align}
     S = \int v \sin \theta  \sqrt{1 + \frac{1}{\tan^2 \theta}} dt
 \end{align}\]</div>
 <section id="the-ode-for-the-wire-arclength">
@@ -1266,7 +1266,7 @@ INFO: checking out_of_order
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking auto_ivc_warnings
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.399399 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.438936 seconds.
 Total jacobian shape: (222, 287) 
 </pre></div>
 </div>
@@ -1275,9 +1275,9 @@ FWD solves: 32   REV solves: 0
 Total colors vs. total size: 32 vs 287  (88.9% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.399399 sec.
-Time to compute coloring: 0.437299 sec.
-Memory to compute coloring: 2.878906 MB.
+Time to compute sparsity: 0.438936 sec.
+Time to compute coloring: 0.473004 sec.
+Memory to compute coloring: 3.050781 MB.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization Problem -- Optimization using pyOpt_sparse
@@ -1286,11 +1286,11 @@ Memory to compute coloring: 2.878906 MB.
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                   12.1554
-       User Objective Time :       0.5623
-       User Sensitivity Time :     3.3762
-       Interface Time :            1.1831
-       Opt Solver Time:            7.0338
+    Total Time:                   14.5517
+       User Objective Time :       0.6235
+       User Sensitivity Time :     4.0519
+       Interface Time :            1.3363
+       Opt Solver Time:            8.5400
     Calls to Objective Function :     134
     Calls to Sens Function :          103
 
