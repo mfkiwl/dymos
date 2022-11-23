@@ -768,18 +768,18 @@ title="Print to PDF"
 Patterson <span id="id1">[<a class="reference internal" href="#id22" title="Michael A Patterson, William W Hager, and Anil V Rao. A ph mesh refinement method for optimal control. Optimal Control Applications and Methods, 36(4):398–421, 2015.">PHR15</a>]</span>. In this problem we seek to minimize both
 the distance traveled when moving between fixed boundary conditions and
 also to minimize the control <span class="math notranslate nohighlight">\(u\)</span> used. The cost function to be minimized is:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2b10ad11-20c6-4b3f-8d4c-19513bd5ef53">
-<span class="eqno">(48)<a class="headerlink" href="#equation-2b10ad11-20c6-4b3f-8d4c-19513bd5ef53" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-ea98f86d-fb25-4a50-8dc5-f36eebc74c81">
+<span class="eqno">(48)<a class="headerlink" href="#equation-ea98f86d-fb25-4a50-8dc5-f36eebc74c81" title="Permalink to this equation">#</a></span>\[\begin{align}
     J &amp;= \frac{1}{2} \int_{0}^{t_f} (x^2 + u^2) dt
 \end{align}\]</div>
 <p>The system is subject to the dynamic constraints:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-dd3aa287-bd2c-417d-ae92-17f2d2f73f8b">
-<span class="eqno">(49)<a class="headerlink" href="#equation-dd3aa287-bd2c-417d-ae92-17f2d2f73f8b" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-3c6b4587-7f73-4881-986d-60fd618b2bcc">
+<span class="eqno">(49)<a class="headerlink" href="#equation-3c6b4587-7f73-4881-986d-60fd618b2bcc" title="Permalink to this equation">#</a></span>\[\begin{align}
     \frac{dx}{dt} &amp;= -x + u
 \end{align}\]</div>
 <p>The boundary conditions are:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-437fd630-4514-461c-b431-fc8f5059d49a">
-<span class="eqno">(50)<a class="headerlink" href="#equation-437fd630-4514-461c-b431-fc8f5059d49a" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-0a4713da-cbb8-4e94-a53a-a96e19a0d95d">
+<span class="eqno">(50)<a class="headerlink" href="#equation-0a4713da-cbb8-4e94-a53a-a96e19a0d95d" title="Permalink to this equation">#</a></span>\[\begin{align}
     x(t_0) &amp;= 1.5 \\
     x(t_f) &amp;= 1
 \end{align}\]</div>
@@ -789,14 +789,14 @@ the problem exhibits a <em>dive</em>, <em>cruise</em>, and <em>resurface</em> ty
 structure, where the all interesting behavior occurs at the beginning and
 end while remaining relatively constant in the middle.</p>
 <p>This problem has a known analytic optimal solution:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0033a72c-3429-4a6a-b9e2-e42f6711b5c1">
-<span class="eqno">(51)<a class="headerlink" href="#equation-0033a72c-3429-4a6a-b9e2-e42f6711b5c1" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-9cb3c899-e2be-407f-a61c-81f5e8c31b8d">
+<span class="eqno">(51)<a class="headerlink" href="#equation-9cb3c899-e2be-407f-a61c-81f5e8c31b8d" title="Permalink to this equation">#</a></span>\[\begin{align}
     x^*(t) &amp;= c_1 e^{\sqrt{2} t} + c_2 e^{-\sqrt{2} t} \\
       u^*(t) &amp;= \dot{x}^*(t) + x^*(t)
 \end{align}\]</div>
 <p>where:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8229667a-57f9-4279-9949-276e1c486add">
-<span class="eqno">(52)<a class="headerlink" href="#equation-8229667a-57f9-4279-9949-276e1c486add" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-a76a6a79-1719-402d-8fea-e7b2b7fdeecf">
+<span class="eqno">(52)<a class="headerlink" href="#equation-a76a6a79-1719-402d-8fea-e7b2b7fdeecf" title="Permalink to this equation">#</a></span>\[\begin{align}
     c_1 &amp;= \frac{1.5 e^{-\sqrt{2} t_f} - 1}{e^{-\sqrt{2} t_f} - e^{\sqrt{2} t_f}} \\
     c_2 &amp;= \frac{1 - 1.5 e^{\sqrt{2} t_f}}{e^{-\sqrt{2} t_f} - e^{\sqrt{2} t_f}}
 \end{align}\]</div>
@@ -1023,17 +1023,17 @@ INFO: checking out_of_order
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking auto_ivc_warnings
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.206394 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.121442 seconds.
 Total jacobian shape: (80, 108) 
-
-
-Jacobian shape: (80, 108)  ( 4.80% nonzero)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jacobian shape: (80, 108)  ( 4.80% nonzero)
 FWD solves: 0   REV solves: 9
 Total colors vs. total size: 9 vs 80  (88.8% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.206394 sec.
-Time to compute coloring: 0.076586 sec.
+Time to compute sparsity: 0.121442 sec.
+Time to compute coloring: 0.054680 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
@@ -1043,11 +1043,11 @@ Memory to compute coloring: 0.000000 MB.
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                    0.2982
-       User Objective Time :       0.0277
-       User Sensitivity Time :     0.1417
-       Interface Time :            0.0654
-       Opt Solver Time:            0.0634
+    Total Time:                    0.2169
+       User Objective Time :       0.0221
+       User Sensitivity Time :     0.0898
+       Interface Time :            0.0480
+       Opt Solver Time:            0.0569
     Calls to Objective Function :      16
     Calls to Sens Function :           14
 
@@ -1305,12 +1305,10 @@ Memory to compute coloring: 0.000000 MB.
         [final]   1.0000e+00 == x [None]
 
 Model viewer data has already been recorded for Driver.
+Model viewer data has already been recorded for Driver.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model viewer data has already been recorded for Driver.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.374172 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.232337 seconds.
 Total jacobian shape: (140, 198) 
 
 
@@ -1319,8 +1317,8 @@ FWD solves: 0   REV solves: 15
 Total colors vs. total size: 15 vs 140  (89.3% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.374172 sec.
-Time to compute coloring: 0.137393 sec.
+Time to compute sparsity: 0.232337 sec.
+Time to compute coloring: 0.100477 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
@@ -1330,11 +1328,11 @@ Memory to compute coloring: 0.000000 MB.
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                    0.4123
-       User Objective Time :       0.0185
-       User Sensitivity Time :     0.1343
-       Interface Time :            0.0566
-       Opt Solver Time:            0.2029
+    Total Time:                    0.3527
+       User Objective Time :       0.0155
+       User Sensitivity Time :     0.0916
+       Interface Time :            0.0436
+       Opt Solver Time:            0.2020
     Calls to Objective Function :       9
     Calls to Sens Function :            8
 
@@ -1729,9 +1727,9 @@ Memory to compute coloring: 0.000000 MB.
             Segment Ends = [-1.0, -0.9, -0.8, -0.7, -0.6, -0.4, -0.2, 0.0, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
             Segment Order = [6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6]
         Refined: True
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Constraint Report [traj] ---
+
+
+--- Constraint Report [traj] ---
     --- phase0 ---
         [final]   1.0000e+00 == x [None]
 
@@ -1739,17 +1737,17 @@ Model viewer data has already been recorded for Driver.
 Model viewer data has already been recorded for Driver.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.664392 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.378800 seconds.
 Total jacobian shape: (224, 318) 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jacobian shape: (224, 318)  ( 2.68% nonzero)
+
+
+Jacobian shape: (224, 318)  ( 2.68% nonzero)
 FWD solves: 0   REV solves: 15
 Total colors vs. total size: 15 vs 224  (93.3% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.664392 sec.
-Time to compute coloring: 0.258963 sec.
+Time to compute sparsity: 0.378800 sec.
+Time to compute coloring: 0.158206 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
@@ -1759,11 +1757,11 @@ Memory to compute coloring: 0.000000 MB.
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                    1.3391
-       User Objective Time :       0.0221
-       User Sensitivity Time :     0.1749
-       Interface Time :            0.1040
-       Opt Solver Time:            1.0381
+    Total Time:                    1.2110
+       User Objective Time :       0.0163
+       User Sensitivity Time :     0.1118
+       Interface Time :            0.0796
+       Opt Solver Time:            1.0033
     Calls to Objective Function :       9
     Calls to Sens Function :            9
 
@@ -2374,17 +2372,18 @@ Memory to compute coloring: 0.000000 MB.
             Segment Ends = [-1.0, -0.9667, -0.9333, -0.9, -0.8, -0.7, -0.6, -0.4, -0.2, 0.0, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 0.95, 1.0]
             Segment Order = [6, 6, 6, 9, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 12, 6, 6, 6]
         Refined: True
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Constraint Report [traj] ---
+
+
+--- Constraint Report [traj] ---
     --- phase0 ---
         [final]   1.0000e+00 == x [None]
-
-Model viewer data has already been recorded for Driver.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model viewer data has already been recorded for Driver.
 Model viewer data has already been recorded for Driver.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.896117 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.529056 seconds.
 Total jacobian shape: (284, 405) 
 </pre></div>
 </div>
@@ -2393,8 +2392,8 @@ FWD solves: 0   REV solves: 27
 Total colors vs. total size: 27 vs 284  (90.5% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.896117 sec.
-Time to compute coloring: 0.309046 sec.
+Time to compute sparsity: 0.529056 sec.
+Time to compute coloring: 0.209238 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
@@ -2404,11 +2403,11 @@ Memory to compute coloring: 0.000000 MB.
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                    2.2185
-       User Objective Time :       0.0152
-       User Sensitivity Time :     0.2209
-       Interface Time :            0.0968
-       Opt Solver Time:            1.8855
+    Total Time:                    1.5946
+       User Objective Time :       0.0109
+       User Sensitivity Time :     0.1285
+       Interface Time :            0.0716
+       Opt Solver Time:            1.3837
     Calls to Objective Function :       6
     Calls to Sens Function :            6
 
@@ -3174,12 +3173,6 @@ Memory to compute coloring: 0.000000 MB.
         Refined: True
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.10/site-packages/dymos/grid_refinement/hp_adaptive/hp_adaptive.py:380: RuntimeWarning: divide by zero encountered in true_divide
-  q_smooth = (np.log(self.error[phase_path][smooth_need_refine_idxs] /
-/usr/share/miniconda/envs/test/lib/python3.10/site-packages/dymos/grid_refinement/hp_adaptive/hp_adaptive.py:412: RuntimeWarning: divide by zero encountered in true_divide
-  q_split = np.log((self.error[phase_path][split_seg_idxs] /
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Constraint Report [traj] ---
     --- phase0 ---
         [final]   1.0000e+00 == x [None]
@@ -3188,7 +3181,13 @@ Model viewer data has already been recorded for Driver.
 Model viewer data has already been recorded for Driver.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 1.059216 seconds.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.10/site-packages/dymos/grid_refinement/hp_adaptive/hp_adaptive.py:380: RuntimeWarning: divide by zero encountered in true_divide
+  q_smooth = (np.log(self.error[phase_path][smooth_need_refine_idxs] /
+/usr/share/miniconda/envs/test/lib/python3.10/site-packages/dymos/grid_refinement/hp_adaptive/hp_adaptive.py:412: RuntimeWarning: divide by zero encountered in true_divide
+  q_split = np.log((self.error[phase_path][split_seg_idxs] /
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.631463 seconds.
 Total jacobian shape: (332, 474) 
 </pre></div>
 </div>
@@ -3197,8 +3196,8 @@ FWD solves: 0   REV solves: 27
 Total colors vs. total size: 27 vs 332  (91.9% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 1.059216 sec.
-Time to compute coloring: 0.352200 sec.
+Time to compute sparsity: 0.631463 sec.
+Time to compute coloring: 0.246312 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
@@ -3208,11 +3207,11 @@ Memory to compute coloring: 0.000000 MB.
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                    1.1569
-       User Objective Time :       0.0133
-       User Sensitivity Time :     0.0701
-       Interface Time :            0.0400
-       Opt Solver Time:            1.0336
+    Total Time:                    0.8078
+       User Objective Time :       0.0058
+       User Sensitivity Time :     0.0467
+       Interface Time :            0.0305
+       Opt Solver Time:            0.7248
     Calls to Objective Function :       3
     Calls to Sens Function :            2
 
@@ -4109,7 +4108,7 @@ Model viewer data has already been recorded for Driver.
 Model viewer data has already been recorded for Driver.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 1.396045 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.874262 seconds.
 Total jacobian shape: (406, 581) 
 </pre></div>
 </div>
@@ -4118,8 +4117,8 @@ FWD solves: 0   REV solves: 27
 Total colors vs. total size: 27 vs 406  (93.3% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 1.396045 sec.
-Time to compute coloring: 0.431676 sec.
+Time to compute sparsity: 0.874262 sec.
+Time to compute coloring: 0.304105 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
@@ -4129,11 +4128,11 @@ Memory to compute coloring: 0.000000 MB.
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                    1.2076
-       User Objective Time :       0.0056
-       User Sensitivity Time :     0.0413
-       Interface Time :            0.0236
-       Opt Solver Time:            1.1372
+    Total Time:                    0.7584
+       User Objective Time :       0.0041
+       User Sensitivity Time :     0.0287
+       Interface Time :            0.0212
+       Opt Solver Time:            0.7043
     Calls to Objective Function :       2
     Calls to Sens Function :            1
 
