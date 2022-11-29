@@ -1165,7 +1165,7 @@ INFO: checking out_of_order
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking auto_ivc_warnings
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.096976 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.108417 seconds.
 Total jacobian shape: (103, 103) 
 </pre></div>
 </div>
@@ -1174,8 +1174,8 @@ FWD solves: 18   REV solves: 0
 Total colors vs. total size: 18 vs 103  (82.5% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.096976 sec.
-Time to compute coloring: 0.101569 sec.
+Time to compute sparsity: 0.108417 sec.
+Time to compute coloring: 0.109035 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
@@ -1185,18 +1185,18 @@ Memory to compute coloring: 0.000000 MB.
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                    0.0948
-       User Objective Time :       0.0126
-       User Sensitivity Time :     0.0426
-       Interface Time :            0.0194
-       Opt Solver Time:            0.0201
+    Total Time:                    0.0975
+       User Objective Time :       0.0119
+       User Sensitivity Time :     0.0443
+       Interface Time :            0.0199
+       Opt Solver Time:            0.0214
     Calls to Objective Function :       6
     Calls to Sens Function :            5
 
 
    Objectives
-      Index  Name                                    Value
-          0  traj.phases.phase0.time.time     4.817168E+00
+      Index  Name                                 Value
+          0  traj.phases.phase0.time.t     4.817168E+00
 
    Variables (c - continuous, i - integer, d - discrete)
       Index  Name                                           Type      Lower Bound            Value      Upper Bound     Status
@@ -1469,12 +1469,12 @@ Memory to compute coloring: 0.000000 MB.
 
 <span class="n">a</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="n">get_val</span><span class="p">(</span><span class="s1">&#39;traj.phase0.parameters:a_ctrl&#39;</span><span class="p">)</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="n">get_val</span><span class="p">(</span><span class="s1">&#39;traj.phase0.parameters:b_ctrl&#39;</span><span class="p">)</span>
-<span class="n">t</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="n">get_val</span><span class="p">(</span><span class="s1">&#39;traj.phase0.time_phase&#39;</span><span class="p">)</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="n">get_val</span><span class="p">(</span><span class="s1">&#39;traj.phase0.timeseries.time_phase&#39;</span><span class="p">)</span>
 <span class="n">tan_theta_sol</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">*</span> <span class="n">t</span>
 
 <span class="n">a</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">get_val</span><span class="p">(</span><span class="s1">&#39;traj.phase0.parameters:a_ctrl&#39;</span><span class="p">)</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">get_val</span><span class="p">(</span><span class="s1">&#39;traj.phase0.parameters:b_ctrl&#39;</span><span class="p">)</span>
-<span class="n">t</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">get_val</span><span class="p">(</span><span class="s1">&#39;traj.phase0.time_phase&#39;</span><span class="p">)</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">get_val</span><span class="p">(</span><span class="s1">&#39;traj.phase0.timeseries.time_phase&#39;</span><span class="p">)</span>
 <span class="n">tan_theta_sim</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">*</span> <span class="n">t</span>
 
 <span class="n">param_ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">get_val</span><span class="p">(</span><span class="s1">&#39;traj.phase0.timeseries.time&#39;</span><span class="p">),</span>

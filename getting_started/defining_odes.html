@@ -862,8 +862,8 @@ title="Print to PDF"
 Typically this evolution occurs in time, and the ODE represents equations of motion (EOM).
 The equations of motion can define a variety of systems, not just mechanical ones.
 In other fields they are sometimes referred to as <em>process equations</em>.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4dd703ae-4ab8-4255-b691-58b6734a0398">
-<span class="eqno">(4)<a class="headerlink" href="#equation-4dd703ae-4ab8-4255-b691-58b6734a0398" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-4588c3fe-675f-4bf1-8c20-a248fff0c7a3">
+<span class="eqno">(4)<a class="headerlink" href="#equation-4588c3fe-675f-4bf1-8c20-a248fff0c7a3" title="Permalink to this equation">#</a></span>\[\begin{align}
     \dot{\bar{x}} = f_{ode}(\bar{x},t,\bar{u},\bar{d})
 \end{align}\]</div>
 <p>To represent EOM, Dymos uses a standard OpenMDAO System (a Group or Component).
@@ -908,10 +908,11 @@ Since these options in OpenMDAO are typically provided as arguments to the insta
 <tr><td>initial_val       </td><td>0.0         </td><td>N/A                </td><td>[&#x27;Number&#x27;]        </td><td>Value of the integration variable at the start of the phase.                                            </td></tr>
 <tr><td>input_duration    </td><td>False       </td><td>[True, False]      </td><td>[&#x27;bool&#x27;]          </td><td>If True, the phase duration (t_duration) is expected to be connected to an external output source.      </td></tr>
 <tr><td>input_initial     </td><td>False       </td><td>[True, False]      </td><td>[&#x27;bool&#x27;]          </td><td>If True, the initial value of time (t_initial) is expected to be connected to an external output source.</td></tr>
-<tr><td>t_duration_targets</td><td>[]          </td><td>N/A                </td><td>[&#x27;Iterable&#x27;]      </td><td>targets in the ODE to which the total duration of the phase is connected                                </td></tr>
-<tr><td>t_initial_targets </td><td>[]          </td><td>N/A                </td><td>[&#x27;Iterable&#x27;]      </td><td>targets in the ODE to which the initial time of the phase is connected                                  </td></tr>
-<tr><td>targets           </td><td>[]          </td><td>N/A                </td><td>[&#x27;Iterable&#x27;]      </td><td>targets in the ODE to which the integration variable is connected                                       </td></tr>
-<tr><td>time_phase_targets</td><td>[]          </td><td>N/A                </td><td>[&#x27;Iterable&#x27;]      </td><td>targets in the ODE to which the elapsed duration of the phase is connected                              </td></tr>
+<tr><td>name              </td><td>time        </td><td>N/A                </td><td>[&#x27;str&#x27;]           </td><td>Name of the integraiton variable in the phase.                                                          </td></tr>
+<tr><td>t_duration_targets</td><td>[]          </td><td>N/A                </td><td>N/A               </td><td>targets in the ODE to which the total duration of the phase is connected                                </td></tr>
+<tr><td>t_initial_targets </td><td>[]          </td><td>N/A                </td><td>N/A               </td><td>targets in the ODE to which the initial time of the phase is connected                                  </td></tr>
+<tr><td>targets           </td><td>unspecified </td><td>N/A                </td><td>N/A               </td><td>targets in the ODE to which the integration variable is connected                                       </td></tr>
+<tr><td>time_phase_targets</td><td>unspecified </td><td>N/A                </td><td>N/A               </td><td>targets in the ODE to which the elapsed duration of the phase is connected                              </td></tr>
 <tr><td>units             </td><td>s           </td><td>N/A                </td><td>[&#x27;str&#x27;]           </td><td>Units for the integration variable                                                                      </td></tr>
 </tbody>
 </table></div></div>

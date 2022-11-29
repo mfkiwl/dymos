@@ -1865,11 +1865,11 @@ title="Open an issue"
 <span class="sd">        ----------</span>
 <span class="sd">        name : str, or list of str</span>
 <span class="sd">            The name(s) of the variable to be used as a timeseries output, or a mathematical expression to be used</span>
-<span class="sd">            as a timeseries output. If a name, it be one of &#39;time&#39;, &#39;time_phase&#39;, one of the states, controls,</span>
-<span class="sd">            control rates, or parameters, in the phase, the path to an output variable in the ODE, or a glob pattern</span>
-<span class="sd">            matching some outputs in the ODE.</span>
+<span class="sd">            as a timeseries output. If a name, it must be one of the integration variable, the phase-relative value</span>
+<span class="sd">            of the integration variable (e.g. &#39;time_phase&#39;, one of the states, controls, control rates, or parameters,</span>
+<span class="sd">            in the phase, the path to an output variable in the ODE, or a glob pattern matching some outputs in the ODE.</span>
 <span class="sd">        output_name : str or None or list or dict</span>
-<span class="sd">            The name of the variable as listed in the phase timeseries outputs.  By</span>
+<span class="sd">            The name of the variable as listed in the phase timeseries outputs. By</span>
 <span class="sd">            default this is the last element in `name` when split by dots.  The user may</span>
 <span class="sd">            override the constraint name if splitting the path causes name collisions.</span>
 <span class="sd">        units : str or None or _unspecified</span>
@@ -1925,7 +1925,7 @@ title="Open an issue"
 <span class="sd">        ----------</span>
 <span class="sd">        name : str, or list of str</span>
 <span class="sd">            The name(s) of the variable to be used as a timeseries output.  Must be one of</span>
-<span class="sd">            &#39;time&#39;, &#39;time_phase&#39;, one of the states, controls, control rates, or parameters,</span>
+<span class="sd">            the integration variable, &#39;t_phase&#39;, one of the states, controls, control rates, or parameters,</span>
 <span class="sd">            in the phase, the path to an output variable in the ODE, or a glob pattern</span>
 <span class="sd">            matching some outputs in the ODE.</span>
 <span class="sd">        output_name : str or None or list or dict</span>
@@ -1983,7 +1983,7 @@ title="Open an issue"
 <span class="sd">        ----------</span>
 <span class="sd">        name : str</span>
 <span class="sd">            The name of the variable to be used as a timeseries output.  Must be one of</span>
-<span class="sd">            &#39;time&#39;, &#39;time_phase&#39;, one of the states, controls, control rates, or parameters,</span>
+<span class="sd">            the integration variable, &#39;t_phase&#39;, one of the states, controls, control rates, or parameters,</span>
 <span class="sd">            in the phase, or the path to an output variable in the ODE.</span>
 <span class="sd">        output_name : str or None</span>
 <span class="sd">            The name of the variable as listed in the phase timeseries outputs.  By</span>
@@ -2022,10 +2022,7 @@ title="Open an issue"
         <span class="k">if</span> <span class="n">rate</span><span class="p">:</span>
             <span class="n">output_name</span> <span class="o">=</span> <span class="n">output_name</span> <span class="o">+</span> <span class="s1">&#39;_rate&#39;</span>
 
-        <span class="k">if</span> <span class="n">output_name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeseries</span><span class="p">[</span><span class="n">timeseries</span><span class="p">][</span><span class="s1">&#39;outputs&#39;</span><span class="p">]:</span>
-            <span class="n">om</span><span class="o">.</span><span class="n">issue_warning</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Output name `</span><span class="si">{</span><span class="n">output_name</span><span class="si">}</span><span class="s1">` is already in timeseries `</span><span class="si">{</span><span class="n">timeseries</span><span class="si">}</span><span class="s1">`. &#39;</span>
-                             <span class="sa">f</span><span class="s1">&#39;New output ignored.&#39;</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">output_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeseries</span><span class="p">[</span><span class="n">timeseries</span><span class="p">][</span><span class="s1">&#39;outputs&#39;</span><span class="p">]:</span>
             <span class="n">ts_output</span> <span class="o">=</span> <span class="n">TimeseriesOutputOptionsDictionary</span><span class="p">()</span>
             <span class="n">ts_output</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">name</span>
             <span class="n">ts_output</span><span class="p">[</span><span class="s1">&#39;output_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">output_name</span>
@@ -2070,7 +2067,7 @@ title="Open an issue"
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        name : str</span>
-<span class="sd">            Name of the objective variable.  This should be one of &#39;time&#39;, a state or control</span>
+<span class="sd">            Name of the objective variable.  This should be one of the integration variable, a state or control</span>
 <span class="sd">            variable, or the path to an output from the top level of the RHS.</span>
 <span class="sd">        loc : str</span>
 <span class="sd">            Where in the phase the objective is to be evaluated.  Valid</span>
@@ -2114,7 +2111,7 @@ title="Open an issue"
                          <span class="n">duration_adder</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span> <span class="n">duration_ref0</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span>
                          <span class="n">duration_ref</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span>
                          <span class="n">time_phase_targets</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span> <span class="n">t_initial_targets</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span>
-                         <span class="n">t_duration_targets</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">):</span>
+                         <span class="n">t_duration_targets</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Sets options for time in the phase.</span>
 
@@ -2168,6 +2165,8 @@ title="Open an issue"
 <span class="sd">            Targets in the ODE for the value of phase initial time.</span>
 <span class="sd">        t_duration_targets :  iterable of str</span>
 <span class="sd">            Targets in the ODE for the value of phase time duration.</span>
+<span class="sd">        name : str</span>
+<span class="sd">            Name of the integration variable for this phase. Default is &#39;time&#39;.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">units</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">_unspecified</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">time_options</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">units</span>
@@ -2242,7 +2241,10 @@ title="Open an issue"
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">t_duration_targets</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">time_options</span><span class="p">[</span><span class="s1">&#39;t_duration_targets&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">t_duration_targets</span><span class="p">,)</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">time_options</span><span class="p">[</span><span class="s1">&#39;t_duration_targets&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">t_duration_targets</span></div>
+                <span class="bp">self</span><span class="o">.</span><span class="n">time_options</span><span class="p">[</span><span class="s1">&#39;t_duration_targets&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">t_duration_targets</span>
+
+        <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">_unspecified</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">time_options</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">name</span></div>
 
     <span class="k">def</span> <span class="nf">classify_var</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">var</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -2262,12 +2264,12 @@ title="Open an issue"
 <span class="sd">        -------</span>
 <span class="sd">        str</span>
 <span class="sd">            The classification of the given variable, which is one of</span>
-<span class="sd">            &#39;time&#39;, &#39;time_phase&#39;, &#39;state&#39;, &#39;control&#39;, &#39;control_rate&#39;,</span>
+<span class="sd">            &#39;t&#39;, &#39;t_phase&#39;, &#39;state&#39;, &#39;control&#39;, &#39;control_rate&#39;,</span>
 <span class="sd">            &#39;control_rate2&#39;, &#39;polynomial_control&#39;,</span>
 <span class="sd">            &#39;polynomial_control_rate&#39;, &#39;polynomial_control_rate2&#39;, &#39;parameter&#39;,</span>
 <span class="sd">            or &#39;ode&#39;.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">classify_var</span><span class="p">(</span><span class="n">var</span><span class="p">,</span> <span class="n">state_options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">state_options</span><span class="p">,</span>
+        <span class="k">return</span> <span class="n">classify_var</span><span class="p">(</span><span class="n">var</span><span class="p">,</span> <span class="n">time_options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">time_options</span><span class="p">,</span> <span class="n">state_options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">state_options</span><span class="p">,</span>
                             <span class="n">parameter_options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">parameter_options</span><span class="p">,</span>
                             <span class="n">control_options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">control_options</span><span class="p">,</span>
                             <span class="n">polynomial_control_options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">polynomial_control_options</span><span class="p">,</span>
@@ -2742,7 +2744,8 @@ title="Open an issue"
             <span class="n">op_dict</span> <span class="o">=</span> <span class="n">MPI</span><span class="o">.</span><span class="n">COMM_WORLD</span><span class="o">.</span><span class="n">bcast</span><span class="p">(</span><span class="n">op_dict</span><span class="p">,</span> <span class="n">root</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
         <span class="c1"># Set the integration times</span>
-        <span class="n">op</span> <span class="o">=</span> <span class="n">op_dict</span><span class="p">[</span><span class="s1">&#39;timeseries.timeseries_comp.time&#39;</span><span class="p">]</span>
+        <span class="n">time_name</span> <span class="o">=</span> <span class="n">phs</span><span class="o">.</span><span class="n">time_options</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+        <span class="n">op</span> <span class="o">=</span> <span class="n">op_dict</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;timeseries.timeseries_comp.</span><span class="si">{</span><span class="n">time_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span>
         <span class="n">prob</span><span class="o">.</span><span class="n">set_val</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">self_path</span><span class="si">}</span><span class="s1">t_initial&#39;</span><span class="p">,</span> <span class="n">op</span><span class="p">[</span><span class="s1">&#39;val&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span> <span class="o">...</span><span class="p">])</span>
         <span class="n">prob</span><span class="o">.</span><span class="n">set_val</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">self_path</span><span class="si">}</span><span class="s1">t_duration&#39;</span><span class="p">,</span> <span class="n">op</span><span class="p">[</span><span class="s1">&#39;val&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="o">-</span> <span class="n">op</span><span class="p">[</span><span class="s1">&#39;val&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span> <span class="o">...</span><span class="p">])</span>
 
