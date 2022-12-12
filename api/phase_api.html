@@ -1667,14 +1667,17 @@ since Dymos doesn’t necessarily know the shape of ODE outputs until setup time
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>name</strong><span class="classifier">str</span></dt><dd><p>Name of the variable to constrain.  If name is not a state, control, or ‘time’,
-then this is assumed to be the path of the variable to be constrained in the ODE.</p>
+<dt><strong>name</strong><span class="classifier">str</span></dt><dd><p>Name of the variable to constrain. May also provide an expression to be evaluated and constrained.
+If a single variable and the name is not a state, control, or ‘time’,
+then this is assumed to be the path of the variable to be constrained in the ODE.
+If an expression, it must be provided in the form of an equation with a left- and right-hand side.</p>
 </dd>
 <dt><strong>loc</strong><span class="classifier">str</span></dt><dd><p>The location of the boundary constraint (‘initial’ or ‘final’).</p>
 </dd>
-<dt><strong>constraint_name</strong><span class="classifier">str or None</span></dt><dd><p>The name of the variable as provided to the boundary constraint comp.  By
-default this is the last element in <cite>name</cite> when split by dots.  The user may
-override the constraint name if splitting the path causes name collisions.</p>
+<dt><strong>constraint_name</strong><span class="classifier">str or None</span></dt><dd><dl class="simple">
+<dt>The name of the boundary constraint. By default, this is ‘var_constraint’ if name is a single variable,</dt><dd><p>or the left-hand side of the equation if name is an expression.</p>
+</dd>
+</dl>
 </dd>
 <dt><strong>units</strong><span class="classifier">str or None</span></dt><dd><p>The units in which the boundary constraint is to be applied.  If None, use the
 units associated with the constrained output.  If provided, must be compatible with
@@ -1728,11 +1731,15 @@ indices should be a tuple or list giving the elements to constrain at each point
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>name</strong><span class="classifier">str</span></dt><dd><p>Name of the response variable in the system.</p>
+<dt><strong>name</strong><span class="classifier">str</span></dt><dd><p>Name of the variable to constrain. May also provide an expression to be evaluated and constrained.
+If a single variable and the name is not a state, control, or ‘time’,
+then this is assumed to be the path of the variable to be constrained in the ODE.
+If an expression, it must be provided in the form of an equation with a left- and right-hand side.</p>
 </dd>
-<dt><strong>constraint_name</strong><span class="classifier">str or None</span></dt><dd><p>The name of the variable as provided to the boundary constraint comp.  By
-default this is the last element in <cite>name</cite> when split by dots.  The user may
-override the constraint name if splitting the path causes name collisions.</p>
+<dt><strong>constraint_name</strong><span class="classifier">str or None</span></dt><dd><dl class="simple">
+<dt>The name of the path constraint. By default, this is ‘var_constraint’ if name is a single variable,</dt><dd><p>or the left-hand side of the equation if name is an expression.</p>
+</dd>
+</dl>
 </dd>
 <dt><strong>units</strong><span class="classifier">str or None</span></dt><dd><p>The units in which the boundary constraint is to be applied.  If None, use the
 units associated with the constrained output.  If provided, must be compatible with
