@@ -222,6 +222,11 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="../../examples/hull/hull_problem.html">
+     The Hull Problem
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../../examples/hypersensitive/hypersensitive.html">
      Hyper-Sensitive Problem
     </a>
@@ -795,8 +800,8 @@ are a few different ways to impose these in Dymos, each with slightly different 
 <p>Let’s consider that we want to solve for the elevation angle that results in the maximum possible
 range flown by a cannonball.  In this situation we have some set of initial conditions that are
 fixed.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e9445390-2320-437f-aca2-e99b4075bb7c">
-<span class="eqno">(93)<a class="headerlink" href="#equation-e9445390-2320-437f-aca2-e99b4075bb7c" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-e53c575d-d1fa-48e2-baf4-cee25210179a">
+<span class="eqno">(98)<a class="headerlink" href="#equation-e53c575d-d1fa-48e2-baf4-cee25210179a" title="Permalink to this equation">#</a></span>\[\begin{align}
     t_0 &amp;= 0 \, \mathrm{s} \\
     x_0 &amp;= 0 \, \mathrm{m} \\
     y_0 &amp;= 0 \, \mathrm{m} \\
@@ -859,8 +864,8 @@ As with <code class="docutils literal notranslate"><span class="pre">add_boundar
 <h2>Constraining Expressions<a class="headerlink" href="#constraining-expressions" title="Permalink to this headline">#</a></h2>
 <p>Constraints may be defined using mathematical expressions of the form <code class="docutils literal notranslate"><span class="pre">y=f(x)</span></code> to be evaluated. Here <code class="docutils literal notranslate"><span class="pre">x</span></code> may be vector combination of time, states, controls, parameters, or any outputs of the ODE. The variable <code class="docutils literal notranslate"><span class="pre">y</span></code> is added to the timeseries outputs of the phase and the desired constraint is applied to it.</p>
 <p>Consider, again, the example of maximizing the range flown by a cannonball. But now, rather than a constraint on the initial velocity, we wish to apply a constraint to the initial normalized kinetic energy.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c5e7eb8c-7d47-42a8-b808-dbec9e458d5a">
-<span class="eqno">(94)<a class="headerlink" href="#equation-c5e7eb8c-7d47-42a8-b808-dbec9e458d5a" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-faa009ff-83ba-4c7b-a9b6-d82ec62ab982">
+<span class="eqno">(99)<a class="headerlink" href="#equation-faa009ff-83ba-4c7b-a9b6-d82ec62ab982" title="Permalink to this equation">#</a></span>\[\begin{align}
     ke &amp;= 0.5 * v^2 \\
     ke_0 &amp;= 5000 \, \frac{\mathrm{m^2}}{\mathrm{s^2}}
 \end{align}\]</div>

@@ -222,6 +222,11 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="../hull/hull_problem.html">
+     The Hull Problem
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../hypersensitive/hypersensitive.html">
      Hyper-Sensitive Problem
     </a>
@@ -1277,8 +1282,8 @@ preferable when using a differential inclusion approach to problems.</p>
 <p><em>TrueAirspeedComp</em> uses the Mach number, provided as a
 control, and the speed of sound from the atmosphere model to compute the
 true airspeed of the aircraft.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-eac947ff-813b-4f5e-9cb8-17c6e13b8ef1">
-<span class="eqno">(33)<a class="headerlink" href="#equation-eac947ff-813b-4f5e-9cb8-17c6e13b8ef1" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-68b4c978-42c2-4467-83fe-976945ba9735">
+<span class="eqno">(33)<a class="headerlink" href="#equation-68b4c978-42c2-4467-83fe-976945ba9735" title="Permalink to this equation">#</a></span>\[\begin{align}
   TAS &amp;= mach \cdot sos
 \end{align}\]</div>
 <table class="colwidths-auto table">
@@ -1309,8 +1314,8 @@ true airspeed of the aircraft.</p>
 <p><em>SteadyFlightPathAngleComp</em> uses the true airspeed and the
 climb rate, obtained by differentiating the altitude time history at the
 nodes, to compute the flight path angle.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3716e670-d66b-4f35-b092-f10241c201c3">
-<span class="eqno">(34)<a class="headerlink" href="#equation-3716e670-d66b-4f35-b092-f10241c201c3" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-7d50c204-daa4-4588-8fd9-9bf9a0bac25e">
+<span class="eqno">(34)<a class="headerlink" href="#equation-7d50c204-daa4-4588-8fd9-9bf9a0bac25e" title="Permalink to this equation">#</a></span>\[\begin{align}
   \gamma &amp;= \arcsin \frac{\dot h}{TAS}
 \end{align}\]</div>
 <table class="colwidths-auto table">
@@ -1341,8 +1346,8 @@ nodes, to compute the flight path angle.</p>
 <p><em>RangeRateComp</em> uses the true airspeed and the flight path
 angle to determine the velocity projected along the ground. This is the
 derivative of the state variable <em>range</em>.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4efc5907-d791-4bfe-b812-21bae46a26a8">
-<span class="eqno">(35)<a class="headerlink" href="#equation-4efc5907-d791-4bfe-b812-21bae46a26a8" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-210f2709-b6ee-4d7f-9bb7-b3512151862a">
+<span class="eqno">(35)<a class="headerlink" href="#equation-210f2709-b6ee-4d7f-9bb7-b3512151862a" title="Permalink to this equation">#</a></span>\[\begin{align}
   \dot{range} &amp;= TAS \cos \gamma
 \end{align}\]</div>
 <table class="colwidths-auto table">
@@ -1374,8 +1379,8 @@ derivative of the state variable <em>range</em>.</p>
 <code class="docutils literal notranslate"><span class="pre">mass_comp.py</span></code> computes the aircraft total mass based on
 its empty mass, payload mass, and current fuel mass. It also computes
 total weight which simplifies some equations later on.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-87ef13a8-bad1-4e13-aa74-fc21e3b1d711">
-<span class="eqno">(36)<a class="headerlink" href="#equation-87ef13a8-bad1-4e13-aa74-fc21e3b1d711" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-c19154b8-4bfa-49c5-9c77-12e0ff895c80">
+<span class="eqno">(36)<a class="headerlink" href="#equation-c19154b8-4bfa-49c5-9c77-12e0ff895c80" title="Permalink to this equation">#</a></span>\[\begin{align}
   mass_{total} &amp;= mass_{empty} + mass_{payload} + mass_{fuel} \\
   W_{total} &amp;= 9.80665 \, mass_{total}
 \end{align}\]</div>
@@ -1414,8 +1419,8 @@ total weight which simplifies some equations later on.</p>
 <h3>Dynamic Pressure<a class="headerlink" href="#dynamic-pressure" title="Permalink to this headline">#</a></h3>
 <p>The <em>DynamicPressureComp</em> computes the dynamic pressure from
 true airspeed and atmospheric density.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d388cf8d-78b9-4d13-a161-fadf0254d88e">
-<span class="eqno">(37)<a class="headerlink" href="#equation-d388cf8d-78b9-4d13-a161-fadf0254d88e" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-acf5af6e-e055-4a21-b13d-0c33cd8760fa">
+<span class="eqno">(37)<a class="headerlink" href="#equation-acf5af6e-e055-4a21-b13d-0c33cd8760fa" title="Permalink to this equation">#</a></span>\[\begin{align}
   q &amp;= \frac{1}{2} \rho TAS^2
 \end{align}\]</div>
 <table class="colwidths-auto table">
@@ -1523,14 +1528,14 @@ profile being modeled is so benign that assuming steady flight at
 discrete points (nodes) in the trajectory is not terribly inaccurate.</p>
 <p>The thrust necessary for steady flight is computed by balancing the drag
 equation</p>
-<div class="amsmath math notranslate nohighlight" id="equation-76cbd23b-c953-4feb-8dfa-fa26a71d0eaf">
-<span class="eqno">(38)<a class="headerlink" href="#equation-76cbd23b-c953-4feb-8dfa-fa26a71d0eaf" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-dc30bbcb-f3ae-4711-a5df-aff44ec97444">
+<span class="eqno">(38)<a class="headerlink" href="#equation-dc30bbcb-f3ae-4711-a5df-aff44ec97444" title="Permalink to this equation">#</a></span>\[\begin{align}
   C_T &amp;= W_{total} \frac{sin \gamma}{q \cdot S \cdot \cos \alpha} + \frac{C_D}{\cos \alpha}
 \end{align}\]</div>
 <p>The lift coefficient required for steady flight is found by balancing
 lift and weight:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b0a546c2-f8ce-4471-9ba6-4b7ce38bfff0">
-<span class="eqno">(39)<a class="headerlink" href="#equation-b0a546c2-f8ce-4471-9ba6-4b7ce38bfff0" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-9ffe8569-9051-4950-a9fd-fdc17a94545f">
+<span class="eqno">(39)<a class="headerlink" href="#equation-9ffe8569-9051-4950-a9fd-fdc17a94545f" title="Permalink to this equation">#</a></span>\[\begin{align}
   \tilde{C_L} &amp;= W_{total} \frac{cos \gamma}{q \cdot S} - C_T \sin \alpha
 \end{align}\]</div>
 <p>Using coefficients in the balance equations is better scaled from a numerical standpoint.</p>
@@ -1542,30 +1547,30 @@ rate of fuel burn. In addition, by normalizing thrust at any point by
 the maximum possible thrust, we obtain the throttle parameter <span class="math notranslate nohighlight">\(\tau\)</span>.
 The propulsion group uses a number of components to perform these
 calculations.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-65b33242-e3fc-4619-8f02-1781c3e54fb1">
-<span class="eqno">(40)<a class="headerlink" href="#equation-65b33242-e3fc-4619-8f02-1781c3e54fb1" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-28749977-dc37-4e9b-8bf1-9e8bd6a2e2a1">
+<span class="eqno">(40)<a class="headerlink" href="#equation-28749977-dc37-4e9b-8bf1-9e8bd6a2e2a1" title="Permalink to this equation">#</a></span>\[\begin{align}
   T &amp;= C_T \cdot q \cdot S
 \end{align}\]</div>
 <p>Maximum thrust is computed by multiplying sea-level thrust by the ratio
 of pressure to sea-level atmospheric pressure.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-11bcf761-cb9b-4be2-8bf6-e4c98d82de1d">
-<span class="eqno">(41)<a class="headerlink" href="#equation-11bcf761-cb9b-4be2-8bf6-e4c98d82de1d" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-3872f4b7-0b0e-4ebb-a504-27707c14b91e">
+<span class="eqno">(41)<a class="headerlink" href="#equation-3872f4b7-0b0e-4ebb-a504-27707c14b91e" title="Permalink to this equation">#</a></span>\[\begin{align}
   T_{max} &amp;= T_{max,sl} \frac{P}{P_{sl}}
 \end{align}\]</div>
 <p>The throttle parameter is then the ratio current thrust to maximum
 possible thrust.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7512b7e3-6021-4a87-ab43-af3eee667adb">
-<span class="eqno">(42)<a class="headerlink" href="#equation-7512b7e3-6021-4a87-ab43-af3eee667adb" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-efde3934-8609-40bd-b9a1-8658a28a63ef">
+<span class="eqno">(42)<a class="headerlink" href="#equation-efde3934-8609-40bd-b9a1-8658a28a63ef" title="Permalink to this equation">#</a></span>\[\begin{align}
   \tau &amp;= \frac{T}{T_{max}}
 \end{align}\]</div>
 <p>The thrust specific fuel consumption is computed as follows:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4b32ace0-45fa-4f4a-ac57-383413c6d9b2">
-<span class="eqno">(43)<a class="headerlink" href="#equation-4b32ace0-45fa-4f4a-ac57-383413c6d9b2" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-af7e6174-e933-4edb-99f6-fe4bf7f03d5c">
+<span class="eqno">(43)<a class="headerlink" href="#equation-af7e6174-e933-4edb-99f6-fe4bf7f03d5c" title="Permalink to this equation">#</a></span>\[\begin{align}
   TSFC &amp;= TSFC_{sl} - 1.5 E - 10 \cdot 9.80665 \cdot alt
 \end{align}\]</div>
 <p>Finally, fuel burn rate is:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c6e4225a-333d-4564-92c7-a24da2387687">
-<span class="eqno">(44)<a class="headerlink" href="#equation-c6e4225a-333d-4564-92c7-a24da2387687" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-3030c030-f138-4579-abb7-5b976ba62844">
+<span class="eqno">(44)<a class="headerlink" href="#equation-3030c030-f138-4579-abb7-5b976ba62844" title="Permalink to this equation">#</a></span>\[\begin{align}
   \dot{mass_{fuel}} &amp;= -TSFC \frac{T}{9.80665}
 \end{align}\]</div>
 </section>
@@ -1873,7 +1878,11 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         [path]    1.0000e-02 &lt;= propulsion.tau &lt;= 2.0000e+00  [None]
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;openmdao.core.problem.Problem at 0x7feb179238b0&gt;
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.10/site-packages/openmdao/utils/hooks.py:266: OpenMDAOWarning:Couldn&#39;t find the given &#39;post&#39; function in the post hooks for Driver._get_coloring.
+/usr/share/miniconda/envs/test/lib/python3.10/site-packages/openmdao/utils/hooks.py:266: OpenMDAOWarning:Couldn&#39;t find the given &#39;post&#39; function in the post hooks for Driver._compute_totals.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;openmdao.core.problem.Problem at 0x7fca504b1600&gt;
 </pre></div>
 </div>
 </div>
@@ -1913,7 +1922,7 @@ Plots of the resulting solution and simulation will be generated.</p>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model viewer data has already been recorded for Driver.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.973168 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 1.072247 seconds.
 Total jacobian shape: (224, 221) 
 
 
@@ -1922,9 +1931,9 @@ FWD solves: 12   REV solves: 0
 Total colors vs. total size: 12 vs 221  (94.6% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.973168 sec.
-Time to compute coloring: 0.155546 sec.
-Memory to compute coloring: 0.871094 MB.
+Time to compute sparsity: 1.072247 sec.
+Time to compute coloring: 0.165730 sec.
+Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization Problem -- Optimization using pyOpt_sparse
@@ -1933,11 +1942,11 @@ Memory to compute coloring: 0.871094 MB.
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                   22.1015
-       User Objective Time :      19.7181
-       User Sensitivity Time :     1.7744
-       Interface Time :            0.1986
-       Opt Solver Time:            0.4103
+    Total Time:                   23.4380
+       User Objective Time :      20.9385
+       User Sensitivity Time :     1.8677
+       Interface Time :            0.2098
+       Opt Solver Time:            0.4220
     Calls to Objective Function :      30
     Calls to Sens Function :           29
 
@@ -2441,11 +2450,7 @@ Memory to compute coloring: 0.871094 MB.
 --------------------------------------------------------------------------------
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.10/site-packages/tabulate/__init__.py:108: FutureWarning: elementwise comparison failed; returning scalar instead, but in the future will perform elementwise comparison
-  or (len(row) &gt;= 2 and row[1] == SEPARATING_LINE)
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.10/site-packages/openmdao/visualization/opt_report/opt_report.py:666: UserWarning: Attempting to set identical low and high ylims makes transformation singular; automatically expanding.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.10/site-packages/openmdao/visualization/opt_report/opt_report.py:633: UserWarning: Attempting to set identical low and high ylims makes transformation singular; automatically expanding.
   ax.set_ylim([ymin_plot, ymax_plot])
 </pre></div>
 </div>

@@ -222,6 +222,11 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="../../examples/hull/hull_problem.html">
+     The Hull Problem
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../../examples/hypersensitive/hypersensitive.html">
      Hyper-Sensitive Problem
     </a>
@@ -805,8 +810,8 @@ Such phases are avaialble in dymos through the <code class="docutils literal not
 Compared to implicit approaches this reduces the size of the optimization problem by removing some design variables and corresponding defect constraints.
 Compared to explicit approaches it removes the need to numerically propagate the ODE, which is generally a performance bottleneck.</p>
 <p>For analytic phases, the OpenMDAO system we provide to the phase provides the <em>solution</em> to the ODE, not the ODE itself.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a1aff736-7cda-46c1-ad0f-58d862437de3">
-<span class="eqno">(88)<a class="headerlink" href="#equation-a1aff736-7cda-46c1-ad0f-58d862437de3" title="Permalink to this equation">#</a></span>\[\begin{align}  
+<div class="amsmath math notranslate nohighlight" id="equation-59a10680-daa7-457f-beea-7273acd5225a">
+<span class="eqno">(93)<a class="headerlink" href="#equation-59a10680-daa7-457f-beea-7273acd5225a" title="Permalink to this equation">#</a></span>\[\begin{align}  
     \textbf x = \textbf f(t, \textbf p)
 \end{align}\]</div>
 <p>where
@@ -857,26 +862,26 @@ a shape of (3,).</p>
 <section id="a-basic-example">
 <h2>A basic example<a class="headerlink" href="#a-basic-example" title="Permalink to this headline">#</a></h2>
 <p>Suppose we want to use Dymos to solve the ODE</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f9937b1c-9785-4c64-84d1-e950d54d6cf0">
-<span class="eqno">(89)<a class="headerlink" href="#equation-f9937b1c-9785-4c64-84d1-e950d54d6cf0" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-e85c8e4f-c9a8-425e-b140-a87faa70b506">
+<span class="eqno">(94)<a class="headerlink" href="#equation-e85c8e4f-c9a8-425e-b140-a87faa70b506" title="Permalink to this equation">#</a></span>\[\begin{align}
   \frac{dx}{dt} = x - t^2 + 1
 \end{align}\]</div>
 <p>subject to:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ebef7ac4-b96f-494b-a814-e98e10357a19">
-<span class="eqno">(90)<a class="headerlink" href="#equation-ebef7ac4-b96f-494b-a814-e98e10357a19" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-e7affb33-2ddf-4570-bd97-cb23117be6a8">
+<span class="eqno">(95)<a class="headerlink" href="#equation-e7affb33-2ddf-4570-bd97-cb23117be6a8" title="Permalink to this equation">#</a></span>\[\begin{align}
   x(0) = 0.5
 \end{align}\]</div>
 <p>Here we want to find the value of <em>x</em> at t=2.</p>
 <p>We can absolutely use a pseudospectral method or explicit shooting in Dymos to find the value of <em>x</em> on a given interval using this information.
 But in this case, the solution is known analytically.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7a63e5e0-b02f-40de-bd1c-32473ecac412">
-<span class="eqno">(91)<a class="headerlink" href="#equation-7a63e5e0-b02f-40de-bd1c-32473ecac412" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-76609158-9def-484a-9769-1949cbe6eebc">
+<span class="eqno">(96)<a class="headerlink" href="#equation-76609158-9def-484a-9769-1949cbe6eebc" title="Permalink to this equation">#</a></span>\[\begin{align}
   x(t) &amp;= t^2 + 2t + 1 - c_1e^t
 \end{align}\]</div>
 <p>We need to find the value of constant <span class="math notranslate nohighlight">\(c_1\)</span> to find our particular solution.
 Applying the given initial condition gives c_1 as 0.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-06177c56-8947-4ccd-a953-55c4b4bb3e22">
-<span class="eqno">(92)<a class="headerlink" href="#equation-06177c56-8947-4ccd-a953-55c4b4bb3e22" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-5acd0371-969b-4bf0-8e49-c318def83df6">
+<span class="eqno">(97)<a class="headerlink" href="#equation-5acd0371-969b-4bf0-8e49-c318def83df6" title="Permalink to this equation">#</a></span>\[\begin{align}
   x(0) &amp;= 1 - c_1 = 0.5 \\
   c_1 &amp;\equiv y_0 = 0.5
 \end{align}\]</div>
@@ -1030,6 +1035,14 @@ Changing the <code class="docutils literal notranslate"><span class="pre">connec
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.10/site-packages/openmdao/utils/hooks.py:266: OpenMDAOWarning:Couldn&#39;t find the given &#39;post&#39; function in the post hooks for Driver._get_coloring.
+/usr/share/miniconda/envs/test/lib/python3.10/site-packages/openmdao/utils/hooks.py:266: OpenMDAOWarning:Couldn&#39;t find the given &#39;post&#39; function in the post hooks for Driver._get_coloring.
+/usr/share/miniconda/envs/test/lib/python3.10/site-packages/openmdao/utils/hooks.py:266: OpenMDAOWarning:Couldn&#39;t find the given &#39;post&#39; function in the post hooks for Driver._compute_totals.
+/usr/share/miniconda/envs/test/lib/python3.10/site-packages/openmdao/utils/hooks.py:266: OpenMDAOWarning:Couldn&#39;t find the given &#39;post&#39; function in the post hooks for Driver._compute_totals.
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="different-ways-to-handle-the-phase-linkage-for-state-continuity">
@@ -1103,11 +1116,7 @@ Optimization Complete
 x(2.0) = 5.305471950534675
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.10/site-packages/tabulate/__init__.py:108: FutureWarning: elementwise comparison failed; returning scalar instead, but in the future will perform elementwise comparison
-  or (len(row) &gt;= 2 and row[1] == SEPARATING_LINE)
-</pre></div>
-</div>
-<img alt="../../_images/analytic_phases_14_4.png" src="../../_images/analytic_phases_14_4.png" />
+<img alt="../../_images/analytic_phases_14_3.png" src="../../_images/analytic_phases_14_3.png" />
 </div>
 </div>
 <div class="cell tag_remove-input tag_remove-output docutils container">

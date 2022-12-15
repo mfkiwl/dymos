@@ -222,6 +222,11 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="../hull/hull_problem.html">
+     The Hull Problem
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../hypersensitive/hypersensitive.html">
      Hyper-Sensitive Problem
     </a>
@@ -770,8 +775,8 @@ angle-of-attack history required to accelerate a supersonic interceptor
 from near ground level, Mach 0.4 to an altitude of 20 km and Mach 1.0.</p>
 <p><img alt="The free-body-diagram of the min-time-climb problem." src="../../_images/min_time_climb_fbd.png" /></p>
 <p>The vehicle dynamics are given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6da05e8e-b534-48db-b88c-252154619c6f">
-<span class="eqno">(57)<a class="headerlink" href="#equation-6da05e8e-b534-48db-b88c-252154619c6f" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-71226b31-e27e-4498-8b1a-606142897e53">
+<span class="eqno">(62)<a class="headerlink" href="#equation-71226b31-e27e-4498-8b1a-606142897e53" title="Permalink to this equation">#</a></span>\[\begin{align}
   \frac{dv}{dt} &amp;= \frac{T}{m} \cos \alpha - \frac{D}{m} - g \sin \gamma \\
   \frac{d\gamma}{dt} &amp;= \frac{T}{m v} \sin \alpha + \frac{L}{m v} - \frac{g \cos \gamma}{v} \\
   \frac{dh}{dt} &amp;= v \sin \gamma \\
@@ -779,8 +784,8 @@ from near ground level, Mach 0.4 to an altitude of 20 km and Mach 1.0.</p>
   \frac{dm}{dt} &amp;= - \frac{T}{g I_{sp}}
 \end{align}\]</div>
 <p>The initial conditions are</p>
-<div class="amsmath math notranslate nohighlight" id="equation-310795b8-f64a-4dd0-8f37-d9e192709dac">
-<span class="eqno">(58)<a class="headerlink" href="#equation-310795b8-f64a-4dd0-8f37-d9e192709dac" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-fbe7bf59-b5ce-41dd-ac84-800560732282">
+<span class="eqno">(63)<a class="headerlink" href="#equation-fbe7bf59-b5ce-41dd-ac84-800560732282" title="Permalink to this equation">#</a></span>\[\begin{align}
   r_0 &amp;= 0 \rm{\,m} \\
   h_0 &amp;= 100 \rm{\,m} \\
   v_0 &amp;= 135.964 \rm{\,m/s} \\
@@ -788,8 +793,8 @@ from near ground level, Mach 0.4 to an altitude of 20 km and Mach 1.0.</p>
   m_0 &amp;= 19030.468 \rm{\,kg}
 \end{align}\]</div>
 <p>and the final conditions are</p>
-<div class="amsmath math notranslate nohighlight" id="equation-87e7130a-f649-48fd-8352-0957d08e6fc4">
-<span class="eqno">(59)<a class="headerlink" href="#equation-87e7130a-f649-48fd-8352-0957d08e6fc4" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-3984cf4a-99bf-4955-868b-ec04b25ba6ac">
+<span class="eqno">(64)<a class="headerlink" href="#equation-3984cf4a-99bf-4955-868b-ec04b25ba6ac" title="Permalink to this equation">#</a></span>\[\begin{align}
   h_f &amp;= 20000 \rm{\,m} \\
   M_f &amp;= 1.0 \\
   \gamma_0 &amp;= 0 \rm{\,deg}
@@ -1129,7 +1134,9 @@ problem:</p>
 INFO: checking out_of_order
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking out_of_order
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.10/site-packages/openmdao/utils/hooks.py:266: OpenMDAOWarning:Couldn&#39;t find the given &#39;post&#39; function in the post hooks for Driver._get_coloring.
+/usr/share/miniconda/envs/test/lib/python3.10/site-packages/openmdao/utils/hooks.py:266: OpenMDAOWarning:Couldn&#39;t find the given &#39;post&#39; function in the post hooks for Driver._compute_totals.
+INFO:check_config:checking out_of_order
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking system
@@ -1235,21 +1242,21 @@ INFO: checking out_of_order
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking auto_ivc_warnings
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.174174 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.177966 seconds.
 Total jacobian shape: (181, 191) 
-
-
-Jacobian shape: (181, 191)  ( 8.79% nonzero)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jacobian shape: (181, 191)  ( 8.79% nonzero)
 FWD solves: 25   REV solves: 0
 Total colors vs. total size: 25 vs 191  (86.9% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.174174 sec.
-Time to compute coloring: 0.190635 sec.
-Memory to compute coloring: 1.628906 MB.
+Time to compute sparsity: 0.177966 sec.
+Time to compute coloring: 0.199514 sec.
+Memory to compute coloring: 2.042969 MB.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.10/site-packages/openmdao/core/total_jac.py:1567: DerivativesWarning:Constraints or objectives [(&#39;traj.phases.phase0.timeseries.timeseries_comp.states:h&#39;, inds=[(0, 0)]), (&#39;traj.phases.phase0.timeseries.timeseries_comp.mach&#39;, inds=[(0, 0)])] cannot be impacted by the design variables of the problem.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.10/site-packages/openmdao/core/total_jac.py:1585: DerivativesWarning:Constraints or objectives [(&#39;traj.phases.phase0.timeseries.timeseries_comp.states:h&#39;, inds=[(0, 0)]), (&#39;traj.phases.phase0.timeseries.timeseries_comp.mach&#39;, inds=[(0, 0)])] cannot be impacted by the design variables of the problem.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization Problem -- Optimization using pyOpt_sparse
@@ -1258,11 +1265,11 @@ Memory to compute coloring: 1.628906 MB.
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                    9.4692
-       User Objective Time :       1.4844
-       User Sensitivity Time :     1.6952
-       Interface Time :            2.5046
-       Opt Solver Time:            3.7850
+    Total Time:                    9.6171
+       User Objective Time :       1.4932
+       User Sensitivity Time :     1.7401
+       Interface Time :            2.5403
+       Opt Solver Time:            3.8436
     Calls to Objective Function :     131
     Calls to Sens Function :          108
 
@@ -1735,11 +1742,7 @@ Memory to compute coloring: 1.628906 MB.
 --------------------------------------------------------------------------------
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.10/site-packages/tabulate/__init__.py:108: FutureWarning: elementwise comparison failed; returning scalar instead, but in the future will perform elementwise comparison
-  or (len(row) &gt;= 2 and row[1] == SEPARATING_LINE)
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.10/site-packages/openmdao/visualization/opt_report/opt_report.py:666: UserWarning: Attempting to set identical low and high ylims makes transformation singular; automatically expanding.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.10/site-packages/openmdao/visualization/opt_report/opt_report.py:633: UserWarning: Attempting to set identical low and high ylims makes transformation singular; automatically expanding.
   ax.set_ylim([ymin_plot, ymax_plot])
 </pre></div>
 </div>
