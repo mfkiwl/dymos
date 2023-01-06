@@ -784,7 +784,7 @@ current value of the polynomial controls.</p>
 <span class="n">g</span> <span class="o">=</span> <span class="mf">1.61544</span>  <span class="c1"># lunar gravity, m/s**2</span>
 
 <span class="k">class</span> <span class="nc">LaunchVehicle2DEOM</span><span class="p">(</span><span class="n">om</span><span class="o">.</span><span class="n">ExplicitComponent</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Simple 2D Cartesian Equations of Motion for a launch vehicle subject to thrust and drag.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -907,7 +907,7 @@ current value of the polynomial controls.</p>
         <span class="n">jacobian</span><span class="p">[</span><span class="s1">&#39;mdot&#39;</span><span class="p">,</span> <span class="s1">&#39;Isp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">F_T</span> <span class="o">/</span> <span class="p">(</span><span class="n">g</span> <span class="o">*</span> <span class="n">Isp</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
 
 <span class="k">class</span> <span class="nc">LaunchVehicleLinearTangentODE</span><span class="p">(</span><span class="n">om</span><span class="o">.</span><span class="n">Group</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The LaunchVehicleLinearTangentODE for this case consists of a guidance component and</span>
 <span class="sd">    the EOM.  Guidance is simply an OpenMDAO ExecComp which computes the arctangent of the</span>
 <span class="sd">    tan_theta variable.</span>
@@ -1139,7 +1139,7 @@ INFO: checking out_of_order
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking auto_ivc_warnings
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.247116 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.227212 seconds.
 Total jacobian shape: (303, 398) 
 </pre></div>
 </div>
@@ -1148,9 +1148,9 @@ FWD solves: 11   REV solves: 0
 Total colors vs. total size: 11 vs 398  (97.2% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.247116 sec.
-Time to compute coloring: 0.353491 sec.
-Memory to compute coloring: 0.000000 MB.
+Time to compute sparsity: 0.227212 sec.
+Time to compute coloring: 0.361100 sec.
+Memory to compute coloring: 0.933594 MB.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization Problem -- Optimization using pyOpt_sparse
@@ -1159,11 +1159,11 @@ Memory to compute coloring: 0.000000 MB.
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                    1.3208
-       User Objective Time :       0.0121
-       User Sensitivity Time :     0.0621
-       Interface Time :            0.1006
-       Opt Solver Time:            1.1460
+    Total Time:                    1.3659
+       User Objective Time :       0.0113
+       User Sensitivity Time :     0.0606
+       Interface Time :            0.0981
+       Opt Solver Time:            1.1959
     Calls to Objective Function :       6
     Calls to Sens Function :            5
 

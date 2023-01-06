@@ -784,8 +784,8 @@ optimal control problem governed by six equations of motion and limited
 by the aerodynamic heating rate. For a detailed layout of this problem
 and other optimal control problems see Betts <span id="id1">[<a class="reference internal" href="#id19" title="J. Betts. Practical Methods for Optimal Control and Estimation Using Nonlinear Programming. Society for Industrial and Applied Mathematics, second edition, 2010. URL: https://epubs.siam.org/doi/abs/10.1137/1.9780898718577, arXiv:https://epubs.siam.org/doi/pdf/10.1137/1.9780898718577, doi:10.1137/1.9780898718577.">Bet10</a>]</span>.
 The governing equations of motion for this problem are:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4d73ad17-1369-45bb-84c2-1ffc1490dc70">
-<span class="eqno">(74)<a class="headerlink" href="#equation-4d73ad17-1369-45bb-84c2-1ffc1490dc70" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-0618da3a-776c-424d-b7d2-aa35b2379699">
+<span class="eqno">(74)<a class="headerlink" href="#equation-0618da3a-776c-424d-b7d2-aa35b2379699" title="Permalink to this equation">#</a></span>\[\begin{align}
   \frac{dh}{dt} &amp;= v \sin \gamma \\
   \frac{d\phi}{dt} &amp;= \frac{v}{r} \cos \gamma \frac{\sin \psi}{\cos \theta} \\
   \frac{d\theta}{dt} &amp;= \frac{v}{r} \cos \gamma \cos \psi  \\
@@ -808,8 +808,8 @@ final altitude, without exceding a maximum heat rate at the leading
 edges. This heat rate is constrained by <span class="math notranslate nohighlight">\(q \leq 70\)</span> where q
 <span class="math notranslate nohighlight">\([\frac{btu}{ft^2s}]\)</span> is the heating rate.</p>
 <p>The initial conditions are</p>
-<div class="amsmath math notranslate nohighlight" id="equation-bfed7d97-69f1-4ea3-9272-8d5e6577953b">
-<span class="eqno">(75)<a class="headerlink" href="#equation-bfed7d97-69f1-4ea3-9272-8d5e6577953b" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-ba7ad45d-e37a-4812-8b06-66afdc186c24">
+<span class="eqno">(75)<a class="headerlink" href="#equation-ba7ad45d-e37a-4812-8b06-66afdc186c24" title="Permalink to this equation">#</a></span>\[\begin{align}
   h_0 &amp;= 26000 \\
   v_0 &amp;= 25600 \\
   \phi_0 &amp;= 0 \\
@@ -818,8 +818,8 @@ edges. This heat rate is constrained by <span class="math notranslate nohighligh
   \psi_0 &amp;= \frac{\pi}{2}
 \end{align}\]</div>
 <p>and the final conditions are</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c7055450-aedc-49f5-9378-65fdd7759627">
-<span class="eqno">(76)<a class="headerlink" href="#equation-c7055450-aedc-49f5-9378-65fdd7759627" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-56cc5289-7833-4e9b-900d-52619ce79697">
+<span class="eqno">(76)<a class="headerlink" href="#equation-56cc5289-7833-4e9b-900d-52619ce79697" title="Permalink to this equation">#</a></span>\[\begin{align}
   h_0 &amp;= 80000 \\
   v_0 &amp;= 2500 \\
   \gamma_0 &amp;= -0.08727 \\
@@ -837,13 +837,13 @@ second component computes the aerodynamic forces of lift and drag on the
 shuttle. The third component is where the heating rate on the leading
 edge of the shuttles wings is computed. The heating rate is given by
 <span class="math notranslate nohighlight">\(q = q_a q_r\)</span> where</p>
-<div class="amsmath math notranslate nohighlight" id="equation-68162ff1-1ed6-4889-b20e-0cae23aeab8e">
-<span class="eqno">(77)<a class="headerlink" href="#equation-68162ff1-1ed6-4889-b20e-0cae23aeab8e" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-ae35d811-798e-423e-81b4-914ee5efbdde">
+<span class="eqno">(77)<a class="headerlink" href="#equation-ae35d811-798e-423e-81b4-914ee5efbdde" title="Permalink to this equation">#</a></span>\[\begin{align}
   q_a &amp;= c_0 + c_1\alpha + c_2 \alpha^2 + c_3 \alpha^3
 \end{align}\]</div>
 <p>and</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e81363c9-6dbc-486f-bfa5-133e9d5766bd">
-<span class="eqno">(78)<a class="headerlink" href="#equation-e81363c9-6dbc-486f-bfa5-133e9d5766bd" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-1b84dcb9-c764-4ad7-9ad5-0b55026ca81f">
+<span class="eqno">(78)<a class="headerlink" href="#equation-1b84dcb9-c764-4ad7-9ad5-0b55026ca81f" title="Permalink to this equation">#</a></span>\[\begin{align}
   q_r &amp;= 17700 \rho^.5 (.0001v)^{3.07}
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(c_0, c_1, c_2,\)</span> and <span class="math notranslate nohighlight">\(c_3\)</span> are constants, <span class="math notranslate nohighlight">\(\alpha\)</span> <span class="math notranslate nohighlight">\([deg]\)</span> is the
@@ -862,7 +862,7 @@ dymos model sees.</p>
 
 
 <span class="k">class</span> <span class="nc">Aerodynamics</span><span class="p">(</span><span class="n">om</span><span class="o">.</span><span class="n">ExplicitComponent</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Defines the aerodynamics for the shuttle reentry problem.</span>
 
 <span class="sd">    References</span>
@@ -946,7 +946,7 @@ dymos model sees.</p>
 
 
 <span class="k">class</span> <span class="nc">AerodynamicHeating</span><span class="p">(</span><span class="n">om</span><span class="o">.</span><span class="n">ExplicitComponent</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Defines the Aerodynamic heating equations for the shuttle reentry problem.</span>
 
 <span class="sd">    References</span>
@@ -1024,7 +1024,7 @@ dymos model sees.</p>
 
 
 <span class="k">class</span> <span class="nc">FlightDynamics</span><span class="p">(</span><span class="n">ExplicitComponent</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Defines the flight dynamics for the shuttle reentry problem.</span>
 
 <span class="sd">    References</span>
@@ -1198,7 +1198,7 @@ dymos model sees.</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">openmdao.api</span> <span class="kn">import</span> <span class="n">Group</span>
 
 <span class="k">class</span> <span class="nc">ShuttleODE</span><span class="p">(</span><span class="n">Group</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The ODE for the Shuttle reentry problem.</span>
 
 <span class="sd">    References</span>
@@ -1318,8 +1318,8 @@ The two controls are <span class="math notranslate nohighlight">\(\alpha\)</span
 INFO: checking out_of_order
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.10/site-packages/openmdao/utils/hooks.py:266: OpenMDAOWarning:Couldn&#39;t find the given &#39;post&#39; function in the post hooks for Driver._get_coloring.
-/usr/share/miniconda/envs/test/lib/python3.10/site-packages/openmdao/utils/hooks.py:266: OpenMDAOWarning:Couldn&#39;t find the given &#39;post&#39; function in the post hooks for Driver._compute_totals.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.10/site-packages/openmdao/utils/hooks.py:266: OpenMDAOWarning:Couldn&#39;t find the given &#39;post&#39; function in the post hooks for Driver._compute_totals.
+/usr/share/miniconda/envs/test/lib/python3.10/site-packages/openmdao/utils/hooks.py:266: OpenMDAOWarning:Couldn&#39;t find the given &#39;post&#39; function in the post hooks for Driver._get_coloring.
 INFO:check_config:checking out_of_order
 </pre></div>
 </div>
@@ -1481,7 +1481,7 @@ INFO: checking out_of_order
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking auto_ivc_warnings
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 1.264438 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 1.190649 seconds.
 Total jacobian shape: (327, 358) 
 </pre></div>
 </div>
@@ -1490,8 +1490,8 @@ FWD solves: 20   REV solves: 0
 Total colors vs. total size: 20 vs 358  (94.4% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 1.264438 sec.
-Time to compute coloring: 0.354622 sec.
+Time to compute sparsity: 1.190649 sec.
+Time to compute coloring: 0.370277 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
@@ -1505,11 +1505,11 @@ Memory to compute coloring: 0.000000 MB.
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                   30.4803
-       User Objective Time :       0.5581
-       User Sensitivity Time :     4.0753
-       Interface Time :            1.1896
-       Opt Solver Time:           24.6573
+    Total Time:                   30.6949
+       User Objective Time :       0.4985
+       User Sensitivity Time :     3.8559
+       Interface Time :            1.2079
+       Opt Solver Time:           25.1325
     Calls to Objective Function :     274
     Calls to Sens Function :          141
 
