@@ -1029,8 +1029,8 @@ The design of a water rocket is somewhat constrained by the soda bottle used as 
 This means that the volume available for water and air is fixed, the initial launch pressure is limited by the bottle’s strength (since the pressure is directly related to the energy available for the rocket, it is easy to see that it should be as high as possible) and the nozzle throat area is also fixed.
 Given these manufacturing constraints, the design variables we are left with are the empty mass (it can be easily changed through adding ballast), the water volume at the launch, and the launch angle.
 With this considerations in mind, a natural formulation for the water rocket problem is</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2cc60c0e-cdf0-48f3-9c70-dfcc653a9f01">
-<span class="eqno">(84)<a class="headerlink" href="#equation-2cc60c0e-cdf0-48f3-9c70-dfcc653a9f01" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-eaa7835e-c934-45c2-b65d-3071886a5ebf">
+<span class="eqno">(84)<a class="headerlink" href="#equation-eaa7835e-c934-45c2-b65d-3071886a5ebf" title="Permalink to this equation">#</a></span>\[\begin{align}
     \text{maximize}   &amp;\quad \text{range or height} \\
     \text{w.r.t.}     &amp;\quad \text{empty mass, initial water volume, launch angle, trajectory} \\
     \text{subject to} &amp;\quad \text{flight dynamics} \\
@@ -1617,8 +1617,8 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">_MassAdder</span></code> component calculates the rocket’s instantaneous mass by
 summing the water mass with the rockets empty mass, i.e.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-05fb2bcd-c263-4a6c-93d2-f84eb214f12e">
-<span class="eqno">(85)<a class="headerlink" href="#equation-05fb2bcd-c263-4a6c-93d2-f84eb214f12e" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-92748eb9-b9b4-4943-8c2e-0ed1b5b057a1">
+<span class="eqno">(85)<a class="headerlink" href="#equation-92748eb9-b9b4-4943-8c2e-0ed1b5b057a1" title="Permalink to this equation">#</a></span>\[\begin{align}
     m = m_\text{empty}+\rho_w V_w
 \end{align}\]</div>
 <div class="cell tag_remove-input docutils container">
@@ -2626,12 +2626,10 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model viewer data has already been recorded for Driver.
+Model viewer data has already been recorded for Driver.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model viewer data has already been recorded for Driver.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 2.888400 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 2.907303 seconds.
 Total jacobian shape: (1151, 1153) 
 </pre></div>
 </div>
@@ -2640,8 +2638,8 @@ FWD solves: 19   REV solves: 0
 Total colors vs. total size: 19 vs 1153  (98.4% improvement)
 
 Sparsity computed using tolerance: 1e-12
-Time to compute sparsity: 2.888400 sec.
-Time to compute coloring: 2.297829 sec.
+Time to compute sparsity: 2.907303 sec.
+Time to compute coloring: 2.369852 sec.
 Memory to compute coloring: -10.066406 MB.
 </pre></div>
 </div>
@@ -2687,7 +2685,7 @@ Number of inequality constraint evaluations          = 0
 Number of equality constraint Jacobian evaluations   = 65
 Number of inequality constraint Jacobian evaluations = 0
 Number of Lagrangian Hessian evaluations             = 0
-Total seconds in IPOPT                               = 8.741
+Total seconds in IPOPT                               = 9.139
 
 EXIT: Optimal Solution Found.
 </pre></div>
@@ -2806,7 +2804,7 @@ Maximum velocity: 46.1550 m/s
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model viewer data has already been recorded for Driver.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 2.896409 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 2.907020 seconds.
 Total jacobian shape: (1151, 1153) 
 </pre></div>
 </div>
@@ -2815,9 +2813,9 @@ FWD solves: 19   REV solves: 0
 Total colors vs. total size: 19 vs 1153  (98.4% improvement)
 
 Sparsity computed using tolerance: 1e-12
-Time to compute sparsity: 2.896409 sec.
-Time to compute coloring: 2.249845 sec.
-Memory to compute coloring: 0.757812 MB.
+Time to compute sparsity: 2.907020 sec.
+Time to compute coloring: 2.311868 sec.
+Memory to compute coloring: 0.515625 MB.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>List of user-set options:
@@ -2862,7 +2860,7 @@ Number of inequality constraint evaluations          = 0
 Number of equality constraint Jacobian evaluations   = 59
 Number of inequality constraint Jacobian evaluations = 0
 Number of Lagrangian Hessian evaluations             = 0
-Total seconds in IPOPT                               = 8.442
+Total seconds in IPOPT                               = 8.828
 
 EXIT: Optimal Solution Found.
 
@@ -2873,11 +2871,11 @@ Optimization Problem -- Optimization using pyOpt_sparse
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                    8.4435
-       User Objective Time :       0.3249
-       User Sensitivity Time :     5.8880
-       Interface Time :            1.4187
-       Opt Solver Time:            0.8118
+    Total Time:                    8.8301
+       User Objective Time :       0.3570
+       User Sensitivity Time :     6.1484
+       Interface Time :            1.4789
+       Opt Solver Time:            0.8457
     Calls to Objective Function :      75
     Calls to Sens Function :           59
 
