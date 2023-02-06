@@ -775,8 +775,8 @@ It finds the pitch profile for a single-stage-to-orbit launch vehicle that minim
 required to reach orbit insertion under constant thrust.</p>
 <p><img alt="The free-body-diagram of the single-stage-to-orbit problem." src="../../_images/ssto_fbd.png" /></p>
 <p>The vehicle dynamics are given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-04990dd7-a7e9-4ee1-b310-618cb2500b3b">
-<span class="eqno">(79)<a class="headerlink" href="#equation-04990dd7-a7e9-4ee1-b310-618cb2500b3b" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-e18d46aa-b07a-4354-8cfa-ea0a38ba1c64">
+<span class="eqno">(79)<a class="headerlink" href="#equation-e18d46aa-b07a-4354-8cfa-ea0a38ba1c64" title="Permalink to this equation">#</a></span>\[\begin{align}
   \frac{dx}{dt} &amp;= v_x \\
   \frac{dy}{dt} &amp;= v_y \\
   \frac{dv_x}{dt} &amp;= \frac{1}{m} (T \cos \theta - D \cos \gamma) \\
@@ -784,8 +784,8 @@ required to reach orbit insertion under constant thrust.</p>
   \frac{dm}{dt} &amp;= \frac{T}{g I_{sp}}
 \end{align}\]</div>
 <p>The initial conditions are</p>
-<div class="amsmath math notranslate nohighlight" id="equation-23db9492-47a3-4421-82fd-a9cf8e6b4545">
-<span class="eqno">(80)<a class="headerlink" href="#equation-23db9492-47a3-4421-82fd-a9cf8e6b4545" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-09c5e8f0-d5f8-4a55-9779-ad7fde4e6af4">
+<span class="eqno">(80)<a class="headerlink" href="#equation-09c5e8f0-d5f8-4a55-9779-ad7fde4e6af4" title="Permalink to this equation">#</a></span>\[\begin{align}
   x_0 &amp;= 0 \\
   y_0 &amp;= 0 \\
   v_{x0} &amp;= 0 \\
@@ -793,8 +793,8 @@ required to reach orbit insertion under constant thrust.</p>
   m_0 &amp;= 117000 \rm{\,kg}
 \end{align}\]</div>
 <p>and the final conditions are</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4bc20775-a3c2-4b88-8d54-969460ce1419">
-<span class="eqno">(81)<a class="headerlink" href="#equation-4bc20775-a3c2-4b88-8d54-969460ce1419" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-600df218-4bb8-473e-9685-b15246ec9fba">
+<span class="eqno">(81)<a class="headerlink" href="#equation-600df218-4bb8-473e-9685-b15246ec9fba" title="Permalink to this equation">#</a></span>\[\begin{align}
   x_f &amp;= \rm{free} \\
   y_f &amp;= 185 \rm{\,km} \\
   v_{xf} &amp;= V_{circ} \\
@@ -1294,9 +1294,9 @@ FWD solves: 5   REV solves: 0
 Total colors vs. total size: 5 vs 168  (97.0% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.036247 sec.
-Time to compute coloring: 0.018458 sec.
-Memory to compute coloring: 0.000000 MB.
+Time to compute sparsity: 0.034987 sec.
+Time to compute coloring: 0.018263 sec.
+Memory to compute coloring: 0.210938 MB.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Coloring for &#39;traj.phases.phase0.rhs_col&#39; (class LaunchVehicleODE)
@@ -1385,12 +1385,12 @@ FWD solves: 5   REV solves: 0
 Total colors vs. total size: 5 vs 84  (94.0% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.017853 sec.
-Time to compute coloring: 0.009647 sec.
+Time to compute sparsity: 0.018471 sec.
+Time to compute coloring: 0.009488 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.326556 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.317534 seconds.
 Total jacobian shape: (74, 152) 
 </pre></div>
 </div>
@@ -1399,8 +1399,8 @@ FWD solves: 12   REV solves: 0
 Total colors vs. total size: 12 vs 152  (92.1% improvement)
 
 Sparsity computed using tolerance: 1e-12
-Time to compute sparsity: 0.326556 sec.
-Time to compute coloring: 0.077154 sec.
+Time to compute sparsity: 0.317534 sec.
+Time to compute coloring: 0.076234 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
@@ -1410,11 +1410,11 @@ Memory to compute coloring: 0.000000 MB.
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                    2.0370
-       User Objective Time :       0.1192
-       User Sensitivity Time :     0.9183
-       Interface Time :            0.3644
-       Opt Solver Time:            0.6351
+    Total Time:                    1.9321
+       User Objective Time :       0.0977
+       User Sensitivity Time :     0.8656
+       Interface Time :            0.3445
+       Opt Solver Time:            0.6244
     Calls to Objective Function :      51
     Calls to Sens Function :           48
 
