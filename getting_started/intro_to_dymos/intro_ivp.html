@@ -822,13 +822,13 @@ Dynamic systems are typically defined by some set of ordinary
 differential equations (the ODE) which governs their behavior.</p>
 <p>Consider a simple damped harmonic oscillator.</p>
 <p><img alt="Damped harmonic oscillator free-body diagram" src="../../_images/spring_mass_damper.png" /></p>
-<div class="amsmath math notranslate nohighlight" id="equation-31c072ca-f9c1-4cbc-b706-564f2e77ba7e">
-<span class="eqno">(11)<a class="headerlink" href="#equation-31c072ca-f9c1-4cbc-b706-564f2e77ba7e" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-73c9df04-f7ce-4c62-91b9-f44022fcf272">
+<span class="eqno">(11)<a class="headerlink" href="#equation-73c9df04-f7ce-4c62-91b9-f44022fcf272" title="Permalink to this equation">#</a></span>\[\begin{align}
     \ddot{x} &amp;= -\frac{kx}{m} - \frac{c \dot{x}}{m}
 \end{align}\]</div>
 <p>Converting this to a first order system results in an ODE system with two states:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3cd568eb-4697-4c1c-bc28-97ce307121b8">
-<span class="eqno">(12)<a class="headerlink" href="#equation-3cd568eb-4697-4c1c-bc28-97ce307121b8" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-b4f18f47-a6c3-457c-96a4-34bca4e08d80">
+<span class="eqno">(12)<a class="headerlink" href="#equation-b4f18f47-a6c3-457c-96a4-34bca4e08d80" title="Permalink to this equation">#</a></span>\[\begin{align}
     \dot{x} &amp;= v \\
     \dot{v} &amp;= -\frac{kx}{m} - \frac{c \dot{x}}{m}
 \end{align}\]</div>
@@ -980,7 +980,7 @@ Some elements of this code will be explained later, but we’ll hit the highligh
 Done simulating trajectory traj
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_12711/1136298122.py:61: MatplotlibDeprecationWarning: Passing the loc parameter of __init__() positionally is deprecated since Matplotlib 3.6; the parameter will become keyword-only two minor releases later.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_12779/1136298122.py:61: MatplotlibDeprecationWarning: Passing the loc parameter of __init__() positionally is deprecated since Matplotlib 3.6; the parameter will become keyword-only two minor releases later.
   fig.legend((sol[0], sim[0]), (&#39;solution&#39;, &#39;simulation&#39;), &#39;lower right&#39;, ncol=2)
 </pre></div>
 </div>
@@ -1124,8 +1124,8 @@ Otherwise, we can pass it only to certain states as an argument to <code class="
 traj.phases.phase0
 ==================
 NL: Newton 0 ; 64.9519053 1
-NL: Newton 1 ; 5.02959876e-08 7.74357386e-10
-NL: Newton 2 ; 4.83213257e-15 7.43955478e-17
+NL: Newton 1 ; 5.0296009e-08 7.74357715e-10
+NL: Newton 2 ; 8.48981893e-15 1.30709313e-16
 NL: Newton Converged
 </pre></div>
 </div>
@@ -1133,7 +1133,7 @@ NL: Newton Converged
 Done simulating trajectory traj
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_12711/2581959376.py:61: MatplotlibDeprecationWarning: Passing the loc parameter of __init__() positionally is deprecated since Matplotlib 3.6; the parameter will become keyword-only two minor releases later.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_12779/2581959376.py:61: MatplotlibDeprecationWarning: Passing the loc parameter of __init__() positionally is deprecated since Matplotlib 3.6; the parameter will become keyword-only two minor releases later.
   fig.legend((sol[0], sim[0]), (&#39;solution&#39;, &#39;simulation&#39;), &#39;lower right&#39;, ncol=2)
 </pre></div>
 </div>
@@ -1247,7 +1247,7 @@ Optimization Complete
 Done simulating trajectory traj
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_12711/1344483348.py:71: MatplotlibDeprecationWarning: Passing the loc parameter of __init__() positionally is deprecated since Matplotlib 3.6; the parameter will become keyword-only two minor releases later.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_12779/1344483348.py:71: MatplotlibDeprecationWarning: Passing the loc parameter of __init__() positionally is deprecated since Matplotlib 3.6; the parameter will become keyword-only two minor releases later.
   fig.legend((sol[0], sim[0]), (&#39;solution&#39;, &#39;simulation&#39;), &#39;lower right&#39;, ncol=2)
 </pre></div>
 </div>
