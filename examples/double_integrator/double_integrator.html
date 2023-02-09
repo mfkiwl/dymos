@@ -764,20 +764,20 @@ traveled by a block (that starts and ends at rest) sliding without
 friction along a horizontal surface, with acceleration as the control.</p>
 <p>We minimize the final time, <span class="math notranslate nohighlight">\(t_f\)</span>, by varying the dynamic control,
 <span class="math notranslate nohighlight">\(u\)</span>, subject to the dynamics:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b211d2ae-e6b5-4375-98ad-a9988512f662">
-<span class="eqno">(45)<a class="headerlink" href="#equation-b211d2ae-e6b5-4375-98ad-a9988512f662" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-a64ac6b0-7fa4-4382-b4d5-877803c420de">
+<span class="eqno">(45)<a class="headerlink" href="#equation-a64ac6b0-7fa4-4382-b4d5-877803c420de" title="Permalink to this equation">#</a></span>\[\begin{align}
   \frac{dx}{dt} &amp;= v \\
   \frac{dv}{dt} &amp;= u
 \end{align}\]</div>
 <p>The initial conditions are</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c62cb04f-d3cf-4bb9-9062-f7640bb9a342">
-<span class="eqno">(46)<a class="headerlink" href="#equation-c62cb04f-d3cf-4bb9-9062-f7640bb9a342" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-ef200afd-8cb8-4deb-99f2-0a28f0377674">
+<span class="eqno">(46)<a class="headerlink" href="#equation-ef200afd-8cb8-4deb-99f2-0a28f0377674" title="Permalink to this equation">#</a></span>\[\begin{align}
   x_0 &amp;= 0 \\
   v_0 &amp;= 0
 \end{align}\]</div>
 <p>and the final conditions are</p>
-<div class="amsmath math notranslate nohighlight" id="equation-33307913-4890-4716-8905-1883b075186f">
-<span class="eqno">(47)<a class="headerlink" href="#equation-33307913-4890-4716-8905-1883b075186f" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-37aa309b-f264-4a1a-8f7c-968b2de0e496">
+<span class="eqno">(47)<a class="headerlink" href="#equation-37aa309b-f264-4a1a-8f7c-968b2de0e496" title="Permalink to this equation">#</a></span>\[\begin{align}
   x_f &amp;= \rm{free} \\
   v_f &amp;= 0
 \end{align}\]</div>
@@ -1103,7 +1103,7 @@ INFO: checking out_of_order
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking auto_ivc_warnings
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.136607 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.107110 seconds.
 Total jacobian shape: (181, 327) 
 </pre></div>
 </div>
@@ -1112,9 +1112,9 @@ FWD solves: 0   REV solves: 6
 Total colors vs. total size: 6 vs 181  (96.7% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.136607 sec.
-Time to compute coloring: 0.184882 sec.
-Memory to compute coloring: 0.328125 MB.
+Time to compute sparsity: 0.107110 sec.
+Time to compute coloring: 0.125541 sec.
+Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization Problem -- Optimization using pyOpt_sparse
@@ -1123,11 +1123,11 @@ Memory to compute coloring: 0.328125 MB.
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                    2.8391
-       User Objective Time :       0.0371
-       User Sensitivity Time :     0.1082
-       Interface Time :            0.1781
-       Opt Solver Time:            2.5157
+    Total Time:                    2.5971
+       User Objective Time :       0.0268
+       User Sensitivity Time :     0.0882
+       Interface Time :            0.1409
+       Opt Solver Time:            2.3411
     Calls to Objective Function :      19
     Calls to Sens Function :           19
 
@@ -1764,7 +1764,7 @@ Memory to compute coloring: 0.328125 MB.
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./examples/double_integrator"
         },
         predefinedOutput: true
