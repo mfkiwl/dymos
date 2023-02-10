@@ -764,20 +764,20 @@ traveled by a block (that starts and ends at rest) sliding without
 friction along a horizontal surface, with acceleration as the control.</p>
 <p>We minimize the final time, <span class="math notranslate nohighlight">\(t_f\)</span>, by varying the dynamic control,
 <span class="math notranslate nohighlight">\(u\)</span>, subject to the dynamics:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a64ac6b0-7fa4-4382-b4d5-877803c420de">
-<span class="eqno">(45)<a class="headerlink" href="#equation-a64ac6b0-7fa4-4382-b4d5-877803c420de" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-7cbe6573-5f45-4803-a64c-da8e3da7ee93">
+<span class="eqno">(45)<a class="headerlink" href="#equation-7cbe6573-5f45-4803-a64c-da8e3da7ee93" title="Permalink to this equation">#</a></span>\[\begin{align}
   \frac{dx}{dt} &amp;= v \\
   \frac{dv}{dt} &amp;= u
 \end{align}\]</div>
 <p>The initial conditions are</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ef200afd-8cb8-4deb-99f2-0a28f0377674">
-<span class="eqno">(46)<a class="headerlink" href="#equation-ef200afd-8cb8-4deb-99f2-0a28f0377674" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-389fbb86-0b5b-4ea4-a328-19e5a33f297c">
+<span class="eqno">(46)<a class="headerlink" href="#equation-389fbb86-0b5b-4ea4-a328-19e5a33f297c" title="Permalink to this equation">#</a></span>\[\begin{align}
   x_0 &amp;= 0 \\
   v_0 &amp;= 0
 \end{align}\]</div>
 <p>and the final conditions are</p>
-<div class="amsmath math notranslate nohighlight" id="equation-37aa309b-f264-4a1a-8f7c-968b2de0e496">
-<span class="eqno">(47)<a class="headerlink" href="#equation-37aa309b-f264-4a1a-8f7c-968b2de0e496" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-841db7c1-8c06-414d-9f0c-2c3be381eb1d">
+<span class="eqno">(47)<a class="headerlink" href="#equation-841db7c1-8c06-414d-9f0c-2c3be381eb1d" title="Permalink to this equation">#</a></span>\[\begin{align}
   x_f &amp;= \rm{free} \\
   v_f &amp;= 0
 \end{align}\]</div>
@@ -1103,7 +1103,7 @@ INFO: checking out_of_order
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking auto_ivc_warnings
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.107110 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.127768 seconds.
 Total jacobian shape: (181, 327) 
 </pre></div>
 </div>
@@ -1112,9 +1112,9 @@ FWD solves: 0   REV solves: 6
 Total colors vs. total size: 6 vs 181  (96.7% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.107110 sec.
-Time to compute coloring: 0.125541 sec.
-Memory to compute coloring: 0.000000 MB.
+Time to compute sparsity: 0.127768 sec.
+Time to compute coloring: 0.149598 sec.
+Memory to compute coloring: 0.210938 MB.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization Problem -- Optimization using pyOpt_sparse
@@ -1123,11 +1123,11 @@ Memory to compute coloring: 0.000000 MB.
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                    2.5971
-       User Objective Time :       0.0268
-       User Sensitivity Time :     0.0882
-       Interface Time :            0.1409
-       Opt Solver Time:            2.3411
+    Total Time:                    3.0850
+       User Objective Time :       0.0323
+       User Sensitivity Time :     0.1050
+       Interface Time :            0.1720
+       Opt Solver Time:            2.7757
     Calls to Objective Function :      19
     Calls to Sens Function :           19
 
