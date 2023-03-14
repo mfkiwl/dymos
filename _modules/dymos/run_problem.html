@@ -413,6 +413,7 @@ document.write(`
                 <span class="n">case_prefix</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                 <span class="n">reset_iter_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                 <span class="n">simulate_kwargs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                <span class="n">plot_kwargs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                 <span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A Dymos-specific interface to execute an OpenMDAO problem containing Dymos Trajectories or</span>
@@ -449,6 +450,8 @@ document.write(`
 <span class="sd">        Name of the plot directory to be created.</span>
 <span class="sd">    simulate_kwargs : dict</span>
 <span class="sd">        A dictionary of argument: value pairs to be passed to simulate. These are ignored when simulate=False.</span>
+<span class="sd">    plot_kwargs : dict</span>
+<span class="sd">        A dictionary of argument: value pairs that are passed to `timeseries_plots`. Only used when make_plots=True.</span>
 <span class="sd">    case_prefix : str or None</span>
 <span class="sd">        Prefix to prepend to coordinates when recording.</span>
 <span class="sd">    reset_iter_counts : bool</span>
@@ -505,8 +508,9 @@ document.write(`
 
     <span class="k">if</span> <span class="n">make_plots</span><span class="p">:</span>
         <span class="n">_sim_record_file</span> <span class="o">=</span> <span class="kc">None</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">simulate</span> <span class="k">else</span> <span class="n">simulation_record_file</span>
+        <span class="n">_plot_kwargs</span> <span class="o">=</span> <span class="n">plot_kwargs</span> <span class="k">if</span> <span class="n">plot_kwargs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="p">{}</span>
         <span class="n">timeseries_plots</span><span class="p">(</span><span class="n">solution_record_file</span><span class="p">,</span> <span class="n">simulation_record_file</span><span class="o">=</span><span class="n">_sim_record_file</span><span class="p">,</span>
-                         <span class="n">plot_dir</span><span class="o">=</span><span class="n">plot_dir</span><span class="p">,</span> <span class="n">problem</span><span class="o">=</span><span class="n">problem</span><span class="p">)</span>
+                         <span class="n">plot_dir</span><span class="o">=</span><span class="n">plot_dir</span><span class="p">,</span> <span class="n">problem</span><span class="o">=</span><span class="n">problem</span><span class="p">,</span> <span class="o">**</span><span class="n">_plot_kwargs</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">failed</span></div>
 </pre></div>
