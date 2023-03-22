@@ -494,20 +494,20 @@ traveled by a block (that starts and ends at rest) sliding without
 friction along a horizontal surface, with acceleration as the control.</p>
 <p>We minimize the final time, <span class="math notranslate nohighlight">\(t_f\)</span>, by varying the dynamic control,
 <span class="math notranslate nohighlight">\(u\)</span>, subject to the dynamics:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-41285687-3f8b-47ed-b365-c5676633a6a8">
-<span class="eqno">(45)<a class="headerlink" href="#equation-41285687-3f8b-47ed-b365-c5676633a6a8" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-b2ab3081-c192-45ff-95ee-2c4152887bdc">
+<span class="eqno">(45)<a class="headerlink" href="#equation-b2ab3081-c192-45ff-95ee-2c4152887bdc" title="Permalink to this equation">#</a></span>\[\begin{align}
   \frac{dx}{dt} &amp;= v \\
   \frac{dv}{dt} &amp;= u
 \end{align}\]</div>
 <p>The initial conditions are</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0fe4865a-2542-4527-8531-a1f99ac622e9">
-<span class="eqno">(46)<a class="headerlink" href="#equation-0fe4865a-2542-4527-8531-a1f99ac622e9" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-5893db30-2dc7-4ac5-9208-7de4ca09a7a1">
+<span class="eqno">(46)<a class="headerlink" href="#equation-5893db30-2dc7-4ac5-9208-7de4ca09a7a1" title="Permalink to this equation">#</a></span>\[\begin{align}
   x_0 &amp;= 0 \\
   v_0 &amp;= 0
 \end{align}\]</div>
 <p>and the final conditions are</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8feb5f71-79a8-4d8d-9137-f3a277f3df23">
-<span class="eqno">(47)<a class="headerlink" href="#equation-8feb5f71-79a8-4d8d-9137-f3a277f3df23" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-a2805337-fc93-4f97-8866-4c75e2cbe371">
+<span class="eqno">(47)<a class="headerlink" href="#equation-a2805337-fc93-4f97-8866-4c75e2cbe371" title="Permalink to this equation">#</a></span>\[\begin{align}
   x_f &amp;= \rm{free} \\
   v_f &amp;= 0
 \end{align}\]</div>
@@ -839,7 +839,7 @@ INFO: checking out_of_order
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking auto_ivc_warnings
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.109910 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.108500 seconds.
 Total jacobian shape: (181, 327) 
 </pre></div>
 </div>
@@ -848,9 +848,9 @@ FWD solves: 0   REV solves: 6
 Total colors vs. total size: 6 vs 181  (96.7% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.109910 sec.
-Time to compute coloring: 0.126456 sec.
-Memory to compute coloring: 0.394531 MB.
+Time to compute sparsity: 0.108500 sec.
+Time to compute coloring: 0.128431 sec.
+Memory to compute coloring: 0.207031 MB.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization Problem -- Optimization using pyOpt_sparse
@@ -859,11 +859,11 @@ Memory to compute coloring: 0.394531 MB.
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                    2.7752
-       User Objective Time :       0.0355
-       User Sensitivity Time :     0.0996
-       Interface Time :            0.1534
-       Opt Solver Time:            2.4866
+    Total Time:                    2.7310
+       User Objective Time :       0.0291
+       User Sensitivity Time :     0.0899
+       Interface Time :            0.1484
+       Opt Solver Time:            2.4635
     Calls to Objective Function :      19
     Calls to Sens Function :           19
 
