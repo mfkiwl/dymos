@@ -955,7 +955,6 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model viewer data has already been recorded for Driver.
-Model viewer data has already been recorded for Driver.
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.10/site-packages/openmdao/core/driver.py:469: DriverWarning:The following design variable initial conditions are out of their specified bounds:
@@ -967,7 +966,10 @@ Set the initial value of the design variable to a valid value or set the driver 
 This warning will become an error by default in OpenMDAO version 3.25.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.456326 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model viewer data has already been recorded for Driver.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.454763 seconds.
 Total jacobian shape: (361, 212) 
 </pre></div>
 </div>
@@ -976,8 +978,8 @@ FWD solves: 13   REV solves: 0
 Total colors vs. total size: 13 vs 212  (93.9% improvement)
 
 Sparsity computed using tolerance: 1e-12
-Time to compute sparsity: 0.456326 sec.
-Time to compute coloring: 0.255311 sec.
+Time to compute sparsity: 0.454763 sec.
+Time to compute coloring: 0.258530 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
@@ -990,11 +992,11 @@ Memory to compute coloring: 0.000000 MB.
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                    8.1143
-       User Objective Time :       2.3904
-       User Sensitivity Time :     2.2418
-       Interface Time :            1.0085
-       Opt Solver Time:            2.4736
+    Total Time:                    8.3127
+       User Objective Time :       2.4077
+       User Sensitivity Time :     2.2684
+       Interface Time :            1.0321
+       Opt Solver Time:            2.6045
     Calls to Objective Function :     129
     Calls to Sens Function :          105
 
@@ -1594,8 +1596,8 @@ FWD solves: 13   REV solves: 0
 Total colors vs. total size: 13 vs 212  (93.9% improvement)
 
 Sparsity computed using tolerance: 1e-12
-Time to compute sparsity: 0.456326 sec.
-Time to compute coloring: 0.255311 sec.
+Time to compute sparsity: 0.454763 sec.
+Time to compute coloring: 0.258530 sec.
 Memory to compute coloring: 0.000000 MB.
 
 --- Constraint Report [traj] ---
@@ -1624,7 +1626,7 @@ Set the initial value of the design variable to a valid value or set the driver 
 This warning will become an error by default in OpenMDAO version 3.25.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.514294 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.532732 seconds.
 Total jacobian shape: (361, 212) 
 </pre></div>
 </div>
@@ -1633,9 +1635,9 @@ FWD solves: 154   REV solves: 0
 Total colors vs. total size: 154 vs 212  (27.4% improvement)
 
 Sparsity computed using tolerance: 1e-12
-Time to compute sparsity: 0.514294 sec.
-Time to compute coloring: 1.288592 sec.
-Memory to compute coloring: 0.964844 MB.
+Time to compute sparsity: 0.532732 sec.
+Time to compute coloring: 1.277590 sec.
+Memory to compute coloring: 1.406250 MB.
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.10/site-packages/openmdao/core/total_jac.py:1626: DerivativesWarning:Constraints or objectives [(&#39;traj.phases.phase0.timeseries.timeseries_comp.states:h&#39;, inds=[(0, 0)]), (&#39;traj.phases.phase0.timeseries.timeseries_comp.mach&#39;, inds=[(0, 0)])] cannot be impacted by the design variables of the problem.
@@ -1647,11 +1649,11 @@ Memory to compute coloring: 0.964844 MB.
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                   22.3626
-       User Objective Time :       2.8273
-       User Sensitivity Time :    15.1009
-       Interface Time :            1.2869
-       Opt Solver Time:            3.1475
+    Total Time:                   22.6683
+       User Objective Time :       2.8651
+       User Sensitivity Time :    15.1341
+       Interface Time :            1.3208
+       Opt Solver Time:            3.3483
     Calls to Objective Function :     153
     Calls to Sens Function :          130
 
@@ -2251,9 +2253,9 @@ FWD solves: 154   REV solves: 0
 Total colors vs. total size: 154 vs 212  (27.4% improvement)
 
 Sparsity computed using tolerance: 1e-12
-Time to compute sparsity: 0.514294 sec.
-Time to compute coloring: 1.288592 sec.
-Memory to compute coloring: 0.964844 MB.
+Time to compute sparsity: 0.532732 sec.
+Time to compute coloring: 1.277590 sec.
+Memory to compute coloring: 1.406250 MB.
 
 --- Constraint Report [traj] ---
     --- phase0 ---
@@ -2288,8 +2290,8 @@ FWD solves: 2   REV solves: 0
 Total colors vs. total size: 2 vs 120  (98.3% improvement)
 
 Sparsity computed using tolerance: 1e-06
-Time to compute sparsity: 0.009109 sec.
-Time to compute coloring: 0.010693 sec.
+Time to compute sparsity: 0.009334 sec.
+Time to compute coloring: 0.010820 sec.
 Memory to compute coloring: 0.000000 MB.
 
 Coloring for &#39;traj.phases.phase0.rhs_col.aero.q_comp&#39; (class DynamicPressureCompFD)
@@ -2299,12 +2301,12 @@ FWD solves: 2   REV solves: 0
 Total colors vs. total size: 2 vs 60  (96.7% improvement)
 
 Sparsity computed using tolerance: 1e-06
-Time to compute sparsity: 0.004686 sec.
-Time to compute coloring: 0.005621 sec.
+Time to compute sparsity: 0.004660 sec.
+Time to compute coloring: 0.005720 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.526534 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.550113 seconds.
 Total jacobian shape: (361, 212) 
 </pre></div>
 </div>
@@ -2313,8 +2315,8 @@ FWD solves: 13   REV solves: 0
 Total colors vs. total size: 13 vs 212  (93.9% improvement)
 
 Sparsity computed using tolerance: 1e-12
-Time to compute sparsity: 0.526534 sec.
-Time to compute coloring: 0.254511 sec.
+Time to compute sparsity: 0.550113 sec.
+Time to compute coloring: 0.256519 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
@@ -2327,11 +2329,11 @@ Memory to compute coloring: 0.000000 MB.
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                    9.6625
-       User Objective Time :       2.6877
-       User Sensitivity Time :     2.9222
-       Interface Time :            1.1270
-       Opt Solver Time:            2.9256
+    Total Time:                    9.9778
+       User Objective Time :       2.7058
+       User Sensitivity Time :     2.9712
+       Interface Time :            1.1591
+       Opt Solver Time:            3.1417
     Calls to Objective Function :     144
     Calls to Sens Function :          117
 
@@ -2931,8 +2933,8 @@ FWD solves: 13   REV solves: 0
 Total colors vs. total size: 13 vs 212  (93.9% improvement)
 
 Sparsity computed using tolerance: 1e-12
-Time to compute sparsity: 0.526534 sec.
-Time to compute coloring: 0.254511 sec.
+Time to compute sparsity: 0.550113 sec.
+Time to compute coloring: 0.256519 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
