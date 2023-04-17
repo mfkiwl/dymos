@@ -18,12 +18,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../../../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
   
-  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,8 +38,8 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
@@ -417,6 +417,7 @@ document.write(`
 <span class="kn">from</span> <span class="nn">..transcriptions.common</span> <span class="kn">import</span> <span class="n">ParameterComp</span>
 <span class="kn">from</span> <span class="nn">..utils.misc</span> <span class="kn">import</span> <span class="n">get_rate_units</span><span class="p">,</span> <span class="n">_unspecified</span>
 <span class="kn">from</span> <span class="nn">..utils.introspection</span> <span class="kn">import</span> <span class="n">get_promoted_vars</span><span class="p">,</span> <span class="n">get_source_metadata</span>
+<span class="kn">from</span> <span class="nn">.._options</span> <span class="kn">import</span> <span class="n">options</span> <span class="k">as</span> <span class="n">dymos_options</span>
 
 
 <span class="k">class</span> <span class="nc">Trajectory</span><span class="p">(</span><span class="n">om</span><span class="o">.</span><span class="n">Group</span><span class="p">):</span>
@@ -939,26 +940,31 @@ document.write(`
                 <span class="n">units</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">phases</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">time_options</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">]</span>
                 <span class="n">shapes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,)</span>
             <span class="k">elif</span> <span class="n">classes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;state&#39;</span><span class="p">:</span>
-                <span class="n">sources</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;timeseries.states:</span><span class="si">{</span><span class="nb">vars</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span>
+                <span class="n">prefix</span> <span class="o">=</span> <span class="s1">&#39;states:&#39;</span> <span class="k">if</span> <span class="n">dymos_options</span><span class="p">[</span><span class="s1">&#39;use_timeseries_prefix&#39;</span><span class="p">]</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
+                <span class="n">sources</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;timeseries.</span><span class="si">{</span><span class="n">prefix</span><span class="si">}{</span><span class="nb">vars</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span>
                 <span class="n">units</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">phases</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">state_options</span><span class="p">[</span><span class="nb">vars</span><span class="p">[</span><span class="n">i</span><span class="p">]][</span><span class="s1">&#39;units&#39;</span><span class="p">]</span>
                 <span class="n">shapes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">phases</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">state_options</span><span class="p">[</span><span class="nb">vars</span><span class="p">[</span><span class="n">i</span><span class="p">]][</span><span class="s1">&#39;shape&#39;</span><span class="p">]</span>
             <span class="k">elif</span> <span class="n">classes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">in</span> <span class="p">{</span><span class="s1">&#39;indep_control&#39;</span><span class="p">,</span> <span class="s1">&#39;input_control&#39;</span><span class="p">}:</span>
-                <span class="n">sources</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;timeseries.controls:</span><span class="si">{</span><span class="nb">vars</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span>
+                <span class="n">prefix</span> <span class="o">=</span> <span class="s1">&#39;controls:&#39;</span> <span class="k">if</span> <span class="n">dymos_options</span><span class="p">[</span><span class="s1">&#39;use_timeseries_prefix&#39;</span><span class="p">]</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
+                <span class="n">sources</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;timeseries.</span><span class="si">{</span><span class="n">prefix</span><span class="si">}{</span><span class="nb">vars</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span>
                 <span class="n">units</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">phases</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">control_options</span><span class="p">[</span><span class="nb">vars</span><span class="p">[</span><span class="n">i</span><span class="p">]][</span><span class="s1">&#39;units&#39;</span><span class="p">]</span>
                 <span class="n">shapes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">phases</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">control_options</span><span class="p">[</span><span class="nb">vars</span><span class="p">[</span><span class="n">i</span><span class="p">]][</span><span class="s1">&#39;shape&#39;</span><span class="p">]</span>
             <span class="k">elif</span> <span class="n">classes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">in</span> <span class="p">{</span><span class="s1">&#39;control_rate&#39;</span><span class="p">,</span> <span class="s1">&#39;control_rate2&#39;</span><span class="p">}:</span>
-                <span class="n">sources</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;timeseries.control_rates:</span><span class="si">{</span><span class="nb">vars</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span>
+                <span class="n">prefix</span> <span class="o">=</span> <span class="s1">&#39;control_rates:&#39;</span> <span class="k">if</span> <span class="n">dymos_options</span><span class="p">[</span><span class="s1">&#39;use_timeseries_prefix&#39;</span><span class="p">]</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
+                <span class="n">sources</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;timeseries.</span><span class="si">{</span><span class="n">prefix</span><span class="si">}{</span><span class="nb">vars</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span>
                 <span class="n">control_name</span> <span class="o">=</span> <span class="nb">vars</span><span class="p">[</span><span class="n">i</span><span class="p">][:</span><span class="o">-</span><span class="mi">5</span><span class="p">]</span> <span class="k">if</span> <span class="n">classes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;control_rate&#39;</span> <span class="k">else</span> <span class="nb">vars</span><span class="p">[</span><span class="n">i</span><span class="p">][:</span><span class="o">-</span><span class="mi">6</span><span class="p">]</span>
                 <span class="n">units</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">phases</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">control_options</span><span class="p">[</span><span class="n">control_name</span><span class="p">][</span><span class="s1">&#39;units&#39;</span><span class="p">]</span>
                 <span class="n">deriv</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">classes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;rate&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="mi">2</span>
                 <span class="n">units</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_rate_units</span><span class="p">(</span><span class="n">units</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">phases</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">time_options</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">],</span> <span class="n">deriv</span><span class="o">=</span><span class="n">deriv</span><span class="p">)</span>
                 <span class="n">shapes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">phases</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">control_options</span><span class="p">[</span><span class="n">control_name</span><span class="p">][</span><span class="s1">&#39;shape&#39;</span><span class="p">]</span>
             <span class="k">elif</span> <span class="n">classes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">in</span> <span class="p">{</span><span class="s1">&#39;indep_polynomial_control&#39;</span><span class="p">,</span> <span class="s1">&#39;input_polynomial_control&#39;</span><span class="p">}:</span>
-                <span class="n">sources</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;timeseries.polynomial_controls:</span><span class="si">{</span><span class="nb">vars</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span>
+                <span class="n">prefix</span> <span class="o">=</span> <span class="s1">&#39;polynomial_controls:&#39;</span> <span class="k">if</span> <span class="n">dymos_options</span><span class="p">[</span><span class="s1">&#39;use_timeseries_prefix&#39;</span><span class="p">]</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
+                <span class="n">sources</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;timeseries.</span><span class="si">{</span><span class="n">prefix</span><span class="si">}{</span><span class="nb">vars</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span>
                 <span class="n">units</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">phases</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">polynomial_control_options</span><span class="p">[</span><span class="nb">vars</span><span class="p">[</span><span class="n">i</span><span class="p">]][</span><span class="s1">&#39;units&#39;</span><span class="p">]</span>
                 <span class="n">shapes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">phases</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">polynomial_control_options</span><span class="p">[</span><span class="nb">vars</span><span class="p">[</span><span class="n">i</span><span class="p">]][</span><span class="s1">&#39;shape&#39;</span><span class="p">]</span>
             <span class="k">elif</span> <span class="n">classes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">in</span> <span class="p">{</span><span class="s1">&#39;polynomial_control_rate&#39;</span><span class="p">,</span> <span class="s1">&#39;polynomial_control_rate2&#39;</span><span class="p">}:</span>
-                <span class="n">sources</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;timeseries.polynomial_control_rates:</span><span class="si">{</span><span class="nb">vars</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span>
+                <span class="n">prefix</span> <span class="o">=</span> <span class="s1">&#39;polynomial_control_rates:&#39;</span> <span class="k">if</span> <span class="n">dymos_options</span><span class="p">[</span><span class="s1">&#39;use_timeseries_prefix&#39;</span><span class="p">]</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
+                <span class="n">sources</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;timeseries.</span><span class="si">{</span><span class="n">prefix</span><span class="si">}{</span><span class="nb">vars</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span>
                 <span class="n">control_name</span> <span class="o">=</span> <span class="nb">vars</span><span class="p">[</span><span class="n">i</span><span class="p">][:</span><span class="o">-</span><span class="mi">5</span><span class="p">]</span> <span class="k">if</span> <span class="n">classes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;polynomial_control_rate&#39;</span> <span class="k">else</span> <span class="nb">vars</span><span class="p">[</span><span class="n">i</span><span class="p">][:</span><span class="o">-</span><span class="mi">6</span><span class="p">]</span>
                 <span class="n">control_units</span> <span class="o">=</span> <span class="n">phases</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">polynomial_control_options</span><span class="p">[</span><span class="n">control_name</span><span class="p">][</span><span class="s1">&#39;units&#39;</span><span class="p">]</span>
                 <span class="n">time_units</span> <span class="o">=</span> <span class="n">phases</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">time_options</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">]</span>
@@ -1122,7 +1128,10 @@ document.write(`
                     <span class="p">}</span>
 
         <span class="k">def</span> <span class="nf">_get_prefixed_var</span><span class="p">(</span><span class="n">var</span><span class="p">,</span> <span class="n">phase</span><span class="p">):</span>
-            <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">prefixes</span><span class="p">[</span><span class="n">phase</span><span class="o">.</span><span class="n">classify_var</span><span class="p">(</span><span class="n">var</span><span class="p">)]</span><span class="si">}{</span><span class="n">var</span><span class="si">}</span><span class="s1">&#39;</span>
+            <span class="k">if</span> <span class="n">dymos_options</span><span class="p">[</span><span class="s1">&#39;use_timeseries_prefix&#39;</span><span class="p">]:</span>
+                <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">prefixes</span><span class="p">[</span><span class="n">phase</span><span class="o">.</span><span class="n">classify_var</span><span class="p">(</span><span class="n">var</span><span class="p">)]</span><span class="si">}{</span><span class="n">var</span><span class="si">}</span><span class="s1">&#39;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">var</span>
 
         <span class="c1"># First, if the user requested all states and time be continuous (&#39;*&#39;, &#39;*&#39;), then</span>
         <span class="c1"># expand it out.</span>
@@ -1783,9 +1792,15 @@ document.write(`
               
               
                 <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+</div></div>
+  
 </div>
+
                 </footer>
               
             </div>
@@ -1795,7 +1810,7 @@ document.write(`
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner">
+            
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -1825,7 +1840,7 @@ By The Dymos Development Team
     
   </div>
   
-</div></div>
+</div>
           </footer>
         
 
@@ -1834,8 +1849,8 @@ By The Dymos Development Team
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script src="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
   <footer class="bd-footer">
   </footer>
