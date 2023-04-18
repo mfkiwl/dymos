@@ -36,7 +36,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/myfile.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
@@ -966,7 +966,7 @@ Model viewer data has already been recorded for Driver.
 Set the initial value of the design variable to a valid value or set the driver option[&#39;invalid_desvar_behavior&#39;] to &#39;ignore&#39;.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.538211 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.404168 seconds.
 Total jacobian shape: (361, 212) 
 </pre></div>
 </div>
@@ -975,8 +975,8 @@ FWD solves: 13   REV solves: 0
 Total colors vs. total size: 13 vs 212  (93.9% improvement)
 
 Sparsity computed using tolerance: 1e-12
-Time to compute sparsity: 0.538211 sec.
-Time to compute coloring: 0.305400 sec.
+Time to compute sparsity: 0.404168 sec.
+Time to compute coloring: 0.221816 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
@@ -989,11 +989,11 @@ Memory to compute coloring: 0.000000 MB.
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                   11.1937
-       User Objective Time :       4.2629
-       User Sensitivity Time :     3.8416
-       Interface Time :            1.5853
-       Opt Solver Time:            1.5040
+    Total Time:                    8.1893
+       User Objective Time :       3.1095
+       User Sensitivity Time :     2.8352
+       Interface Time :            1.1323
+       Opt Solver Time:            1.1122
     Calls to Objective Function :     190
     Calls to Sens Function :          162
 
@@ -1593,8 +1593,8 @@ FWD solves: 13   REV solves: 0
 Total colors vs. total size: 13 vs 212  (93.9% improvement)
 
 Sparsity computed using tolerance: 1e-12
-Time to compute sparsity: 0.538211 sec.
-Time to compute coloring: 0.305400 sec.
+Time to compute sparsity: 0.404168 sec.
+Time to compute coloring: 0.221816 sec.
 Memory to compute coloring: 0.000000 MB.
 
 --- Constraint Report [traj] ---
@@ -1622,7 +1622,7 @@ Model viewer data has already been recorded for Driver.
 Set the initial value of the design variable to a valid value or set the driver option[&#39;invalid_desvar_behavior&#39;] to &#39;ignore&#39;.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.635531 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.475615 seconds.
 Total jacobian shape: (361, 212) 
 </pre></div>
 </div>
@@ -1631,9 +1631,9 @@ FWD solves: 154   REV solves: 0
 Total colors vs. total size: 154 vs 212  (27.4% improvement)
 
 Sparsity computed using tolerance: 1e-12
-Time to compute sparsity: 0.635531 sec.
-Time to compute coloring: 1.523417 sec.
-Memory to compute coloring: 13.054688 MB.
+Time to compute sparsity: 0.475615 sec.
+Time to compute coloring: 1.122190 sec.
+Memory to compute coloring: 10.035156 MB.
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.10/site-packages/openmdao/core/total_jac.py:1636: DerivativesWarning:Constraints or objectives [(&#39;traj.phases.phase0.timeseries.timeseries_comp.states:h&#39;, inds=[(0, 0)]), (&#39;traj.phases.phase0.timeseries.timeseries_comp.mach&#39;, inds=[(0, 0)])] cannot be impacted by the design variables of the problem.
@@ -1645,11 +1645,11 @@ Memory to compute coloring: 13.054688 MB.
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                   25.4734
-       User Objective Time :       3.7967
-       User Sensitivity Time :    18.0863
-       Interface Time :            1.3534
-       Opt Solver Time:            2.2370
+    Total Time:                   19.3075
+       User Objective Time :       2.8287
+       User Sensitivity Time :    13.7403
+       Interface Time :            1.0098
+       Opt Solver Time:            1.7287
     Calls to Objective Function :     171
     Calls to Sens Function :          133
 
@@ -2249,9 +2249,9 @@ FWD solves: 154   REV solves: 0
 Total colors vs. total size: 154 vs 212  (27.4% improvement)
 
 Sparsity computed using tolerance: 1e-12
-Time to compute sparsity: 0.635531 sec.
-Time to compute coloring: 1.523417 sec.
-Memory to compute coloring: 13.054688 MB.
+Time to compute sparsity: 0.475615 sec.
+Time to compute coloring: 1.122190 sec.
+Memory to compute coloring: 10.035156 MB.
 
 --- Constraint Report [traj] ---
     --- phase0 ---
@@ -2285,8 +2285,8 @@ FWD solves: 2   REV solves: 0
 Total colors vs. total size: 2 vs 120  (98.3% improvement)
 
 Sparsity computed using tolerance: 1e-06
-Time to compute sparsity: 0.010838 sec.
-Time to compute coloring: 0.015382 sec.
+Time to compute sparsity: 0.009198 sec.
+Time to compute coloring: 0.010629 sec.
 Memory to compute coloring: 0.000000 MB.
 
 Coloring for &#39;traj.phases.phase0.rhs_col.aero.q_comp&#39; (class DynamicPressureCompFD)
@@ -2296,12 +2296,12 @@ FWD solves: 2   REV solves: 0
 Total colors vs. total size: 2 vs 60  (96.7% improvement)
 
 Sparsity computed using tolerance: 1e-06
-Time to compute sparsity: 0.005434 sec.
-Time to compute coloring: 0.006559 sec.
+Time to compute sparsity: 0.004646 sec.
+Time to compute coloring: 0.005444 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.647934 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.521549 seconds.
 Total jacobian shape: (361, 212) 
 </pre></div>
 </div>
@@ -2310,8 +2310,8 @@ FWD solves: 13   REV solves: 0
 Total colors vs. total size: 13 vs 212  (93.9% improvement)
 
 Sparsity computed using tolerance: 1e-12
-Time to compute sparsity: 0.647934 sec.
-Time to compute coloring: 0.303657 sec.
+Time to compute sparsity: 0.521549 sec.
+Time to compute coloring: 0.249053 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
@@ -2324,11 +2324,11 @@ Memory to compute coloring: 0.000000 MB.
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                    7.8432
-       User Objective Time :       2.8727
-       User Sensitivity Time :     2.9644
-       Interface Time :            1.0093
-       Opt Solver Time:            0.9968
+    Total Time:                    6.3757
+       User Objective Time :       2.3120
+       User Sensitivity Time :     2.4512
+       Interface Time :            0.8032
+       Opt Solver Time:            0.8094
     Calls to Objective Function :     128
     Calls to Sens Function :          104
 
@@ -2928,8 +2928,8 @@ FWD solves: 13   REV solves: 0
 Total colors vs. total size: 13 vs 212  (93.9% improvement)
 
 Sparsity computed using tolerance: 1e-12
-Time to compute sparsity: 0.647934 sec.
-Time to compute coloring: 0.303657 sec.
+Time to compute sparsity: 0.521549 sec.
+Time to compute coloring: 0.249053 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
