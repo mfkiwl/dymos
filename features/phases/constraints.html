@@ -503,8 +503,8 @@ are a few different ways to impose these in Dymos, each with slightly different 
 <p>Let’s consider that we want to solve for the elevation angle that results in the maximum possible
 range flown by a cannonball.  In this situation we have some set of initial conditions that are
 fixed.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-65d8937c-717e-4669-8da3-81142ebc2a4e">
-<span class="eqno">(98)<a class="headerlink" href="#equation-65d8937c-717e-4669-8da3-81142ebc2a4e" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-3f3f3ba0-b650-490f-9a1b-45e98aea6e28">
+<span class="eqno">(98)<a class="headerlink" href="#equation-3f3f3ba0-b650-490f-9a1b-45e98aea6e28" title="Permalink to this equation">#</a></span>\[\begin{align}
     t_0 &amp;= 0 \, \mathrm{s} \\
     x_0 &amp;= 0 \, \mathrm{m} \\
     y_0 &amp;= 0 \, \mathrm{m} \\
@@ -567,8 +567,8 @@ As with <code class="docutils literal notranslate"><span class="pre">add_boundar
 <h2>Constraining Expressions<a class="headerlink" href="#constraining-expressions" title="Permalink to this heading">#</a></h2>
 <p>Constraints may be defined using mathematical expressions of the form <code class="docutils literal notranslate"><span class="pre">y=f(x)</span></code> to be evaluated. Here <code class="docutils literal notranslate"><span class="pre">x</span></code> may be vector combination of time, states, controls, parameters, or any outputs of the ODE. The variable <code class="docutils literal notranslate"><span class="pre">y</span></code> is added to the timeseries outputs of the phase and the desired constraint is applied to it.</p>
 <p>Consider, again, the example of maximizing the range flown by a cannonball. But now, rather than a constraint on the initial velocity, we wish to apply a constraint to the initial normalized kinetic energy.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-89edfc38-bc20-44e3-a9e7-235cc5dfab02">
-<span class="eqno">(99)<a class="headerlink" href="#equation-89edfc38-bc20-44e3-a9e7-235cc5dfab02" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-9d8366fd-3f4e-45aa-aadd-e1153e0417af">
+<span class="eqno">(99)<a class="headerlink" href="#equation-9d8366fd-3f4e-45aa-aadd-e1153e0417af" title="Permalink to this equation">#</a></span>\[\begin{align}
     ke &amp;= 0.5 * v^2 \\
     ke_0 &amp;= 5000 \, \frac{\mathrm{m^2}}{\mathrm{s^2}}
 \end{align}\]</div>
