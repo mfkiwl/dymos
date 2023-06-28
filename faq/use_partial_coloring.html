@@ -955,7 +955,6 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model viewer data has already been recorded for Driver.
-Model viewer data has already been recorded for Driver.
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.10/site-packages/openmdao/core/driver.py:470: DriverWarning:The following design variable initial conditions are out of their specified bounds:
@@ -966,7 +965,10 @@ Model viewer data has already been recorded for Driver.
 Set the initial value of the design variable to a valid value or set the driver option[&#39;invalid_desvar_behavior&#39;] to &#39;ignore&#39;.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.673911 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model viewer data has already been recorded for Driver.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.639533 seconds.
 Total jacobian shape: (361, 212) 
 </pre></div>
 </div>
@@ -975,12 +977,12 @@ FWD solves: 13   REV solves: 0
 Total colors vs. total size: 13 vs 212  (93.9% improvement)
 
 Sparsity computed using tolerance: 1e-12
-Time to compute sparsity: 0.673911 sec.
-Time to compute coloring: 0.384310 sec.
+Time to compute sparsity: 0.639533 sec.
+Time to compute coloring: 0.305225 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.10/site-packages/openmdao/core/total_jac.py:1636: DerivativesWarning:Constraints or objectives [(&#39;traj.phases.phase0.timeseries.timeseries_comp.states:h&#39;, inds=[(0, 0)]), (&#39;traj.phases.phase0.timeseries.timeseries_comp.mach&#39;, inds=[(0, 0)])] cannot be impacted by the design variables of the problem.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.10/site-packages/openmdao/core/total_jac.py:1782: DerivativesWarning:Constraints or objectives [(&#39;traj.phases.phase0.timeseries.timeseries_comp.states:h&#39;, inds=[(0, 0)]), (&#39;traj.phases.phase0.timeseries.timeseries_comp.mach&#39;, inds=[(0, 0)])] cannot be impacted by the design variables of the problem.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization Problem -- Optimization using pyOpt_sparse
@@ -989,11 +991,11 @@ Memory to compute coloring: 0.000000 MB.
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                    9.6087
-       User Objective Time :       3.8793
-       User Sensitivity Time :     3.1432
-       Interface Time :            1.2504
-       Opt Solver Time:            1.3357
+    Total Time:                    8.9746
+       User Objective Time :       3.5293
+       User Sensitivity Time :     2.9959
+       Interface Time :            1.1287
+       Opt Solver Time:            1.3206
     Calls to Objective Function :     133
     Calls to Sens Function :          109
 
@@ -1593,8 +1595,8 @@ FWD solves: 13   REV solves: 0
 Total colors vs. total size: 13 vs 212  (93.9% improvement)
 
 Sparsity computed using tolerance: 1e-12
-Time to compute sparsity: 0.673911 sec.
-Time to compute coloring: 0.384310 sec.
+Time to compute sparsity: 0.639533 sec.
+Time to compute coloring: 0.305225 sec.
 Memory to compute coloring: 0.000000 MB.
 
 --- Constraint Report [traj] ---
@@ -1611,7 +1613,6 @@ Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model viewer data has already been recorded for Driver.
-Model viewer data has already been recorded for Driver.
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.10/site-packages/openmdao/core/driver.py:470: DriverWarning:The following design variable initial conditions are out of their specified bounds:
@@ -1622,7 +1623,10 @@ Model viewer data has already been recorded for Driver.
 Set the initial value of the design variable to a valid value or set the driver option[&#39;invalid_desvar_behavior&#39;] to &#39;ignore&#39;.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.759814 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model viewer data has already been recorded for Driver.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.739230 seconds.
 Total jacobian shape: (361, 212) 
 </pre></div>
 </div>
@@ -1631,12 +1635,12 @@ FWD solves: 154   REV solves: 0
 Total colors vs. total size: 154 vs 212  (27.4% improvement)
 
 Sparsity computed using tolerance: 1e-12
-Time to compute sparsity: 0.759814 sec.
-Time to compute coloring: 1.626381 sec.
-Memory to compute coloring: 5.953125 MB.
+Time to compute sparsity: 0.739230 sec.
+Time to compute coloring: 1.370585 sec.
+Memory to compute coloring: 12.449219 MB.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.10/site-packages/openmdao/core/total_jac.py:1636: DerivativesWarning:Constraints or objectives [(&#39;traj.phases.phase0.timeseries.timeseries_comp.states:h&#39;, inds=[(0, 0)]), (&#39;traj.phases.phase0.timeseries.timeseries_comp.mach&#39;, inds=[(0, 0)])] cannot be impacted by the design variables of the problem.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.10/site-packages/openmdao/core/total_jac.py:1782: DerivativesWarning:Constraints or objectives [(&#39;traj.phases.phase0.timeseries.timeseries_comp.states:h&#39;, inds=[(0, 0)]), (&#39;traj.phases.phase0.timeseries.timeseries_comp.mach&#39;, inds=[(0, 0)])] cannot be impacted by the design variables of the problem.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization Problem -- Optimization using pyOpt_sparse
@@ -1645,11 +1649,11 @@ Memory to compute coloring: 5.953125 MB.
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                   32.4451
-       User Objective Time :       4.9694
-       User Sensitivity Time :    22.9796
-       Interface Time :            1.6105
-       Opt Solver Time:            2.8856
+    Total Time:                   31.6512
+       User Objective Time :       4.6507
+       User Sensitivity Time :    22.6118
+       Interface Time :            1.4794
+       Opt Solver Time:            2.9093
     Calls to Objective Function :     171
     Calls to Sens Function :          135
 
@@ -2249,9 +2253,9 @@ FWD solves: 154   REV solves: 0
 Total colors vs. total size: 154 vs 212  (27.4% improvement)
 
 Sparsity computed using tolerance: 1e-12
-Time to compute sparsity: 0.759814 sec.
-Time to compute coloring: 1.626381 sec.
-Memory to compute coloring: 5.953125 MB.
+Time to compute sparsity: 0.739230 sec.
+Time to compute coloring: 1.370585 sec.
+Memory to compute coloring: 12.449219 MB.
 
 --- Constraint Report [traj] ---
     --- phase0 ---
@@ -2285,8 +2289,8 @@ FWD solves: 2   REV solves: 0
 Total colors vs. total size: 2 vs 120  (98.3% improvement)
 
 Sparsity computed using tolerance: 1e-06
-Time to compute sparsity: 0.017394 sec.
-Time to compute coloring: 0.017795 sec.
+Time to compute sparsity: 0.014748 sec.
+Time to compute coloring: 0.014077 sec.
 Memory to compute coloring: 0.000000 MB.
 
 Coloring for &#39;traj.phases.phase0.rhs_col.aero.q_comp&#39; (class DynamicPressureCompFD)
@@ -2296,12 +2300,12 @@ FWD solves: 2   REV solves: 0
 Total colors vs. total size: 2 vs 60  (96.7% improvement)
 
 Sparsity computed using tolerance: 1e-06
-Time to compute sparsity: 0.009045 sec.
-Time to compute coloring: 0.009586 sec.
+Time to compute sparsity: 0.007212 sec.
+Time to compute coloring: 0.007593 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.784142 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.747310 seconds.
 Total jacobian shape: (361, 212) 
 </pre></div>
 </div>
@@ -2310,12 +2314,12 @@ FWD solves: 13   REV solves: 0
 Total colors vs. total size: 13 vs 212  (93.9% improvement)
 
 Sparsity computed using tolerance: 1e-12
-Time to compute sparsity: 0.784142 sec.
-Time to compute coloring: 0.389812 sec.
+Time to compute sparsity: 0.747310 sec.
+Time to compute coloring: 0.311086 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.10/site-packages/openmdao/core/total_jac.py:1636: DerivativesWarning:Constraints or objectives [(&#39;traj.phases.phase0.timeseries.timeseries_comp.states:h&#39;, inds=[(0, 0)]), (&#39;traj.phases.phase0.timeseries.timeseries_comp.mach&#39;, inds=[(0, 0)])] cannot be impacted by the design variables of the problem.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.10/site-packages/openmdao/core/total_jac.py:1782: DerivativesWarning:Constraints or objectives [(&#39;traj.phases.phase0.timeseries.timeseries_comp.states:h&#39;, inds=[(0, 0)]), (&#39;traj.phases.phase0.timeseries.timeseries_comp.mach&#39;, inds=[(0, 0)])] cannot be impacted by the design variables of the problem.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization Problem -- Optimization using pyOpt_sparse
@@ -2324,11 +2328,11 @@ Memory to compute coloring: 0.000000 MB.
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                   11.5762
-       User Objective Time :       4.4166
-       User Sensitivity Time :     4.1915
-       Interface Time :            1.4109
-       Opt Solver Time:            1.5572
+    Total Time:                   10.7995
+       User Objective Time :       4.0354
+       User Sensitivity Time :     3.9621
+       Interface Time :            1.2833
+       Opt Solver Time:            1.5186
     Calls to Objective Function :     150
     Calls to Sens Function :          125
 
@@ -2928,8 +2932,8 @@ FWD solves: 13   REV solves: 0
 Total colors vs. total size: 13 vs 212  (93.9% improvement)
 
 Sparsity computed using tolerance: 1e-12
-Time to compute sparsity: 0.784142 sec.
-Time to compute coloring: 0.389812 sec.
+Time to compute sparsity: 0.747310 sec.
+Time to compute coloring: 0.311086 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
