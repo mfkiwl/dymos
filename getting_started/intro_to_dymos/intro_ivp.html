@@ -205,6 +205,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <li class="toctree-l2"><a class="reference internal" href="../../examples/cart_pole/cart_pole.html">Cart-Pole Optimal Control</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../examples/brachistochrone/brachistochrone_tandem_phases.html">Brachistochrone with tandem phases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/cannonball_implicit_duration/cannonball_implicit_duration.html">Cannonball Implicit Duration</a></li>
 </ul>
 </li>
 </ul>
@@ -507,13 +508,13 @@ Dynamic systems are typically defined by some set of ordinary
 differential equations (the ODE) which governs their behavior.</p>
 <p>Consider a simple damped harmonic oscillator.</p>
 <p><img alt="Damped harmonic oscillator free-body diagram" src="../../_images/spring_mass_damper.png" /></p>
-<div class="amsmath math notranslate nohighlight" id="equation-0cf8afa1-e15e-4bce-a838-13aeed4b1778">
-<span class="eqno">(11)<a class="headerlink" href="#equation-0cf8afa1-e15e-4bce-a838-13aeed4b1778" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-008aad5f-03f0-49ba-8ece-be62f2861600">
+<span class="eqno">(11)<a class="headerlink" href="#equation-008aad5f-03f0-49ba-8ece-be62f2861600" title="Permalink to this equation">#</a></span>\[\begin{align}
     \ddot{x} &amp;= -\frac{kx}{m} - \frac{c \dot{x}}{m}
 \end{align}\]</div>
 <p>Converting this to a first order system results in an ODE system with two states:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e0c7de1d-d2da-443a-a77e-1dc35e449a16">
-<span class="eqno">(12)<a class="headerlink" href="#equation-e0c7de1d-d2da-443a-a77e-1dc35e449a16" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-396dac32-4027-4563-ac04-6ec01d66ee7d">
+<span class="eqno">(12)<a class="headerlink" href="#equation-396dac32-4027-4563-ac04-6ec01d66ee7d" title="Permalink to this equation">#</a></span>\[\begin{align}
     \dot{x} &amp;= v \\
     \dot{v} &amp;= -\frac{kx}{m} - \frac{c \dot{x}}{m}
 \end{align}\]</div>
@@ -805,8 +806,8 @@ Otherwise, we can pass it only to certain states as an argument to <code class="
 traj.phases.phase0
 ==================
 NL: Newton 0 ; 64.9519053 1
-NL: Newton 1 ; 5.0296009e-08 7.74357715e-10
-NL: Newton 2 ; 8.48981893e-15 1.30709313e-16
+NL: Newton 1 ; 5.02959876e-08 7.74357386e-10
+NL: Newton 2 ; 4.83213257e-15 7.43955478e-17
 NL: Newton Converged
 </pre></div>
 </div>
