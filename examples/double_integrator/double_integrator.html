@@ -495,20 +495,20 @@ traveled by a block (that starts and ends at rest) sliding without
 friction along a horizontal surface, with acceleration as the control.</p>
 <p>We minimize the final time, <span class="math notranslate nohighlight">\(t_f\)</span>, by varying the dynamic control,
 <span class="math notranslate nohighlight">\(u\)</span>, subject to the dynamics:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-61f6e091-8aaa-4515-b967-bc7bb251123b">
-<span class="eqno">(45)<a class="headerlink" href="#equation-61f6e091-8aaa-4515-b967-bc7bb251123b" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-e6f457f8-8d28-4e2b-a9c9-7a107c877cb2">
+<span class="eqno">(45)<a class="headerlink" href="#equation-e6f457f8-8d28-4e2b-a9c9-7a107c877cb2" title="Permalink to this equation">#</a></span>\[\begin{align}
   \frac{dx}{dt} &amp;= v \\
   \frac{dv}{dt} &amp;= u
 \end{align}\]</div>
 <p>The initial conditions are</p>
-<div class="amsmath math notranslate nohighlight" id="equation-89ef7aba-8de2-4371-a2c8-ad72fef9c695">
-<span class="eqno">(46)<a class="headerlink" href="#equation-89ef7aba-8de2-4371-a2c8-ad72fef9c695" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-791de7f1-4036-4865-9cbf-55c907f4c10c">
+<span class="eqno">(46)<a class="headerlink" href="#equation-791de7f1-4036-4865-9cbf-55c907f4c10c" title="Permalink to this equation">#</a></span>\[\begin{align}
   x_0 &amp;= 0 \\
   v_0 &amp;= 0
 \end{align}\]</div>
 <p>and the final conditions are</p>
-<div class="amsmath math notranslate nohighlight" id="equation-151e7ee0-c476-41f4-8b75-03644321b2e1">
-<span class="eqno">(47)<a class="headerlink" href="#equation-151e7ee0-c476-41f4-8b75-03644321b2e1" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-5653ef66-1c0e-4b6a-a65f-5e28637c1569">
+<span class="eqno">(47)<a class="headerlink" href="#equation-5653ef66-1c0e-4b6a-a65f-5e28637c1569" title="Permalink to this equation">#</a></span>\[\begin{align}
   x_f &amp;= \rm{free} \\
   v_f &amp;= 0
 \end{align}\]</div>
@@ -840,7 +840,7 @@ INFO: checking out_of_order
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking auto_ivc_warnings
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.107100 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.136854 seconds.
 Total jacobian shape: (181, 327) 
 </pre></div>
 </div>
@@ -849,8 +849,8 @@ FWD solves: 0   REV solves: 6
 Total colors vs. total size: 6 vs 181  (96.7% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.107100 sec.
-Time to compute coloring: 0.131525 sec.
+Time to compute sparsity: 0.136854 sec.
+Time to compute coloring: 0.200482 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
@@ -860,11 +860,11 @@ Memory to compute coloring: 0.000000 MB.
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                    2.7563
-       User Objective Time :       0.0309
-       User Sensitivity Time :     0.0915
-       Interface Time :            0.1545
-       Opt Solver Time:            2.4793
+    Total Time:                    3.2049
+       User Objective Time :       0.0339
+       User Sensitivity Time :     0.1065
+       Interface Time :            0.1798
+       Opt Solver Time:            2.8847
     Calls to Objective Function :      19
     Calls to Sens Function :           19
 
@@ -1485,7 +1485,7 @@ Memory to compute coloring: 0.000000 MB.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/abf1bed5b509974436202bb0dae208d0ce7168c6ab122b6e90d5f788f069be4a.png" src="../../_images/abf1bed5b509974436202bb0dae208d0ce7168c6ab122b6e90d5f788f069be4a.png" />
+<img alt="../../_images/59526793da4b05adb2932f557ef95f78cec3a2d4ac9939bdc72081336c0c5676.png" src="../../_images/59526793da4b05adb2932f557ef95f78cec3a2d4ac9939bdc72081336c0c5676.png" />
 </div>
 </div>
 </section>
