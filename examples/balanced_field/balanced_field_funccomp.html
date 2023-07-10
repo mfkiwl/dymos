@@ -988,13 +988,13 @@ INFO: checking out_of_order
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Coloring for &#39;traj.phases.br_to_v1.rhs_all&#39; (class ExplicitFuncComp)
 
-Jacobian shape: (132, 60)  ( 9.80% nonzero)
+Jacobian shape: (132, 60)  ( 9.81% nonzero)
 FWD solves: 16   REV solves: 0
 Total colors vs. total size: 16 vs 60  (73.3% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.570022 sec.
-Time to compute coloring: 0.102524 sec.
+Time to compute sparsity: 0.345102 sec.
+Time to compute coloring: 0.071380 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
@@ -1003,13 +1003,13 @@ Memory to compute coloring: 0.000000 MB.
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Coloring for &#39;traj.phases.rto.rhs_all&#39; (class ExplicitFuncComp)
 
-Jacobian shape: (132, 60)  ( 9.79% nonzero)
+Jacobian shape: (132, 60)  ( 9.77% nonzero)
 FWD solves: 16   REV solves: 0
 Total colors vs. total size: 16 vs 60  (73.3% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.450578 sec.
-Time to compute coloring: 0.099664 sec.
+Time to compute sparsity: 0.327971 sec.
+Time to compute coloring: 0.071099 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
@@ -1023,8 +1023,8 @@ FWD solves: 16   REV solves: 0
 Total colors vs. total size: 16 vs 60  (73.3% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.462344 sec.
-Time to compute coloring: 0.103152 sec.
+Time to compute sparsity: 0.329436 sec.
+Time to compute coloring: 0.071868 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
@@ -1038,8 +1038,8 @@ FWD solves: 16   REV solves: 0
 Total colors vs. total size: 16 vs 60  (73.3% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.462165 sec.
-Time to compute coloring: 0.103669 sec.
+Time to compute sparsity: 0.330049 sec.
+Time to compute coloring: 0.072836 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
@@ -1053,12 +1053,12 @@ FWD solves: 16   REV solves: 0
 Total colors vs. total size: 16 vs 111  (85.6% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.615856 sec.
-Time to compute coloring: 0.224760 sec.
-Memory to compute coloring: 0.773438 MB.
+Time to compute sparsity: 0.434438 sec.
+Time to compute coloring: 0.160801 sec.
+Memory to compute coloring: 0.890625 MB.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 6.807689 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 4.735711 seconds.
 Total jacobian shape: (178, 166) 
 
 
@@ -1067,31 +1067,18 @@ FWD solves: 12   REV solves: 0
 Total colors vs. total size: 12 vs 166  (92.8% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 6.807689 sec.
-Time to compute coloring: 0.154962 sec.
+Time to compute sparsity: 4.735711 sec.
+Time to compute coloring: 0.105743 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.10/site-packages/openmdao/core/total_jac.py:1782: DerivativesWarning:Constraints or objectives [(&#39;traj.phases.climb.timeseries.timeseries_comp.gam&#39;, inds=[(0, 0)])] cannot be impacted by the design variables of the problem.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.10/site-packages/openmdao/core/group.py:2829: UnusedOptionWarning:&#39;ode_eval&#39; &lt;class ODEEvaluationGroup&gt;: ignored flat_src_indices and/or src_shape because src_indices was not specified.
-/usr/share/miniconda/envs/test/lib/python3.10/site-packages/openmdao/core/group.py:2829: UnusedOptionWarning:&#39;ode_eval&#39; &lt;class ODEEvaluationGroup&gt;: ignored flat_src_indices and/or src_shape because src_indices was not specified.
-/usr/share/miniconda/envs/test/lib/python3.10/site-packages/openmdao/core/group.py:2829: UnusedOptionWarning:&#39;ode_eval&#39; &lt;class ODEEvaluationGroup&gt;: ignored flat_src_indices and/or src_shape because src_indices was not specified.
-/usr/share/miniconda/envs/test/lib/python3.10/site-packages/openmdao/core/group.py:2829: UnusedOptionWarning:&#39;ode_eval&#39; &lt;class ODEEvaluationGroup&gt;: ignored flat_src_indices and/or src_shape because src_indices was not specified.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.10/site-packages/openmdao/core/group.py:2829: UnusedOptionWarning:&#39;ode_eval&#39; &lt;class ODEEvaluationGroup&gt;: ignored flat_src_indices and/or src_shape because src_indices was not specified.
-/usr/share/miniconda/envs/test/lib/python3.10/site-packages/openmdao/core/group.py:2829: UnusedOptionWarning:&#39;ode_eval&#39; &lt;class ODEEvaluationGroup&gt;: ignored flat_src_indices and/or src_shape because src_indices was not specified.
-/usr/share/miniconda/envs/test/lib/python3.10/site-packages/openmdao/core/group.py:2829: UnusedOptionWarning:&#39;ode_eval&#39; &lt;class ODEEvaluationGroup&gt;: ignored flat_src_indices and/or src_shape because src_indices was not specified.
-/usr/share/miniconda/envs/test/lib/python3.10/site-packages/openmdao/core/group.py:2829: UnusedOptionWarning:&#39;ode_eval&#39; &lt;class ODEEvaluationGroup&gt;: ignored flat_src_indices and/or src_shape because src_indices was not specified.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.10/site-packages/openmdao/core/group.py:2829: UnusedOptionWarning:&#39;ode_eval&#39; &lt;class ODEEvaluationGroup&gt;: ignored flat_src_indices and/or src_shape because src_indices was not specified.
-/usr/share/miniconda/envs/test/lib/python3.10/site-packages/openmdao/recorders/sqlite_recorder.py:227: UserWarning:The existing case recorder file, dymos_simulation.db, is being overwritten.
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Simulating trajectory traj
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.10/site-packages/openmdao/recorders/sqlite_recorder.py:227: UserWarning:The existing case recorder file, dymos_simulation.db, is being overwritten.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Done simulating trajectory traj
@@ -1144,7 +1131,7 @@ Memory to compute coloring: 0.000000 MB.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/9a0acbb2ada791cf9ffe2f74f91aa7a74a9e78da4e6f83942a8e392d5a3f7a30.png" src="../../_images/9a0acbb2ada791cf9ffe2f74f91aa7a74a9e78da4e6f83942a8e392d5a3f7a30.png" />
+<img alt="../../_images/c28acb71f810c774b67aeceb1bc6b2265c89fbc7b6eddf63b1fe8aa9d0eee2e5.png" src="../../_images/c28acb71f810c774b67aeceb1bc6b2265c89fbc7b6eddf63b1fe8aa9d0eee2e5.png" />
 </div>
 </div>
 </section>
