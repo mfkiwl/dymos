@@ -496,8 +496,8 @@ three-phase orbit raising maneuver with a burn-coast-burn phase
 sequence. This example is based on the problem provided in
 Enright <span id="id1">[<a class="reference internal" href="#id24" title="Paul J Enright and Brace A Conway. Optimal finite-thrust spacecraft trajectories using collocation and nonlinear programming. Journal of Guidance, Control, and Dynamics, 14(5):981–985, 1991.">EC91</a>]</span>.</p>
 <p>The dynamics are given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-58b973b1-4e8d-4799-ae40-e28ab2109c55">
-<span class="eqno">(58)<a class="headerlink" href="#equation-58b973b1-4e8d-4799-ae40-e28ab2109c55" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-f7ddb7c5-556b-47ce-9a85-162cee569b66">
+<span class="eqno">(58)<a class="headerlink" href="#equation-f7ddb7c5-556b-47ce-9a85-162cee569b66" title="Permalink to this equation">#</a></span>\[\begin{align}
   \frac{dr}{dt} &amp;= v_r \\
   \frac{d\theta}{dt} &amp;= \frac{v_\theta}{r} \\
   \frac{dv_r}{dt} &amp;= \frac{v^2_\theta}{r} - \frac{1}{r^2} + a_{thrust} \sin u_1 \\
@@ -506,8 +506,8 @@ Enright <span id="id1">[<a class="reference internal" href="#id24" title="Paul J
   \frac{d \Delta v}{dt} &amp;= a_{thrust}
 \end{align}\]</div>
 <p>The initial conditions are</p>
-<div class="amsmath math notranslate nohighlight" id="equation-34b70c74-81d0-4806-a95d-bcee87760811">
-<span class="eqno">(59)<a class="headerlink" href="#equation-34b70c74-81d0-4806-a95d-bcee87760811" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-cef851ec-43f0-4638-94de-d2df68d75efa">
+<span class="eqno">(59)<a class="headerlink" href="#equation-cef851ec-43f0-4638-94de-d2df68d75efa" title="Permalink to this equation">#</a></span>\[\begin{align}
   r &amp;= 1 \rm{\,DU} \\
   \theta &amp;= 0 \rm{\,rad} \\
   v_r &amp;= 0 \rm{\,DU/TU}\\
@@ -516,8 +516,8 @@ Enright <span id="id1">[<a class="reference internal" href="#id24" title="Paul J
   \Delta v &amp;= 0 \rm{\,DU/TU}
 \end{align}\]</div>
 <p>and the final conditions are</p>
-<div class="amsmath math notranslate nohighlight" id="equation-46e3f5cd-7c51-4c2e-b6b1-f409522b9cd7">
-<span class="eqno">(60)<a class="headerlink" href="#equation-46e3f5cd-7c51-4c2e-b6b1-f409522b9cd7" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-8127c751-e559-4c32-b914-704e4d95b4a1">
+<span class="eqno">(60)<a class="headerlink" href="#equation-8127c751-e559-4c32-b914-704e4d95b4a1" title="Permalink to this equation">#</a></span>\[\begin{align}
   r &amp;= 3 \rm{\,DU} \\
   \theta &amp;= \rm{free} \\
   v_r &amp;= 0 \rm{\,DU/TU}\\
@@ -565,6 +565,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 .output_html .cs { color: #3D7B7B; font-style: italic } /* Comment.Special */
 .output_html .gd { color: #A00000 } /* Generic.Deleted */
 .output_html .ge { font-style: italic } /* Generic.Emph */
+.output_html .ges { font-weight: bold; font-style: italic } /* Generic.EmphStrong */
 .output_html .gr { color: #E40000 } /* Generic.Error */
 .output_html .gh { color: #000080; font-weight: bold } /* Generic.Heading */
 .output_html .gi { color: #008400 } /* Generic.Inserted */
@@ -1077,7 +1078,7 @@ INFO: checking out_of_order
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking auto_ivc_warnings
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.761665 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 1.037865 seconds.
 Total jacobian shape: (112, 204) 
 
 
@@ -1086,8 +1087,8 @@ FWD solves: 13   REV solves: 0
 Total colors vs. total size: 13 vs 204  (93.6% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.761665 sec.
-Time to compute coloring: 0.095721 sec.
+Time to compute sparsity: 1.037865 sec.
+Time to compute coloring: 0.118437 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
@@ -1097,11 +1098,11 @@ Memory to compute coloring: 0.000000 MB.
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                    2.3100
-       User Objective Time :       0.1139
-       User Sensitivity Time :     1.8190
-       Interface Time :            0.2701
-       Opt Solver Time:            0.1070
+    Total Time:                    3.1011
+       User Objective Time :       0.1473
+       User Sensitivity Time :     2.4706
+       Interface Time :            0.3415
+       Opt Solver Time:            0.1417
     Calls to Objective Function :      24
     Calls to Sens Function :           24
 
