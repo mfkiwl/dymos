@@ -242,7 +242,8 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../api/api.html">Dymos Reference API</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../api/run_problem_function.html">The run_problem function</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../api/phase_api.html">The Phase API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/phase_api.html">Phase Options</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="../../api/transcriptions_api.html">The Transcriptions API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../api/trajectory_api.html">The Trajectory API</a></li>
 </ul>
@@ -491,8 +492,8 @@ Now, we seek to find the minimum time brachistochrone trajectory subject to a up
 <p>The most efficient way to approach this problem would be to treat the arc-length <span class="math notranslate nohighlight">\(S\)</span> as an integrated state variable.
 In this case, as is often the case in real-world MDO analyses, the implementation of our arc-length function is not integrated into our pseudospectral approach.
 Rather than rewrite an analysis tool to accommodate the pseudospectral approach, the arc-length analysis simply takes the result of the trajectory in its entirety and computes the arc-length constraint via the trapezoidal rule:\</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7e52ec3b-1fb0-49ca-86dc-8e6af5ed6449">
-<span class="eqno">(61)<a class="headerlink" href="#equation-7e52ec3b-1fb0-49ca-86dc-8e6af5ed6449" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-76733b1e-15e3-4e80-b0cc-4c43d3b7a284">
+<span class="eqno">(61)<a class="headerlink" href="#equation-76733b1e-15e3-4e80-b0cc-4c43d3b7a284" title="Permalink to this equation">#</a></span>\[\begin{align}
     S &amp;= \frac{1}{2} \left( \sum_{i=1}^{N-1} \sqrt{1 + \frac{1}{\tan{\theta_{i-1}}}} + \sqrt{1 + \frac{1}{\tan{\theta_{i}}}} \right) \left(x_{i-1} - x_i \right)
 \end{align}\]</div>
 <p>The OpenMDAO component used to compute the arclength is defined as follows:</p>
@@ -882,7 +883,7 @@ INFO: checking out_of_order
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking auto_ivc_warnings
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.737543 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 1.008662 seconds.
 Total jacobian shape: (220, 296) 
 </pre></div>
 </div>
@@ -891,9 +892,9 @@ FWD solves: 1   REV solves: 11
 Total colors vs. total size: 12 vs 220  (94.5% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.737543 sec.
-Time to compute coloring: 0.299648 sec.
-Memory to compute coloring: 0.804688 MB.
+Time to compute sparsity: 1.008662 sec.
+Time to compute coloring: 0.335057 sec.
+Memory to compute coloring: 0.906250 MB.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization terminated successfully    (Exit mode 0)
