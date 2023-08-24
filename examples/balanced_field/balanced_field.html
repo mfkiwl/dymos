@@ -577,13 +577,13 @@ Also, since the duration of the trajectory is small, we’re going to assume tha
 <h3>The Aerodynamic Model<a class="headerlink" href="#the-aerodynamic-model" title="Permalink to this heading">#</a></h3>
 <p>Both sets of equations of motion have common aerodynamic models.</p>
 <p>First, the lift coefficient is computed using a model which assumes linearity in lift wrt the angle of attack.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3f29803c-0a04-4f18-80d9-352bad103035">
-<span class="eqno">(21)<a class="headerlink" href="#equation-3f29803c-0a04-4f18-80d9-352bad103035" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-cc182e93-d4dc-489e-8365-8c779800578e">
+<span class="eqno">(21)<a class="headerlink" href="#equation-cc182e93-d4dc-489e-8365-8c779800578e" title="Permalink to this equation">#</a></span>\[\begin{align}
     C_L &amp;= C_{L0} + \frac{\alpha}{\alpha_{max}} \left(C_{L-max} - C_{L0}\right)
 \end{align}\]</div>
 <p>Next, the drag-due-to-lift factor is computed (Equations 12.48 and 12.61 in Raymer[&#64;raymer2012aircraft]).</p>
-<div class="amsmath math notranslate nohighlight" id="equation-edfeff0c-53e8-4424-b53e-e04e40cf771f">
-<span class="eqno">(22)<a class="headerlink" href="#equation-edfeff0c-53e8-4424-b53e-e04e40cf771f" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-988389af-de49-46f7-a837-9a9c48ea0bfd">
+<span class="eqno">(22)<a class="headerlink" href="#equation-988389af-de49-46f7-a837-9a9c48ea0bfd" title="Permalink to this equation">#</a></span>\[\begin{align}
     K_{nom} &amp;= \frac{1}{ \pi  AR  e} \\
     b &amp;= \frac{span}{2} \\
     K &amp;= 33 K_{nom} \frac{ \left(\frac{h + h_w}{b} \right) ^{\frac{3}{2}}}{1.0 + 33 \left( \frac{h + h_w}{b}\right) ^{\frac{3}{2}}}
@@ -592,8 +592,8 @@ Also, since the duration of the trajectory is small, we’re going to assume tha
 This causes this problem to be difficult to solve using a shooting method.
 If the optimizer proposes a combination of initial states and a control history that results in altitude dropping significantly below zero, the propagation will fail.</p>
 <p>Finally, the lift and drag are computed after computing the dynamic pressure.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b0999a25-c3fa-4f9f-b2b7-df18fb3a8660">
-<span class="eqno">(23)<a class="headerlink" href="#equation-b0999a25-c3fa-4f9f-b2b7-df18fb3a8660" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-485ca0db-59be-4dd5-ab84-41e41d28e276">
+<span class="eqno">(23)<a class="headerlink" href="#equation-485ca0db-59be-4dd5-ab84-41e41d28e276" title="Permalink to this equation">#</a></span>\[\begin{align}
     q &amp;= 0.5 \rho v^2 \\
     L &amp;= q  S  C_L \\
     D &amp;= q S \left( C_{D0} + K C_{L}^2 \right)
@@ -604,8 +604,8 @@ If the optimizer proposes a combination of initial states and a control history 
 <p>This model relies on the ratio of the current true airspeed to stall speed (<span class="math notranslate nohighlight">\(\frac{v}{v_{stall}}\)</span>).
 This constraint is used to trigger the beginning of rotation and is used as a boundary constraint at the end of the initial climb.
 Stall speed is given by Equation 5.6 in Raymer[&#64;raymer2012aircraft].</p>
-<div class="amsmath math notranslate nohighlight" id="equation-90b01ca7-b725-4fd6-b0c9-2ac7abe0ef6b">
-<span class="eqno">(24)<a class="headerlink" href="#equation-90b01ca7-b725-4fd6-b0c9-2ac7abe0ef6b" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-2c05c731-dc83-4974-a6d3-e666e95b2bdf">
+<span class="eqno">(24)<a class="headerlink" href="#equation-2c05c731-dc83-4974-a6d3-e666e95b2bdf" title="Permalink to this equation">#</a></span>\[\begin{align}
     W &amp;= m g \\
     v_{stall} &amp;= \sqrt{\frac{2 * W}{\rho S C_{L-max}}}
 \end{align}\]</div>
@@ -613,8 +613,8 @@ Stall speed is given by Equation 5.6 in Raymer[&#64;raymer2012aircraft].</p>
 <section id="runway-equations-of-motion">
 <h3>Runway Equations of Motion<a class="headerlink" href="#runway-equations-of-motion" title="Permalink to this heading">#</a></h3>
 <p>The runway equations of motion are used to integrate range and speed as the vehicle rolls along the runway.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f108d6e0-56ee-46bd-989e-8bcbad95d73c">
-<span class="eqno">(25)<a class="headerlink" href="#equation-f108d6e0-56ee-46bd-989e-8bcbad95d73c" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-42b7cf2c-3463-40fd-9f41-12ff0d5100fb">
+<span class="eqno">(25)<a class="headerlink" href="#equation-42b7cf2c-3463-40fd-9f41-12ff0d5100fb" title="Permalink to this equation">#</a></span>\[\begin{align}
   F_r &amp;= mg - L \cos \alpha - T \sin \alpha \\
   \dot{v} &amp;= \frac{T \cos \alpha - D - F_r \mu_r}{m} \\
   \dot{r} &amp;= v
@@ -641,8 +641,8 @@ Stall speed is given by Equation 5.6 in Raymer[&#64;raymer2012aircraft].</p>
 <section id="flight-equations-of-motion">
 <h3>Flight Equations of Motion<a class="headerlink" href="#flight-equations-of-motion" title="Permalink to this heading">#</a></h3>
 <p>The flight equations of motion include two additional state variables: the flight-path angle (<span class="math notranslate nohighlight">\(\gamma\)</span>) and altitude (<span class="math notranslate nohighlight">\(h\)</span>).</p>
-<div class="amsmath math notranslate nohighlight" id="equation-66c2619a-05ec-411b-af07-ef1ba8a80b0d">
-<span class="eqno">(26)<a class="headerlink" href="#equation-66c2619a-05ec-411b-af07-ef1ba8a80b0d" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-e75e5cff-fbb2-46a6-9e56-436d1fcd2ca5">
+<span class="eqno">(26)<a class="headerlink" href="#equation-e75e5cff-fbb2-46a6-9e56-436d1fcd2ca5" title="Permalink to this equation">#</a></span>\[\begin{align}
   \dot{v} &amp;= \frac{T}{m} \cos \alpha - \frac{D}{m} - g \sin \gamma \\
   \dot{\gamma} &amp;= \frac{T}{m v} \sin \alpha + \frac{L}{m v} - \frac{g \cos \gamma}{v} \\
   \dot{h} &amp;= v \sin \gamma \\
@@ -1166,7 +1166,7 @@ First we define the problem and specify the optimizer settings.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;dymos.phase.phase.Phase at 0x7fb5f82aa7a0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;dymos.phase.phase.Phase at 0x7fba50a02710&gt;
 </pre></div>
 </div>
 </div>
@@ -1430,13 +1430,13 @@ INFO: checking out_of_order
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Coloring for &#39;traj.phases.br_to_v1.rhs_all&#39; (class BalancedFieldODEComp)
 
-Jacobian shape: (132, 60)  ( 9.81% nonzero)
+Jacobian shape: (132, 60)  ( 9.79% nonzero)
 FWD solves: 16   REV solves: 0
 Total colors vs. total size: 16 vs 60  (73.3% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.020226 sec.
-Time to compute coloring: 0.015247 sec.
+Time to compute sparsity: 0.019396 sec.
+Time to compute coloring: 0.015988 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
@@ -1447,8 +1447,8 @@ FWD solves: 16   REV solves: 0
 Total colors vs. total size: 16 vs 60  (73.3% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.021794 sec.
-Time to compute coloring: 0.015750 sec.
+Time to compute sparsity: 0.019257 sec.
+Time to compute coloring: 0.014763 sec.
 Memory to compute coloring: 0.000000 MB.
 
 Coloring for &#39;traj.phases.v1_to_vr.rhs_all&#39; (class BalancedFieldODEComp)
@@ -1458,8 +1458,8 @@ FWD solves: 16   REV solves: 0
 Total colors vs. total size: 16 vs 60  (73.3% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.019958 sec.
-Time to compute coloring: 0.014951 sec.
+Time to compute sparsity: 0.019127 sec.
+Time to compute coloring: 0.015116 sec.
 Memory to compute coloring: 0.000000 MB.
 
 Coloring for &#39;traj.phases.rotate.rhs_all&#39; (class BalancedFieldODEComp)
@@ -1469,8 +1469,8 @@ FWD solves: 16   REV solves: 0
 Total colors vs. total size: 16 vs 60  (73.3% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.019837 sec.
-Time to compute coloring: 0.015025 sec.
+Time to compute sparsity: 0.018993 sec.
+Time to compute coloring: 0.014921 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
@@ -1481,12 +1481,12 @@ FWD solves: 16   REV solves: 0
 Total colors vs. total size: 16 vs 111  (85.6% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.041379 sec.
-Time to compute coloring: 0.029963 sec.
+Time to compute sparsity: 0.039750 sec.
+Time to compute coloring: 0.029324 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 1.337170 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 1.407846 seconds.
 Total jacobian shape: (178, 166) 
 
 
@@ -1495,8 +1495,8 @@ FWD solves: 12   REV solves: 0
 Total colors vs. total size: 12 vs 166  (92.8% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 1.337170 sec.
-Time to compute coloring: 0.103963 sec.
+Time to compute sparsity: 1.407846 sec.
+Time to compute coloring: 0.103795 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>

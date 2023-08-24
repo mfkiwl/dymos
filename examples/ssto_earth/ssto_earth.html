@@ -498,8 +498,8 @@ It finds the pitch profile for a single-stage-to-orbit launch vehicle that minim
 required to reach orbit insertion under constant thrust.</p>
 <p><img alt="The free-body-diagram of the single-stage-to-orbit problem." src="../../_images/ssto_fbd.png" /></p>
 <p>The vehicle dynamics are given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3dbcd42c-3330-4819-95dc-a9d9d454f3b5">
-<span class="eqno">(79)<a class="headerlink" href="#equation-3dbcd42c-3330-4819-95dc-a9d9d454f3b5" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-23b8a742-f015-4531-9dcf-ed87d938aa50">
+<span class="eqno">(79)<a class="headerlink" href="#equation-23b8a742-f015-4531-9dcf-ed87d938aa50" title="Permalink to this equation">#</a></span>\[\begin{align}
   \frac{dx}{dt} &amp;= v_x \\
   \frac{dy}{dt} &amp;= v_y \\
   \frac{dv_x}{dt} &amp;= \frac{1}{m} (T \cos \theta - D \cos \gamma) \\
@@ -507,8 +507,8 @@ required to reach orbit insertion under constant thrust.</p>
   \frac{dm}{dt} &amp;= \frac{T}{g I_{sp}}
 \end{align}\]</div>
 <p>The initial conditions are</p>
-<div class="amsmath math notranslate nohighlight" id="equation-bf3dc062-1a25-46bc-9299-21c8d96500f0">
-<span class="eqno">(80)<a class="headerlink" href="#equation-bf3dc062-1a25-46bc-9299-21c8d96500f0" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-043ccfc0-7393-4588-8420-9b22f4e65459">
+<span class="eqno">(80)<a class="headerlink" href="#equation-043ccfc0-7393-4588-8420-9b22f4e65459" title="Permalink to this equation">#</a></span>\[\begin{align}
   x_0 &amp;= 0 \\
   y_0 &amp;= 0 \\
   v_{x0} &amp;= 0 \\
@@ -516,8 +516,8 @@ required to reach orbit insertion under constant thrust.</p>
   m_0 &amp;= 117000 \rm{\,kg}
 \end{align}\]</div>
 <p>and the final conditions are</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2a130557-aeba-4718-9fc6-3980ba49f99c">
-<span class="eqno">(81)<a class="headerlink" href="#equation-2a130557-aeba-4718-9fc6-3980ba49f99c" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-98f0dd7a-ae25-4ebe-83d2-184702163df4">
+<span class="eqno">(81)<a class="headerlink" href="#equation-98f0dd7a-ae25-4ebe-83d2-184702163df4" title="Permalink to this equation">#</a></span>\[\begin{align}
   x_f &amp;= \rm{free} \\
   y_f &amp;= 185 \rm{\,km} \\
   v_{xf} &amp;= V_{circ} \\
@@ -997,10 +997,7 @@ f...............................................................................
 ..............f......................................................................................................................................................... 134  rho
 ...............f........................................................................................................................................................ 135  rho
 ................f....................................................................................................................................................... 136  rho
-.................f....................................................................
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>.................................................................................. 137  rho
+.................f...................................................................................................................................................... 137  rho
 ..................f..................................................................................................................................................... 138  rho
 ...................f.................................................................................................................................................... 139  rho
 ....................f................................................................................................................................................... 140  rho
@@ -1020,8 +1017,8 @@ FWD solves: 5   REV solves: 0
 Total colors vs. total size: 5 vs 168  (97.0% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.036127 sec.
-Time to compute coloring: 0.019417 sec.
+Time to compute sparsity: 0.036031 sec.
+Time to compute coloring: 0.019188 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
@@ -1111,12 +1108,12 @@ FWD solves: 5   REV solves: 0
 Total colors vs. total size: 5 vs 84  (94.0% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.017573 sec.
-Time to compute coloring: 0.010359 sec.
+Time to compute sparsity: 0.017774 sec.
+Time to compute coloring: 0.009986 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.323190 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.322328 seconds.
 Total jacobian shape: (74, 152) 
 </pre></div>
 </div>
@@ -1125,8 +1122,8 @@ FWD solves: 12   REV solves: 0
 Total colors vs. total size: 12 vs 152  (92.1% improvement)
 
 Sparsity computed using tolerance: 1e-12
-Time to compute sparsity: 0.323190 sec.
-Time to compute coloring: 0.081006 sec.
+Time to compute sparsity: 0.322328 sec.
+Time to compute coloring: 0.079095 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
@@ -1136,11 +1133,11 @@ Memory to compute coloring: 0.000000 MB.
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                    2.0750
-       User Objective Time :       0.1019
-       User Sensitivity Time :     0.8936
-       Interface Time :            0.3582
-       Opt Solver Time:            0.7213
+    Total Time:                    2.0670
+       User Objective Time :       0.1045
+       User Sensitivity Time :     0.9212
+       Interface Time :            0.3815
+       Opt Solver Time:            0.6598
     Calls to Objective Function :      51
     Calls to Sens Function :           48
 
