@@ -500,8 +500,8 @@ cannonball problem, we will simultaneously find the optimal design for
 the cannonball (its radius) and the optimal flight profile (its launch
 angle). However, here we will use a single phase that terminates at the
 condition</p>
-<div class="amsmath math notranslate nohighlight" id="equation-cc307cbf-c1c2-42f2-a349-41019ce43e27">
-<span class="eqno">(91)<a class="headerlink" href="#equation-cc307cbf-c1c2-42f2-a349-41019ce43e27" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-b04decd8-5915-4343-ad1d-4a2a44559336">
+<span class="eqno">(91)<a class="headerlink" href="#equation-b04decd8-5915-4343-ad1d-4a2a44559336" title="Permalink to this equation">#</a></span>\[\begin{align}
     h(t_f) = 0
 \end{align}\]</div>
 <section id="the-cannonball-sizing-component">
@@ -771,10 +771,11 @@ or give an explicit sequence of the static targets.
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Constraint Report [traj] ---
     --- phase ---
         [initial] 0.0000e+00 &lt;= ke &lt;= 4.0000e+05  [J]
+
+Model viewer data has already been recorded for Driver.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model viewer data has already been recorded for Driver.
-Model viewer data has already been recorded for Driver.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Coloring for &#39;traj.phases.phase.rhs_all&#39; (class CannonballODE)
@@ -784,12 +785,12 @@ FWD solves: 6   REV solves: 0
 Total colors vs. total size: 6 vs 303  (98.0% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.171936 sec.
-Time to compute coloring: 0.061896 sec.
+Time to compute sparsity: 0.128499 sec.
+Time to compute coloring: 0.049549 sec.
 Memory to compute coloring: 0.000000 MB.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.478332 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.396716 seconds.
 Total jacobian shape: (98, 100) 
 
 
@@ -798,9 +799,9 @@ FWD solves: 18   REV solves: 0
 Total colors vs. total size: 18 vs 100  (82.0% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.478332 sec.
-Time to compute coloring: 0.114456 sec.
-Memory to compute coloring: 2.363281 MB.
+Time to compute sparsity: 0.396716 sec.
+Time to compute coloring: 0.097032 sec.
+Memory to compute coloring: 0.625000 MB.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization Problem -- Optimization using pyOpt_sparse
@@ -809,11 +810,11 @@ Memory to compute coloring: 2.363281 MB.
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                   28.6980
-       User Objective Time :      25.0260
-       User Sensitivity Time :     3.1771
-       Interface Time :            0.2672
-       Opt Solver Time:            0.2278
+    Total Time:                   23.2570
+       User Objective Time :      20.1772
+       User Sensitivity Time :     2.6670
+       Interface Time :            0.2300
+       Opt Solver Time:            0.1828
     Calls to Objective Function :     233
     Calls to Sens Function :           54
 
