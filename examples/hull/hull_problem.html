@@ -826,27 +826,27 @@ title="Print to PDF"
 <p>This system has one state variables, the position (<span class="math notranslate nohighlight">\(x\)</span>) of the sliding block.</p>
 <p>This system has a single control variable (<span class="math notranslate nohighlight">\(u\)</span>), the velocity of the block.</p>
 <p>The dynamics of the system are governed by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e56884a6-753e-4828-974f-718a633d946a">
-<span class="eqno">(48)<a class="headerlink" href="#equation-e56884a6-753e-4828-974f-718a633d946a" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-f407e70c-48d8-4d43-8f55-14bb9cceac95">
+<span class="eqno">(48)<a class="headerlink" href="#equation-f407e70c-48d8-4d43-8f55-14bb9cceac95" title="Permalink to this equation">#</a></span>\[\begin{align}
   \dot{x} &amp;= u
 \end{align}\]</div>
 </section>
 <section id="problem-definition">
 <h2>Problem Definition<a class="headerlink" href="#problem-definition" title="Permalink to this heading">#</a></h2>
 <p>We seek to minimize the control effort required and minimize the displacement from the origin.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-31164275-e16e-4ad4-b0a5-1b69c69db67d">
-<span class="eqno">(49)<a class="headerlink" href="#equation-31164275-e16e-4ad4-b0a5-1b69c69db67d" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-8f67b62c-7574-4122-9114-e7f08c21b6c4">
+<span class="eqno">(49)<a class="headerlink" href="#equation-8f67b62c-7574-4122-9114-e7f08c21b6c4" title="Permalink to this equation">#</a></span>\[\begin{align}
     \mathrm{Minimize} \, J &amp;= 2.5x_f^2 \, + \, 0.5 \int_0^1 u^2 dt
 \end{align}\]</div>
 <p>Subject to the initial conditions</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4324bf52-6b70-4db1-b431-6c7a2cd2e884">
-<span class="eqno">(50)<a class="headerlink" href="#equation-4324bf52-6b70-4db1-b431-6c7a2cd2e884" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-6544634b-6ec2-4d96-84de-b5e6d159d345">
+<span class="eqno">(50)<a class="headerlink" href="#equation-6544634b-6ec2-4d96-84de-b5e6d159d345" title="Permalink to this equation">#</a></span>\[\begin{align}
     t_0 &amp;= 0.0 \\
     x_0 &amp;= 1.5
 \end{align}\]</div>
 <p>and the terminal constraints</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6e4d6260-304c-4855-8c8a-e60b2a590e84">
-<span class="eqno">(51)<a class="headerlink" href="#equation-6e4d6260-304c-4855-8c8a-e60b2a590e84" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-04539d35-7004-47a9-911a-f7f10e350c32">
+<span class="eqno">(51)<a class="headerlink" href="#equation-04539d35-7004-47a9-911a-f7f10e350c32" title="Permalink to this equation">#</a></span>\[\begin{align}
     t_f &amp;= 10.0
 \end{align}\]</div>
 </section>
@@ -855,8 +855,8 @@ title="Print to PDF"
 <p>In classic optimal control, the objective is often broken into the terminal component (the Mayer term) and the integral component (the Lagrange term).
 Dymos does not distinguish between the two.
 In this case, since the objective <span class="math notranslate nohighlight">\(J\)</span> consists of both a terminal cost and an integrated cost (Bolza form), we add a term to the ODE to account for the integrated quantity</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2d88830f-eaff-4960-8516-9cb5cf85f161">
-<span class="eqno">(52)<a class="headerlink" href="#equation-2d88830f-eaff-4960-8516-9cb5cf85f161" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-ca32746b-0a84-473c-86b8-6225ea2844db">
+<span class="eqno">(52)<a class="headerlink" href="#equation-ca32746b-0a84-473c-86b8-6225ea2844db" title="Permalink to this equation">#</a></span>\[\begin{align}
   \dot{x_L} &amp;= L \\
   L &amp;= 0.5 u^2
 \end{align}\]</div>
@@ -994,7 +994,7 @@ The rate source and units for the states are obtained from the tags in the ODE c
         None
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;openmdao.core.problem.Problem at 0x7f1db0aff9d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;openmdao.core.problem.Problem at 0x7fcd3c6639d0&gt;
 </pre></div>
 </div>
 </div>
@@ -1035,10 +1035,12 @@ This will attempt to repeatedly solve the problem and change the number of segme
 </summary>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model viewer data has already been recorded for Driver.
-Model viewer data has already been recorded for Driver.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.446523 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model viewer data has already been recorded for Driver.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.326556 seconds.
 Total jacobian shape: (191, 216) 
 
 
@@ -1047,9 +1049,9 @@ FWD solves: 7   REV solves: 0
 Total colors vs. total size: 7 vs 216  (96.8% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.446523 sec.
-Time to compute coloring: 0.175136 sec.
-Memory to compute coloring: 0.355469 MB.
+Time to compute sparsity: 0.326556 sec.
+Time to compute coloring: 0.128637 sec.
+Memory to compute coloring: 0.468750 MB.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization Problem -- Optimization using pyOpt_sparse
@@ -1058,11 +1060,11 @@ Memory to compute coloring: 0.355469 MB.
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                    4.0594
-       User Objective Time :       0.1587
-       User Sensitivity Time :     0.6864
-       Interface Time :            0.4454
-       Opt Solver Time:            2.7689
+    Total Time:                    3.8019
+       User Objective Time :       0.1265
+       User Sensitivity Time :     0.5422
+       Interface Time :            0.3473
+       Opt Solver Time:            2.7858
     Calls to Objective Function :      66
     Calls to Sens Function :           65
 
@@ -1490,16 +1492,8 @@ Memory to compute coloring: 0.355469 MB.
 --------------------------------------------------------------------------------
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.10/site-packages/dymos/utils/introspection.py:935: SetupWarning:traj.phases.phase0: User-provided shape for timeseries expression output `J` using both the
-`shape` keyword argument and the `J` keyword argument dictionary.
-The latter will take precedence.
-/usr/share/miniconda/envs/test/lib/python3.10/site-packages/dymos/utils/introspection.py:929: UnusedOptionWarning:traj.phases.phase0: User-provided shape for timeseries expression input `x` ignored.
-Using automatically determined shape (240, 1).
-/usr/share/miniconda/envs/test/lib/python3.10/site-packages/dymos/utils/introspection.py:929: UnusedOptionWarning:traj.phases.phase0: User-provided shape for timeseries expression input `xL` ignored.
-Using automatically determined shape (240, 1).
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Simulating trajectory traj
+Model viewer data has already been recorded for Driver.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Done simulating trajectory traj

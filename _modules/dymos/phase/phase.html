@@ -3062,9 +3062,9 @@ title="Open an issue"
             <span class="n">sim_prob</span><span class="o">.</span><span class="n">add_recorder</span><span class="p">(</span><span class="n">rec</span><span class="p">)</span>
 
         <span class="n">sim_prob</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">sim_prob</span><span class="o">.</span><span class="n">final_setup</span><span class="p">()</span>
 
-        <span class="c1"># sim_phase.set_val_from_phase(from_phase=self)  # TODO: use this for OpenMDAO &gt;= 3.25.1</span>
-        <span class="n">sim_phase</span><span class="o">.</span><span class="n">initialize_values_from_phase</span><span class="p">(</span><span class="n">prob</span><span class="o">=</span><span class="n">sim_prob</span><span class="p">,</span> <span class="n">from_phase</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">sim_phase</span><span class="o">.</span><span class="n">set_vals_from_phase</span><span class="p">(</span><span class="n">from_phase</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
 
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Simulating phase </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">pathname</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
         <span class="n">sim_prob</span><span class="o">.</span><span class="n">run_model</span><span class="p">()</span>
