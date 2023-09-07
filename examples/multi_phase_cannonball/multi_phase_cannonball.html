@@ -838,24 +838,24 @@ the system at an event in the trajectory. Here, we have the first phase
 (ascent) terminate when the flight path angle reaches zero (apogee). The
 descent phase follows until the cannonball impacts the ground.</p>
 <p>The dynamics are given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-232d424a-70c7-426a-81fc-964fc409f616">
-<span class="eqno">(70)<a class="headerlink" href="#equation-232d424a-70c7-426a-81fc-964fc409f616" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-530bc099-c1dc-4974-9fda-0dc8f2252531">
+<span class="eqno">(70)<a class="headerlink" href="#equation-530bc099-c1dc-4974-9fda-0dc8f2252531" title="Permalink to this equation">#</a></span>\[\begin{align}
   \frac{dv}{dt} &amp;= \frac{D}{m} - g \sin \gamma \\
   \frac{d\gamma}{dt} &amp;= - \frac{g \cos \gamma}{v} \\
   \frac{dh}{dt} &amp;= v \sin \gamma \\
   \frac{dr}{dt} &amp;= v \cos \gamma \\
 \end{align}\]</div>
 <p>The initial conditions are</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5d3fe217-61a4-4020-ba44-3e1185d89bea">
-<span class="eqno">(71)<a class="headerlink" href="#equation-5d3fe217-61a4-4020-ba44-3e1185d89bea" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-225bc107-d19d-4012-8673-0e406e45bda1">
+<span class="eqno">(71)<a class="headerlink" href="#equation-225bc107-d19d-4012-8673-0e406e45bda1" title="Permalink to this equation">#</a></span>\[\begin{align}
   r_0 &amp;= 0 \rm{\,m} \\
   h_0 &amp;= 100 \rm{\,m} \\
   v_0 &amp;= \rm{free} \\
   \gamma_0 &amp;= \rm{free}
 \end{align}\]</div>
 <p>and the final conditions are</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8801c760-a55b-43c7-a230-71bc9fc720cc">
-<span class="eqno">(72)<a class="headerlink" href="#equation-8801c760-a55b-43c7-a230-71bc9fc720cc" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-c6f7d0f8-5f86-4b2a-a0e8-a33136b43393">
+<span class="eqno">(72)<a class="headerlink" href="#equation-c6f7d0f8-5f86-4b2a-a0e8-a33136b43393" title="Permalink to this equation">#</a></span>\[\begin{align}
   h_f &amp;= 0 \rm{\,m}
 \end{align}\]</div>
 </section>
@@ -868,8 +868,8 @@ energy and that our cannonball is made of solid iron. The volume (and
 mass) of the cannonball is proportional to its radius cubed, while the
 cross-sectional area is proportional to its radius squared. If we
 increase the size of the cannonball, the ballistic coefficient</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d482ccbb-fe37-4c5f-b730-ca1e7173ce89">
-<span class="eqno">(73)<a class="headerlink" href="#equation-d482ccbb-fe37-4c5f-b730-ca1e7173ce89" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-90699aac-55ff-4a72-a27d-786002d27b18">
+<span class="eqno">(73)<a class="headerlink" href="#equation-90699aac-55ff-4a72-a27d-786002d27b18" title="Permalink to this equation">#</a></span>\[\begin{align}
   BC &amp;= \frac{m}{C_D A}
 \end{align}\]</div>
 <p>will increase, meaning the cannonball overcome air resistance more
@@ -1180,8 +1180,8 @@ FWD solves: 6   REV solves: 0
 Total colors vs. total size: 6 vs 63  (90.5% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.025716 sec.
-Time to compute coloring: 0.012216 sec.
+Time to compute sparsity: 0.042559 sec.
+Time to compute coloring: 0.017358 sec.
 Memory to compute coloring: 0.000000 MB.
 
 Coloring for &#39;traj.phases.descent.rhs_disc&#39; (class CannonballODE)
@@ -1191,8 +1191,8 @@ FWD solves: 6   REV solves: 0
 Total colors vs. total size: 6 vs 33  (81.8% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.014359 sec.
-Time to compute coloring: 0.006332 sec.
+Time to compute sparsity: 0.019974 sec.
+Time to compute coloring: 0.012661 sec.
 Memory to compute coloring: 0.000000 MB.
 
 Coloring for &#39;traj.phases.descent.rhs_col&#39; (class CannonballODE)
@@ -1202,21 +1202,21 @@ FWD solves: 6   REV solves: 0
 Total colors vs. total size: 6 vs 18  (66.7% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.007914 sec.
-Time to compute coloring: 0.003576 sec.
+Time to compute sparsity: 0.012629 sec.
+Time to compute coloring: 0.003851 sec.
 Memory to compute coloring: 0.000000 MB.
-Full total jacobian was computed 3 times, taking 0.157171 seconds.
+Full total jacobian was computed 3 times, taking 0.218148 seconds.
 Total jacobian shape: (87, 88) 
-
-
-Jacobian shape: (87, 88)  (13.27% nonzero)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jacobian shape: (87, 88)  (13.27% nonzero)
 FWD solves: 27   REV solves: 0
 Total colors vs. total size: 27 vs 88  (69.3% improvement)
 
 Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.157171 sec.
-Time to compute coloring: 0.082015 sec.
-Memory to compute coloring: 0.562500 MB.
+Time to compute sparsity: 0.218148 sec.
+Time to compute coloring: 0.088667 sec.
+Memory to compute coloring: 0.554688 MB.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization Problem -- Optimization using pyOpt_sparse
@@ -1225,11 +1225,11 @@ Memory to compute coloring: 0.562500 MB.
 
     Solution: 
 --------------------------------------------------------------------------------
-    Total Time:                    2.1884
-       User Objective Time :       0.3054
-       User Sensitivity Time :     1.3150
-       Interface Time :            0.3122
-       Opt Solver Time:            0.2558
+    Total Time:                    2.5920
+       User Objective Time :       0.3929
+       User Sensitivity Time :     1.5377
+       Interface Time :            0.3735
+       Opt Solver Time:            0.2879
     Calls to Objective Function :     118
     Calls to Sens Function :           89
 
