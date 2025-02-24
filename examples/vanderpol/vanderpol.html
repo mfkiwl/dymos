@@ -535,6 +535,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../length_constrained_brachistochrone/length_constrained_brachistochrone.html">The Length-Constrained Brachistochrone</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../min_time_climb/min_time_climb.html">Supersonic Interceptor Minimum Time Climb</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../mountain_car/mountain_car.html">The Mountain Car Problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../moon_landing/moon_landing.html">Moon Landing Problem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../multi_phase_cannonball/multi_phase_cannonball.html">Multi-Phase Cannonball</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../multibranch_trajectory/multibranch_trajectory.html">Multibranch Trajectory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../racecar/racecar.html">Race car Lap Simulation</a></li>
@@ -547,7 +548,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <li class="toctree-l2"><a class="reference internal" href="../cart_pole/cart_pole.html">Cart-Pole Optimal Control</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../brachistochrone/brachistochrone_tandem_phases.html">Brachistochrone with tandem phases</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cannonball_implicit_duration/cannonball_implicit_duration.html">Cannonball Implicit Duration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../implicit_duration/brachistochrone_implicit_duration.html">Implicit Duration</a></li>
 </ul>
 </li>
 </ul>
@@ -561,6 +562,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../features/phases/constraints.html">Constraints</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../features/phases/objective.html">Objective</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../features/phases/timeseries.html">Timeseries Outputs</a></li>
+
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../features/trajectories/trajectories.html">Organizing Phases into Trajectories</a></li>
@@ -835,16 +837,16 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="the-van-der-pol-oscillator">
 <h1>The Van der Pol Oscillator<a class="headerlink" href="#the-van-der-pol-oscillator" title="Permalink to this heading">#</a></h1>
 <p>In dynamics, the Van Der Pol oscillator <span id="id1">[<a class="reference internal" href="#id23" title="Wikipedia contributors. Van der pol oscillator — Wikipedia, the free encyclopedia. 2020. [Online; accessed 12-June-2020]. URL: https://en.wikipedia.org/w/index.php?title=Van_der_Pol_oscillator&amp;oldid=953857769.">Wikipediacontributors20</a>]</span> is a non-conservative oscillator with non-linear damping. It evolves in time according to the second-order differential equation:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-06efa8e9-e7f3-4a5b-a14e-d6bb89b348ae">
-<span class="eqno">(16)<a class="headerlink" href="#equation-06efa8e9-e7f3-4a5b-a14e-d6bb89b348ae" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-abab914c-f005-4073-b25d-fc67088df487">
+<span class="eqno">(16)<a class="headerlink" href="#equation-abab914c-f005-4073-b25d-fc67088df487" title="Permalink to this equation">#</a></span>\[\begin{align}
     \frac{d^2x}{dt^2} - u (1 - x^2) \frac{dx}{dt} + x &amp;= 0
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(x\)</span> is the position coordinate (a function of the time <span class="math notranslate nohighlight">\(t\)</span>), and <span class="math notranslate nohighlight">\(u\)</span> is a scalar parameter
 indicating the nonlinearity and the strength of the damping.</p>
 <p>To make this an optimal control problem, we want to find the smallest control that will dampen the oscillation
 (drive the state variables to zero). We can express this as an objective function <span class="math notranslate nohighlight">\(J\)</span> to minimize:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8939484c-7dbf-4008-a03b-7df5ce715f7b">
-<span class="eqno">(17)<a class="headerlink" href="#equation-8939484c-7dbf-4008-a03b-7df5ce715f7b" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-be9c8d47-99fb-4478-abac-8acab027d1e5">
+<span class="eqno">(17)<a class="headerlink" href="#equation-be9c8d47-99fb-4478-abac-8acab027d1e5" title="Permalink to this equation">#</a></span>\[\begin{align}
     J &amp;= \int x^2_0 + x^2_1 + u^2
 \end{align}\]</div>
 <p>In other words, we want to find the optimal (smallest) trajectory of the control <span class="math notranslate nohighlight">\(u\)</span> such that the oscillation
@@ -863,8 +865,8 @@ and the oscillation’s rate of change are driven to zero.</p>
 <section id="system-dynamics">
 <h2>System Dynamics<a class="headerlink" href="#system-dynamics" title="Permalink to this heading">#</a></h2>
 <p>The evolution of the state variables is given by the following ordinary differential equations (ODE):</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5d8e26d6-f59b-4dbf-b0af-4dfb6392edb6">
-<span class="eqno">(18)<a class="headerlink" href="#equation-5d8e26d6-f59b-4dbf-b0af-4dfb6392edb6" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-41de8cf7-06da-4917-832c-b14bde06b81d">
+<span class="eqno">(18)<a class="headerlink" href="#equation-41de8cf7-06da-4917-832c-b14bde06b81d" title="Permalink to this equation">#</a></span>\[\begin{align}
     \frac{dx_0}{dt} &amp;= (1 - x^2_1) x_0 - x_1 + u \\
     \frac{dx_1}{dt} &amp;= x_0 \\
     \frac{dJ}{dt} &amp;= x^2_0 + x^2_1 + u^2
@@ -881,16 +883,16 @@ and the oscillation’s rate of change are driven to zero.</p>
 <section id="the-initial-and-final-conditions">
 <h2>The initial and final conditions<a class="headerlink" href="#the-initial-and-final-conditions" title="Permalink to this heading">#</a></h2>
 <p>The initial conditions are:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c6d9c3dc-e3df-412f-bd3b-615116b6ba65">
-<span class="eqno">(19)<a class="headerlink" href="#equation-c6d9c3dc-e3df-412f-bd3b-615116b6ba65" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-3020f6a9-310b-44ec-9c66-64b7fdd6d85e">
+<span class="eqno">(19)<a class="headerlink" href="#equation-3020f6a9-310b-44ec-9c66-64b7fdd6d85e" title="Permalink to this equation">#</a></span>\[\begin{align}
     t_i &amp;= 0 \\
     x_{0i} &amp;= 1 \\
     x_{1i} &amp;= 1 \\
       u_i &amp;= -0.75
 \end{align}\]</div>
 <p>The final conditions are:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-11d5751a-993e-42d0-98da-396dec2f4f1c">
-<span class="eqno">(20)<a class="headerlink" href="#equation-11d5751a-993e-42d0-98da-396dec2f4f1c" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d18a2e15-5e5a-4aef-8111-bd47557a7df2">
+<span class="eqno">(20)<a class="headerlink" href="#equation-d18a2e15-5e5a-4aef-8111-bd47557a7df2" title="Permalink to this equation">#</a></span>\[\begin{align}
     t_f &amp;= 10 \\
     x_{0f} &amp;= 0 \\
     x_{1f} &amp;= 0 \\
@@ -927,28 +929,27 @@ the <strong>compute_partials</strong> method. So although 7 partials are declare
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">openmdao.api</span> <span class="k">as</span> <span class="nn">om</span>
-<span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">from</span> <span class="nn">openmdao.utils.array_utils</span> <span class="kn">import</span> <span class="n">evenly_distrib_idxs</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">openmdao.api</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">om</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">openmdao.utils.array_utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">evenly_distrib_idxs</span>
 
 
-<span class="k">class</span> <span class="nc">VanderpolODE</span><span class="p">(</span><span class="n">om</span><span class="o">.</span><span class="n">ExplicitComponent</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">VanderpolODE</span><span class="p">(</span><span class="n">om</span><span class="o">.</span><span class="n">ExplicitComponent</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;intentionally slow version of vanderpol_ode for effects of demonstrating distributed component calculations</span>
 
 <span class="sd">    MPI can run this component in multiple processes, distributing the calculation of derivatives.</span>
 <span class="sd">    This code has a delay in it to simulate a longer computation. It should run faster with more processes.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">progress_prints</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">declare</span><span class="p">(</span><span class="s1">&#39;num_nodes&#39;</span><span class="p">,</span> <span class="n">types</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">declare</span><span class="p">(</span><span class="s1">&#39;distrib&#39;</span><span class="p">,</span> <span class="n">types</span><span class="o">=</span><span class="nb">bool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">nn</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s1">&#39;num_nodes&#39;</span><span class="p">]</span>
         <span class="n">comm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">comm</span>
         <span class="n">rank</span> <span class="o">=</span> <span class="n">comm</span><span class="o">.</span><span class="n">rank</span>
@@ -987,7 +988,7 @@ the <strong>compute_partials</strong> method. So although 7 partials are declare
         <span class="bp">self</span><span class="o">.</span><span class="n">declare_partials</span><span class="p">(</span><span class="n">of</span><span class="o">=</span><span class="s1">&#39;Jdot&#39;</span><span class="p">,</span> <span class="n">wrt</span><span class="o">=</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span>  <span class="n">rows</span><span class="o">=</span><span class="n">r</span><span class="p">,</span> <span class="n">cols</span><span class="o">=</span><span class="n">c</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">declare_partials</span><span class="p">(</span><span class="n">of</span><span class="o">=</span><span class="s1">&#39;Jdot&#39;</span><span class="p">,</span> <span class="n">wrt</span><span class="o">=</span><span class="s1">&#39;u&#39;</span><span class="p">,</span>   <span class="n">rows</span><span class="o">=</span><span class="n">r</span><span class="p">,</span> <span class="n">cols</span><span class="o">=</span><span class="n">c</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">compute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">compute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="p">):</span>
 
         <span class="c1"># The inputs contain the entire vector, be each rank will only operate on a portion of it.</span>
         <span class="n">x0</span> <span class="o">=</span> <span class="n">inputs</span><span class="p">[</span><span class="s1">&#39;x0&#39;</span><span class="p">][</span><span class="bp">self</span><span class="o">.</span><span class="n">start_idx</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">end_idx</span><span class="p">]</span>
@@ -998,7 +999,7 @@ the <strong>compute_partials</strong> method. So although 7 partials are declare
         <span class="n">outputs</span><span class="p">[</span><span class="s1">&#39;x1dot&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">x0</span>
         <span class="n">outputs</span><span class="p">[</span><span class="s1">&#39;Jdot&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">x0</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">x1</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">u</span><span class="o">**</span><span class="mi">2</span>
 
-    <span class="k">def</span> <span class="nf">compute_partials</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">jacobian</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">compute_partials</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">jacobian</span><span class="p">):</span>
         <span class="n">x0</span> <span class="o">=</span> <span class="n">inputs</span><span class="p">[</span><span class="s1">&#39;x0&#39;</span><span class="p">][</span><span class="bp">self</span><span class="o">.</span><span class="n">start_idx</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">end_idx</span><span class="p">]</span>
         <span class="n">x1</span> <span class="o">=</span> <span class="n">inputs</span><span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">][</span><span class="bp">self</span><span class="o">.</span><span class="n">start_idx</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">end_idx</span><span class="p">]</span>
         <span class="n">u</span> <span class="o">=</span> <span class="n">inputs</span><span class="p">[</span><span class="s1">&#39;u&#39;</span><span class="p">][</span><span class="bp">self</span><span class="o">.</span><span class="n">start_idx</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">end_idx</span><span class="p">]</span>
@@ -1036,10 +1037,10 @@ This is required so that the inputs are correctly calculated.</p></li>
 </div>
 <div class="cell tag_output_scroll docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">openmdao.api</span> <span class="k">as</span> <span class="nn">om</span>
-<span class="kn">import</span> <span class="nn">dymos</span> <span class="k">as</span> <span class="nn">dm</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">openmdao.api</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">om</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">dymos</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dm</span>
 
-<span class="k">def</span> <span class="nf">vanderpol</span><span class="p">(</span><span class="n">transcription</span><span class="o">=</span><span class="s1">&#39;gauss-lobatto&#39;</span><span class="p">,</span> <span class="n">num_segments</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">transcription_order</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">vanderpol</span><span class="p">(</span><span class="n">transcription</span><span class="o">=</span><span class="s1">&#39;gauss-lobatto&#39;</span><span class="p">,</span> <span class="n">num_segments</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">transcription_order</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
               <span class="n">compressed</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;SLSQP&#39;</span><span class="p">,</span> <span class="n">use_pyoptsparse</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Dymos problem definition for optimal control of a Van der Pol oscillator&quot;&quot;&quot;</span>
 
@@ -1100,14 +1101,13 @@ This is required so that the inputs are correctly calculated.</p></li>
     <span class="c1"># setup the problem</span>
     <span class="n">p</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-    <span class="n">p</span><span class="p">[</span><span class="s1">&#39;traj.phase0.t_initial&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
-    <span class="n">p</span><span class="p">[</span><span class="s1">&#39;traj.phase0.t_duration&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">t_final</span>
+    <span class="n">phase</span><span class="o">.</span><span class="n">set_time_val</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">t_final</span><span class="p">)</span>
 
     <span class="c1"># add a linearly interpolated initial guess for the state and control curves</span>
-    <span class="n">p</span><span class="p">[</span><span class="s1">&#39;traj.phase0.states:x0&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">phase</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="s1">&#39;x0&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
-    <span class="n">p</span><span class="p">[</span><span class="s1">&#39;traj.phase0.states:x1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">phase</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
-    <span class="n">p</span><span class="p">[</span><span class="s1">&#39;traj.phase0.states:J&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">phase</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="s1">&#39;J&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
-    <span class="n">p</span><span class="p">[</span><span class="s1">&#39;traj.phase0.controls:u&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">phase</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="s1">&#39;u&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+    <span class="n">phase</span><span class="o">.</span><span class="n">set_state_val</span><span class="p">(</span><span class="s1">&#39;x0&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+    <span class="n">phase</span><span class="o">.</span><span class="n">set_state_val</span><span class="p">(</span><span class="s1">&#39;x0&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+    <span class="n">phase</span><span class="o">.</span><span class="n">set_state_val</span><span class="p">(</span><span class="s1">&#39;x0&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="n">phase</span><span class="o">.</span><span class="n">set_control_val</span><span class="p">(</span><span class="s1">&#39;u&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.75</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">p</span>
 </pre></div>
@@ -1136,117 +1136,106 @@ system response with the control variable <span class="math notranslate nohighli
     --- phase0 ---
         None
 
-INFO: checking out_of_order
+INFO: checking out_of_order...
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking out_of_order
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     out_of_order check complete (0.000382 sec).
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking system
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking system...
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking system
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     system check complete (0.000020 sec).
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking solvers
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking solvers...
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking solvers
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     solvers check complete (0.000191 sec).
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking dup_inputs
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking dup_inputs...
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking dup_inputs
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     dup_inputs check complete (0.000057 sec).
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking missing_recorders
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking missing_recorders...
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking missing_recorders
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     missing_recorders check complete (0.000002 sec).
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: The Problem has no recorder of any kind attached
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking unserializable_options...
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:check_config:The Problem has no recorder of any kind attached
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     unserializable_options check complete (0.002838 sec).
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking unserializable_options
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking comp_has_no_outputs...
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking unserializable_options
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     comp_has_no_outputs check complete (0.000036 sec).
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking comp_has_no_outputs
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking auto_ivc_warnings...
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking comp_has_no_outputs
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     auto_ivc_warnings check complete (0.000003 sec).
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking auto_ivc_warnings
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking out_of_order...
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking auto_ivc_warnings
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     out_of_order check complete (0.000423 sec).
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model viewer data has already been recorded for Driver.
-INFO: checking out_of_order
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking system...
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking out_of_order
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     system check complete (0.000022 sec).
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking system
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking solvers...
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking system
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     solvers check complete (0.000215 sec).
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking solvers
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking dup_inputs...
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking solvers
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     dup_inputs check complete (0.000085 sec).
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking dup_inputs
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking missing_recorders...
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking dup_inputs
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     missing_recorders check complete (0.000002 sec).
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking missing_recorders
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking unserializable_options...
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking missing_recorders
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     unserializable_options check complete (0.003359 sec).
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: The Problem has no recorder of any kind attached
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking comp_has_no_outputs...
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:check_config:The Problem has no recorder of any kind attached
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     comp_has_no_outputs check complete (0.000033 sec).
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking unserializable_options
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking auto_ivc_warnings...
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking unserializable_options
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking comp_has_no_outputs
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking comp_has_no_outputs
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking auto_ivc_warnings
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking auto_ivc_warnings
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     auto_ivc_warnings check complete (0.000003 sec).
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Simulating trajectory traj
-Model viewer data has already been recorded for Driver.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.11/site-packages/openmdao/core/group.py:1166: DerivativesWarning:Constraints or objectives [ode_eval.control_interp.control_rates:u_rate, ode_eval.control_interp.control_rates:u_rate2, ode_eval.control_interp.control_values:u] cannot be impacted by the design variables of the problem because no partials were defined for them in their parent component(s).
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Done simulating trajectory traj
@@ -1264,44 +1253,51 @@ control variable <span class="math notranslate nohighlight">\(u\)</span> vs time
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dymos.examples.plotting</span> <span class="kn">import</span> <span class="n">plot_results</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">dymos.examples.plotting</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot_results</span>
 
 <span class="c1"># Display the results</span>
-<span class="k">def</span> <span class="nf">vanderpol_plots</span><span class="p">():</span>
-    <span class="n">sol</span> <span class="o">=</span> <span class="n">om</span><span class="o">.</span><span class="n">CaseReader</span><span class="p">(</span><span class="s1">&#39;dymos_solution.db&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get_case</span><span class="p">(</span><span class="s1">&#39;final&#39;</span><span class="p">)</span>
-    <span class="n">sim</span> <span class="o">=</span> <span class="n">om</span><span class="o">.</span><span class="n">CaseReader</span><span class="p">(</span><span class="s1">&#39;dymos_simulation.db&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get_case</span><span class="p">(</span><span class="s1">&#39;final&#39;</span><span class="p">)</span>
-    
-    <span class="n">plot_results</span><span class="p">([(</span><span class="s1">&#39;traj.phase0.timeseries.time&#39;</span><span class="p">,</span>
-                   <span class="s1">&#39;traj.phase0.timeseries.x1&#39;</span><span class="p">,</span>
-                   <span class="s1">&#39;time (s)&#39;</span><span class="p">,</span>
-                   <span class="s1">&#39;$x_1$ (V)&#39;</span><span class="p">),</span>
-                 <span class="p">(</span><span class="s1">&#39;traj.phase0.timeseries.time&#39;</span><span class="p">,</span>
-                  <span class="s1">&#39;traj.phase0.timeseries.x0&#39;</span><span class="p">,</span>
-                  <span class="s1">&#39;time (s)&#39;</span><span class="p">,</span>
-                  <span class="s1">&#39;$x_0$ (V/s)&#39;</span><span class="p">),</span>
-                  <span class="p">(</span><span class="s1">&#39;traj.phase0.timeseries.time&#39;</span><span class="p">,</span>
-                   <span class="s1">&#39;traj.phase0.timeseries.J&#39;</span><span class="p">,</span>
-                   <span class="s1">&#39;time (s)&#39;</span><span class="p">,</span>
-                   <span class="s1">&#39;J&#39;</span><span class="p">),</span>
-                  <span class="p">(</span><span class="s1">&#39;traj.phase0.timeseries.x0&#39;</span><span class="p">,</span>
-                   <span class="s1">&#39;traj.phase0.timeseries.x1&#39;</span><span class="p">,</span>
-                   <span class="s1">&#39;$x_0$ (V/s)&#39;</span><span class="p">,</span>
-                   <span class="s1">&#39;$x_1$ (V)&#39;</span><span class="p">),</span>
-                 <span class="p">(</span><span class="s1">&#39;traj.phase0.timeseries.time&#39;</span><span class="p">,</span>
-                  <span class="s1">&#39;traj.phase0.timeseries.u&#39;</span><span class="p">,</span>
-                  <span class="s1">&#39;time (s)&#39;</span><span class="p">,</span>
-                  <span class="s1">&#39;control u&#39;</span><span class="p">),</span>
-                  <span class="p">],</span>
-                 <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Van Der Pol Simulation&#39;</span><span class="p">,</span>
-                 <span class="n">p_sol</span><span class="o">=</span><span class="n">sol</span><span class="p">,</span> <span class="n">p_sim</span><span class="o">=</span><span class="n">sim</span><span class="p">);</span>
 
-<span class="n">vanderpol_plots</span><span class="p">()</span>
+<span class="n">sol</span> <span class="o">=</span> <span class="n">om</span><span class="o">.</span><span class="n">CaseReader</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">get_outputs_dir</span><span class="p">()</span> <span class="o">/</span> <span class="s1">&#39;dymos_solution.db&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get_case</span><span class="p">(</span><span class="s1">&#39;final&#39;</span><span class="p">)</span>
+<span class="n">sim_prob</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">traj</span><span class="o">.</span><span class="n">sim_prob</span>
+<span class="n">sim</span> <span class="o">=</span> <span class="n">om</span><span class="o">.</span><span class="n">CaseReader</span><span class="p">(</span><span class="n">sim_prob</span><span class="o">.</span><span class="n">get_outputs_dir</span><span class="p">()</span> <span class="o">/</span> <span class="s1">&#39;dymos_simulation.db&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get_case</span><span class="p">(</span><span class="s1">&#39;final&#39;</span><span class="p">)</span>
+
+<span class="n">plot_results</span><span class="p">([(</span><span class="s1">&#39;traj.phase0.timeseries.time&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;traj.phase0.timeseries.x1&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;time (s)&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;$x_1$ (V)&#39;</span><span class="p">),</span>
+              <span class="p">(</span><span class="s1">&#39;traj.phase0.timeseries.time&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;traj.phase0.timeseries.x0&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;time (s)&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;$x_0$ (V/s)&#39;</span><span class="p">),</span>
+              <span class="p">(</span><span class="s1">&#39;traj.phase0.timeseries.time&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;traj.phase0.timeseries.J&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;time (s)&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;J&#39;</span><span class="p">),</span>
+              <span class="p">(</span><span class="s1">&#39;traj.phase0.timeseries.x0&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;traj.phase0.timeseries.x1&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;$x_0$ (V/s)&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;$x_1$ (V)&#39;</span><span class="p">),</span>
+              <span class="p">(</span><span class="s1">&#39;traj.phase0.timeseries.time&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;traj.phase0.timeseries.u&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;time (s)&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;control u&#39;</span><span class="p">),</span>
+              <span class="p">],</span>
+              <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Van Der Pol Simulation&#39;</span><span class="p">,</span>
+              <span class="n">p_sol</span><span class="o">=</span><span class="n">sol</span><span class="p">,</span> <span class="n">p_sim</span><span class="o">=</span><span class="n">sim</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/50d9a1ea3cbb8b585f20dd24d9bff047403684345f9b52660caa01e086529aa2.png" src="../../_images/50d9a1ea3cbb8b585f20dd24d9bff047403684345f9b52660caa01e086529aa2.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 1000x800 with 5 Axes&gt;,
+ array([&lt;Axes: xlabel=&#39;time (s)&#39;, ylabel=&#39;$x_1$ (V)&#39;&gt;,
+        &lt;Axes: xlabel=&#39;time (s)&#39;, ylabel=&#39;$x_0$ (V/s)&#39;&gt;,
+        &lt;Axes: xlabel=&#39;time (s)&#39;, ylabel=&#39;J&#39;&gt;,
+        &lt;Axes: xlabel=&#39;$x_0$ (V/s)&#39;, ylabel=&#39;$x_1$ (V)&#39;&gt;,
+        &lt;Axes: xlabel=&#39;time (s)&#39;, ylabel=&#39;control u&#39;&gt;], dtype=object))
+</pre></div>
+</div>
+<img alt="../../_images/8a78bb7c3fea1c33bd3b0d591b9d7546f697858e39c9109f1bf9dbf50b32d52c.png" src="../../_images/8a78bb7c3fea1c33bd3b0d591b9d7546f697858e39c9109f1bf9dbf50b32d52c.png" />
 </div>
 </div>
 </section>
@@ -1314,8 +1310,7 @@ and optimized results. The state variables <span class="math notranslate nohighl
 If we take the simulation results as the truth, there is a bit of divergence in the state values of the solution and simulation towards the end.</p>
 <div class="cell tag_output_scroll docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dymos</span> <span class="k">as</span> <span class="nn">dm</span>
-<span class="kn">from</span> <span class="nn">dymos.examples.plotting</span> <span class="kn">import</span> <span class="n">plot_results</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">dymos</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dm</span>
 
 <span class="c1"># Create the Dymos problem instance</span>
 <span class="n">p</span> <span class="o">=</span> <span class="n">vanderpol</span><span class="p">(</span><span class="n">transcription</span><span class="o">=</span><span class="s1">&#39;gauss-lobatto&#39;</span><span class="p">,</span> <span class="n">num_segments</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span>
@@ -1331,142 +1326,127 @@ If we take the simulation results as the truth, there is a bit of divergence in 
     --- phase0 ---
         None
 
-INFO: checking out_of_order
+INFO: checking out_of_order...
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.10/site-packages/openmdao/recorders/sqlite_recorder.py:227: UserWarning:The existing case recorder file, dymos_solution.db, is being overwritten.
-INFO:check_config:checking out_of_order
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     out_of_order check complete (0.000392 sec).
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking system
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking system...
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking system
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     system check complete (0.000025 sec).
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking solvers
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking solvers...
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking solvers
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     solvers check complete (0.000184 sec).
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking dup_inputs
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking dup_inputs...
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking dup_inputs
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     dup_inputs check complete (0.000052 sec).
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking missing_recorders
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking missing_recorders...
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking missing_recorders
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     missing_recorders check complete (0.000002 sec).
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: The Problem has no recorder of any kind attached
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking unserializable_options...
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:check_config:The Problem has no recorder of any kind attached
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     unserializable_options check complete (0.003219 sec).
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking unserializable_options
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking comp_has_no_outputs...
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking unserializable_options
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     comp_has_no_outputs check complete (0.000053 sec).
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking comp_has_no_outputs
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking auto_ivc_warnings...
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking comp_has_no_outputs
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     auto_ivc_warnings check complete (0.000004 sec).
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking auto_ivc_warnings
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking out_of_order...
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking auto_ivc_warnings
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     out_of_order check complete (0.000239 sec).
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model viewer data has already been recorded for Driver.
-INFO: checking out_of_order
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking system...
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking out_of_order
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     system check complete (0.000019 sec).
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking system
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking solvers...
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking system
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     solvers check complete (0.000152 sec).
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking solvers
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking dup_inputs...
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking solvers
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     dup_inputs check complete (0.000052 sec).
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking dup_inputs
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking missing_recorders...
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking dup_inputs
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     missing_recorders check complete (0.000003 sec).
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking missing_recorders
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking unserializable_options...
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking missing_recorders
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     unserializable_options check complete (0.003005 sec).
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: The Problem has no recorder of any kind attached
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking comp_has_no_outputs...
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:check_config:The Problem has no recorder of any kind attached
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     comp_has_no_outputs check complete (0.000039 sec).
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking unserializable_options
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking auto_ivc_warnings...
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking unserializable_options
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     auto_ivc_warnings check complete (0.000003 sec).
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking comp_has_no_outputs
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking comp_has_no_outputs
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking auto_ivc_warnings
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking auto_ivc_warnings
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.177757 seconds.
-Total jacobian shape: (60, 130) 
-
-
-Jacobian shape: (60, 130)  ( 5.15% nonzero)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jacobian shape: (60, 130)  (5.15% nonzero)
 FWD solves: 0   REV solves: 5
-Total colors vs. total size: 5 vs 60  (91.7% improvement)
+Total colors vs. total size: 5 vs 60  (91.67% improvement)
 
-Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.177757 sec.
-Time to compute coloring: 0.059692 sec.
-Memory to compute coloring: 0.250000 MB.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>List of user-set options:
+Sparsity computed using tolerance: 1e-25.
+Dense total jacobian for Problem &#39;problem4&#39; was computed 3 times.
+Time to compute sparsity:   0.1017 sec
+Time to compute coloring:   0.0625 sec
+Memory to compute coloring:   0.2500 MB
+Coloring created on: 2025-02-24 20:31:01
+
+List of user-set options:
 
                                     Name   Value                used
                         file_print_level = 5                     yes
                    hessian_approximation = limited-memory        yes
                            linear_solver = mumps                 yes
                       nlp_scaling_method = user-scaling          yes
-                             output_file = IPOPT.out             yes
+                             output_file = /home/runner/work/dymos/dymos/docs/dymos_book/examples/vanderpol/problem4_out/IPOPT.out  yes
                              print_level = 4                     yes
                       print_user_options = yes                   yes
                                       sb = yes                   yes
-Total number of variables............................:      130
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total number of variables............................:      130
                      variables with only lower bounds:        0
                 variables with lower and upper bounds:       45
                      variables with only upper bounds:        0
@@ -1477,44 +1457,52 @@ Total number of inequality constraints...............:        0
         inequality constraints with only upper bounds:        0
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of Iterations....: 34
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of Iterations....: 31
 
                                    (scaled)                 (unscaled)
-Objective...............:   2.8794727905908779e+00    2.8794727905908779e+00
-Dual infeasibility......:   3.5078177740982541e-09    3.5078177740982541e-09
-Constraint violation....:   4.0245584642661925e-15    4.0245584642661925e-15
-Variable bound violation:   9.8074164345263171e-09    9.8074164345263171e-09
-Complementarity.........:   1.0000000000000001e-11    1.0000000000000001e-11
-Overall NLP error.......:   3.5078177740982541e-09    3.5078177740982541e-09
+Objective...............:   5.3660057662482838e+00    5.3660057662482838e+00
+Dual infeasibility......:   5.4022997186820021e-09    5.4022997186820021e-09
+Constraint violation....:   6.8001160258290838e-15    6.8001160258290838e-15
+Variable bound violation:   9.8138401849467982e-09    9.8138401849467982e-09
+Complementarity.........:   1.0000001515819839e-11    1.0000001515819839e-11
+Overall NLP error.......:   5.4022997186820021e-09    5.4022997186820021e-09
 
 
-Number of objective function evaluations             = 35
-Number of objective gradient evaluations             = 35
-Number of equality constraint evaluations            = 35
+Number of objective function evaluations             = 33
+Number of objective gradient evaluations             = 32
+Number of equality constraint evaluations            = 33
 Number of inequality constraint evaluations          = 0
-Number of equality constraint Jacobian evaluations   = 35
+Number of equality constraint Jacobian evaluations   = 32
 Number of inequality constraint Jacobian evaluations = 0
 Number of Lagrangian Hessian evaluations             = 0
-Total seconds in IPOPT                               = 0.598
+Total seconds in IPOPT                               = 0.682
 
 EXIT: Optimal Solution Found.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.10/site-packages/openmdao/visualization/opt_report/opt_report.py:634: UserWarning: Attempting to set identical low and high ylims makes transformation singular; automatically expanding.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.11/site-packages/openmdao/visualization/opt_report/opt_report.py:619: UserWarning: Attempting to set identical low and high ylims makes transformation singular; automatically expanding.
   ax.set_ylim([ymin_plot, ymax_plot])
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.10/site-packages/openmdao/recorders/sqlite_recorder.py:227: UserWarning:The existing case recorder file, dymos_simulation.db, is being overwritten.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.11/site-packages/openmdao/core/group.py:1166: DerivativesWarning:Constraints or objectives [ode_eval.control_interp.control_rates:u_rate, ode_eval.control_interp.control_rates:u_rate2, ode_eval.control_interp.control_values:u] cannot be impacted by the design variables of the problem because no partials were defined for them in their parent component(s).
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Simulating trajectory traj
-Model viewer data has already been recorded for Driver.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Done simulating trajectory traj
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Problem: problem4
+Driver:  pyOptSparseDriver
+  success     : True
+  iterations  : 35
+  runtime     : 8.8598E-01 s
+  model_evals : 35
+  model_time  : 2.7500E-02 s
+  deriv_evals : 33
+  deriv_time  : 1.2098E-01 s
+  exit_status : SUCCESS
 </pre></div>
 </div>
 </div>
@@ -1526,13 +1514,47 @@ Model viewer data has already been recorded for Driver.
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vanderpol_plots</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sol</span> <span class="o">=</span> <span class="n">om</span><span class="o">.</span><span class="n">CaseReader</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">get_outputs_dir</span><span class="p">()</span> <span class="o">/</span> <span class="s1">&#39;dymos_solution.db&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get_case</span><span class="p">(</span><span class="s1">&#39;final&#39;</span><span class="p">)</span>
+<span class="n">sim_prob</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">traj</span><span class="o">.</span><span class="n">sim_prob</span>
+<span class="n">sim</span> <span class="o">=</span> <span class="n">om</span><span class="o">.</span><span class="n">CaseReader</span><span class="p">(</span><span class="n">sim_prob</span><span class="o">.</span><span class="n">get_outputs_dir</span><span class="p">()</span> <span class="o">/</span> <span class="s1">&#39;dymos_simulation.db&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get_case</span><span class="p">(</span><span class="s1">&#39;final&#39;</span><span class="p">)</span>
+
+<span class="n">plot_results</span><span class="p">([(</span><span class="s1">&#39;traj.phase0.timeseries.time&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;traj.phase0.timeseries.x1&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;time (s)&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;$x_1$ (V)&#39;</span><span class="p">),</span>
+              <span class="p">(</span><span class="s1">&#39;traj.phase0.timeseries.time&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;traj.phase0.timeseries.x0&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;time (s)&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;$x_0$ (V/s)&#39;</span><span class="p">),</span>
+              <span class="p">(</span><span class="s1">&#39;traj.phase0.timeseries.time&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;traj.phase0.timeseries.J&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;time (s)&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;J&#39;</span><span class="p">),</span>
+              <span class="p">(</span><span class="s1">&#39;traj.phase0.timeseries.x0&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;traj.phase0.timeseries.x1&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;$x_0$ (V/s)&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;$x_1$ (V)&#39;</span><span class="p">),</span>
+              <span class="p">(</span><span class="s1">&#39;traj.phase0.timeseries.time&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;traj.phase0.timeseries.u&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;time (s)&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;control u&#39;</span><span class="p">),</span>
+              <span class="p">],</span>
+              <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Van Der Pol Simulation&#39;</span><span class="p">,</span>
+              <span class="n">p_sol</span><span class="o">=</span><span class="n">sol</span><span class="p">,</span> <span class="n">p_sim</span><span class="o">=</span><span class="n">sim</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/20dc332f9702b87d61b494cb2ec4ff1e090dda5ff3dc4d57580fed519d4174d0.png" src="../../_images/20dc332f9702b87d61b494cb2ec4ff1e090dda5ff3dc4d57580fed519d4174d0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 1000x800 with 5 Axes&gt;,
+ array([&lt;Axes: xlabel=&#39;time (s)&#39;, ylabel=&#39;$x_1$ (V)&#39;&gt;,
+        &lt;Axes: xlabel=&#39;time (s)&#39;, ylabel=&#39;$x_0$ (V/s)&#39;&gt;,
+        &lt;Axes: xlabel=&#39;time (s)&#39;, ylabel=&#39;J&#39;&gt;,
+        &lt;Axes: xlabel=&#39;$x_0$ (V/s)&#39;, ylabel=&#39;$x_1$ (V)&#39;&gt;,
+        &lt;Axes: xlabel=&#39;time (s)&#39;, ylabel=&#39;control u&#39;&gt;], dtype=object))
+</pre></div>
+</div>
+<img alt="../../_images/9173a112d652d903fb025bf58dc38595c65b85f632023ed0f251bafa31ed5300.png" src="../../_images/9173a112d652d903fb025bf58dc38595c65b85f632023ed0f251bafa31ed5300.png" />
 </div>
 </div>
 </section>
@@ -1560,135 +1582,215 @@ and does not require supplying a good guess for the number segments.</p>
     --- phase0 ---
         None
 
-INFO: checking out_of_order
+INFO: checking out_of_order...
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.10/site-packages/openmdao/recorders/sqlite_recorder.py:227: UserWarning:The existing case recorder file, dymos_solution.db, is being overwritten.
-INFO:check_config:checking out_of_order
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking out_of_order...
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking system
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     out_of_order check complete (0.000564 sec).
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking system
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     out_of_order check complete (0.000564 sec).
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking solvers
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking system...
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking solvers
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking system...
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking dup_inputs
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     system check complete (0.000023 sec).
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking dup_inputs
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     system check complete (0.000023 sec).
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking missing_recorders
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking solvers...
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking missing_recorders
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking solvers...
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: The Problem has no recorder of any kind attached
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     solvers check complete (0.000268 sec).
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:check_config:The Problem has no recorder of any kind attached
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     solvers check complete (0.000268 sec).
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking unserializable_options
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking dup_inputs...
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking unserializable_options
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking dup_inputs...
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking comp_has_no_outputs
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     dup_inputs check complete (0.000084 sec).
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking comp_has_no_outputs
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     dup_inputs check complete (0.000084 sec).
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking auto_ivc_warnings
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking missing_recorders...
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking auto_ivc_warnings
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking missing_recorders...
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model viewer data has already been recorded for Driver.
-INFO: checking out_of_order
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     missing_recorders check complete (0.000002 sec).
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking out_of_order
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     missing_recorders check complete (0.000002 sec).
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking system
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking unserializable_options...
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking system
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking unserializable_options...
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking solvers
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     unserializable_options check complete (0.003053 sec).
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking solvers
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     unserializable_options check complete (0.003053 sec).
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking dup_inputs
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking comp_has_no_outputs...
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking dup_inputs
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking comp_has_no_outputs...
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking missing_recorders
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     comp_has_no_outputs check complete (0.000038 sec).
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking missing_recorders
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     comp_has_no_outputs check complete (0.000038 sec).
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: The Problem has no recorder of any kind attached
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking auto_ivc_warnings...
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:check_config:The Problem has no recorder of any kind attached
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking auto_ivc_warnings...
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking unserializable_options
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     auto_ivc_warnings check complete (0.000005 sec).
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking unserializable_options
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     auto_ivc_warnings check complete (0.000005 sec).
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking comp_has_no_outputs
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking out_of_order...
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking comp_has_no_outputs
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking out_of_order...
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking auto_ivc_warnings
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     out_of_order check complete (0.000229 sec).
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:check_config:checking auto_ivc_warnings
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     out_of_order check complete (0.000229 sec).
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.163753 seconds.
-Total jacobian shape: (60, 74) 
-
-
-Jacobian shape: (60, 74)  ( 8.74% nonzero)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking system...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking system...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     system check complete (0.000020 sec).
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     system check complete (0.000020 sec).
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking solvers...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking solvers...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     solvers check complete (0.000146 sec).
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     solvers check complete (0.000146 sec).
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking dup_inputs...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking dup_inputs...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     dup_inputs check complete (0.000058 sec).
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     dup_inputs check complete (0.000058 sec).
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking missing_recorders...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking missing_recorders...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     missing_recorders check complete (0.000002 sec).
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     missing_recorders check complete (0.000002 sec).
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking unserializable_options...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking unserializable_options...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     unserializable_options check complete (0.002908 sec).
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     unserializable_options check complete (0.002908 sec).
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking comp_has_no_outputs...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking comp_has_no_outputs...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     comp_has_no_outputs check complete (0.000032 sec).
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     comp_has_no_outputs check complete (0.000032 sec).
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking auto_ivc_warnings...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: checking auto_ivc_warnings...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     auto_ivc_warnings check complete (0.000003 sec).
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:     auto_ivc_warnings check complete (0.000003 sec).
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jacobian shape: (60, 74)  (8.74% nonzero)
 FWD solves: 9   REV solves: 0
-Total colors vs. total size: 9 vs 74  (87.8% improvement)
+Total colors vs. total size: 9 vs 74  (87.84% improvement)
 
-Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.163753 sec.
-Time to compute coloring: 0.045902 sec.
-Memory to compute coloring: 0.000000 MB.
+Sparsity computed using tolerance: 1e-25.
+Dense total jacobian for Problem &#39;problem7&#39; was computed 3 times.
+Time to compute sparsity:   0.0988 sec
+Time to compute coloring:   0.0591 sec
+Memory to compute coloring:   0.0000 MB
+Coloring created on: 2025-02-24 20:31:04
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization terminated successfully    (Exit mode 0)
-            Current function value: [2.87947342]
-            Iterations: 33
-            Function evaluations: 34
-            Gradient evaluations: 33
+            Current function value: 5.3660108149594405
+            Iterations: 43
+            Function evaluations: 45
+            Gradient evaluations: 43
 Optimization Complete
 -----------------------------------
 </pre></div>
@@ -1706,7 +1808,7 @@ Optimization Complete
             Number of Segments = 15
             Segment Ends = [-1.0, -0.8667, -0.7333, -0.6, -0.4667, -0.3333, -0.2, -0.0667, 0.0667, 0.2, 0.3333, 0.4667, 0.6, 0.7333, 0.8667, 1.0]
             Segment Order = [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]
-            Error = [0.009519, 0.003042, 0.0003774, 0.0006496, 0.0004868, 0.0002292, 0.0001781, 8.934e-05, 3.454e-05, 1.197e-05, 1.256e-05, 9.183e-06, 4.124e-06, 4.358e-06, 2.004e-05]
+            Error = [0.006161, 0.002225, 0.0003765, 0.0006652, 0.0003891, 0.0002518, 0.0001769, 9.822e-05, 0.0001306, 0.0002293, 0.0004298, 0.0005999, 0.0009525, 0.001663, 0.005445]
     Phase: traj.phases.phase0
         New Grid:
             Number of Segments = 15
@@ -1718,31 +1820,27 @@ Optimization Complete
 --- Constraint Report [traj] ---
     --- phase0 ---
         None
-
-Model viewer data has already been recorded for Driver.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.10/site-packages/openmdao/core/system.py:4077: OpenMDAOWarning:Calling `list_inputs` before `final_setup` will only display the default values of variables and will not show the result of any `set_val` calls.
-/usr/share/miniconda/envs/test/lib/python3.10/site-packages/dymos/phase/phase.py:2774: OpenMDAOWarning:phase0.states:x0 specifies &#39;fix_final=True&#39;. If the given restart file has a different final value this will overwrite the user-specified value
-/usr/share/miniconda/envs/test/lib/python3.10/site-packages/dymos/phase/phase.py:2774: OpenMDAOWarning:phase0.states:x1 specifies &#39;fix_final=True&#39;. If the given restart file has a different final value this will overwrite the user-specified value
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.11/site-packages/openmdao/core/system.py:4572: OpenMDAOWarning:Calling `list_inputs` before `final_setup` will only display the default values of variables and will not show the result of any `set_val` calls.
+/usr/share/miniconda/envs/test/lib/python3.11/site-packages/dymos/phase/phase.py:3056: OpenMDAOWarning:phase0.states:x0 specifies &#39;fix_final=True&#39;. If the given restart file has a different final value this will overwrite the user-specified value
+/usr/share/miniconda/envs/test/lib/python3.11/site-packages/dymos/phase/phase.py:3056: OpenMDAOWarning:phase0.states:x1 specifies &#39;fix_final=True&#39;. If the given restart file has a different final value this will overwrite the user-specified value
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.309086 seconds.
-Total jacobian shape: (105, 149) 
-
-
-Jacobian shape: (105, 149)  ( 6.78% nonzero)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jacobian shape: (105, 149)  (6.78% nonzero)
 FWD solves: 14   REV solves: 0
-Total colors vs. total size: 14 vs 149  (90.6% improvement)
+Total colors vs. total size: 14 vs 149  (90.60% improvement)
 
-Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.309086 sec.
-Time to compute coloring: 0.093052 sec.
-Memory to compute coloring: 0.000000 MB.
+Sparsity computed using tolerance: 1e-25.
+Dense total jacobian for Problem &#39;problem7&#39; was computed 3 times.
+Time to compute sparsity:   0.1904 sec
+Time to compute coloring:   0.1099 sec
+Memory to compute coloring:   0.0000 MB
+Coloring created on: 2025-02-24 20:31:06
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization terminated successfully    (Exit mode 0)
-            Current function value: [2.87331094]
+            Current function value: 5.358596871051769
             Iterations: 20
             Function evaluations: 21
             Gradient evaluations: 20
@@ -1763,48 +1861,42 @@ Optimization Complete
             Number of Segments = 15
             Segment Ends = [-1.0, -0.8667, -0.7333, -0.6, -0.4667, -0.3333, -0.2, -0.0667, 0.0667, 0.2, 0.3333, 0.4667, 0.6, 0.7333, 0.8667, 1.0]
             Segment Order = [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]
-            Error = [7.669e-05, 0.0001911, 4.013e-05, 2.411e-06, 1.774e-06, 3.464e-06, 3.225e-07, 9.714e-07, 1.221e-07, 2.319e-07, 1.015e-08, 2.475e-08, 5.63e-08, 4.637e-08, 4.277e-07]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Phase: traj.phases.phase0
+            Error = [5.094e-05, 0.0001477, 3.45e-05, 2.844e-06, 3.926e-06, 4.835e-06, 5.746e-07, 7.534e-07, 2.641e-07, 5.137e-07, 9.828e-07, 7.437e-07, 5.633e-06, 2.418e-05, 0.0001262]
+    Phase: traj.phases.phase0
         New Grid:
-            Number of Segments = 21
-            Segment Ends = [-1.0, -0.9333, -0.8667, -0.8, -0.7333, -0.6667, -0.6, -0.5333, -0.4667, -0.4, -0.3333, -0.2667, -0.2, -0.0667, 0.0667, 0.2, 0.3333, 0.4667, 0.6, 0.7333, 0.8667, 1.0]
-            Segment Order = [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]
+            Number of Segments = 24
+            Segment Ends = [-1.0, -0.9333, -0.8667, -0.8, -0.7333, -0.6667, -0.6, -0.5333, -0.4667, -0.4, -0.3333, -0.2667, -0.2, -0.0667, 0.0667, 0.2, 0.3333, 0.4667, 0.6, 0.6667, 0.7333, 0.8, 0.8667, 0.9333, 1.0]
+            Segment Order = [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]
         Refined: True
 
 
 --- Constraint Report [traj] ---
     --- phase0 ---
         None
-
-Model viewer data has already been recorded for Driver.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.10/site-packages/openmdao/core/system.py:4077: OpenMDAOWarning:Calling `list_inputs` before `final_setup` will only display the default values of variables and will not show the result of any `set_val` calls.
-/usr/share/miniconda/envs/test/lib/python3.10/site-packages/dymos/phase/phase.py:2774: OpenMDAOWarning:phase0.states:x0 specifies &#39;fix_final=True&#39;. If the given restart file has a different final value this will overwrite the user-specified value
-/usr/share/miniconda/envs/test/lib/python3.10/site-packages/dymos/phase/phase.py:2774: OpenMDAOWarning:phase0.states:x1 specifies &#39;fix_final=True&#39;. If the given restart file has a different final value this will overwrite the user-specified value
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.11/site-packages/openmdao/core/system.py:4572: OpenMDAOWarning:Calling `list_inputs` before `final_setup` will only display the default values of variables and will not show the result of any `set_val` calls.
+/usr/share/miniconda/envs/test/lib/python3.11/site-packages/dymos/phase/phase.py:3056: OpenMDAOWarning:phase0.states:x0 specifies &#39;fix_final=True&#39;. If the given restart file has a different final value this will overwrite the user-specified value
+/usr/share/miniconda/envs/test/lib/python3.11/site-packages/dymos/phase/phase.py:3056: OpenMDAOWarning:phase0.states:x1 specifies &#39;fix_final=True&#39;. If the given restart file has a different final value this will overwrite the user-specified value
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.497405 seconds.
-Total jacobian shape: (147, 209) 
-
-
-Jacobian shape: (147, 209)  ( 4.88% nonzero)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jacobian shape: (168, 239)  (4.28% nonzero)
 FWD solves: 14   REV solves: 0
-Total colors vs. total size: 14 vs 209  (93.3% improvement)
+Total colors vs. total size: 14 vs 239  (94.14% improvement)
 
-Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.497405 sec.
-Time to compute coloring: 0.128124 sec.
-Memory to compute coloring: 0.000000 MB.
+Sparsity computed using tolerance: 1e-25.
+Dense total jacobian for Problem &#39;problem7&#39; was computed 3 times.
+Time to compute sparsity:   0.3203 sec
+Time to compute coloring:   0.1757 sec
+Memory to compute coloring:   0.0000 MB
+Coloring created on: 2025-02-24 20:31:07
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization terminated successfully    (Exit mode 0)
-            Current function value: [2.87331097]
-            Iterations: 11
-            Function evaluations: 12
-            Gradient evaluations: 11
+            Current function value: 5.358599248000944
+            Iterations: 14
+            Function evaluations: 15
+            Gradient evaluations: 14
 Optimization Complete
 -----------------------------------
 
@@ -1819,55 +1911,49 @@ Optimization Complete
             Min Order = 3
             Max Order = 14
         Original Grid:
-            Number of Segments = 21
-            Segment Ends = [-1.0, -0.9333, -0.8667, -0.8, -0.7333, -0.6667, -0.6, -0.5333, -0.4667, -0.4, -0.3333, -0.2667, -0.2, -0.0667, 0.0667, 0.2, 0.3333, 0.4667, 0.6, 0.7333, 0.8667, 1.0]
-            Segment Order = [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]
-            Error = [1.619e-05, 3.825e-06, 2.313e-06, 1.966e-05, 2.497e-05, 5.579e-06, 1.382e-07, 4.725e-07, 5.89e-07, 1.296e-07, 1.736e-07, 2.793e-07, 1.346e-05, 1.342e-06, 1.148e-06, 5.102e-07, 2.147e-07, 1.072e-07, 2.596e-08, 2.332e-07, 3.348e-07]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.10/site-packages/dymos/grid_refinement/hp_adaptive/hp_adaptive.py:379: RuntimeWarning: divide by zero encountered in true_divide
-  q_smooth = (np.log(self.error[phase_path][smooth_need_refine_idxs] /
-/usr/share/miniconda/envs/test/lib/python3.10/site-packages/dymos/grid_refinement/hp_adaptive/hp_adaptive.py:411: RuntimeWarning: divide by zero encountered in true_divide
-  q_split = np.log((self.error[phase_path][split_seg_idxs] /
-/usr/share/miniconda/envs/test/lib/python3.10/site-packages/openmdao/core/system.py:4077: OpenMDAOWarning:Calling `list_inputs` before `final_setup` will only display the default values of variables and will not show the result of any `set_val` calls.
-/usr/share/miniconda/envs/test/lib/python3.10/site-packages/dymos/phase/phase.py:2774: OpenMDAOWarning:phase0.states:x0 specifies &#39;fix_final=True&#39;. If the given restart file has a different final value this will overwrite the user-specified value
-/usr/share/miniconda/envs/test/lib/python3.10/site-packages/dymos/phase/phase.py:2774: OpenMDAOWarning:phase0.states:x1 specifies &#39;fix_final=True&#39;. If the given restart file has a different final value this will overwrite the user-specified value
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Phase: traj.phases.phase0
+            Number of Segments = 24
+            Segment Ends = [-1.0, -0.9333, -0.8667, -0.8, -0.7333, -0.6667, -0.6, -0.5333, -0.4667, -0.4, -0.3333, -0.2667, -0.2, -0.0667, 0.0667, 0.2, 0.3333, 0.4667, 0.6, 0.6667, 0.7333, 0.8, 0.8667, 0.9333, 1.0]
+            Segment Order = [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]
+            Error = [7.218e-06, 1.469e-06, 2.139e-06, 1.588e-05, 2.289e-05, 4.472e-06, 2.876e-07, 1.038e-07, 2.457e-07, 2.424e-07, 9.594e-08, 1.292e-06, 3.48e-06, 1.496e-06, 5.182e-07, 2.443e-06, 6.638e-06, 1.256e-05, 3.437e-06, 7.518e-07, 2.351e-07, 4.981e-07, 3.252e-06, 7.969e-06]
+    Phase: traj.phases.phase0
         New Grid:
-            Number of Segments = 26
-            Segment Ends = [-1.0, -0.9667, -0.9333, -0.8667, -0.8, -0.7667, -0.7333, -0.7, -0.6667, -0.6333, -0.6, -0.5333, -0.4667, -0.4, -0.3333, -0.2667, -0.2, -0.1333, -0.0667, 0.0667, 0.2, 0.3333, 0.4667, 0.6, 0.7333, 0.8667, 1.0]
-            Segment Order = [5, 5, 13, 9, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 11, 9, 5, 5, 5, 5, 5, 5]
+            Number of Segments = 34
+            Segment Ends = [-1.0, -0.9667, -0.9333, -0.8667, -0.8, -0.7667, -0.7333, -0.7, -0.6667, -0.6333, -0.6, -0.5333, -0.4667, -0.4, -0.3333, -0.2667, -0.2, -0.1333, -0.0667, 0.0667, 0.2, 0.2667, 0.3333, 0.4, 0.4667, 0.5333, 0.6, 0.6333, 0.6667, 0.7333, 0.8, 0.8667, 0.9333, 0.9667, 1.0]
+            Segment Order = [5, 5, 7, 9, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 11, 5, 5, 13, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 9, 5, 5]
         Refined: True
-
-
---- Constraint Report [traj] ---
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Constraint Report [traj] ---
     --- phase0 ---
         None
-
-Model viewer data has already been recorded for Driver.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.737831 seconds.
-Total jacobian shape: (215, 314) 
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.11/site-packages/dymos/grid_refinement/hp_adaptive/hp_adaptive.py:379: RuntimeWarning: divide by zero encountered in divide
+  q_smooth = (np.log(self.error[phase_path][smooth_need_refine_idxs] /
+/usr/share/miniconda/envs/test/lib/python3.11/site-packages/dymos/grid_refinement/hp_adaptive/hp_adaptive.py:411: RuntimeWarning: divide by zero encountered in divide
+  q_split = np.log((self.error[phase_path][split_seg_idxs] /
+/usr/share/miniconda/envs/test/lib/python3.11/site-packages/openmdao/core/system.py:4572: OpenMDAOWarning:Calling `list_inputs` before `final_setup` will only display the default values of variables and will not show the result of any `set_val` calls.
+/usr/share/miniconda/envs/test/lib/python3.11/site-packages/dymos/phase/phase.py:3056: OpenMDAOWarning:phase0.states:x0 specifies &#39;fix_final=True&#39;. If the given restart file has a different final value this will overwrite the user-specified value
+/usr/share/miniconda/envs/test/lib/python3.11/site-packages/dymos/phase/phase.py:3056: OpenMDAOWarning:phase0.states:x1 specifies &#39;fix_final=True&#39;. If the given restart file has a different final value this will overwrite the user-specified value
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jacobian shape: (215, 314)  ( 4.16% nonzero)
-FWD solves: 0   REV solves: 33
-Total colors vs. total size: 33 vs 215  (84.7% improvement)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jacobian shape: (274, 399)  (3.16% nonzero)
+FWD solves: 0   REV solves: 27
+Total colors vs. total size: 27 vs 274  (90.15% improvement)
 
-Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.737831 sec.
-Time to compute coloring: 0.210561 sec.
-Memory to compute coloring: 0.000000 MB.
+Sparsity computed using tolerance: 1e-25.
+Dense total jacobian for Problem &#39;problem7&#39; was computed 3 times.
+Time to compute sparsity:   0.5703 sec
+Time to compute coloring:   0.2817 sec
+Memory to compute coloring:   0.0000 MB
+Coloring created on: 2025-02-24 20:31:09
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization terminated successfully    (Exit mode 0)
-            Current function value: [2.87331113]
-            Iterations: 5
-            Function evaluations: 6
-            Gradient evaluations: 5
+            Current function value: 5.358600436411783
+            Iterations: 7
+            Function evaluations: 8
+            Gradient evaluations: 7
 Optimization Complete
 -----------------------------------
 
@@ -1882,17 +1968,17 @@ Optimization Complete
             Min Order = 3
             Max Order = 14
         Original Grid:
-            Number of Segments = 26
-            Segment Ends = [-1.0, -0.9667, -0.9333, -0.8667, -0.8, -0.7667, -0.7333, -0.7, -0.6667, -0.6333, -0.6, -0.5333, -0.4667, -0.4, -0.3333, -0.2667, -0.2, -0.1333, -0.0667, 0.0667, 0.2, 0.3333, 0.4667, 0.6, 0.7333, 0.8667, 1.0]
-            Segment Order = [5, 5, 13, 9, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 11, 9, 5, 5, 5, 5, 5, 5]
-            Error = [9.881e-07, 5.651e-07, 2.643e-07, 2.474e-06, 1.029e-06, 3.243e-08, 1.71e-06,  1.8e-06, 2.133e-07, 2.365e-07, 3.385e-07, 7.385e-07, 1.061e-07, 1.627e-07, 1.072e-06, 1.285e-06, 1.692e-07, 1.029e-06, 7.225e-07, 2.977e-07, 5.927e-07, 2.915e-07, 8.94e-08, 4.391e-08, 1.129e-07, 1.193e-07]
+            Number of Segments = 34
+            Segment Ends = [-1.0, -0.9667, -0.9333, -0.8667, -0.8, -0.7667, -0.7333, -0.7, -0.6667, -0.6333, -0.6, -0.5333, -0.4667, -0.4, -0.3333, -0.2667, -0.2, -0.1333, -0.0667, 0.0667, 0.2, 0.2667, 0.3333, 0.4, 0.4667, 0.5333, 0.6, 0.6333, 0.6667, 0.7333, 0.8, 0.8667, 0.9333, 0.9667, 1.0]
+            Segment Order = [5, 5, 7, 9, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 11, 5, 5, 13, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 9, 5, 5]
+            Error = [4.532e-07, 2.332e-07, 1.616e-06, 1.117e-06, 2.824e-06, 6.234e-08, 6.612e-07, 2.255e-07, 7.001e-08, 1.237e-08, 7.279e-08, 1.808e-07, 1.666e-07, 1.244e-07, 2.353e-08, 6.079e-08, 5.453e-08, 2.37e-07, 8.185e-09, 2.796e-06, 2.717e-07, 2.258e-07, 2.828e-07, 3.486e-07, 9.929e-08, 6.71e-07, 4.375e-07, 2.857e-07, 9.515e-08, 1.046e-06, 4.415e-07, 5.222e-07, 6.826e-07, 8.228e-08]
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Phase: traj.phases.phase0
         New Grid:
-            Number of Segments = 27
-            Segment Ends = [-1.0, -0.9667, -0.9333, -0.8667, -0.8333, -0.8, -0.7667, -0.7333, -0.7, -0.6667, -0.6333, -0.6, -0.5333, -0.4667, -0.4, -0.3333, -0.2667, -0.2, -0.1333, -0.0667, 0.0667, 0.2, 0.3333, 0.4667, 0.6, 0.7333, 0.8667, 1.0]
-            Segment Order = [5, 5, 13, 9, 9, 7, 5, 9, 9, 5, 5, 5, 5, 5, 5, 7, 11, 5, 7, 11, 9, 5, 5, 5, 5, 5, 5]
+            Number of Segments = 37
+            Segment Ends = [-1.0, -0.9667, -0.9333, -0.9, -0.8667, -0.8, -0.7833, -0.7667, -0.7333, -0.7, -0.6667, -0.6333, -0.6, -0.5333, -0.4667, -0.4, -0.3333, -0.2667, -0.2, -0.1333, -0.0667, 0.0667, 0.1333, 0.2, 0.2667, 0.3333, 0.4, 0.4667, 0.5333, 0.6, 0.6333, 0.6667, 0.7333, 0.8, 0.8667, 0.9333, 0.9667, 1.0]
+            Segment Order = [5, 5, 7, 7, 13, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 11, 5, 5, 13, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 7, 5, 9, 5, 5]
         Refined: True
 
 
@@ -1901,33 +1987,28 @@ Optimization Complete
         None
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.10/site-packages/openmdao/core/system.py:4077: OpenMDAOWarning:Calling `list_inputs` before `final_setup` will only display the default values of variables and will not show the result of any `set_val` calls.
-/usr/share/miniconda/envs/test/lib/python3.10/site-packages/dymos/phase/phase.py:2774: OpenMDAOWarning:phase0.states:x0 specifies &#39;fix_final=True&#39;. If the given restart file has a different final value this will overwrite the user-specified value
-/usr/share/miniconda/envs/test/lib/python3.10/site-packages/dymos/phase/phase.py:2774: OpenMDAOWarning:phase0.states:x1 specifies &#39;fix_final=True&#39;. If the given restart file has a different final value this will overwrite the user-specified value
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.11/site-packages/openmdao/core/system.py:4572: OpenMDAOWarning:Calling `list_inputs` before `final_setup` will only display the default values of variables and will not show the result of any `set_val` calls.
+/usr/share/miniconda/envs/test/lib/python3.11/site-packages/dymos/phase/phase.py:3056: OpenMDAOWarning:phase0.states:x0 specifies &#39;fix_final=True&#39;. If the given restart file has a different final value this will overwrite the user-specified value
+/usr/share/miniconda/envs/test/lib/python3.11/site-packages/dymos/phase/phase.py:3056: OpenMDAOWarning:phase0.states:x1 specifies &#39;fix_final=True&#39;. If the given restart file has a different final value this will overwrite the user-specified value
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model viewer data has already been recorded for Driver.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.917370 seconds.
-Total jacobian shape: (258, 384) 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jacobian shape: (258, 384)  ( 3.83% nonzero)
-FWD solves: 0   REV solves: 33
-Total colors vs. total size: 33 vs 258  (87.2% improvement)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jacobian shape: (307, 449)  (2.93% nonzero)
+FWD solves: 0   REV solves: 30
+Total colors vs. total size: 30 vs 307  (90.23% improvement)
 
-Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.917370 sec.
-Time to compute coloring: 0.269365 sec.
-Memory to compute coloring: 0.000000 MB.
+Sparsity computed using tolerance: 1e-25.
+Dense total jacobian for Problem &#39;problem7&#39; was computed 3 times.
+Time to compute sparsity:   0.6591 sec
+Time to compute coloring:   0.3122 sec
+Memory to compute coloring:   0.0000 MB
+Coloring created on: 2025-02-24 20:31:11
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization terminated successfully    (Exit mode 0)
-            Current function value: [2.87331162]
-            Iterations: 2
-            Function evaluations: 3
-            Gradient evaluations: 2
+            Current function value: 5.3585990068712395
+            Iterations: 5
+            Function evaluations: 6
+            Gradient evaluations: 5
 Optimization Complete
 -----------------------------------
 
@@ -1942,48 +2023,44 @@ Optimization Complete
             Min Order = 3
             Max Order = 14
         Original Grid:
-            Number of Segments = 27
-            Segment Ends = [-1.0, -0.9667, -0.9333, -0.8667, -0.8333, -0.8, -0.7667, -0.7333, -0.7, -0.6667, -0.6333, -0.6, -0.5333, -0.4667, -0.4, -0.3333, -0.2667, -0.2, -0.1333, -0.0667, 0.0667, 0.2, 0.3333, 0.4667, 0.6, 0.7333, 0.8667, 1.0]
-            Segment Order = [5, 5, 13, 9, 9, 7, 5, 9, 9, 5, 5, 5, 5, 5, 5, 7, 11, 5, 7, 11, 9, 5, 5, 5, 5, 5, 5]
-            Error = [1.02e-06, 4.302e-07, 8.674e-08, 6.22e-07, 7.625e-07, 2.013e-07, 5.558e-08, 3.517e-07, 1.383e-07, 1.936e-07, 2.45e-07, 2.435e-07, 4.368e-07, 2.104e-07, 5.198e-07, 3.064e-07, 5.049e-07, 1.66e-07, 2.793e-07, 4.327e-07, 1.777e-07, 1.886e-07, 1.793e-07, 4.019e-08, 2.256e-08, 4.069e-08, 3.824e-08]
+            Number of Segments = 37
+            Segment Ends = [-1.0, -0.9667, -0.9333, -0.9, -0.8667, -0.8, -0.7833, -0.7667, -0.7333, -0.7, -0.6667, -0.6333, -0.6, -0.5333, -0.4667, -0.4, -0.3333, -0.2667, -0.2, -0.1333, -0.0667, 0.0667, 0.1333, 0.2, 0.2667, 0.3333, 0.4, 0.4667, 0.5333, 0.6, 0.6333, 0.6667, 0.7333, 0.8, 0.8667, 0.9333, 0.9667, 1.0]
+            Segment Order = [5, 5, 7, 7, 13, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 11, 5, 5, 13, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 7, 5, 9, 5, 5]
+            Error = [1.139e-06, 1.392e-06, 4.195e-07,  1.8e-07, 1.625e-07, 6.331e-07, 6.768e-08, 1.48e-09, 1.649e-06, 1.106e-06, 1.87e-07, 1.607e-08, 2.484e-07, 7.502e-08, 9.79e-08, 1.071e-07, 6.825e-08, 1.758e-08, 7.698e-08, 1.472e-07, 2.042e-07, 1.14e-06, 8.424e-07, 2.01e-07, 3.213e-07, 2.412e-07, 1.875e-07, 9.364e-08, 2.46e-07, 2.211e-07, 5.308e-07, 2.496e-06, 4.273e-08, 9.287e-07, 4.848e-09, 5.861e-07, 7.877e-07]
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Phase: traj.phases.phase0
         New Grid:
-            Number of Segments = 27
-            Segment Ends = [-1.0, -0.9667, -0.9333, -0.8667, -0.8333, -0.8, -0.7667, -0.7333, -0.7, -0.6667, -0.6333, -0.6, -0.5333, -0.4667, -0.4, -0.3333, -0.2667, -0.2, -0.1333, -0.0667, 0.0667, 0.2, 0.3333, 0.4667, 0.6, 0.7333, 0.8667, 1.0]
-            Segment Order = [7, 5, 13, 9, 9, 7, 5, 9, 9, 5, 5, 5, 5, 5, 5, 7, 11, 5, 7, 11, 9, 5, 5, 5, 5, 5, 5]
+            Number of Segments = 38
+            Segment Ends = [-1.0, -0.9667, -0.9333, -0.9, -0.8667, -0.8, -0.7833, -0.7667, -0.7333, -0.7, -0.6667, -0.6333, -0.6, -0.5333, -0.4667, -0.4, -0.3333, -0.2667, -0.2, -0.1333, -0.0667, 0.0667, 0.1333, 0.2, 0.2667, 0.3333, 0.4, 0.4667, 0.5333, 0.6, 0.6333, 0.6667, 0.7, 0.7333, 0.8, 0.8667, 0.9333, 0.9667, 1.0]
+            Segment Order = [9, 11, 7, 7, 13, 5, 5, 5, 15, 9, 5, 5, 5, 5, 5, 5, 5, 11, 5, 5, 13, 9, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 7, 5, 9, 5, 5]
         Refined: True
 
 
 --- Constraint Report [traj] ---
     --- phase0 ---
         None
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.11/site-packages/openmdao/core/system.py:4572: OpenMDAOWarning:Calling `list_inputs` before `final_setup` will only display the default values of variables and will not show the result of any `set_val` calls.
+/usr/share/miniconda/envs/test/lib/python3.11/site-packages/dymos/phase/phase.py:3056: OpenMDAOWarning:phase0.states:x0 specifies &#39;fix_final=True&#39;. If the given restart file has a different final value this will overwrite the user-specified value
+/usr/share/miniconda/envs/test/lib/python3.11/site-packages/dymos/phase/phase.py:3056: OpenMDAOWarning:phase0.states:x1 specifies &#39;fix_final=True&#39;. If the given restart file has a different final value this will overwrite the user-specified value
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jacobian shape: (356, 529)  (2.84% nonzero)
+FWD solves: 0   REV solves: 36
+Total colors vs. total size: 36 vs 356  (89.89% improvement)
 
-Model viewer data has already been recorded for Driver.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.10/site-packages/openmdao/core/system.py:4077: OpenMDAOWarning:Calling `list_inputs` before `final_setup` will only display the default values of variables and will not show the result of any `set_val` calls.
-/usr/share/miniconda/envs/test/lib/python3.10/site-packages/dymos/phase/phase.py:2774: OpenMDAOWarning:phase0.states:x0 specifies &#39;fix_final=True&#39;. If the given restart file has a different final value this will overwrite the user-specified value
-/usr/share/miniconda/envs/test/lib/python3.10/site-packages/dymos/phase/phase.py:2774: OpenMDAOWarning:phase0.states:x1 specifies &#39;fix_final=True&#39;. If the given restart file has a different final value this will overwrite the user-specified value
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full total jacobian was computed 3 times, taking 0.909585 seconds.
-Total jacobian shape: (261, 389) 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jacobian shape: (261, 389)  ( 3.79% nonzero)
-FWD solves: 0   REV solves: 33
-Total colors vs. total size: 33 vs 261  (87.4% improvement)
-
-Sparsity computed using tolerance: 1e-25
-Time to compute sparsity: 0.909585 sec.
-Time to compute coloring: 0.272769 sec.
-Memory to compute coloring: 0.000000 MB.
+Sparsity computed using tolerance: 1e-25.
+Dense total jacobian for Problem &#39;problem7&#39; was computed 3 times.
+Time to compute sparsity:   0.8777 sec
+Time to compute coloring:   0.3746 sec
+Memory to compute coloring:   0.0000 MB
+Coloring created on: 2025-02-24 20:31:14
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization terminated successfully    (Exit mode 0)
-            Current function value: [2.87331173]
+            Current function value: 5.358600622455051
             Iterations: 2
             Function evaluations: 3
             Gradient evaluations: 2
@@ -1993,17 +2070,25 @@ Successfully completed grid refinement.
 ==================================================
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.10/site-packages/openmdao/recorders/sqlite_recorder.py:227: UserWarning:The existing case recorder file, dymos_simulation.db, is being overwritten.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.11/site-packages/openmdao/core/group.py:1166: DerivativesWarning:Constraints or objectives [ode_eval.control_interp.control_rates:u_rate, ode_eval.control_interp.control_rates:u_rate2, ode_eval.control_interp.control_values:u] cannot be impacted by the design variables of the problem because no partials were defined for them in their parent component(s).
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Simulating trajectory traj
-Model viewer data has already been recorded for Driver.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Done simulating trajectory traj
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Problem: problem7
+Driver:  ScipyOptimizeDriver
+  success     : True
+  iterations  : 4
+  runtime     : 2.2646E+00 s
+  model_evals : 4
+  model_time  : 3.7180E-03 s
+  deriv_evals : 2
+  deriv_time  : 5.2712E-02 s
+  exit_status : SUCCESS
 </pre></div>
 </div>
 </div>
@@ -2015,13 +2100,47 @@ Model viewer data has already been recorded for Driver.
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vanderpol_plots</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sol</span> <span class="o">=</span> <span class="n">om</span><span class="o">.</span><span class="n">CaseReader</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">get_outputs_dir</span><span class="p">()</span> <span class="o">/</span> <span class="s1">&#39;dymos_solution.db&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get_case</span><span class="p">(</span><span class="s1">&#39;final&#39;</span><span class="p">)</span>
+<span class="n">sim_prob</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">traj</span><span class="o">.</span><span class="n">sim_prob</span>
+<span class="n">sim</span> <span class="o">=</span> <span class="n">om</span><span class="o">.</span><span class="n">CaseReader</span><span class="p">(</span><span class="n">sim_prob</span><span class="o">.</span><span class="n">get_outputs_dir</span><span class="p">()</span> <span class="o">/</span> <span class="s1">&#39;dymos_simulation.db&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get_case</span><span class="p">(</span><span class="s1">&#39;final&#39;</span><span class="p">)</span>
+
+<span class="n">plot_results</span><span class="p">([(</span><span class="s1">&#39;traj.phase0.timeseries.time&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;traj.phase0.timeseries.x1&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;time (s)&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;$x_1$ (V)&#39;</span><span class="p">),</span>
+              <span class="p">(</span><span class="s1">&#39;traj.phase0.timeseries.time&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;traj.phase0.timeseries.x0&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;time (s)&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;$x_0$ (V/s)&#39;</span><span class="p">),</span>
+              <span class="p">(</span><span class="s1">&#39;traj.phase0.timeseries.time&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;traj.phase0.timeseries.J&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;time (s)&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;J&#39;</span><span class="p">),</span>
+              <span class="p">(</span><span class="s1">&#39;traj.phase0.timeseries.x0&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;traj.phase0.timeseries.x1&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;$x_0$ (V/s)&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;$x_1$ (V)&#39;</span><span class="p">),</span>
+              <span class="p">(</span><span class="s1">&#39;traj.phase0.timeseries.time&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;traj.phase0.timeseries.u&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;time (s)&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;control u&#39;</span><span class="p">),</span>
+              <span class="p">],</span>
+              <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Van Der Pol Simulation&#39;</span><span class="p">,</span>
+              <span class="n">p_sol</span><span class="o">=</span><span class="n">sol</span><span class="p">,</span> <span class="n">p_sim</span><span class="o">=</span><span class="n">sim</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/eaad4dab8abb9d126649f7c592da194e3a7395a39bfe45c4b6452162da6c7423.png" src="../../_images/eaad4dab8abb9d126649f7c592da194e3a7395a39bfe45c4b6452162da6c7423.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 1000x800 with 5 Axes&gt;,
+ array([&lt;Axes: xlabel=&#39;time (s)&#39;, ylabel=&#39;$x_1$ (V)&#39;&gt;,
+        &lt;Axes: xlabel=&#39;time (s)&#39;, ylabel=&#39;$x_0$ (V/s)&#39;&gt;,
+        &lt;Axes: xlabel=&#39;time (s)&#39;, ylabel=&#39;J&#39;&gt;,
+        &lt;Axes: xlabel=&#39;$x_0$ (V/s)&#39;, ylabel=&#39;$x_1$ (V)&#39;&gt;,
+        &lt;Axes: xlabel=&#39;time (s)&#39;, ylabel=&#39;control u&#39;&gt;], dtype=object))
+</pre></div>
+</div>
+<img alt="../../_images/670ca7c45587730ba9127fce723a4e9355bbed44ae1a77397e3118c6818e9ff7.png" src="../../_images/670ca7c45587730ba9127fce723a4e9355bbed44ae1a77397e3118c6818e9ff7.png" />
 </div>
 </div>
 </section>
@@ -2029,7 +2148,7 @@ Model viewer data has already been recorded for Driver.
 <h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
 <div class="docutils container" id="id2">
 <div class="citation" id="id23" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>Wikipediacontributors20<span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">Wikipediacontributors20</a><span class="fn-bracket">]</span></span>
 <p>Wikipedia contributors. Van der pol oscillator — Wikipedia, the free encyclopedia. 2020. [Online; accessed 12-June-2020]. URL: <a class="reference external" href="https://en.wikipedia.org/w/index.php?title=Van_der_Pol_oscillator&amp;oldid=953857769">https://en.wikipedia.org/w/index.php?title=Van_der_Pol_oscillator&amp;oldid=953857769</a>.</p>
 </div>
 </div>

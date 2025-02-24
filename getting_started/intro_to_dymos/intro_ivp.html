@@ -535,6 +535,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../examples/length_constrained_brachistochrone/length_constrained_brachistochrone.html">The Length-Constrained Brachistochrone</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../examples/min_time_climb/min_time_climb.html">Supersonic Interceptor Minimum Time Climb</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../examples/mountain_car/mountain_car.html">The Mountain Car Problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/moon_landing/moon_landing.html">Moon Landing Problem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../examples/multi_phase_cannonball/multi_phase_cannonball.html">Multi-Phase Cannonball</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../examples/multibranch_trajectory/multibranch_trajectory.html">Multibranch Trajectory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../examples/racecar/racecar.html">Race car Lap Simulation</a></li>
@@ -547,7 +548,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <li class="toctree-l2"><a class="reference internal" href="../../examples/cart_pole/cart_pole.html">Cart-Pole Optimal Control</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../examples/brachistochrone/brachistochrone_tandem_phases.html">Brachistochrone with tandem phases</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../examples/cannonball_implicit_duration/cannonball_implicit_duration.html">Cannonball Implicit Duration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/implicit_duration/brachistochrone_implicit_duration.html">Implicit Duration</a></li>
 </ul>
 </li>
 </ul>
@@ -561,6 +562,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../features/phases/constraints.html">Constraints</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../features/phases/objective.html">Objective</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../features/phases/timeseries.html">Timeseries Outputs</a></li>
+
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../features/trajectories/trajectories.html">Organizing Phases into Trajectories</a></li>
@@ -832,13 +834,13 @@ Dynamic systems are typically defined by some set of ordinary
 differential equations (the ODE) which governs their behavior.</p>
 <p>Consider a simple damped harmonic oscillator.</p>
 <p><img alt="Damped harmonic oscillator free-body diagram" src="../../_images/spring_mass_damper.png" /></p>
-<div class="amsmath math notranslate nohighlight" id="equation-ec343c4b-b3e3-4233-b2d5-1706eec1e775">
-<span class="eqno">(11)<a class="headerlink" href="#equation-ec343c4b-b3e3-4233-b2d5-1706eec1e775" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-1b58f9a5-9534-4116-8d5d-718a2546bf90">
+<span class="eqno">(11)<a class="headerlink" href="#equation-1b58f9a5-9534-4116-8d5d-718a2546bf90" title="Permalink to this equation">#</a></span>\[\begin{align}
     \ddot{x} &amp;= -\frac{kx}{m} - \frac{c \dot{x}}{m}
 \end{align}\]</div>
 <p>Converting this to a first order system results in an ODE system with two states:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5a15896e-45ef-42ee-ab18-ed5f946e1667">
-<span class="eqno">(12)<a class="headerlink" href="#equation-5a15896e-45ef-42ee-ab18-ed5f946e1667" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-fde07029-1119-4a2d-8bdb-18c2cb72d4db">
+<span class="eqno">(12)<a class="headerlink" href="#equation-fde07029-1119-4a2d-8bdb-18c2cb72d4db" title="Permalink to this equation">#</a></span>\[\begin{align}
     \dot{x} &amp;= v \\
     \dot{v} &amp;= -\frac{kx}{m} - \frac{c \dot{x}}{m}
 \end{align}\]</div>
@@ -855,19 +857,19 @@ The following ExplicitComponent computes the velocity rate for the damped harmon
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">openmdao.api</span> <span class="k">as</span> <span class="nn">om</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">openmdao.api</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">om</span>
 
 
-<span class="k">class</span> <span class="nc">OscillatorODE</span><span class="p">(</span><span class="n">om</span><span class="o">.</span><span class="n">ExplicitComponent</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">OscillatorODE</span><span class="p">(</span><span class="n">om</span><span class="o">.</span><span class="n">ExplicitComponent</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A Dymos ODE for a damped harmonic oscillator.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">declare</span><span class="p">(</span><span class="s1">&#39;num_nodes&#39;</span><span class="p">,</span> <span class="n">types</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">nn</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s1">&#39;num_nodes&#39;</span><span class="p">]</span>
 
         <span class="c1"># Inputs</span>
@@ -882,7 +884,7 @@ The following ExplicitComponent computes the velocity rate for the damped harmon
 
         <span class="bp">self</span><span class="o">.</span><span class="n">declare_partials</span><span class="p">(</span><span class="n">of</span><span class="o">=</span><span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">wrt</span><span class="o">=</span><span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;fd&#39;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">compute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">compute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="p">):</span>
         <span class="n">x</span> <span class="o">=</span> <span class="n">inputs</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span>
         <span class="n">v</span> <span class="o">=</span> <span class="n">inputs</span><span class="p">[</span><span class="s1">&#39;v&#39;</span><span class="p">]</span>
         <span class="n">k</span> <span class="o">=</span> <span class="n">inputs</span><span class="p">[</span><span class="s1">&#39;k&#39;</span><span class="p">]</span>
@@ -914,12 +916,10 @@ The following is a minimal script that starts the system at some set of initial 
 Some elements of this code will be explained later, but we’ll hit the highlights now.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">openmdao.api</span> <span class="k">as</span> <span class="nn">om</span>
-<span class="kn">import</span> <span class="nn">dymos</span> <span class="k">as</span> <span class="nn">dm</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">openmdao.api</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">om</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">dymos</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dm</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="c1"># plt.switch_backend(&#39;Agg&#39;)  # disable plotting to the screen</span>
-
-<span class="kn">from</span> <span class="nn">dymos.examples.oscillator.oscillator_ode</span> <span class="kn">import</span> <span class="n">OscillatorODE</span>
 
 <span class="c1"># Instantiate an OpenMDAO Problem instance.</span>
 <span class="n">prob</span> <span class="o">=</span> <span class="n">om</span><span class="o">.</span><span class="n">Problem</span><span class="p">()</span>
@@ -984,13 +984,13 @@ Some elements of this code will be explained later, but we’ll hit the highligh
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Constraint Report [traj] ---
     --- phase0 ---
         None
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Simulating trajectory traj
+
+
+Simulating trajectory traj
 Done simulating trajectory traj
 </pre></div>
 </div>
-<img alt="../../_images/89344af170c50d391bf707a8b5dfc000c0c1a448623df38b09b463f05b393e8f.png" src="../../_images/89344af170c50d391bf707a8b5dfc000c0c1a448623df38b09b463f05b393e8f.png" />
+<img alt="../../_images/23e0a14bdfc98b5ac7fc680f13c09202ff53df350d75b5267786d516056577fc.png" src="../../_images/23e0a14bdfc98b5ac7fc680f13c09202ff53df350d75b5267786d516056577fc.png" />
 </div>
 </div>
 </section>
@@ -1054,12 +1054,12 @@ If passed to the transcription, it applies to all states.
 Otherwise, we can pass it only to certain states as an argument to <code class="docutils literal notranslate"><span class="pre">add_state</span></code> or <code class="docutils literal notranslate"><span class="pre">set_state_options</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">openmdao.api</span> <span class="k">as</span> <span class="nn">om</span>
-<span class="kn">import</span> <span class="nn">dymos</span> <span class="k">as</span> <span class="nn">dm</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">openmdao.api</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">om</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">dymos</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dm</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="c1"># plt.switch_backend(&#39;Agg&#39;)  # disable plotting to the screen</span>
 
-<span class="kn">from</span> <span class="nn">dymos.examples.oscillator.oscillator_ode</span> <span class="kn">import</span> <span class="n">OscillatorODE</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dymos.examples.oscillator.oscillator_ode</span><span class="w"> </span><span class="kn">import</span> <span class="n">OscillatorODE</span>
 
 <span class="c1"># Instantiate an OpenMDAO Problem instance.</span>
 <span class="n">prob</span> <span class="o">=</span> <span class="n">om</span><span class="o">.</span><span class="n">Problem</span><span class="p">()</span>
@@ -1121,25 +1121,28 @@ Otherwise, we can pass it only to certain states as an argument to <code class="
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.11/site-packages/dymos/transcriptions/transcription_base.py:390: OpenMDAOWarning:&#39;traj.phases.phase0&#39; &lt;class Phase&gt;
+  Non-default solvers are required
+    implicit duration: False
+    solved segments: True
+    input initial: False
+  Setting `traj.phases.phase0.nonlinear_solver = om.NewtonSolver(iprint=0, solve_subsystems=True, maxiter=1000, stall_limit=3)`
+  Explicitly set traj.phases.phase0.nonlinear_solver to override.
+  Setting `traj.phases.phase0.linear_solver = om.DirectSolver(iprint=2)`
+  Explicitly set traj.phases.phase0.linear_solver to override.
+  Set `traj.phases.phase0.options[&quot;auto_solvers&quot;] = False` to disable this behavior.
+</pre></div>
+</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Constraint Report [traj] ---
     --- phase0 ---
         None
 
 
-==================
-traj.phases.phase0
-==================
-NL: Newton 0 ; 64.9519053 1
-NL: Newton 1 ; 5.02960429e-08 7.74358238e-10
-NL: Newton 2 ; 8.30035654e-15 1.27792349e-16
-NL: Newton Converged
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Simulating trajectory traj
+Simulating trajectory traj
 Done simulating trajectory traj
 </pre></div>
 </div>
-<img alt="../../_images/026979959fb7a9a05d25ea7a59a0b2fbafddb5f8675d5f237b1578834ad26919.png" src="../../_images/026979959fb7a9a05d25ea7a59a0b2fbafddb5f8675d5f237b1578834ad26919.png" />
+<img alt="../../_images/acf928c2a1a0bd17c3f36a3db0a84c314c02af9129bd6f592e6b77ab5491d242.png" src="../../_images/acf928c2a1a0bd17c3f36a3db0a84c314c02af9129bd6f592e6b77ab5491d242.png" />
 </div>
 </div>
 </section>
@@ -1152,12 +1155,12 @@ degrees of freedom to optimize the problem, just single possible trajectory whic
 Even though the initial time and duration of the phase are fixed, we provide the final time as a “dummy” objective here.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">openmdao.api</span> <span class="k">as</span> <span class="nn">om</span>
-<span class="kn">import</span> <span class="nn">dymos</span> <span class="k">as</span> <span class="nn">dm</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">openmdao.api</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">om</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">dymos</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dm</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="c1"># plt.switch_backend(&#39;Agg&#39;)  # disable plotting to the screen</span>
 
-<span class="kn">from</span> <span class="nn">dymos.examples.oscillator.oscillator_ode</span> <span class="kn">import</span> <span class="n">OscillatorODE</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dymos.examples.oscillator.oscillator_ode</span><span class="w"> </span><span class="kn">import</span> <span class="n">OscillatorODE</span>
 
 <span class="c1"># Instantiate an OpenMDAO Problem instance.</span>
 <span class="n">prob</span> <span class="o">=</span> <span class="n">om</span><span class="o">.</span><span class="n">Problem</span><span class="p">()</span>
@@ -1235,7 +1238,7 @@ Even though the initial time and duration of the phase are fixed, we provide the
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization terminated successfully    (Exit mode 0)
-            Current function value: [15.]
+            Current function value: 15.0
             Iterations: 1
             Function evaluations: 2
             Gradient evaluations: 1
@@ -1243,14 +1246,17 @@ Optimization Complete
 -----------------------------------
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.10/site-packages/openmdao/core/total_jac.py:1782: DerivativesWarning:Constraints or objectives [(&#39;traj.phases.phase0.time.t&#39;, inds=[15])] cannot be impacted by the design variables of the problem.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.11/site-packages/openmdao/core/driver.py:1240: DriverWarning:ScipyOptimizeDriver: objective(s) [&#39;traj.phase0.t&#39;] do not depend on any design variables. Please check your problem formulation.
+/usr/share/miniconda/envs/test/lib/python3.11/site-packages/openmdao/core/total_jac.py:1730: DerivativesWarning:Constraints or objectives [(&#39;traj.phase0.t&#39;, inds=[15])] cannot be impacted by the design variables of the problem.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Simulating trajectory traj
-Done simulating trajectory traj
 </pre></div>
 </div>
-<img alt="../../_images/026979959fb7a9a05d25ea7a59a0b2fbafddb5f8675d5f237b1578834ad26919.png" src="../../_images/026979959fb7a9a05d25ea7a59a0b2fbafddb5f8675d5f237b1578834ad26919.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Done simulating trajectory traj
+</pre></div>
+</div>
+<img alt="../../_images/acf928c2a1a0bd17c3f36a3db0a84c314c02af9129bd6f592e6b77ab5491d242.png" src="../../_images/acf928c2a1a0bd17c3f36a3db0a84c314c02af9129bd6f592e6b77ab5491d242.png" />
 </div>
 </div>
 </section>

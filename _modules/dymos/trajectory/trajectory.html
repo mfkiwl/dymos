@@ -526,6 +526,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../../examples/length_constrained_brachistochrone/length_constrained_brachistochrone.html">The Length-Constrained Brachistochrone</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../examples/min_time_climb/min_time_climb.html">Supersonic Interceptor Minimum Time Climb</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../examples/mountain_car/mountain_car.html">The Mountain Car Problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/moon_landing/moon_landing.html">Moon Landing Problem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../examples/multi_phase_cannonball/multi_phase_cannonball.html">Multi-Phase Cannonball</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../examples/multibranch_trajectory/multibranch_trajectory.html">Multibranch Trajectory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../examples/racecar/racecar.html">Race car Lap Simulation</a></li>
@@ -538,7 +539,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <li class="toctree-l2"><a class="reference internal" href="../../../examples/cart_pole/cart_pole.html">Cart-Pole Optimal Control</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../examples/brachistochrone/brachistochrone_tandem_phases.html">Brachistochrone with tandem phases</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../examples/cannonball_implicit_duration/cannonball_implicit_duration.html">Cannonball Implicit Duration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/implicit_duration/brachistochrone_implicit_duration.html">Implicit Duration</a></li>
 </ul>
 </li>
 </ul>
@@ -552,6 +553,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../../features/phases/constraints.html">Constraints</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../features/phases/objective.html">Objective</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../features/phases/timeseries.html">Timeseries Outputs</a></li>
+
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../features/trajectories/trajectories.html">Organizing Phases into Trajectories</a></li>
@@ -697,35 +699,34 @@ title="Open an issue"
             <article class="bd-article" role="main">
               
   <h1>Source code for dymos.trajectory.trajectory</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">warnings</span>
-<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">OrderedDict</span>
-<span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="n">Sequence</span>
-<span class="kn">import</span> <span class="nn">itertools</span>
-<span class="kn">import</span> <span class="nn">sys</span>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">OrderedDict</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequence</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">itertools</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
 
-<span class="kn">from</span> <span class="nn">openmdao.utils.om_warnings</span> <span class="kn">import</span> <span class="n">warn_deprecation</span>
-<span class="kn">from</span> <span class="nn">openmdao.utils.graph_utils</span> <span class="kn">import</span> <span class="n">get_sccs_topo</span>
-<span class="kn">from</span> <span class="nn">openmdao.utils.units</span> <span class="kn">import</span> <span class="n">unit_conversion</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">openmdao.utils.om_warnings</span><span class="w"> </span><span class="kn">import</span> <span class="n">warn_deprecation</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">openmdao.utils.units</span><span class="w"> </span><span class="kn">import</span> <span class="n">unit_conversion</span>
 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">networkx</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nx</span>
 
-<span class="kn">import</span> <span class="nn">openmdao.api</span> <span class="k">as</span> <span class="nn">om</span>
-<span class="kn">from</span> <span class="nn">openmdao.utils.mpi</span> <span class="kn">import</span> <span class="n">MPI</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">openmdao.api</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">om</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">openmdao.utils.mpi</span><span class="w"> </span><span class="kn">import</span> <span class="n">MPI</span>
 
-<span class="kn">from</span> <span class="nn">..utils.constants</span> <span class="kn">import</span> <span class="n">INF_BOUND</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..utils.constants</span><span class="w"> </span><span class="kn">import</span> <span class="n">INF_BOUND</span>
 
-<span class="kn">from</span> <span class="nn">.options</span> <span class="kn">import</span> <span class="n">LinkageOptionsDictionary</span>
-<span class="kn">from</span> <span class="nn">.phase_linkage_comp</span> <span class="kn">import</span> <span class="n">PhaseLinkageComp</span>
-<span class="kn">from</span> <span class="nn">..phase.analytic_phase</span> <span class="kn">import</span> <span class="n">AnalyticPhase</span>
-<span class="kn">from</span> <span class="nn">..phase.options</span> <span class="kn">import</span> <span class="n">TrajParameterOptionsDictionary</span>
-<span class="kn">from</span> <span class="nn">..transcriptions.common</span> <span class="kn">import</span> <span class="n">ParameterComp</span>
-<span class="kn">from</span> <span class="nn">..utils.misc</span> <span class="kn">import</span> <span class="n">get_rate_units</span><span class="p">,</span> <span class="n">_unspecified</span><span class="p">,</span> <span class="n">_none_or_unspecified</span>
-<span class="kn">from</span> <span class="nn">..utils.introspection</span> <span class="kn">import</span> <span class="n">get_promoted_vars</span><span class="p">,</span> <span class="n">get_source_metadata</span><span class="p">,</span> <span class="n">_get_common_metadata</span>
-<span class="kn">from</span> <span class="nn">.._options</span> <span class="kn">import</span> <span class="n">options</span> <span class="k">as</span> <span class="n">dymos_options</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.options</span><span class="w"> </span><span class="kn">import</span> <span class="n">LinkageOptionsDictionary</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.phase_linkage_comp</span><span class="w"> </span><span class="kn">import</span> <span class="n">PhaseLinkageComp</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..phase.analytic_phase</span><span class="w"> </span><span class="kn">import</span> <span class="n">AnalyticPhase</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..phase.options</span><span class="w"> </span><span class="kn">import</span> <span class="n">TrajParameterOptionsDictionary</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..transcriptions.common</span><span class="w"> </span><span class="kn">import</span> <span class="n">ParameterComp</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..utils.misc</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_subprob</span><span class="p">,</span> <span class="n">get_rate_units</span><span class="p">,</span> <span class="n">om_version</span><span class="p">,</span> \
+    <span class="n">_unspecified</span><span class="p">,</span> <span class="n">_none_or_unspecified</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..utils.introspection</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_promoted_vars</span><span class="p">,</span> <span class="n">get_source_metadata</span><span class="p">,</span> <span class="n">_get_common_metadata</span>
 
 
-<span class="k">class</span> <span class="nc">Trajectory</span><span class="p">(</span><span class="n">om</span><span class="o">.</span><span class="n">Group</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Trajectory</span><span class="p">(</span><span class="n">om</span><span class="o">.</span><span class="n">Group</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Class definition for a Trajectory group.</span>
 
@@ -743,6 +744,9 @@ title="Open an issue"
 <span class="sd">        A dictionary of parameter names and their associated TrajectoryParameterOptionsDictionary</span>
 <span class="sd">    phases : om.Group or om.ParallelGroup</span>
 <span class="sd">        The Group which contains phases for this Trajectory.</span>
+<span class="sd">    sim_prob : Problem or None</span>
+<span class="sd">        The OpenMDAO problem used for trajectory simulation.</span>
+<span class="sd">        This is None unless the simulate method has been called.</span>
 
 <span class="sd">    _linkages : OrderedDict</span>
 <span class="sd">        A dictionary containing phase linkage information for the Trajectory.</span>
@@ -751,24 +755,37 @@ title="Open an issue"
 <span class="sd">    _phase_graph : nx.DiGraph</span>
 <span class="sd">        A graph of linked phases.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">Trajectory</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_linkages</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_phases</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_phase_graph</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_has_connected_phases</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sim_prob</span> <span class="o">=</span> <span class="kc">None</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">parameter_options</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">phases</span> <span class="o">=</span> <span class="n">om</span><span class="o">.</span><span class="n">ParallelGroup</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">phases</span> <span class="o">=</span> <span class="n">om</span><span class="o">.</span><span class="n">ParallelGroup</span><span class="p">()</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s1">&#39;parallel_phases&#39;</span><span class="p">]</span> <span class="k">else</span> <span class="n">om</span><span class="o">.</span><span class="n">Group</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Declare any options for Trajectory.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">declare</span><span class="p">(</span><span class="s1">&#39;sim_mode&#39;</span><span class="p">,</span> <span class="n">types</span><span class="o">=</span><span class="nb">bool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                              <span class="n">desc</span><span class="o">=</span><span class="s1">&#39;Used internally by Dymos when invoking simulate on a trajectory&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">declare</span><span class="p">(</span><span class="s1">&#39;parallel_phases&#39;</span><span class="p">,</span>
+                             <span class="n">default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">types</span><span class="o">=</span><span class="nb">bool</span><span class="p">,</span>
+                             <span class="n">desc</span><span class="o">=</span><span class="s1">&#39;If True, the top-level container of all phases will be a ParallelGroup,&#39;</span>
+                                  <span class="s1">&#39;otherwise it will be a standard OpenMDAO Group.&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">declare</span><span class="p">(</span><span class="s1">&#39;auto_solvers&#39;</span><span class="p">,</span> <span class="n">types</span><span class="o">=</span><span class="nb">bool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                             <span class="n">desc</span><span class="o">=</span><span class="s1">&#39;If True, attempt to automatically assign solvers if necessary.&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">declare</span><span class="p">(</span><span class="s1">&#39;parameter_options&#39;</span><span class="p">,</span> <span class="n">types</span><span class="o">=</span><span class="nb">dict</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="p">{},</span>
+                             <span class="n">desc</span><span class="o">=</span><span class="s1">&#39;Options for each parameter in this Trajectory&#39;</span><span class="p">)</span>
 
-<div class="viewcode-block" id="Trajectory.add_phase"><a class="viewcode-back" href="../../../features/trajectories/trajectories.html#dymos.Trajectory.add_phase">[docs]</a>    <span class="k">def</span> <span class="nf">add_phase</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">phase</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">parameter_options</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s1">&#39;parameter_options&#39;</span><span class="p">]</span>
+
+<div class="viewcode-block" id="Trajectory.add_phase"><a class="viewcode-back" href="../../../features/trajectories/trajectories.html#dymos.Trajectory.add_phase">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">add_phase</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">phase</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Add a phase to the trajectory.</span>
 
@@ -791,7 +808,7 @@ title="Open an issue"
         <span class="bp">self</span><span class="o">.</span><span class="n">_phases</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">phases</span><span class="o">.</span><span class="n">add_subsystem</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">phase</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">phase</span></div>
 
-    <span class="k">def</span> <span class="nf">set_parameter_options</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span> <span class="n">opt</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_parameter_options</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span> <span class="n">opt</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                               <span class="n">targets</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span> <span class="n">upper</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span>
                               <span class="n">scaler</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span> <span class="n">adder</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span> <span class="n">ref0</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span> <span class="n">ref</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span>
                               <span class="n">shape</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span> <span class="n">dynamic</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span> <span class="n">static_target</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span>
@@ -909,7 +926,7 @@ title="Open an issue"
                              <span class="sa">f</span><span class="s2">&quot;Going forward, please use only option static_targets.  Option &quot;</span>
                              <span class="sa">f</span><span class="s2">&quot;&#39;dynamic&#39; will be removed in Dymos 2.0.0.&quot;</span><span class="p">)</span>
 
-<div class="viewcode-block" id="Trajectory.add_parameter"><a class="viewcode-back" href="../../../api/trajectory_api.html#dymos.Trajectory.add_parameter">[docs]</a>    <span class="k">def</span> <span class="nf">add_parameter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span> <span class="n">opt</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<div class="viewcode-block" id="Trajectory.add_parameter"><a class="viewcode-back" href="../../../api/trajectory_api.html#dymos.Trajectory.add_parameter">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">add_parameter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span> <span class="n">opt</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                       <span class="n">targets</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span> <span class="n">upper</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span>
                       <span class="n">scaler</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span> <span class="n">adder</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span> <span class="n">ref0</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span> <span class="n">ref</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span>
                       <span class="n">shape</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span> <span class="n">dynamic</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span> <span class="n">static_target</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span>
@@ -975,7 +992,26 @@ title="Open an issue"
                                    <span class="n">upper</span><span class="o">=</span><span class="n">upper</span><span class="p">,</span> <span class="n">scaler</span><span class="o">=</span><span class="n">scaler</span><span class="p">,</span> <span class="n">adder</span><span class="o">=</span><span class="n">adder</span><span class="p">,</span> <span class="n">ref0</span><span class="o">=</span><span class="n">ref0</span><span class="p">,</span> <span class="n">ref</span><span class="o">=</span><span class="n">ref</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">,</span>
                                    <span class="n">dynamic</span><span class="o">=</span><span class="n">dynamic</span><span class="p">,</span> <span class="n">static_target</span><span class="o">=</span><span class="n">static_target</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">_setup_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Trajectory.set_parameter_val"><a class="viewcode-back" href="../../../api/trajectory_api.html#dymos.Trajectory.set_parameter_val">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">set_parameter_val</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set the parameter values.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        name : str</span>
+<span class="sd">            Name of the variable. This should be a parameter variable.</span>
+<span class="sd">        val : ndarray or Sequence or None</span>
+<span class="sd">            Array of state values.</span>
+<span class="sd">        units : str, optional</span>
+<span class="sd">            The units of the state values specified.</span>
+<span class="sd">            If None, use the units associated with the target.</span>
+<span class="sd">            If provided, must be compatible with the target units.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">units</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">units</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameter_options</span><span class="p">[</span><span class="n">name</span><span class="p">][</span><span class="s1">&#39;units&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_val</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;parameters:</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="n">val</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="n">units</span><span class="p">)</span></div>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_setup_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Adds an IndepVarComp if necessary and issues appropriate connections based</span>
 <span class="sd">        on transcription.</span>
@@ -1027,11 +1063,7 @@ title="Open an issue"
                         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s1">&#39;sim_mode&#39;</span><span class="p">]:</span>
                             <span class="n">phs</span><span class="o">.</span><span class="n">add_parameter</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_setup_linkages</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s1">&#39;sim_mode&#39;</span><span class="p">]:</span>
-            <span class="c1"># Under simulation, theres no need to enforce any linkages</span>
-            <span class="k">return</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_setup_linkages</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
         <span class="n">has_linkage_constraints</span> <span class="o">=</span> <span class="kc">False</span>
 
@@ -1077,7 +1109,7 @@ title="Open an issue"
         <span class="k">if</span> <span class="n">has_linkage_constraints</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">add_subsystem</span><span class="p">(</span><span class="s1">&#39;linkages&#39;</span><span class="p">,</span> <span class="n">PhaseLinkageComp</span><span class="p">())</span>
 
-    <span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Setup the Trajectory Group.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -1089,10 +1121,10 @@ title="Open an issue"
         <span class="c1"># This will override the existing phases attribute with the same thing.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">add_subsystem</span><span class="p">(</span><span class="s1">&#39;phases&#39;</span><span class="p">,</span> <span class="n">subsys</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">phases</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_linkages</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_linkages</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s1">&#39;sim_mode&#39;</span><span class="p">]:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_setup_linkages</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">_configure_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_configure_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Configure connections from input or design parameters to the appropriate targets</span>
 <span class="sd">        in each phase.</span>
@@ -1166,7 +1198,7 @@ title="Open an issue"
                 <span class="k">if</span> <span class="n">targets</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
                     <span class="n">reason</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Option `targets=None` but no phase in the trajectory has a parameter named `</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">`.&#39;</span>
                 <span class="k">elif</span> <span class="nb">all</span><span class="p">([</span><span class="n">t</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">targets</span><span class="o">.</span><span class="n">values</span><span class="p">()])</span> <span class="ow">and</span> <span class="n">targets</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_phases</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-                    <span class="n">reason</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Option `targets` is a dictionary keyed by phase name but target for each phase is None.&#39;</span>
+                    <span class="n">reason</span> <span class="o">=</span> <span class="s1">&#39;Option `targets` is a dictionary keyed by phase name but target for each phase is None.&#39;</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="n">reason</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;No target was found for trajectory parameter `</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">` in any phase.</span><span class="se">\n</span><span class="si">{</span><span class="n">reason</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
@@ -1202,7 +1234,7 @@ title="Open an issue"
 
         <span class="k">return</span> <span class="n">promoted_inputs</span>
 
-    <span class="k">def</span> <span class="nf">_configure_phase_options_dicts</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_configure_phase_options_dicts</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Called during configure if we are under MPI. Loops over all phases and populates the</span>
 <span class="sd">        phase options dictionaries in self._phases.</span>
@@ -1223,7 +1255,6 @@ title="Open an issue"
             <span class="n">phase_options_dicts</span><span class="p">[</span><span class="n">phs</span><span class="o">.</span><span class="n">name</span><span class="p">][</span><span class="s1">&#39;time_options&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">phs</span><span class="o">.</span><span class="n">time_options</span>
             <span class="n">phase_options_dicts</span><span class="p">[</span><span class="n">phs</span><span class="o">.</span><span class="n">name</span><span class="p">][</span><span class="s1">&#39;state_options&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">phs</span><span class="o">.</span><span class="n">state_options</span>
             <span class="n">phase_options_dicts</span><span class="p">[</span><span class="n">phs</span><span class="o">.</span><span class="n">name</span><span class="p">][</span><span class="s1">&#39;control_options&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">phs</span><span class="o">.</span><span class="n">control_options</span>
-            <span class="n">phase_options_dicts</span><span class="p">[</span><span class="n">phs</span><span class="o">.</span><span class="n">name</span><span class="p">][</span><span class="s1">&#39;polynomial_control_options&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">phs</span><span class="o">.</span><span class="n">polynomial_control_options</span>
             <span class="n">phase_options_dicts</span><span class="p">[</span><span class="n">phs</span><span class="o">.</span><span class="n">name</span><span class="p">][</span><span class="s1">&#39;parameter_options&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">phs</span><span class="o">.</span><span class="n">parameter_options</span>
 
         <span class="n">all_ranks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">comm</span><span class="o">.</span><span class="n">allgather</span><span class="p">(</span><span class="n">phase_options_dicts</span><span class="p">)</span>
@@ -1234,10 +1265,9 @@ title="Open an issue"
                     <span class="n">phs</span><span class="o">.</span><span class="n">time_options</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">phase_name</span><span class="p">][</span><span class="s1">&#39;time_options&#39;</span><span class="p">])</span>
                     <span class="n">phs</span><span class="o">.</span><span class="n">state_options</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">phase_name</span><span class="p">][</span><span class="s1">&#39;state_options&#39;</span><span class="p">])</span>
                     <span class="n">phs</span><span class="o">.</span><span class="n">control_options</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">phase_name</span><span class="p">][</span><span class="s1">&#39;control_options&#39;</span><span class="p">])</span>
-                    <span class="n">phs</span><span class="o">.</span><span class="n">polynomial_control_options</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">phase_name</span><span class="p">][</span><span class="s1">&#39;polynomial_control_options&#39;</span><span class="p">])</span>
                     <span class="n">phs</span><span class="o">.</span><span class="n">parameter_options</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">phase_name</span><span class="p">][</span><span class="s1">&#39;parameter_options&#39;</span><span class="p">])</span>
 
-    <span class="k">def</span> <span class="nf">_update_linkage_options_configure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">linkage_options</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_update_linkage_options_configure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">linkage_options</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Called during configure to return the source paths, units, and shapes of variables</span>
 <span class="sd">        in linkages.</span>
@@ -1308,19 +1338,19 @@ title="Open an issue"
                 <span class="n">units</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_rate_units</span><span class="p">(</span><span class="n">units</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">phases</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">time_options</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">],</span> <span class="n">deriv</span><span class="o">=</span><span class="n">deriv</span><span class="p">)</span>
                 <span class="n">shapes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">phases</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">control_options</span><span class="p">[</span><span class="n">control_name</span><span class="p">][</span><span class="s1">&#39;shape&#39;</span><span class="p">]</span>
             <span class="k">elif</span> <span class="n">classes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">in</span> <span class="p">{</span><span class="s1">&#39;indep_polynomial_control&#39;</span><span class="p">,</span> <span class="s1">&#39;input_polynomial_control&#39;</span><span class="p">}:</span>
-                <span class="n">prefix</span> <span class="o">=</span> <span class="s1">&#39;polynomial_controls:&#39;</span> <span class="k">if</span> <span class="n">use_prefix</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
+                <span class="n">prefix</span> <span class="o">=</span> <span class="s1">&#39;controls:&#39;</span> <span class="k">if</span> <span class="n">use_prefix</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
                 <span class="n">sources</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;timeseries.</span><span class="si">{</span><span class="n">prefix</span><span class="si">}{</span><span class="nb">vars</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span>
-                <span class="n">units</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">phases</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">polynomial_control_options</span><span class="p">[</span><span class="nb">vars</span><span class="p">[</span><span class="n">i</span><span class="p">]][</span><span class="s1">&#39;units&#39;</span><span class="p">]</span>
-                <span class="n">shapes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">phases</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">polynomial_control_options</span><span class="p">[</span><span class="nb">vars</span><span class="p">[</span><span class="n">i</span><span class="p">]][</span><span class="s1">&#39;shape&#39;</span><span class="p">]</span>
+                <span class="n">units</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">phases</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">control_options</span><span class="p">[</span><span class="nb">vars</span><span class="p">[</span><span class="n">i</span><span class="p">]][</span><span class="s1">&#39;units&#39;</span><span class="p">]</span>
+                <span class="n">shapes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">phases</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">control_options</span><span class="p">[</span><span class="nb">vars</span><span class="p">[</span><span class="n">i</span><span class="p">]][</span><span class="s1">&#39;shape&#39;</span><span class="p">]</span>
             <span class="k">elif</span> <span class="n">classes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">in</span> <span class="p">{</span><span class="s1">&#39;polynomial_control_rate&#39;</span><span class="p">,</span> <span class="s1">&#39;polynomial_control_rate2&#39;</span><span class="p">}:</span>
-                <span class="n">prefix</span> <span class="o">=</span> <span class="s1">&#39;polynomial_control_rates:&#39;</span> <span class="k">if</span> <span class="n">use_prefix</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
+                <span class="n">prefix</span> <span class="o">=</span> <span class="s1">&#39;control_rates:&#39;</span> <span class="k">if</span> <span class="n">use_prefix</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
                 <span class="n">sources</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;timeseries.</span><span class="si">{</span><span class="n">prefix</span><span class="si">}{</span><span class="nb">vars</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span>
                 <span class="n">control_name</span> <span class="o">=</span> <span class="nb">vars</span><span class="p">[</span><span class="n">i</span><span class="p">][:</span><span class="o">-</span><span class="mi">5</span><span class="p">]</span> <span class="k">if</span> <span class="n">classes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;polynomial_control_rate&#39;</span> <span class="k">else</span> <span class="nb">vars</span><span class="p">[</span><span class="n">i</span><span class="p">][:</span><span class="o">-</span><span class="mi">6</span><span class="p">]</span>
-                <span class="n">control_units</span> <span class="o">=</span> <span class="n">phases</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">polynomial_control_options</span><span class="p">[</span><span class="n">control_name</span><span class="p">][</span><span class="s1">&#39;units&#39;</span><span class="p">]</span>
+                <span class="n">control_units</span> <span class="o">=</span> <span class="n">phases</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">control_options</span><span class="p">[</span><span class="n">control_name</span><span class="p">][</span><span class="s1">&#39;units&#39;</span><span class="p">]</span>
                 <span class="n">time_units</span> <span class="o">=</span> <span class="n">phases</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">time_options</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">]</span>
                 <span class="n">deriv</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">classes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;rate&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="mi">2</span>
                 <span class="n">units</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_rate_units</span><span class="p">(</span><span class="n">control_units</span><span class="p">,</span> <span class="n">time_units</span><span class="p">,</span> <span class="n">deriv</span><span class="o">=</span><span class="n">deriv</span><span class="p">)</span>
-                <span class="n">shapes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">phases</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">polynomial_control_options</span><span class="p">[</span><span class="n">control_name</span><span class="p">][</span><span class="s1">&#39;shape&#39;</span><span class="p">]</span>
+                <span class="n">shapes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">phases</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">control_options</span><span class="p">[</span><span class="n">control_name</span><span class="p">][</span><span class="s1">&#39;shape&#39;</span><span class="p">]</span>
             <span class="k">elif</span> <span class="n">classes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;parameter&#39;</span><span class="p">:</span>
                 <span class="n">sources</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;parameter_vals:</span><span class="si">{</span><span class="nb">vars</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span>
                 <span class="n">units</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">phases</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">parameter_options</span><span class="p">[</span><span class="nb">vars</span><span class="p">[</span><span class="n">i</span><span class="p">]][</span><span class="s1">&#39;units&#39;</span><span class="p">]</span>
@@ -1333,7 +1363,7 @@ title="Open an issue"
                                                <span class="n">user_shape</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">)</span>
                     <span class="n">shapes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">meta</span><span class="p">[</span><span class="s1">&#39;shape&#39;</span><span class="p">]</span>
                     <span class="n">units</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">meta</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">]</span>
-                <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
                     <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">info_str</span><span class="si">}</span><span class="s1">Error in linking </span><span class="si">{</span><span class="n">var_a</span><span class="si">}</span><span class="s1"> from </span><span class="si">{</span><span class="n">phase_name_a</span><span class="si">}</span><span class="s1"> to </span><span class="si">{</span><span class="n">var_b</span><span class="si">}</span><span class="s1"> in &#39;</span>
                                        <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">phase_name_b</span><span class="si">}</span><span class="s1">. Unable to find variable </span><span class="se">\&#39;</span><span class="si">{</span><span class="nb">vars</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="se">\&#39;</span><span class="s1"> in phase &#39;</span>
                                        <span class="sa">f</span><span class="s1">&#39;</span><span class="se">\&#39;</span><span class="si">{</span><span class="n">phases</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">pathname</span><span class="si">}</span><span class="se">\&#39;</span><span class="s1"> or its ODE.&#39;</span><span class="p">)</span>
@@ -1362,7 +1392,7 @@ title="Open an issue"
         <span class="k">else</span><span class="p">:</span>
             <span class="n">linkage_options</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">units</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span>
 
-    <span class="k">def</span> <span class="nf">_expand_star_linkage_configure</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_expand_star_linkage_configure</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Finds the variable pair (&#39;*&#39;, &#39;*&#39;) and expands it out to time and all states if found.</span>
 
@@ -1381,8 +1411,9 @@ title="Open an issue"
             <span class="n">var_pair</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">var_pair</span> <span class="ow">in</span> <span class="n">var_dict</span><span class="p">:</span>
                 <span class="n">options</span> <span class="o">=</span> <span class="n">var_dict</span><span class="p">[</span><span class="n">var_pair</span><span class="p">]</span>
+                <span class="n">time_name</span> <span class="o">=</span> <span class="n">phase_b</span><span class="o">.</span><span class="n">time_options</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">add_linkage_constraint</span><span class="p">(</span><span class="n">phase_name_a</span><span class="p">,</span> <span class="n">phase_name_b</span><span class="p">,</span>
-                                            <span class="n">var_a</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="n">var_b</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">,</span>
+                                            <span class="n">var_a</span><span class="o">=</span><span class="n">time_name</span><span class="p">,</span> <span class="n">var_b</span><span class="o">=</span><span class="n">time_name</span><span class="p">,</span>
                                             <span class="n">loc_a</span><span class="o">=</span><span class="n">options</span><span class="p">[</span><span class="s1">&#39;loc_a&#39;</span><span class="p">],</span> <span class="n">loc_b</span><span class="o">=</span><span class="n">options</span><span class="p">[</span><span class="s1">&#39;loc_b&#39;</span><span class="p">],</span>
                                             <span class="n">mult_a</span><span class="o">=</span><span class="n">options</span><span class="p">[</span><span class="s1">&#39;mult_a&#39;</span><span class="p">],</span> <span class="n">mult_b</span><span class="o">=</span><span class="n">options</span><span class="p">[</span><span class="s1">&#39;mult_b&#39;</span><span class="p">],</span>
                                             <span class="n">connected</span><span class="o">=</span><span class="n">options</span><span class="p">[</span><span class="s1">&#39;connected&#39;</span><span class="p">])</span>
@@ -1394,7 +1425,7 @@ title="Open an issue"
                                                 <span class="n">connected</span><span class="o">=</span><span class="n">options</span><span class="p">[</span><span class="s1">&#39;connected&#39;</span><span class="p">])</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_linkages</span><span class="p">[</span><span class="n">phase_pair</span><span class="p">]</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">var_pair</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_is_valid_linkage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phase_name_a</span><span class="p">,</span> <span class="n">phase_name_b</span><span class="p">,</span> <span class="n">loc_a</span><span class="p">,</span> <span class="n">loc_b</span><span class="p">,</span> <span class="n">var_a</span><span class="p">,</span> <span class="n">var_b</span><span class="p">,</span> <span class="n">fixed_a</span><span class="p">,</span> <span class="n">fixed_b</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_is_valid_linkage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phase_name_a</span><span class="p">,</span> <span class="n">phase_name_b</span><span class="p">,</span> <span class="n">loc_a</span><span class="p">,</span> <span class="n">loc_b</span><span class="p">,</span> <span class="n">var_a</span><span class="p">,</span> <span class="n">var_b</span><span class="p">,</span> <span class="n">fixed_a</span><span class="p">,</span> <span class="n">fixed_b</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Validates linkage constraints.</span>
 
@@ -1456,15 +1487,11 @@ title="Open an issue"
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;&#39;</span>
 
-    <span class="k">def</span> <span class="nf">_configure_linkages</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s1">&#39;sim_mode&#39;</span><span class="p">]:</span>
-            <span class="c1"># If this is a simulation trajectory, theres no need to link the phases.</span>
-            <span class="k">return</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_configure_linkages</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
         <span class="n">connected_linkage_inputs</span> <span class="o">=</span> <span class="p">[]</span>
 
-        <span class="k">def</span> <span class="nf">_print_on_rank</span><span class="p">(</span><span class="n">rank</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">_print_on_rank</span><span class="p">(</span><span class="n">rank</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">comm</span><span class="o">.</span><span class="n">rank</span> <span class="o">==</span> <span class="n">rank</span><span class="p">:</span>
                 <span class="nb">print</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
@@ -1476,14 +1503,14 @@ title="Open an issue"
                     <span class="s1">&#39;indep_control&#39;</span><span class="p">:</span> <span class="s1">&#39;controls:&#39;</span><span class="p">,</span>
                     <span class="s1">&#39;control_rate&#39;</span><span class="p">:</span> <span class="s1">&#39;control_rates:&#39;</span><span class="p">,</span>
                     <span class="s1">&#39;control_rate2&#39;</span><span class="p">:</span> <span class="s1">&#39;control_rates:&#39;</span><span class="p">,</span>
-                    <span class="s1">&#39;input_polynomial_control&#39;</span><span class="p">:</span> <span class="s1">&#39;polynomial_controls:&#39;</span><span class="p">,</span>
-                    <span class="s1">&#39;indep_polynomial_control&#39;</span><span class="p">:</span> <span class="s1">&#39;polynomial_controls:&#39;</span><span class="p">,</span>
-                    <span class="s1">&#39;polynomial_control_rate&#39;</span><span class="p">:</span> <span class="s1">&#39;polynomial_control_rates:&#39;</span><span class="p">,</span>
-                    <span class="s1">&#39;polynomial_control_rate2&#39;</span><span class="p">:</span> <span class="s1">&#39;polynomial_control_rates:&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;input_polynomial_control&#39;</span><span class="p">:</span> <span class="s1">&#39;controls:&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;indep_polynomial_control&#39;</span><span class="p">:</span> <span class="s1">&#39;controls:&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;polynomial_control_rate&#39;</span><span class="p">:</span> <span class="s1">&#39;control_rates:&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;polynomial_control_rate2&#39;</span><span class="p">:</span> <span class="s1">&#39;control_rates:&#39;</span><span class="p">,</span>
                     <span class="s1">&#39;ode&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span>
                     <span class="p">}</span>
 
-        <span class="k">def</span> <span class="nf">_get_prefixed_var</span><span class="p">(</span><span class="n">var</span><span class="p">,</span> <span class="n">phase</span><span class="p">):</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">_get_prefixed_var</span><span class="p">(</span><span class="n">var</span><span class="p">,</span> <span class="n">phase</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">phase</span><span class="o">.</span><span class="n">timeseries_options</span><span class="p">[</span><span class="s1">&#39;use_prefix&#39;</span><span class="p">]:</span>
                 <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">prefixes</span><span class="p">[</span><span class="n">phase</span><span class="o">.</span><span class="n">classify_var</span><span class="p">(</span><span class="n">var</span><span class="p">)]</span><span class="si">}{</span><span class="n">var</span><span class="si">}</span><span class="s1">&#39;</span>
             <span class="k">else</span><span class="p">:</span>
@@ -1564,6 +1591,7 @@ title="Open an issue"
                         <span class="k">raise</span> <span class="n">om</span><span class="o">.</span><span class="n">OpenMDAOWarning</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
                     <span class="n">_print_on_rank</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">indent</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="si">}{</span><span class="n">prefixed_a</span><span class="si">:</span><span class="s1">&lt;</span><span class="si">{</span><span class="n">padding_a</span><span class="si">}</span><span class="s1">s</span><span class="si">}</span><span class="s1"> [</span><span class="si">{</span><span class="n">loc_a</span><span class="si">}{</span><span class="n">str_fixed_a</span><span class="si">}</span><span class="s1">] -&gt;  &#39;</span>
                                    <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">prefixed_b</span><span class="si">:</span><span class="s1">&lt;</span><span class="si">{</span><span class="n">padding_b</span><span class="si">}</span><span class="s1">s</span><span class="si">}</span><span class="s1"> [</span><span class="si">{</span><span class="n">loc_b</span><span class="si">}{</span><span class="n">str_fixed_b</span><span class="si">}</span><span class="s1">]&#39;</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_has_connected_phases</span> <span class="o">=</span> <span class="kc">True</span>
                 <span class="k">else</span><span class="p">:</span>
 
                     <span class="k">if</span> <span class="n">fixed_a</span> <span class="ow">and</span> <span class="n">fixed_b</span><span class="p">:</span>
@@ -1593,10 +1621,10 @@ title="Open an issue"
 
         <span class="n">_print_on_rank</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">* : Value is fixed or is an input.</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_check_phase_graph</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_check_phase_graph</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
         <span class="c1"># determine if we have any fixed t_initial that are outside of allowed bounds</span>
-        <span class="k">def</span> <span class="nf">get_final_tbounds</span><span class="p">(</span><span class="n">phase_name</span><span class="p">,</span> <span class="n">node_data</span><span class="p">,</span> <span class="n">old_tmin</span><span class="o">=-</span><span class="n">INF_BOUND</span><span class="p">,</span> <span class="n">old_tmax</span><span class="o">=</span><span class="n">INF_BOUND</span><span class="p">):</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">get_final_tbounds</span><span class="p">(</span><span class="n">phase_name</span><span class="p">,</span> <span class="n">node_data</span><span class="p">,</span> <span class="n">old_tmin</span><span class="o">=-</span><span class="n">INF_BOUND</span><span class="p">,</span> <span class="n">old_tmax</span><span class="o">=</span><span class="n">INF_BOUND</span><span class="p">):</span>
             <span class="n">t_initial</span> <span class="o">=</span> <span class="n">node_data</span><span class="p">[</span><span class="s1">&#39;t_initial&#39;</span><span class="p">]</span>
             <span class="n">fixed_t_initial</span> <span class="o">=</span> <span class="n">node_data</span><span class="p">[</span><span class="s1">&#39;fix_initial&#39;</span><span class="p">]</span>
             <span class="n">duration_min</span><span class="p">,</span> <span class="n">duration_max</span> <span class="o">=</span> <span class="n">node_data</span><span class="p">[</span><span class="s1">&#39;duration_bounds&#39;</span><span class="p">]</span>
@@ -1654,13 +1682,6 @@ title="Open an issue"
 
         <span class="n">phase_graph</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_phase_graph</span>
 
-        <span class="c1"># since we have a graph, do a quick check that we have no cycles</span>
-        <span class="n">sccs</span> <span class="o">=</span> <span class="n">get_sccs_topo</span><span class="p">(</span><span class="n">phase_graph</span><span class="p">)</span>
-        <span class="n">cycles</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">([</span><span class="n">s</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sccs</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">],</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-        <span class="k">if</span> <span class="n">cycles</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">msginfo</span><span class="si">}</span><span class="s2">: The following cycles were found in the phase &quot;</span>
-                               <span class="sa">f</span><span class="s2">&quot;linkage graph: </span><span class="si">{</span><span class="p">[</span><span class="nb">sorted</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">cycles</span><span class="p">]</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
-
         <span class="n">node_data</span> <span class="o">=</span> <span class="n">phase_graph</span><span class="o">.</span><span class="n">nodes</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
         <span class="c1"># only keep the part of the graph where &#39;t&#39; connects phases</span>
@@ -1701,7 +1722,43 @@ title="Open an issue"
             <span class="n">err_lines</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">errs</span><span class="p">)</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">errs</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="k">else</span> <span class="n">errs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
             <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">msginfo</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">err_lines</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">configure</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_configure_solvers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Automatically configure solvers for the Trajectory.</span>
+
+<span class="sd">        If operating under MPI and phases are connected, then</span>
+<span class="sd">        the default nonlinear solver will be a NonlinearBlockJac,</span>
+<span class="sd">        while the default linear solver will be PETScKrylov.</span>
+
+<span class="sd">        These solvers can be changed through the</span>
+<span class="sd">        &#39;default_nonlinear_solver&#39; and &#39;default_linear_solver&#39; options.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s1">&#39;auto_solvers&#39;</span><span class="p">]:</span>
+            <span class="k">return</span>
+
+        <span class="n">warn</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_has_connected_phases</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">phases</span><span class="p">,</span> <span class="n">om</span><span class="o">.</span><span class="n">ParallelGroup</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">comm</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">msginfo</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span>
+                   <span class="sa">f</span><span class="s1">&#39;  Non-default solvers are required</span><span class="se">\n</span><span class="s1">&#39;</span>
+                   <span class="sa">f</span><span class="s1">&#39;    connected phases in parallel: True</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">phases</span><span class="o">.</span><span class="n">nonlinear_solver</span><span class="p">,</span> <span class="n">om</span><span class="o">.</span><span class="n">NonlinearRunOnce</span><span class="p">):</span>
+                <span class="n">warn</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="n">msg</span> <span class="o">+=</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  Setting </span><span class="se">\n</span><span class="s1">&#39;</span>
+                        <span class="sa">f</span><span class="s1">&#39;    </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">pathname</span><span class="si">}</span><span class="s1">.phases.nonlinear_solver = om.NonlinearBlockJac(iprint=0)</span><span class="se">\n</span><span class="s1">&#39;</span>
+                        <span class="sa">f</span><span class="s1">&#39;  Explicitly set </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">pathname</span><span class="si">}</span><span class="s1">.phases.nonlinear_solver to override.</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">phases</span><span class="o">.</span><span class="n">nonlinear_solver</span> <span class="o">=</span> <span class="n">om</span><span class="o">.</span><span class="n">NonlinearBlockJac</span><span class="p">(</span><span class="n">iprint</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">phases</span><span class="o">.</span><span class="n">linear_solver</span><span class="p">,</span> <span class="n">om</span><span class="o">.</span><span class="n">LinearRunOnce</span><span class="p">):</span>
+                <span class="n">warn</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="n">msg</span> <span class="o">+=</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  Setting</span><span class="se">\n</span><span class="s1">&#39;</span>
+                        <span class="sa">f</span><span class="s1">&#39;    </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">pathname</span><span class="si">}</span><span class="s1">.phases.linear_solver = om.PETScKrylov(iprint=0)</span><span class="se">\n</span><span class="s1">&#39;</span>
+                        <span class="sa">f</span><span class="s1">&#39;  Explicitly set </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">pathname</span><span class="si">}</span><span class="s1">.phases.linear_solver to override.</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">phases</span><span class="o">.</span><span class="n">linear_solver</span> <span class="o">=</span> <span class="n">om</span><span class="o">.</span><span class="n">PETScKrylov</span><span class="p">(</span><span class="n">iprint</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">warn</span><span class="p">:</span>
+                <span class="n">om</span><span class="o">.</span><span class="n">issue_warning</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">configure</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Configure the Trajectory Group.</span>
 
@@ -1715,15 +1772,17 @@ title="Open an issue"
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameter_options</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_configure_parameters</span><span class="p">()</span>
 
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_linkages</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_linkages</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s1">&#39;sim_mode&#39;</span><span class="p">]:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_configure_linkages</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_configure_solvers</span><span class="p">()</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_constraint_report</span><span class="p">(</span><span class="n">outstream</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">)</span>
 
         <span class="c1"># promote everything else out of phases</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">promotes</span><span class="p">(</span><span class="s1">&#39;phases&#39;</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;*&#39;</span><span class="p">],</span> <span class="n">outputs</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;*&#39;</span><span class="p">])</span>
 
-<div class="viewcode-block" id="Trajectory.add_linkage_constraint"><a class="viewcode-back" href="../../../features/trajectories/trajectories.html#dymos.Trajectory.add_linkage_constraint">[docs]</a>    <span class="k">def</span> <span class="nf">add_linkage_constraint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phase_a</span><span class="p">,</span> <span class="n">phase_b</span><span class="p">,</span> <span class="n">var_a</span><span class="p">,</span> <span class="n">var_b</span><span class="p">,</span> <span class="n">loc_a</span><span class="o">=</span><span class="s1">&#39;final&#39;</span><span class="p">,</span> <span class="n">loc_b</span><span class="o">=</span><span class="s1">&#39;initial&#39;</span><span class="p">,</span>
+<div class="viewcode-block" id="Trajectory.add_linkage_constraint"><a class="viewcode-back" href="../../../features/trajectories/trajectories.html#dymos.Trajectory.add_linkage_constraint">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">add_linkage_constraint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phase_a</span><span class="p">,</span> <span class="n">phase_b</span><span class="p">,</span> <span class="n">var_a</span><span class="p">,</span> <span class="n">var_b</span><span class="p">,</span> <span class="n">loc_a</span><span class="o">=</span><span class="s1">&#39;final&#39;</span><span class="p">,</span> <span class="n">loc_b</span><span class="o">=</span><span class="s1">&#39;initial&#39;</span><span class="p">,</span>
                                <span class="n">sign_a</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span> <span class="n">sign_b</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span>
                                <span class="n">mult_a</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span> <span class="n">mult_b</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span>
                                <span class="n">units</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">upper</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -1885,7 +1944,7 @@ title="Open an issue"
         <span class="n">d</span><span class="p">[</span><span class="s1">&#39;linear&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">linear</span>
         <span class="n">d</span><span class="p">[</span><span class="s1">&#39;connected&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">connected</span></div>
 
-<div class="viewcode-block" id="Trajectory.link_phases"><a class="viewcode-back" href="../../../features/trajectories/trajectories.html#dymos.Trajectory.link_phases">[docs]</a>    <span class="k">def</span> <span class="nf">link_phases</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phases</span><span class="p">,</span> <span class="nb">vars</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">locs</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;final&#39;</span><span class="p">,</span> <span class="s1">&#39;initial&#39;</span><span class="p">),</span> <span class="n">connected</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<div class="viewcode-block" id="Trajectory.link_phases"><a class="viewcode-back" href="../../../features/trajectories/trajectories.html#dymos.Trajectory.link_phases">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">link_phases</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phases</span><span class="p">,</span> <span class="nb">vars</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">locs</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;final&#39;</span><span class="p">,</span> <span class="s1">&#39;initial&#39;</span><span class="p">),</span> <span class="n">connected</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                     <span class="n">units</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span> <span class="n">scaler</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">adder</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ref0</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ref</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">linear</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Specify that phases in the given sequence are to assume continuity of the given variables.</span>
@@ -1970,21 +2029,21 @@ title="Open an issue"
                                             <span class="n">scaler</span><span class="o">=</span><span class="n">scaler</span><span class="p">,</span> <span class="n">adder</span><span class="o">=</span><span class="n">adder</span><span class="p">,</span> <span class="n">ref0</span><span class="o">=</span><span class="n">ref0</span><span class="p">,</span> <span class="n">ref</span><span class="o">=</span><span class="n">ref</span><span class="p">,</span>
                                             <span class="n">linear</span><span class="o">=</span><span class="n">linear</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">_constraint_report</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outstream</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_constraint_report</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outstream</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s1">&#39;sim_mode&#39;</span><span class="p">]:</span>
             <span class="k">return</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">comm</span><span class="o">.</span><span class="n">rank</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">printer</span> <span class="o">=</span> <span class="nb">print</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">def</span> <span class="nf">printer</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+            <span class="k">def</span><span class="w"> </span><span class="nf">printer</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
                 <span class="k">pass</span>
 
         <span class="n">float_fmt</span> <span class="o">=</span> <span class="s1">&#39;6.4e&#39;</span>
         <span class="n">printer</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">--- Constraint Report [</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">pathname</span><span class="si">}</span><span class="s1">] ---&#39;</span><span class="p">)</span>
         <span class="n">indent</span> <span class="o">=</span> <span class="s1">&#39;    &#39;</span>
 
-        <span class="k">def</span> <span class="nf">_print_constraints</span><span class="p">(</span><span class="n">phase</span><span class="p">,</span> <span class="n">outstream</span><span class="p">):</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">_print_constraints</span><span class="p">(</span><span class="n">phase</span><span class="p">,</span> <span class="n">outstream</span><span class="p">):</span>
             <span class="n">tx</span> <span class="o">=</span> <span class="n">phase</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s1">&#39;transcription&#39;</span><span class="p">]</span>
 
             <span class="n">ode_outputs</span> <span class="o">=</span> <span class="n">get_promoted_vars</span><span class="p">(</span><span class="n">tx</span><span class="o">.</span><span class="n">_get_ode</span><span class="p">(</span><span class="n">phase</span><span class="p">),</span> <span class="s1">&#39;output&#39;</span><span class="p">)</span>
@@ -2004,7 +2063,7 @@ title="Open an issue"
                         <span class="n">name</span> <span class="o">=</span> <span class="n">options</span><span class="p">[</span><span class="s1">&#39;constraint_name&#39;</span><span class="p">]</span>
                     <span class="k">else</span><span class="p">:</span>
                         <span class="n">name</span> <span class="o">=</span> <span class="n">options</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
-                    <span class="n">_</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">units</span><span class="p">,</span> <span class="n">linear</span> <span class="o">=</span> <span class="n">tx</span><span class="o">.</span><span class="n">_get_objective_src</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">phase</span><span class="p">,</span> <span class="n">ode_outputs</span><span class="o">=</span><span class="n">ode_outputs</span><span class="p">)</span>
+                    <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">units</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">tx</span><span class="o">.</span><span class="n">_get_objective_src</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">phase</span><span class="p">,</span> <span class="n">ode_outputs</span><span class="o">=</span><span class="n">ode_outputs</span><span class="p">)</span>
 
                     <span class="n">equals</span> <span class="o">=</span> <span class="n">options</span><span class="p">[</span><span class="s1">&#39;equals&#39;</span><span class="p">]</span>
                     <span class="n">lower</span> <span class="o">=</span> <span class="n">options</span><span class="p">[</span><span class="s1">&#39;lower&#39;</span><span class="p">]</span>
@@ -2051,9 +2110,9 @@ title="Open an issue"
 
         <span class="n">printer</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">outstream</span><span class="p">)</span>
 
-<div class="viewcode-block" id="Trajectory.simulate"><a class="viewcode-back" href="../../../api/trajectory_api.html#dymos.Trajectory.simulate">[docs]</a>    <span class="k">def</span> <span class="nf">simulate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">times_per_seg</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span>
+<div class="viewcode-block" id="Trajectory.simulate"><a class="viewcode-back" href="../../../api/trajectory_api.html#dymos.Trajectory.simulate">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">simulate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">times_per_seg</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span>
                  <span class="n">first_step</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span> <span class="n">max_step</span><span class="o">=</span><span class="n">_unspecified</span><span class="p">,</span> <span class="n">record_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">case_prefix</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                 <span class="n">reset_iter_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">reports</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+                 <span class="n">reset_iter_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">reports</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">interpolant</span><span class="o">=</span><span class="s1">&#39;cubic&#39;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Simulate the Trajectory using scipy.integrate.solve_ivp.</span>
 
@@ -2081,6 +2140,8 @@ title="Open an issue"
 <span class="sd">            If True and model has been run previously, reset all iteration counters.</span>
 <span class="sd">        reports : bool or None or str or Sequence</span>
 <span class="sd">            Reports setting for the subproblems run under simualate.</span>
+<span class="sd">        interpolant : str</span>
+<span class="sd">            The interpolation method to be used for the controls in the simulation phase.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2094,10 +2155,10 @@ title="Open an issue"
         <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">phs</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_phases</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="k">if</span> <span class="n">phs</span><span class="o">.</span><span class="n">simulate_options</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="k">continue</span>
-
             <span class="n">sim_phs</span> <span class="o">=</span> <span class="n">phs</span><span class="o">.</span><span class="n">get_simulation_phase</span><span class="p">(</span><span class="n">times_per_seg</span><span class="o">=</span><span class="n">times_per_seg</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span>
                                                <span class="n">atol</span><span class="o">=</span><span class="n">atol</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="n">rtol</span><span class="p">,</span> <span class="n">first_step</span><span class="o">=</span><span class="n">first_step</span><span class="p">,</span>
-                                               <span class="n">max_step</span><span class="o">=</span><span class="n">max_step</span><span class="p">,</span> <span class="n">reports</span><span class="o">=</span><span class="n">reports</span><span class="p">)</span>
+                                               <span class="n">max_step</span><span class="o">=</span><span class="n">max_step</span><span class="p">,</span> <span class="n">reports</span><span class="o">=</span><span class="n">reports</span><span class="p">,</span>
+                                               <span class="n">interpolant</span><span class="o">=</span><span class="n">interpolant</span><span class="p">)</span>
             <span class="n">sim_traj</span><span class="o">.</span><span class="n">add_phase</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">sim_phs</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">sim_traj</span><span class="o">.</span><span class="n">_phases</span><span class="p">:</span>
@@ -2105,7 +2166,9 @@ title="Open an issue"
 
         <span class="n">sim_traj</span><span class="o">.</span><span class="n">parameter_options</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parameter_options</span><span class="p">)</span>
 
-        <span class="n">sim_prob</span> <span class="o">=</span> <span class="n">om</span><span class="o">.</span><span class="n">Problem</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">om</span><span class="o">.</span><span class="n">Group</span><span class="p">(),</span> <span class="n">reports</span><span class="o">=</span><span class="n">reports</span><span class="p">,</span> <span class="n">comm</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">comm</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sim_prob</span> <span class="o">=</span> <span class="n">sim_prob</span> <span class="o">=</span> <span class="n">create_subprob</span><span class="p">(</span><span class="n">base_name</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1">_simulation&#39;</span><span class="p">,</span>
+                                                  <span class="n">comm</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">comm</span><span class="p">,</span>
+                                                  <span class="n">reports</span><span class="o">=</span><span class="n">reports</span><span class="p">)</span>
 
         <span class="n">traj_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="k">else</span> <span class="s1">&#39;sim_traj&#39;</span>
         <span class="n">sim_prob</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">add_subsystem</span><span class="p">(</span><span class="n">traj_name</span><span class="p">,</span> <span class="n">sim_traj</span><span class="p">)</span>
@@ -2113,9 +2176,7 @@ title="Open an issue"
         <span class="k">if</span> <span class="n">record_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">rec</span> <span class="o">=</span> <span class="n">om</span><span class="o">.</span><span class="n">SqliteRecorder</span><span class="p">(</span><span class="n">record_file</span><span class="p">)</span>
             <span class="n">sim_prob</span><span class="o">.</span><span class="n">add_recorder</span><span class="p">(</span><span class="n">rec</span><span class="p">)</span>
-            <span class="c1"># record_inputs is needed to capture potential input parameters that aren&#39;t connected</span>
-            <span class="n">sim_prob</span><span class="o">.</span><span class="n">recording_options</span><span class="p">[</span><span class="s1">&#39;record_inputs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
-            <span class="c1"># record_outputs is need to capture the timeseries outputs</span>
+            <span class="c1"># record_outputs is needed to capture the timeseries outputs</span>
             <span class="n">sim_prob</span><span class="o">.</span><span class="n">recording_options</span><span class="p">[</span><span class="s1">&#39;record_outputs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
 
         <span class="k">with</span> <span class="n">warnings</span><span class="o">.</span><span class="n">catch_warnings</span><span class="p">():</span>
@@ -2124,7 +2185,10 @@ title="Open an issue"
             <span class="c1"># fault of the user.</span>
             <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="n">om</span><span class="o">.</span><span class="n">UnusedOptionWarning</span><span class="p">)</span>
             <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="n">om</span><span class="o">.</span><span class="n">SetupWarning</span><span class="p">)</span>
-            <span class="n">sim_prob</span><span class="o">.</span><span class="n">setup</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">om_version</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+                <span class="n">sim_prob</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">check</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">sim_prob</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">check</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
             <span class="n">sim_prob</span><span class="o">.</span><span class="n">final_setup</span><span class="p">()</span>
 
         <span class="c1"># Assign trajectory parameter values</span>
